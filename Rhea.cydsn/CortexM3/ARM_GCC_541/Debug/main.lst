@@ -1,0 +1,663 @@
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** #include "project.h"
+   2:main.c        **** 
+   3:main.c        **** // Including Rhea libraries
+   4:main.c        **** #include "rhea/i2c/i2c.h"
+   5:main.c        **** #include "rhea/gfx/gfx.h"
+   6:main.c        **** #include "rhea/rtc/rtc.h"
+   7:main.c        **** #include "rhea/uart/uart.h"
+   8:main.c        **** #include "rhea/sensor/sensor.h"
+   9:main.c        **** 
+  10:main.c        **** int main(void)
+  11:main.c        **** {
+  28              		.loc 1 11 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  12:main.c        ****     // Initializing Rhea libraries
+  13:main.c        ****     rhea_i2c_Initialize();
+  37              		.loc 1 13 0
+  38 0002 FFF7FEFF 		bl	rhea_i2c_Initialize
+  39              	.LVL0:
+  14:main.c        ****     rhea_gfx_Initialize();
+  40              		.loc 1 14 0
+  41 0006 FFF7FEFF 		bl	rhea_gfx_Initialize
+  42              	.LVL1:
+  15:main.c        ****     rhea_rtc_Initialize();
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 2
+
+
+  43              		.loc 1 15 0
+  44 000a FFF7FEFF 		bl	rhea_rtc_Initialize
+  45              	.LVL2:
+  16:main.c        ****     rhea_uart_Initialize();
+  46              		.loc 1 16 0
+  47 000e FFF7FEFF 		bl	rhea_uart_Initialize
+  48              	.LVL3:
+  17:main.c        ****     rhea_sensor_Initialize();
+  49              		.loc 1 17 0
+  50 0012 FFF7FEFF 		bl	rhea_sensor_Initialize
+  51              	.LVL4:
+  18:main.c        **** 
+  19:main.c        ****     // Initializing application
+  20:main.c        ****     // ...
+  21:main.c        ****     
+  22:main.c        ****     // Enabling global interrupts
+  23:main.c        ****     CyGlobalIntEnable;
+  52              		.loc 1 23 0
+  53              		.syntax unified
+  54              	@ 23 "main.c" 1
+  55 0016 62B6     		CPSIE   i
+  56              	@ 0 "" 2
+  57              		.thumb
+  58              		.syntax unified
+  59              	.L2:
+  60 0018 FEE7     		b	.L2
+  61              		.cfi_endproc
+  62              	.LFE63:
+  63              		.size	main, .-main
+  64 001a 00BF     		.text
+  65              	.Letext0:
+  66              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+  67              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+  68              		.file 4 "rhea/rtc/datetime/datetime.h"
+  69              		.file 5 "rhea/i2c/i2c.h"
+  70              		.file 6 "rhea/gfx/gfx.h"
+  71              		.file 7 "rhea/rtc/rtc.h"
+  72              		.file 8 "rhea/uart/uart.h"
+  73              		.file 9 "rhea/sensor/sensor.h"
+  74              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
+  75              		.section	.debug_info,"",%progbits
+  76              	.Ldebug_info0:
+  77 0000 85010000 		.4byte	0x185
+  78 0004 0400     		.2byte	0x4
+  79 0006 00000000 		.4byte	.Ldebug_abbrev0
+  80 000a 04       		.byte	0x4
+  81 000b 01       		.uleb128 0x1
+  82 000c 4E000000 		.4byte	.LASF24
+  83 0010 0C       		.byte	0xc
+  84 0011 2E000000 		.4byte	.LASF25
+  85 0015 08020000 		.4byte	.LASF26
+  86 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  87 001d 00000000 		.4byte	0
+  88 0021 00000000 		.4byte	.Ldebug_line0
+  89 0025 02       		.uleb128 0x2
+  90 0026 01       		.byte	0x1
+  91 0027 06       		.byte	0x6
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 3
+
+
+  92 0028 BA010000 		.4byte	.LASF0
+  93 002c 02       		.uleb128 0x2
+  94 002d 01       		.byte	0x1
+  95 002e 08       		.byte	0x8
+  96 002f 38010000 		.4byte	.LASF1
+  97 0033 02       		.uleb128 0x2
+  98 0034 02       		.byte	0x2
+  99 0035 05       		.byte	0x5
+ 100 0036 F6010000 		.4byte	.LASF2
+ 101 003a 02       		.uleb128 0x2
+ 102 003b 02       		.byte	0x2
+ 103 003c 07       		.byte	0x7
+ 104 003d 0E000000 		.4byte	.LASF3
+ 105 0041 03       		.uleb128 0x3
+ 106 0042 E6010000 		.4byte	.LASF9
+ 107 0046 02       		.byte	0x2
+ 108 0047 3F       		.byte	0x3f
+ 109 0048 4C000000 		.4byte	0x4c
+ 110 004c 02       		.uleb128 0x2
+ 111 004d 04       		.byte	0x4
+ 112 004e 05       		.byte	0x5
+ 113 004f 73010000 		.4byte	.LASF4
+ 114 0053 02       		.uleb128 0x2
+ 115 0054 04       		.byte	0x4
+ 116 0055 07       		.byte	0x7
+ 117 0056 DC000000 		.4byte	.LASF5
+ 118 005a 02       		.uleb128 0x2
+ 119 005b 08       		.byte	0x8
+ 120 005c 05       		.byte	0x5
+ 121 005d 00000000 		.4byte	.LASF6
+ 122 0061 02       		.uleb128 0x2
+ 123 0062 08       		.byte	0x8
+ 124 0063 07       		.byte	0x7
+ 125 0064 02010000 		.4byte	.LASF7
+ 126 0068 04       		.uleb128 0x4
+ 127 0069 04       		.byte	0x4
+ 128 006a 05       		.byte	0x5
+ 129 006b 696E7400 		.ascii	"int\000"
+ 130 006f 02       		.uleb128 0x2
+ 131 0070 04       		.byte	0x4
+ 132 0071 07       		.byte	0x7
+ 133 0072 21000000 		.4byte	.LASF8
+ 134 0076 03       		.uleb128 0x3
+ 135 0077 00020000 		.4byte	.LASF10
+ 136 007b 03       		.byte	0x3
+ 137 007c 2C       		.byte	0x2c
+ 138 007d 41000000 		.4byte	0x41
+ 139 0081 02       		.uleb128 0x2
+ 140 0082 04       		.byte	0x4
+ 141 0083 04       		.byte	0x4
+ 142 0084 F0010000 		.4byte	.LASF11
+ 143 0088 02       		.uleb128 0x2
+ 144 0089 08       		.byte	0x8
+ 145 008a 04       		.byte	0x4
+ 146 008b 46010000 		.4byte	.LASF12
+ 147 008f 02       		.uleb128 0x2
+ 148 0090 01       		.byte	0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 4
+
+
+ 149 0091 08       		.byte	0x8
+ 150 0092 4D010000 		.4byte	.LASF13
+ 151 0096 02       		.uleb128 0x2
+ 152 0097 08       		.byte	0x8
+ 153 0098 04       		.byte	0x4
+ 154 0099 C6010000 		.4byte	.LASF14
+ 155 009d 02       		.uleb128 0x2
+ 156 009e 04       		.byte	0x4
+ 157 009f 07       		.byte	0x7
+ 158 00a0 35020000 		.4byte	.LASF15
+ 159 00a4 05       		.uleb128 0x5
+ 160 00a5 8F000000 		.4byte	0x8f
+ 161 00a9 06       		.uleb128 0x6
+ 162 00aa 35000000 		.4byte	.LASF27
+ 163 00ae 01       		.byte	0x1
+ 164 00af 0A       		.byte	0xa
+ 165 00b0 68000000 		.4byte	0x68
+ 166 00b4 00000000 		.4byte	.LFB63
+ 167 00b8 1A000000 		.4byte	.LFE63-.LFB63
+ 168 00bc 01       		.uleb128 0x1
+ 169 00bd 9C       		.byte	0x9c
+ 170 00be F0000000 		.4byte	0xf0
+ 171 00c2 07       		.uleb128 0x7
+ 172 00c3 06000000 		.4byte	.LVL0
+ 173 00c7 51010000 		.4byte	0x151
+ 174 00cb 07       		.uleb128 0x7
+ 175 00cc 0A000000 		.4byte	.LVL1
+ 176 00d0 5C010000 		.4byte	0x15c
+ 177 00d4 07       		.uleb128 0x7
+ 178 00d5 0E000000 		.4byte	.LVL2
+ 179 00d9 67010000 		.4byte	0x167
+ 180 00dd 07       		.uleb128 0x7
+ 181 00de 12000000 		.4byte	.LVL3
+ 182 00e2 72010000 		.4byte	0x172
+ 183 00e6 07       		.uleb128 0x7
+ 184 00e7 16000000 		.4byte	.LVL4
+ 185 00eb 7D010000 		.4byte	0x17d
+ 186 00ef 00       		.byte	0
+ 187 00f0 08       		.uleb128 0x8
+ 188 00f1 A4000000 		.4byte	0xa4
+ 189 00f5 00010000 		.4byte	0x100
+ 190 00f9 09       		.uleb128 0x9
+ 191 00fa 9D000000 		.4byte	0x9d
+ 192 00fe 13       		.byte	0x13
+ 193 00ff 00       		.byte	0
+ 194 0100 0A       		.uleb128 0xa
+ 195 0101 19010000 		.4byte	.LASF16
+ 196 0105 04       		.byte	0x4
+ 197 0106 48       		.byte	0x48
+ 198 0107 0B010000 		.4byte	0x10b
+ 199 010b 05       		.uleb128 0x5
+ 200 010c F0000000 		.4byte	0xf0
+ 201 0110 08       		.uleb128 0x8
+ 202 0111 A4000000 		.4byte	0xa4
+ 203 0115 20010000 		.4byte	0x120
+ 204 0119 09       		.uleb128 0x9
+ 205 011a 9D000000 		.4byte	0x9d
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 5
+
+
+ 206 011e 15       		.byte	0x15
+ 207 011f 00       		.byte	0
+ 208 0120 0A       		.uleb128 0xa
+ 209 0121 52010000 		.4byte	.LASF17
+ 210 0125 04       		.byte	0x4
+ 211 0126 4A       		.byte	0x4a
+ 212 0127 2B010000 		.4byte	0x12b
+ 213 012b 05       		.uleb128 0x5
+ 214 012c 10010000 		.4byte	0x110
+ 215 0130 0A       		.uleb128 0xa
+ 216 0131 91010000 		.4byte	.LASF18
+ 217 0135 04       		.byte	0x4
+ 218 0136 4C       		.byte	0x4c
+ 219 0137 3B010000 		.4byte	0x13b
+ 220 013b 05       		.uleb128 0x5
+ 221 013c 10010000 		.4byte	0x110
+ 222 0140 0B       		.uleb128 0xb
+ 223 0141 AD010000 		.4byte	.LASF28
+ 224 0145 0A       		.byte	0xa
+ 225 0146 1207     		.2byte	0x712
+ 226 0148 4C010000 		.4byte	0x14c
+ 227 014c 0C       		.uleb128 0xc
+ 228 014d 76000000 		.4byte	0x76
+ 229 0151 0D       		.uleb128 0xd
+ 230 0152 D2010000 		.4byte	.LASF19
+ 231 0156 D2010000 		.4byte	.LASF19
+ 232 015a 05       		.byte	0x5
+ 233 015b 2D       		.byte	0x2d
+ 234 015c 0D       		.uleb128 0xd
+ 235 015d EE000000 		.4byte	.LASF20
+ 236 0161 EE000000 		.4byte	.LASF20
+ 237 0165 06       		.byte	0x6
+ 238 0166 4F       		.byte	0x4f
+ 239 0167 0D       		.uleb128 0xd
+ 240 0168 3A000000 		.4byte	.LASF21
+ 241 016c 3A000000 		.4byte	.LASF21
+ 242 0170 07       		.byte	0x7
+ 243 0171 2F       		.byte	0x2f
+ 244 0172 0D       		.uleb128 0xd
+ 245 0173 7C010000 		.4byte	.LASF22
+ 246 0177 7C010000 		.4byte	.LASF22
+ 247 017b 08       		.byte	0x8
+ 248 017c 2E       		.byte	0x2e
+ 249 017d 0D       		.uleb128 0xd
+ 250 017e 3E020000 		.4byte	.LASF23
+ 251 0182 3E020000 		.4byte	.LASF23
+ 252 0186 09       		.byte	0x9
+ 253 0187 6C       		.byte	0x6c
+ 254 0188 00       		.byte	0
+ 255              		.section	.debug_abbrev,"",%progbits
+ 256              	.Ldebug_abbrev0:
+ 257 0000 01       		.uleb128 0x1
+ 258 0001 11       		.uleb128 0x11
+ 259 0002 01       		.byte	0x1
+ 260 0003 25       		.uleb128 0x25
+ 261 0004 0E       		.uleb128 0xe
+ 262 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 6
+
+
+ 263 0006 0B       		.uleb128 0xb
+ 264 0007 03       		.uleb128 0x3
+ 265 0008 0E       		.uleb128 0xe
+ 266 0009 1B       		.uleb128 0x1b
+ 267 000a 0E       		.uleb128 0xe
+ 268 000b 55       		.uleb128 0x55
+ 269 000c 17       		.uleb128 0x17
+ 270 000d 11       		.uleb128 0x11
+ 271 000e 01       		.uleb128 0x1
+ 272 000f 10       		.uleb128 0x10
+ 273 0010 17       		.uleb128 0x17
+ 274 0011 00       		.byte	0
+ 275 0012 00       		.byte	0
+ 276 0013 02       		.uleb128 0x2
+ 277 0014 24       		.uleb128 0x24
+ 278 0015 00       		.byte	0
+ 279 0016 0B       		.uleb128 0xb
+ 280 0017 0B       		.uleb128 0xb
+ 281 0018 3E       		.uleb128 0x3e
+ 282 0019 0B       		.uleb128 0xb
+ 283 001a 03       		.uleb128 0x3
+ 284 001b 0E       		.uleb128 0xe
+ 285 001c 00       		.byte	0
+ 286 001d 00       		.byte	0
+ 287 001e 03       		.uleb128 0x3
+ 288 001f 16       		.uleb128 0x16
+ 289 0020 00       		.byte	0
+ 290 0021 03       		.uleb128 0x3
+ 291 0022 0E       		.uleb128 0xe
+ 292 0023 3A       		.uleb128 0x3a
+ 293 0024 0B       		.uleb128 0xb
+ 294 0025 3B       		.uleb128 0x3b
+ 295 0026 0B       		.uleb128 0xb
+ 296 0027 49       		.uleb128 0x49
+ 297 0028 13       		.uleb128 0x13
+ 298 0029 00       		.byte	0
+ 299 002a 00       		.byte	0
+ 300 002b 04       		.uleb128 0x4
+ 301 002c 24       		.uleb128 0x24
+ 302 002d 00       		.byte	0
+ 303 002e 0B       		.uleb128 0xb
+ 304 002f 0B       		.uleb128 0xb
+ 305 0030 3E       		.uleb128 0x3e
+ 306 0031 0B       		.uleb128 0xb
+ 307 0032 03       		.uleb128 0x3
+ 308 0033 08       		.uleb128 0x8
+ 309 0034 00       		.byte	0
+ 310 0035 00       		.byte	0
+ 311 0036 05       		.uleb128 0x5
+ 312 0037 26       		.uleb128 0x26
+ 313 0038 00       		.byte	0
+ 314 0039 49       		.uleb128 0x49
+ 315 003a 13       		.uleb128 0x13
+ 316 003b 00       		.byte	0
+ 317 003c 00       		.byte	0
+ 318 003d 06       		.uleb128 0x6
+ 319 003e 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 7
+
+
+ 320 003f 01       		.byte	0x1
+ 321 0040 3F       		.uleb128 0x3f
+ 322 0041 19       		.uleb128 0x19
+ 323 0042 03       		.uleb128 0x3
+ 324 0043 0E       		.uleb128 0xe
+ 325 0044 3A       		.uleb128 0x3a
+ 326 0045 0B       		.uleb128 0xb
+ 327 0046 3B       		.uleb128 0x3b
+ 328 0047 0B       		.uleb128 0xb
+ 329 0048 27       		.uleb128 0x27
+ 330 0049 19       		.uleb128 0x19
+ 331 004a 49       		.uleb128 0x49
+ 332 004b 13       		.uleb128 0x13
+ 333 004c 8701     		.uleb128 0x87
+ 334 004e 19       		.uleb128 0x19
+ 335 004f 11       		.uleb128 0x11
+ 336 0050 01       		.uleb128 0x1
+ 337 0051 12       		.uleb128 0x12
+ 338 0052 06       		.uleb128 0x6
+ 339 0053 40       		.uleb128 0x40
+ 340 0054 18       		.uleb128 0x18
+ 341 0055 9742     		.uleb128 0x2117
+ 342 0057 19       		.uleb128 0x19
+ 343 0058 01       		.uleb128 0x1
+ 344 0059 13       		.uleb128 0x13
+ 345 005a 00       		.byte	0
+ 346 005b 00       		.byte	0
+ 347 005c 07       		.uleb128 0x7
+ 348 005d 898201   		.uleb128 0x4109
+ 349 0060 00       		.byte	0
+ 350 0061 11       		.uleb128 0x11
+ 351 0062 01       		.uleb128 0x1
+ 352 0063 31       		.uleb128 0x31
+ 353 0064 13       		.uleb128 0x13
+ 354 0065 00       		.byte	0
+ 355 0066 00       		.byte	0
+ 356 0067 08       		.uleb128 0x8
+ 357 0068 01       		.uleb128 0x1
+ 358 0069 01       		.byte	0x1
+ 359 006a 49       		.uleb128 0x49
+ 360 006b 13       		.uleb128 0x13
+ 361 006c 01       		.uleb128 0x1
+ 362 006d 13       		.uleb128 0x13
+ 363 006e 00       		.byte	0
+ 364 006f 00       		.byte	0
+ 365 0070 09       		.uleb128 0x9
+ 366 0071 21       		.uleb128 0x21
+ 367 0072 00       		.byte	0
+ 368 0073 49       		.uleb128 0x49
+ 369 0074 13       		.uleb128 0x13
+ 370 0075 2F       		.uleb128 0x2f
+ 371 0076 0B       		.uleb128 0xb
+ 372 0077 00       		.byte	0
+ 373 0078 00       		.byte	0
+ 374 0079 0A       		.uleb128 0xa
+ 375 007a 34       		.uleb128 0x34
+ 376 007b 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 8
+
+
+ 377 007c 03       		.uleb128 0x3
+ 378 007d 0E       		.uleb128 0xe
+ 379 007e 3A       		.uleb128 0x3a
+ 380 007f 0B       		.uleb128 0xb
+ 381 0080 3B       		.uleb128 0x3b
+ 382 0081 0B       		.uleb128 0xb
+ 383 0082 49       		.uleb128 0x49
+ 384 0083 13       		.uleb128 0x13
+ 385 0084 00       		.byte	0
+ 386 0085 00       		.byte	0
+ 387 0086 0B       		.uleb128 0xb
+ 388 0087 34       		.uleb128 0x34
+ 389 0088 00       		.byte	0
+ 390 0089 03       		.uleb128 0x3
+ 391 008a 0E       		.uleb128 0xe
+ 392 008b 3A       		.uleb128 0x3a
+ 393 008c 0B       		.uleb128 0xb
+ 394 008d 3B       		.uleb128 0x3b
+ 395 008e 05       		.uleb128 0x5
+ 396 008f 49       		.uleb128 0x49
+ 397 0090 13       		.uleb128 0x13
+ 398 0091 3F       		.uleb128 0x3f
+ 399 0092 19       		.uleb128 0x19
+ 400 0093 3C       		.uleb128 0x3c
+ 401 0094 19       		.uleb128 0x19
+ 402 0095 00       		.byte	0
+ 403 0096 00       		.byte	0
+ 404 0097 0C       		.uleb128 0xc
+ 405 0098 35       		.uleb128 0x35
+ 406 0099 00       		.byte	0
+ 407 009a 49       		.uleb128 0x49
+ 408 009b 13       		.uleb128 0x13
+ 409 009c 00       		.byte	0
+ 410 009d 00       		.byte	0
+ 411 009e 0D       		.uleb128 0xd
+ 412 009f 2E       		.uleb128 0x2e
+ 413 00a0 00       		.byte	0
+ 414 00a1 3F       		.uleb128 0x3f
+ 415 00a2 19       		.uleb128 0x19
+ 416 00a3 3C       		.uleb128 0x3c
+ 417 00a4 19       		.uleb128 0x19
+ 418 00a5 6E       		.uleb128 0x6e
+ 419 00a6 0E       		.uleb128 0xe
+ 420 00a7 03       		.uleb128 0x3
+ 421 00a8 0E       		.uleb128 0xe
+ 422 00a9 3A       		.uleb128 0x3a
+ 423 00aa 0B       		.uleb128 0xb
+ 424 00ab 3B       		.uleb128 0x3b
+ 425 00ac 0B       		.uleb128 0xb
+ 426 00ad 00       		.byte	0
+ 427 00ae 00       		.byte	0
+ 428 00af 00       		.byte	0
+ 429              		.section	.debug_aranges,"",%progbits
+ 430 0000 1C000000 		.4byte	0x1c
+ 431 0004 0200     		.2byte	0x2
+ 432 0006 00000000 		.4byte	.Ldebug_info0
+ 433 000a 04       		.byte	0x4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 9
+
+
+ 434 000b 00       		.byte	0
+ 435 000c 0000     		.2byte	0
+ 436 000e 0000     		.2byte	0
+ 437 0010 00000000 		.4byte	.LFB63
+ 438 0014 1A000000 		.4byte	.LFE63-.LFB63
+ 439 0018 00000000 		.4byte	0
+ 440 001c 00000000 		.4byte	0
+ 441              		.section	.debug_ranges,"",%progbits
+ 442              	.Ldebug_ranges0:
+ 443 0000 00000000 		.4byte	.LFB63
+ 444 0004 1A000000 		.4byte	.LFE63
+ 445 0008 00000000 		.4byte	0
+ 446 000c 00000000 		.4byte	0
+ 447              		.section	.debug_line,"",%progbits
+ 448              	.Ldebug_line0:
+ 449 0000 B4010000 		.section	.debug_str,"MS",%progbits,1
+ 449      02009901 
+ 449      00000201 
+ 449      FB0E0D00 
+ 449      01010101 
+ 450              	.LASF6:
+ 451 0000 6C6F6E67 		.ascii	"long long int\000"
+ 451      206C6F6E 
+ 451      6720696E 
+ 451      7400
+ 452              	.LASF3:
+ 453 000e 73686F72 		.ascii	"short unsigned int\000"
+ 453      7420756E 
+ 453      7369676E 
+ 453      65642069 
+ 453      6E7400
+ 454              	.LASF8:
+ 455 0021 756E7369 		.ascii	"unsigned int\000"
+ 455      676E6564 
+ 455      20696E74 
+ 455      00
+ 456              	.LASF25:
+ 457 002e 6D61696E 		.ascii	"main.c\000"
+ 457      2E6300
+ 458              	.LASF27:
+ 459 0035 6D61696E 		.ascii	"main\000"
+ 459      00
+ 460              	.LASF21:
+ 461 003a 72686561 		.ascii	"rhea_rtc_Initialize\000"
+ 461      5F727463 
+ 461      5F496E69 
+ 461      7469616C 
+ 461      697A6500 
+ 462              	.LASF24:
+ 463 004e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 463      43313120 
+ 463      352E342E 
+ 463      31203230 
+ 463      31363036 
+ 464 0081 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 464      20726576 
+ 464      6973696F 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 10
+
+
+ 464      6E203233 
+ 464      37373135 
+ 465 00b4 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 465      66756E63 
+ 465      74696F6E 
+ 465      2D736563 
+ 465      74696F6E 
+ 466              	.LASF5:
+ 467 00dc 6C6F6E67 		.ascii	"long unsigned int\000"
+ 467      20756E73 
+ 467      69676E65 
+ 467      6420696E 
+ 467      7400
+ 468              	.LASF20:
+ 469 00ee 72686561 		.ascii	"rhea_gfx_Initialize\000"
+ 469      5F676678 
+ 469      5F496E69 
+ 469      7469616C 
+ 469      697A6500 
+ 470              	.LASF7:
+ 471 0102 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 471      206C6F6E 
+ 471      6720756E 
+ 471      7369676E 
+ 471      65642069 
+ 472              	.LASF16:
+ 473 0119 72686561 		.ascii	"rhea_rtc_datetimeFormatGeneral\000"
+ 473      5F727463 
+ 473      5F646174 
+ 473      6574696D 
+ 473      65466F72 
+ 474              	.LASF1:
+ 475 0138 756E7369 		.ascii	"unsigned char\000"
+ 475      676E6564 
+ 475      20636861 
+ 475      7200
+ 476              	.LASF12:
+ 477 0146 646F7562 		.ascii	"double\000"
+ 477      6C6500
+ 478              	.LASF13:
+ 479 014d 63686172 		.ascii	"char\000"
+ 479      00
+ 480              	.LASF17:
+ 481 0152 72686561 		.ascii	"rhea_rtc_datetimeFormatGeneralUS\000"
+ 481      5F727463 
+ 481      5F646174 
+ 481      6574696D 
+ 481      65466F72 
+ 482              	.LASF4:
+ 483 0173 6C6F6E67 		.ascii	"long int\000"
+ 483      20696E74 
+ 483      00
+ 484              	.LASF22:
+ 485 017c 72686561 		.ascii	"rhea_uart_Initialize\000"
+ 485      5F756172 
+ 485      745F496E 
+ 485      69746961 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 11
+
+
+ 485      6C697A65 
+ 486              	.LASF18:
+ 487 0191 72686561 		.ascii	"rhea_rtc_datetimeFormatFull\000"
+ 487      5F727463 
+ 487      5F646174 
+ 487      6574696D 
+ 487      65466F72 
+ 488              	.LASF28:
+ 489 01ad 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 489      52784275 
+ 489      66666572 
+ 489      00
+ 490              	.LASF0:
+ 491 01ba 7369676E 		.ascii	"signed char\000"
+ 491      65642063 
+ 491      68617200 
+ 492              	.LASF14:
+ 493 01c6 6C6F6E67 		.ascii	"long double\000"
+ 493      20646F75 
+ 493      626C6500 
+ 494              	.LASF19:
+ 495 01d2 72686561 		.ascii	"rhea_i2c_Initialize\000"
+ 495      5F693263 
+ 495      5F496E69 
+ 495      7469616C 
+ 495      697A6500 
+ 496              	.LASF9:
+ 497 01e6 5F5F696E 		.ascii	"__int32_t\000"
+ 497      7433325F 
+ 497      7400
+ 498              	.LASF11:
+ 499 01f0 666C6F61 		.ascii	"float\000"
+ 499      7400
+ 500              	.LASF2:
+ 501 01f6 73686F72 		.ascii	"short int\000"
+ 501      7420696E 
+ 501      7400
+ 502              	.LASF10:
+ 503 0200 696E7433 		.ascii	"int32_t\000"
+ 503      325F7400 
+ 504              	.LASF26:
+ 505 0208 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ 505      79707265 
+ 505      73735C50 
+ 505      726F6A65 
+ 505      6374735C 
+ 506              	.LASF15:
+ 507 0235 73697A65 		.ascii	"sizetype\000"
+ 507      74797065 
+ 507      00
+ 508              	.LASF23:
+ 509 023e 72686561 		.ascii	"rhea_sensor_Initialize\000"
+ 509      5F73656E 
+ 509      736F725F 
+ 509      496E6974 
+ 509      69616C69 
+ 510              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccTG5Rfj.s 			page 12
+
+

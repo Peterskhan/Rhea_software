@@ -1,0 +1,944 @@
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"i2c_impl.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.rhea_i2c_initialize_impl,"ax",%progbits
+  20              		.align	2
+  21              		.global	rhea_i2c_initialize_impl
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	rhea_i2c_initialize_impl, %function
+  25              	rhea_i2c_initialize_impl:
+  26              	.LFB63:
+  27              		.file 1 "rhea\\i2c\\i2c_impl.c"
+   1:rhea\i2c/i2c_impl.c **** /*********************************************************************************
+   2:rhea\i2c/i2c_impl.c ****  * Copyright (c) 2020 Peter Gyulai
+   3:rhea\i2c/i2c_impl.c ****  *
+   4:rhea\i2c/i2c_impl.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy
+   5:rhea\i2c/i2c_impl.c ****  * of this software and associated documentation files (the "Software"), to deal
+   6:rhea\i2c/i2c_impl.c ****  * in the Software without restriction, including without limitation the rights
+   7:rhea\i2c/i2c_impl.c ****  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   8:rhea\i2c/i2c_impl.c ****  * copies of the Software, and to permit persons to whom the Software is
+   9:rhea\i2c/i2c_impl.c ****  * furnished to do so, subject to the following conditions:
+  10:rhea\i2c/i2c_impl.c ****  *
+  11:rhea\i2c/i2c_impl.c ****  * The above copyright notice and this permission notice shall be included in all
+  12:rhea\i2c/i2c_impl.c ****  * copies or substantial portions of the Software.
+  13:rhea\i2c/i2c_impl.c ****  *
+  14:rhea\i2c/i2c_impl.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  15:rhea\i2c/i2c_impl.c ****  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  16:rhea\i2c/i2c_impl.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  17:rhea\i2c/i2c_impl.c ****  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  18:rhea\i2c/i2c_impl.c ****  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  19:rhea\i2c/i2c_impl.c ****  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+  20:rhea\i2c/i2c_impl.c ****  * OR OTHER DEALINGS IN THE SOFTWARE.
+  21:rhea\i2c/i2c_impl.c **** **********************************************************************************/
+  22:rhea\i2c/i2c_impl.c **** 
+  23:rhea\i2c/i2c_impl.c **** /**
+  24:rhea\i2c/i2c_impl.c ****  * @file    i2c_impl.c
+  25:rhea\i2c/i2c_impl.c ****  * @author  Peter Gyulai
+  26:rhea\i2c/i2c_impl.c ****  * @version 1.0.0
+  27:rhea\i2c/i2c_impl.c ****  * @date    2020.04.19
+  28:rhea\i2c/i2c_impl.c ****  * @brief   I2C driver implementation.
+  29:rhea\i2c/i2c_impl.c ****  * @details
+  30:rhea\i2c/i2c_impl.c ****  * This file contains the I2C driver implementation. Implement the driver 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 2
+
+
+  31:rhea\i2c/i2c_impl.c ****  * functionality here when porting to a new target microcontroller.
+  32:rhea\i2c/i2c_impl.c ****  */
+  33:rhea\i2c/i2c_impl.c **** 
+  34:rhea\i2c/i2c_impl.c **** // Including header for function declarations
+  35:rhea\i2c/i2c_impl.c **** #include "i2c_impl.h"
+  36:rhea\i2c/i2c_impl.c **** 
+  37:rhea\i2c/i2c_impl.c **** // Implementation for PSoC5LP target
+  38:rhea\i2c/i2c_impl.c **** #if defined(RHEA_TARGET_PSOC5LP)
+  39:rhea\i2c/i2c_impl.c **** 
+  40:rhea\i2c/i2c_impl.c ****     // Including generated source
+  41:rhea\i2c/i2c_impl.c ****     #include "project.h"
+  42:rhea\i2c/i2c_impl.c **** 
+  43:rhea\i2c/i2c_impl.c ****     void rhea_i2c_initialize_impl(void) {
+  28              		.loc 1 43 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  44:rhea\i2c/i2c_impl.c **** 
+  45:rhea\i2c/i2c_impl.c ****         // Invoking PSoC driver
+  46:rhea\i2c/i2c_impl.c ****         I2C_Start();
+  36              		.loc 1 46 0
+  37 0002 FFF7FEFF 		bl	I2C_Start
+  38              	.LVL0:
+  39 0006 08BD     		pop	{r3, pc}
+  40              		.cfi_endproc
+  41              	.LFE63:
+  42              		.size	rhea_i2c_initialize_impl, .-rhea_i2c_initialize_impl
+  43              		.section	.text.rhea_i2c_masterSendStart_impl,"ax",%progbits
+  44              		.align	2
+  45              		.global	rhea_i2c_masterSendStart_impl
+  46              		.thumb
+  47              		.thumb_func
+  48              		.type	rhea_i2c_masterSendStart_impl, %function
+  49              	rhea_i2c_masterSendStart_impl:
+  50              	.LFB64:
+  47:rhea\i2c/i2c_impl.c ****     }
+  48:rhea\i2c/i2c_impl.c **** 
+  49:rhea\i2c/i2c_impl.c ****     void rhea_i2c_masterSendStart_impl(uint8_t address, uint8_t read) {
+  51              		.loc 1 49 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55              	.LVL1:
+  56 0000 08B5     		push	{r3, lr}
+  57              		.cfi_def_cfa_offset 8
+  58              		.cfi_offset 3, -8
+  59              		.cfi_offset 14, -4
+  50:rhea\i2c/i2c_impl.c **** 
+  51:rhea\i2c/i2c_impl.c ****         // Invoking PSoC driver
+  52:rhea\i2c/i2c_impl.c ****         I2C_MasterSendStart(address, read);
+  60              		.loc 1 52 0
+  61 0002 FFF7FEFF 		bl	I2C_MasterSendStart
+  62              	.LVL2:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 3
+
+
+  63 0006 08BD     		pop	{r3, pc}
+  64              		.cfi_endproc
+  65              	.LFE64:
+  66              		.size	rhea_i2c_masterSendStart_impl, .-rhea_i2c_masterSendStart_impl
+  67              		.section	.text.rhea_i2c_masterSendStop_impl,"ax",%progbits
+  68              		.align	2
+  69              		.global	rhea_i2c_masterSendStop_impl
+  70              		.thumb
+  71              		.thumb_func
+  72              		.type	rhea_i2c_masterSendStop_impl, %function
+  73              	rhea_i2c_masterSendStop_impl:
+  74              	.LFB65:
+  53:rhea\i2c/i2c_impl.c ****     }
+  54:rhea\i2c/i2c_impl.c **** 
+  55:rhea\i2c/i2c_impl.c ****     void rhea_i2c_masterSendStop_impl(void) {
+  75              		.loc 1 55 0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79 0000 08B5     		push	{r3, lr}
+  80              		.cfi_def_cfa_offset 8
+  81              		.cfi_offset 3, -8
+  82              		.cfi_offset 14, -4
+  56:rhea\i2c/i2c_impl.c **** 
+  57:rhea\i2c/i2c_impl.c ****         // Invoking PSoC driver
+  58:rhea\i2c/i2c_impl.c ****         I2C_MasterSendStop();
+  83              		.loc 1 58 0
+  84 0002 FFF7FEFF 		bl	I2C_MasterSendStop
+  85              	.LVL3:
+  86 0006 08BD     		pop	{r3, pc}
+  87              		.cfi_endproc
+  88              	.LFE65:
+  89              		.size	rhea_i2c_masterSendStop_impl, .-rhea_i2c_masterSendStop_impl
+  90              		.section	.text.rhea_i2c_masterReadByte_impl,"ax",%progbits
+  91              		.align	2
+  92              		.global	rhea_i2c_masterReadByte_impl
+  93              		.thumb
+  94              		.thumb_func
+  95              		.type	rhea_i2c_masterReadByte_impl, %function
+  96              	rhea_i2c_masterReadByte_impl:
+  97              	.LFB66:
+  59:rhea\i2c/i2c_impl.c ****     }
+  60:rhea\i2c/i2c_impl.c **** 
+  61:rhea\i2c/i2c_impl.c ****     uint8_t rhea_i2c_masterReadByte_impl(uint8_t ack) {
+  98              		.loc 1 61 0
+  99              		.cfi_startproc
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              	.LVL4:
+ 103 0000 08B5     		push	{r3, lr}
+ 104              		.cfi_def_cfa_offset 8
+ 105              		.cfi_offset 3, -8
+ 106              		.cfi_offset 14, -4
+  62:rhea\i2c/i2c_impl.c **** 
+  63:rhea\i2c/i2c_impl.c ****         // Invoking PSoC driver
+  64:rhea\i2c/i2c_impl.c ****         return I2C_MasterReadByte(ack);
+ 107              		.loc 1 64 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 4
+
+
+ 108 0002 FFF7FEFF 		bl	I2C_MasterReadByte
+ 109              	.LVL5:
+  65:rhea\i2c/i2c_impl.c ****     }
+ 110              		.loc 1 65 0
+ 111 0006 08BD     		pop	{r3, pc}
+ 112              		.cfi_endproc
+ 113              	.LFE66:
+ 114              		.size	rhea_i2c_masterReadByte_impl, .-rhea_i2c_masterReadByte_impl
+ 115              		.section	.text.rhea_i2c_masterWriteByte_impl,"ax",%progbits
+ 116              		.align	2
+ 117              		.global	rhea_i2c_masterWriteByte_impl
+ 118              		.thumb
+ 119              		.thumb_func
+ 120              		.type	rhea_i2c_masterWriteByte_impl, %function
+ 121              	rhea_i2c_masterWriteByte_impl:
+ 122              	.LFB67:
+  66:rhea\i2c/i2c_impl.c **** 
+  67:rhea\i2c/i2c_impl.c ****     void rhea_i2c_masterWriteByte_impl(uint8_t byte) {
+ 123              		.loc 1 67 0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127              	.LVL6:
+ 128 0000 08B5     		push	{r3, lr}
+ 129              		.cfi_def_cfa_offset 8
+ 130              		.cfi_offset 3, -8
+ 131              		.cfi_offset 14, -4
+  68:rhea\i2c/i2c_impl.c **** 
+  69:rhea\i2c/i2c_impl.c ****         // Invoking PSoC driver
+  70:rhea\i2c/i2c_impl.c ****         I2C_MasterWriteByte(byte);
+ 132              		.loc 1 70 0
+ 133 0002 FFF7FEFF 		bl	I2C_MasterWriteByte
+ 134              	.LVL7:
+ 135 0006 08BD     		pop	{r3, pc}
+ 136              		.cfi_endproc
+ 137              	.LFE67:
+ 138              		.size	rhea_i2c_masterWriteByte_impl, .-rhea_i2c_masterWriteByte_impl
+ 139              		.text
+ 140              	.Letext0:
+ 141              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 142              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 143              		.file 4 "Generated_Source\\PSoC5/I2C.h"
+ 144              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 145              		.section	.debug_info,"",%progbits
+ 146              	.Ldebug_info0:
+ 147 0000 DA010000 		.4byte	0x1da
+ 148 0004 0400     		.2byte	0x4
+ 149 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 150 000a 04       		.byte	0x4
+ 151 000b 01       		.uleb128 0x1
+ 152 000c A8000000 		.4byte	.LASF30
+ 153 0010 0C       		.byte	0xc
+ 154 0011 94000000 		.4byte	.LASF31
+ 155 0015 4A000000 		.4byte	.LASF32
+ 156 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 157 001d 00000000 		.4byte	0
+ 158 0021 00000000 		.4byte	.Ldebug_line0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 5
+
+
+ 159 0025 02       		.uleb128 0x2
+ 160 0026 01       		.byte	0x1
+ 161 0027 06       		.byte	0x6
+ 162 0028 7B020000 		.4byte	.LASF0
+ 163 002c 03       		.uleb128 0x3
+ 164 002d 00000000 		.4byte	.LASF4
+ 165 0031 02       		.byte	0x2
+ 166 0032 1D       		.byte	0x1d
+ 167 0033 37000000 		.4byte	0x37
+ 168 0037 02       		.uleb128 0x2
+ 169 0038 01       		.byte	0x1
+ 170 0039 08       		.byte	0x8
+ 171 003a 7C010000 		.4byte	.LASF1
+ 172 003e 02       		.uleb128 0x2
+ 173 003f 02       		.byte	0x2
+ 174 0040 05       		.byte	0x5
+ 175 0041 5C020000 		.4byte	.LASF2
+ 176 0045 02       		.uleb128 0x2
+ 177 0046 02       		.byte	0x2
+ 178 0047 07       		.byte	0x7
+ 179 0048 48010000 		.4byte	.LASF3
+ 180 004c 03       		.uleb128 0x3
+ 181 004d 1D000000 		.4byte	.LASF5
+ 182 0051 02       		.byte	0x2
+ 183 0052 3F       		.byte	0x3f
+ 184 0053 57000000 		.4byte	0x57
+ 185 0057 02       		.uleb128 0x2
+ 186 0058 04       		.byte	0x4
+ 187 0059 05       		.byte	0x5
+ 188 005a 66020000 		.4byte	.LASF6
+ 189 005e 02       		.uleb128 0x2
+ 190 005f 04       		.byte	0x4
+ 191 0060 07       		.byte	0x7
+ 192 0061 36010000 		.4byte	.LASF7
+ 193 0065 02       		.uleb128 0x2
+ 194 0066 08       		.byte	0x8
+ 195 0067 05       		.byte	0x5
+ 196 0068 19020000 		.4byte	.LASF8
+ 197 006c 02       		.uleb128 0x2
+ 198 006d 08       		.byte	0x8
+ 199 006e 07       		.byte	0x7
+ 200 006f 7D000000 		.4byte	.LASF9
+ 201 0073 04       		.uleb128 0x4
+ 202 0074 04       		.byte	0x4
+ 203 0075 05       		.byte	0x5
+ 204 0076 696E7400 		.ascii	"int\000"
+ 205 007a 02       		.uleb128 0x2
+ 206 007b 04       		.byte	0x4
+ 207 007c 07       		.byte	0x7
+ 208 007d CD010000 		.4byte	.LASF10
+ 209 0081 03       		.uleb128 0x3
+ 210 0082 00020000 		.4byte	.LASF11
+ 211 0086 03       		.byte	0x3
+ 212 0087 18       		.byte	0x18
+ 213 0088 2C000000 		.4byte	0x2c
+ 214 008c 03       		.uleb128 0x3
+ 215 008d 08020000 		.4byte	.LASF12
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 6
+
+
+ 216 0091 03       		.byte	0x3
+ 217 0092 2C       		.byte	0x2c
+ 218 0093 4C000000 		.4byte	0x4c
+ 219 0097 02       		.uleb128 0x2
+ 220 0098 04       		.byte	0x4
+ 221 0099 04       		.byte	0x4
+ 222 009a 77000000 		.4byte	.LASF13
+ 223 009e 02       		.uleb128 0x2
+ 224 009f 08       		.byte	0x8
+ 225 00a0 04       		.byte	0x4
+ 226 00a1 8A010000 		.4byte	.LASF14
+ 227 00a5 02       		.uleb128 0x2
+ 228 00a6 01       		.byte	0x1
+ 229 00a7 08       		.byte	0x8
+ 230 00a8 27020000 		.4byte	.LASF15
+ 231 00ac 02       		.uleb128 0x2
+ 232 00ad 08       		.byte	0x8
+ 233 00ae 04       		.byte	0x4
+ 234 00af 6F020000 		.4byte	.LASF16
+ 235 00b3 02       		.uleb128 0x2
+ 236 00b4 04       		.byte	0x4
+ 237 00b5 07       		.byte	0x7
+ 238 00b6 10020000 		.4byte	.LASF17
+ 239 00ba 05       		.uleb128 0x5
+ 240 00bb 91010000 		.4byte	.LASF18
+ 241 00bf 01       		.byte	0x1
+ 242 00c0 2B       		.byte	0x2b
+ 243 00c1 00000000 		.4byte	.LFB63
+ 244 00c5 08000000 		.4byte	.LFE63-.LFB63
+ 245 00c9 01       		.uleb128 0x1
+ 246 00ca 9C       		.byte	0x9c
+ 247 00cb D9000000 		.4byte	0xd9
+ 248 00cf 06       		.uleb128 0x6
+ 249 00d0 06000000 		.4byte	.LVL0
+ 250 00d4 A6010000 		.4byte	0x1a6
+ 251 00d8 00       		.byte	0
+ 252 00d9 05       		.uleb128 0x5
+ 253 00da AF010000 		.4byte	.LASF19
+ 254 00de 01       		.byte	0x1
+ 255 00df 31       		.byte	0x31
+ 256 00e0 00000000 		.4byte	.LFB64
+ 257 00e4 08000000 		.4byte	.LFE64-.LFB64
+ 258 00e8 01       		.uleb128 0x1
+ 259 00e9 9C       		.byte	0x9c
+ 260 00ea 16010000 		.4byte	0x116
+ 261 00ee 07       		.uleb128 0x7
+ 262 00ef DA010000 		.4byte	.LASF20
+ 263 00f3 01       		.byte	0x1
+ 264 00f4 31       		.byte	0x31
+ 265 00f5 81000000 		.4byte	0x81
+ 266 00f9 00000000 		.4byte	.LLST0
+ 267 00fd 07       		.uleb128 0x7
+ 268 00fe AA010000 		.4byte	.LASF21
+ 269 0102 01       		.byte	0x1
+ 270 0103 31       		.byte	0x31
+ 271 0104 81000000 		.4byte	0x81
+ 272 0108 21000000 		.4byte	.LLST1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 7
+
+
+ 273 010c 06       		.uleb128 0x6
+ 274 010d 06000000 		.4byte	.LVL2
+ 275 0111 B1010000 		.4byte	0x1b1
+ 276 0115 00       		.byte	0
+ 277 0116 05       		.uleb128 0x5
+ 278 0117 87020000 		.4byte	.LASF22
+ 279 011b 01       		.byte	0x1
+ 280 011c 37       		.byte	0x37
+ 281 011d 00000000 		.4byte	.LFB65
+ 282 0121 08000000 		.4byte	.LFE65-.LFB65
+ 283 0125 01       		.uleb128 0x1
+ 284 0126 9C       		.byte	0x9c
+ 285 0127 35010000 		.4byte	0x135
+ 286 012b 06       		.uleb128 0x6
+ 287 012c 06000000 		.4byte	.LVL3
+ 288 0130 BC010000 		.4byte	0x1bc
+ 289 0134 00       		.byte	0
+ 290 0135 08       		.uleb128 0x8
+ 291 0136 2C020000 		.4byte	.LASF33
+ 292 013a 01       		.byte	0x1
+ 293 013b 3D       		.byte	0x3d
+ 294 013c 81000000 		.4byte	0x81
+ 295 0140 00000000 		.4byte	.LFB66
+ 296 0144 08000000 		.4byte	.LFE66-.LFB66
+ 297 0148 01       		.uleb128 0x1
+ 298 0149 9C       		.byte	0x9c
+ 299 014a 67010000 		.4byte	0x167
+ 300 014e 09       		.uleb128 0x9
+ 301 014f 61636B00 		.ascii	"ack\000"
+ 302 0153 01       		.byte	0x1
+ 303 0154 3D       		.byte	0x3d
+ 304 0155 81000000 		.4byte	0x81
+ 305 0159 42000000 		.4byte	.LLST2
+ 306 015d 06       		.uleb128 0x6
+ 307 015e 06000000 		.4byte	.LVL5
+ 308 0162 C7010000 		.4byte	0x1c7
+ 309 0166 00       		.byte	0
+ 310 0167 05       		.uleb128 0x5
+ 311 0168 E2010000 		.4byte	.LASF23
+ 312 016c 01       		.byte	0x1
+ 313 016d 43       		.byte	0x43
+ 314 016e 00000000 		.4byte	.LFB67
+ 315 0172 08000000 		.4byte	.LFE67-.LFB67
+ 316 0176 01       		.uleb128 0x1
+ 317 0177 9C       		.byte	0x9c
+ 318 0178 95010000 		.4byte	0x195
+ 319 017c 07       		.uleb128 0x7
+ 320 017d 3B000000 		.4byte	.LASF24
+ 321 0181 01       		.byte	0x1
+ 322 0182 43       		.byte	0x43
+ 323 0183 81000000 		.4byte	0x81
+ 324 0187 63000000 		.4byte	.LLST3
+ 325 018b 06       		.uleb128 0x6
+ 326 018c 06000000 		.4byte	.LVL7
+ 327 0190 D2010000 		.4byte	0x1d2
+ 328 0194 00       		.byte	0
+ 329 0195 0A       		.uleb128 0xa
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 8
+
+
+ 330 0196 6F010000 		.4byte	.LASF34
+ 331 019a 05       		.byte	0x5
+ 332 019b 1207     		.2byte	0x712
+ 333 019d A1010000 		.4byte	0x1a1
+ 334 01a1 0B       		.uleb128 0xb
+ 335 01a2 8C000000 		.4byte	0x8c
+ 336 01a6 0C       		.uleb128 0xc
+ 337 01a7 40000000 		.4byte	.LASF25
+ 338 01ab 40000000 		.4byte	.LASF25
+ 339 01af 04       		.byte	0x4
+ 340 01b0 93       		.byte	0x93
+ 341 01b1 0C       		.uleb128 0xc
+ 342 01b2 5B010000 		.4byte	.LASF26
+ 343 01b6 5B010000 		.4byte	.LASF26
+ 344 01ba 04       		.byte	0x4
+ 345 01bb B1       		.byte	0xb1
+ 346 01bc 0C       		.uleb128 0xc
+ 347 01bd 0A000000 		.4byte	.LASF27
+ 348 01c1 0A000000 		.4byte	.LASF27
+ 349 01c5 04       		.byte	0x4
+ 350 01c6 B5       		.byte	0xb5
+ 351 01c7 0C       		.uleb128 0xc
+ 352 01c8 49020000 		.4byte	.LASF28
+ 353 01cc 49020000 		.4byte	.LASF28
+ 354 01d0 04       		.byte	0x4
+ 355 01d1 B7       		.byte	0xb7
+ 356 01d2 0C       		.uleb128 0xc
+ 357 01d3 27000000 		.4byte	.LASF29
+ 358 01d7 27000000 		.4byte	.LASF29
+ 359 01db 04       		.byte	0x4
+ 360 01dc B6       		.byte	0xb6
+ 361 01dd 00       		.byte	0
+ 362              		.section	.debug_abbrev,"",%progbits
+ 363              	.Ldebug_abbrev0:
+ 364 0000 01       		.uleb128 0x1
+ 365 0001 11       		.uleb128 0x11
+ 366 0002 01       		.byte	0x1
+ 367 0003 25       		.uleb128 0x25
+ 368 0004 0E       		.uleb128 0xe
+ 369 0005 13       		.uleb128 0x13
+ 370 0006 0B       		.uleb128 0xb
+ 371 0007 03       		.uleb128 0x3
+ 372 0008 0E       		.uleb128 0xe
+ 373 0009 1B       		.uleb128 0x1b
+ 374 000a 0E       		.uleb128 0xe
+ 375 000b 55       		.uleb128 0x55
+ 376 000c 17       		.uleb128 0x17
+ 377 000d 11       		.uleb128 0x11
+ 378 000e 01       		.uleb128 0x1
+ 379 000f 10       		.uleb128 0x10
+ 380 0010 17       		.uleb128 0x17
+ 381 0011 00       		.byte	0
+ 382 0012 00       		.byte	0
+ 383 0013 02       		.uleb128 0x2
+ 384 0014 24       		.uleb128 0x24
+ 385 0015 00       		.byte	0
+ 386 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 9
+
+
+ 387 0017 0B       		.uleb128 0xb
+ 388 0018 3E       		.uleb128 0x3e
+ 389 0019 0B       		.uleb128 0xb
+ 390 001a 03       		.uleb128 0x3
+ 391 001b 0E       		.uleb128 0xe
+ 392 001c 00       		.byte	0
+ 393 001d 00       		.byte	0
+ 394 001e 03       		.uleb128 0x3
+ 395 001f 16       		.uleb128 0x16
+ 396 0020 00       		.byte	0
+ 397 0021 03       		.uleb128 0x3
+ 398 0022 0E       		.uleb128 0xe
+ 399 0023 3A       		.uleb128 0x3a
+ 400 0024 0B       		.uleb128 0xb
+ 401 0025 3B       		.uleb128 0x3b
+ 402 0026 0B       		.uleb128 0xb
+ 403 0027 49       		.uleb128 0x49
+ 404 0028 13       		.uleb128 0x13
+ 405 0029 00       		.byte	0
+ 406 002a 00       		.byte	0
+ 407 002b 04       		.uleb128 0x4
+ 408 002c 24       		.uleb128 0x24
+ 409 002d 00       		.byte	0
+ 410 002e 0B       		.uleb128 0xb
+ 411 002f 0B       		.uleb128 0xb
+ 412 0030 3E       		.uleb128 0x3e
+ 413 0031 0B       		.uleb128 0xb
+ 414 0032 03       		.uleb128 0x3
+ 415 0033 08       		.uleb128 0x8
+ 416 0034 00       		.byte	0
+ 417 0035 00       		.byte	0
+ 418 0036 05       		.uleb128 0x5
+ 419 0037 2E       		.uleb128 0x2e
+ 420 0038 01       		.byte	0x1
+ 421 0039 3F       		.uleb128 0x3f
+ 422 003a 19       		.uleb128 0x19
+ 423 003b 03       		.uleb128 0x3
+ 424 003c 0E       		.uleb128 0xe
+ 425 003d 3A       		.uleb128 0x3a
+ 426 003e 0B       		.uleb128 0xb
+ 427 003f 3B       		.uleb128 0x3b
+ 428 0040 0B       		.uleb128 0xb
+ 429 0041 27       		.uleb128 0x27
+ 430 0042 19       		.uleb128 0x19
+ 431 0043 11       		.uleb128 0x11
+ 432 0044 01       		.uleb128 0x1
+ 433 0045 12       		.uleb128 0x12
+ 434 0046 06       		.uleb128 0x6
+ 435 0047 40       		.uleb128 0x40
+ 436 0048 18       		.uleb128 0x18
+ 437 0049 9742     		.uleb128 0x2117
+ 438 004b 19       		.uleb128 0x19
+ 439 004c 01       		.uleb128 0x1
+ 440 004d 13       		.uleb128 0x13
+ 441 004e 00       		.byte	0
+ 442 004f 00       		.byte	0
+ 443 0050 06       		.uleb128 0x6
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 10
+
+
+ 444 0051 898201   		.uleb128 0x4109
+ 445 0054 00       		.byte	0
+ 446 0055 11       		.uleb128 0x11
+ 447 0056 01       		.uleb128 0x1
+ 448 0057 31       		.uleb128 0x31
+ 449 0058 13       		.uleb128 0x13
+ 450 0059 00       		.byte	0
+ 451 005a 00       		.byte	0
+ 452 005b 07       		.uleb128 0x7
+ 453 005c 05       		.uleb128 0x5
+ 454 005d 00       		.byte	0
+ 455 005e 03       		.uleb128 0x3
+ 456 005f 0E       		.uleb128 0xe
+ 457 0060 3A       		.uleb128 0x3a
+ 458 0061 0B       		.uleb128 0xb
+ 459 0062 3B       		.uleb128 0x3b
+ 460 0063 0B       		.uleb128 0xb
+ 461 0064 49       		.uleb128 0x49
+ 462 0065 13       		.uleb128 0x13
+ 463 0066 02       		.uleb128 0x2
+ 464 0067 17       		.uleb128 0x17
+ 465 0068 00       		.byte	0
+ 466 0069 00       		.byte	0
+ 467 006a 08       		.uleb128 0x8
+ 468 006b 2E       		.uleb128 0x2e
+ 469 006c 01       		.byte	0x1
+ 470 006d 3F       		.uleb128 0x3f
+ 471 006e 19       		.uleb128 0x19
+ 472 006f 03       		.uleb128 0x3
+ 473 0070 0E       		.uleb128 0xe
+ 474 0071 3A       		.uleb128 0x3a
+ 475 0072 0B       		.uleb128 0xb
+ 476 0073 3B       		.uleb128 0x3b
+ 477 0074 0B       		.uleb128 0xb
+ 478 0075 27       		.uleb128 0x27
+ 479 0076 19       		.uleb128 0x19
+ 480 0077 49       		.uleb128 0x49
+ 481 0078 13       		.uleb128 0x13
+ 482 0079 11       		.uleb128 0x11
+ 483 007a 01       		.uleb128 0x1
+ 484 007b 12       		.uleb128 0x12
+ 485 007c 06       		.uleb128 0x6
+ 486 007d 40       		.uleb128 0x40
+ 487 007e 18       		.uleb128 0x18
+ 488 007f 9742     		.uleb128 0x2117
+ 489 0081 19       		.uleb128 0x19
+ 490 0082 01       		.uleb128 0x1
+ 491 0083 13       		.uleb128 0x13
+ 492 0084 00       		.byte	0
+ 493 0085 00       		.byte	0
+ 494 0086 09       		.uleb128 0x9
+ 495 0087 05       		.uleb128 0x5
+ 496 0088 00       		.byte	0
+ 497 0089 03       		.uleb128 0x3
+ 498 008a 08       		.uleb128 0x8
+ 499 008b 3A       		.uleb128 0x3a
+ 500 008c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 11
+
+
+ 501 008d 3B       		.uleb128 0x3b
+ 502 008e 0B       		.uleb128 0xb
+ 503 008f 49       		.uleb128 0x49
+ 504 0090 13       		.uleb128 0x13
+ 505 0091 02       		.uleb128 0x2
+ 506 0092 17       		.uleb128 0x17
+ 507 0093 00       		.byte	0
+ 508 0094 00       		.byte	0
+ 509 0095 0A       		.uleb128 0xa
+ 510 0096 34       		.uleb128 0x34
+ 511 0097 00       		.byte	0
+ 512 0098 03       		.uleb128 0x3
+ 513 0099 0E       		.uleb128 0xe
+ 514 009a 3A       		.uleb128 0x3a
+ 515 009b 0B       		.uleb128 0xb
+ 516 009c 3B       		.uleb128 0x3b
+ 517 009d 05       		.uleb128 0x5
+ 518 009e 49       		.uleb128 0x49
+ 519 009f 13       		.uleb128 0x13
+ 520 00a0 3F       		.uleb128 0x3f
+ 521 00a1 19       		.uleb128 0x19
+ 522 00a2 3C       		.uleb128 0x3c
+ 523 00a3 19       		.uleb128 0x19
+ 524 00a4 00       		.byte	0
+ 525 00a5 00       		.byte	0
+ 526 00a6 0B       		.uleb128 0xb
+ 527 00a7 35       		.uleb128 0x35
+ 528 00a8 00       		.byte	0
+ 529 00a9 49       		.uleb128 0x49
+ 530 00aa 13       		.uleb128 0x13
+ 531 00ab 00       		.byte	0
+ 532 00ac 00       		.byte	0
+ 533 00ad 0C       		.uleb128 0xc
+ 534 00ae 2E       		.uleb128 0x2e
+ 535 00af 00       		.byte	0
+ 536 00b0 3F       		.uleb128 0x3f
+ 537 00b1 19       		.uleb128 0x19
+ 538 00b2 3C       		.uleb128 0x3c
+ 539 00b3 19       		.uleb128 0x19
+ 540 00b4 6E       		.uleb128 0x6e
+ 541 00b5 0E       		.uleb128 0xe
+ 542 00b6 03       		.uleb128 0x3
+ 543 00b7 0E       		.uleb128 0xe
+ 544 00b8 3A       		.uleb128 0x3a
+ 545 00b9 0B       		.uleb128 0xb
+ 546 00ba 3B       		.uleb128 0x3b
+ 547 00bb 0B       		.uleb128 0xb
+ 548 00bc 00       		.byte	0
+ 549 00bd 00       		.byte	0
+ 550 00be 00       		.byte	0
+ 551              		.section	.debug_loc,"",%progbits
+ 552              	.Ldebug_loc0:
+ 553              	.LLST0:
+ 554 0000 00000000 		.4byte	.LVL1
+ 555 0004 05000000 		.4byte	.LVL2-1
+ 556 0008 0100     		.2byte	0x1
+ 557 000a 50       		.byte	0x50
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 12
+
+
+ 558 000b 05000000 		.4byte	.LVL2-1
+ 559 000f 08000000 		.4byte	.LFE64
+ 560 0013 0400     		.2byte	0x4
+ 561 0015 F3       		.byte	0xf3
+ 562 0016 01       		.uleb128 0x1
+ 563 0017 50       		.byte	0x50
+ 564 0018 9F       		.byte	0x9f
+ 565 0019 00000000 		.4byte	0
+ 566 001d 00000000 		.4byte	0
+ 567              	.LLST1:
+ 568 0021 00000000 		.4byte	.LVL1
+ 569 0025 05000000 		.4byte	.LVL2-1
+ 570 0029 0100     		.2byte	0x1
+ 571 002b 51       		.byte	0x51
+ 572 002c 05000000 		.4byte	.LVL2-1
+ 573 0030 08000000 		.4byte	.LFE64
+ 574 0034 0400     		.2byte	0x4
+ 575 0036 F3       		.byte	0xf3
+ 576 0037 01       		.uleb128 0x1
+ 577 0038 51       		.byte	0x51
+ 578 0039 9F       		.byte	0x9f
+ 579 003a 00000000 		.4byte	0
+ 580 003e 00000000 		.4byte	0
+ 581              	.LLST2:
+ 582 0042 00000000 		.4byte	.LVL4
+ 583 0046 05000000 		.4byte	.LVL5-1
+ 584 004a 0100     		.2byte	0x1
+ 585 004c 50       		.byte	0x50
+ 586 004d 05000000 		.4byte	.LVL5-1
+ 587 0051 08000000 		.4byte	.LFE66
+ 588 0055 0400     		.2byte	0x4
+ 589 0057 F3       		.byte	0xf3
+ 590 0058 01       		.uleb128 0x1
+ 591 0059 50       		.byte	0x50
+ 592 005a 9F       		.byte	0x9f
+ 593 005b 00000000 		.4byte	0
+ 594 005f 00000000 		.4byte	0
+ 595              	.LLST3:
+ 596 0063 00000000 		.4byte	.LVL6
+ 597 0067 05000000 		.4byte	.LVL7-1
+ 598 006b 0100     		.2byte	0x1
+ 599 006d 50       		.byte	0x50
+ 600 006e 05000000 		.4byte	.LVL7-1
+ 601 0072 08000000 		.4byte	.LFE67
+ 602 0076 0400     		.2byte	0x4
+ 603 0078 F3       		.byte	0xf3
+ 604 0079 01       		.uleb128 0x1
+ 605 007a 50       		.byte	0x50
+ 606 007b 9F       		.byte	0x9f
+ 607 007c 00000000 		.4byte	0
+ 608 0080 00000000 		.4byte	0
+ 609              		.section	.debug_aranges,"",%progbits
+ 610 0000 3C000000 		.4byte	0x3c
+ 611 0004 0200     		.2byte	0x2
+ 612 0006 00000000 		.4byte	.Ldebug_info0
+ 613 000a 04       		.byte	0x4
+ 614 000b 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 13
+
+
+ 615 000c 0000     		.2byte	0
+ 616 000e 0000     		.2byte	0
+ 617 0010 00000000 		.4byte	.LFB63
+ 618 0014 08000000 		.4byte	.LFE63-.LFB63
+ 619 0018 00000000 		.4byte	.LFB64
+ 620 001c 08000000 		.4byte	.LFE64-.LFB64
+ 621 0020 00000000 		.4byte	.LFB65
+ 622 0024 08000000 		.4byte	.LFE65-.LFB65
+ 623 0028 00000000 		.4byte	.LFB66
+ 624 002c 08000000 		.4byte	.LFE66-.LFB66
+ 625 0030 00000000 		.4byte	.LFB67
+ 626 0034 08000000 		.4byte	.LFE67-.LFB67
+ 627 0038 00000000 		.4byte	0
+ 628 003c 00000000 		.4byte	0
+ 629              		.section	.debug_ranges,"",%progbits
+ 630              	.Ldebug_ranges0:
+ 631 0000 00000000 		.4byte	.LFB63
+ 632 0004 08000000 		.4byte	.LFE63
+ 633 0008 00000000 		.4byte	.LFB64
+ 634 000c 08000000 		.4byte	.LFE64
+ 635 0010 00000000 		.4byte	.LFB65
+ 636 0014 08000000 		.4byte	.LFE65
+ 637 0018 00000000 		.4byte	.LFB66
+ 638 001c 08000000 		.4byte	.LFE66
+ 639 0020 00000000 		.4byte	.LFB67
+ 640 0024 08000000 		.4byte	.LFE67
+ 641 0028 00000000 		.4byte	0
+ 642 002c 00000000 		.4byte	0
+ 643              		.section	.debug_line,"",%progbits
+ 644              	.Ldebug_line0:
+ 645 0000 85010000 		.section	.debug_str,"MS",%progbits,1
+ 645      02002D01 
+ 645      00000201 
+ 645      FB0E0D00 
+ 645      01010101 
+ 646              	.LASF4:
+ 647 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 647      6E74385F 
+ 647      7400
+ 648              	.LASF27:
+ 649 000a 4932435F 		.ascii	"I2C_MasterSendStop\000"
+ 649      4D617374 
+ 649      65725365 
+ 649      6E645374 
+ 649      6F7000
+ 650              	.LASF5:
+ 651 001d 5F5F696E 		.ascii	"__int32_t\000"
+ 651      7433325F 
+ 651      7400
+ 652              	.LASF29:
+ 653 0027 4932435F 		.ascii	"I2C_MasterWriteByte\000"
+ 653      4D617374 
+ 653      65725772 
+ 653      69746542 
+ 653      79746500 
+ 654              	.LASF24:
+ 655 003b 62797465 		.ascii	"byte\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 14
+
+
+ 655      00
+ 656              	.LASF25:
+ 657 0040 4932435F 		.ascii	"I2C_Start\000"
+ 657      53746172 
+ 657      7400
+ 658              	.LASF32:
+ 659 004a 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ 659      79707265 
+ 659      73735C50 
+ 659      726F6A65 
+ 659      6374735C 
+ 660              	.LASF13:
+ 661 0077 666C6F61 		.ascii	"float\000"
+ 661      7400
+ 662              	.LASF9:
+ 663 007d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 663      206C6F6E 
+ 663      6720756E 
+ 663      7369676E 
+ 663      65642069 
+ 664              	.LASF31:
+ 665 0094 72686561 		.ascii	"rhea\\i2c\\i2c_impl.c\000"
+ 665      5C693263 
+ 665      5C693263 
+ 665      5F696D70 
+ 665      6C2E6300 
+ 666              	.LASF30:
+ 667 00a8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 667      43313120 
+ 667      352E342E 
+ 667      31203230 
+ 667      31363036 
+ 668 00db 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 668      20726576 
+ 668      6973696F 
+ 668      6E203233 
+ 668      37373135 
+ 669 010e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 669      66756E63 
+ 669      74696F6E 
+ 669      2D736563 
+ 669      74696F6E 
+ 670              	.LASF7:
+ 671 0136 6C6F6E67 		.ascii	"long unsigned int\000"
+ 671      20756E73 
+ 671      69676E65 
+ 671      6420696E 
+ 671      7400
+ 672              	.LASF3:
+ 673 0148 73686F72 		.ascii	"short unsigned int\000"
+ 673      7420756E 
+ 673      7369676E 
+ 673      65642069 
+ 673      6E7400
+ 674              	.LASF26:
+ 675 015b 4932435F 		.ascii	"I2C_MasterSendStart\000"
+ 675      4D617374 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 15
+
+
+ 675      65725365 
+ 675      6E645374 
+ 675      61727400 
+ 676              	.LASF34:
+ 677 016f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 677      52784275 
+ 677      66666572 
+ 677      00
+ 678              	.LASF1:
+ 679 017c 756E7369 		.ascii	"unsigned char\000"
+ 679      676E6564 
+ 679      20636861 
+ 679      7200
+ 680              	.LASF14:
+ 681 018a 646F7562 		.ascii	"double\000"
+ 681      6C6500
+ 682              	.LASF18:
+ 683 0191 72686561 		.ascii	"rhea_i2c_initialize_impl\000"
+ 683      5F693263 
+ 683      5F696E69 
+ 683      7469616C 
+ 683      697A655F 
+ 684              	.LASF21:
+ 685 01aa 72656164 		.ascii	"read\000"
+ 685      00
+ 686              	.LASF19:
+ 687 01af 72686561 		.ascii	"rhea_i2c_masterSendStart_impl\000"
+ 687      5F693263 
+ 687      5F6D6173 
+ 687      74657253 
+ 687      656E6453 
+ 688              	.LASF10:
+ 689 01cd 756E7369 		.ascii	"unsigned int\000"
+ 689      676E6564 
+ 689      20696E74 
+ 689      00
+ 690              	.LASF20:
+ 691 01da 61646472 		.ascii	"address\000"
+ 691      65737300 
+ 692              	.LASF23:
+ 693 01e2 72686561 		.ascii	"rhea_i2c_masterWriteByte_impl\000"
+ 693      5F693263 
+ 693      5F6D6173 
+ 693      74657257 
+ 693      72697465 
+ 694              	.LASF11:
+ 695 0200 75696E74 		.ascii	"uint8_t\000"
+ 695      385F7400 
+ 696              	.LASF12:
+ 697 0208 696E7433 		.ascii	"int32_t\000"
+ 697      325F7400 
+ 698              	.LASF17:
+ 699 0210 73697A65 		.ascii	"sizetype\000"
+ 699      74797065 
+ 699      00
+ 700              	.LASF8:
+ 701 0219 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccyVcQab.s 			page 16
+
+
+ 701      206C6F6E 
+ 701      6720696E 
+ 701      7400
+ 702              	.LASF15:
+ 703 0227 63686172 		.ascii	"char\000"
+ 703      00
+ 704              	.LASF33:
+ 705 022c 72686561 		.ascii	"rhea_i2c_masterReadByte_impl\000"
+ 705      5F693263 
+ 705      5F6D6173 
+ 705      74657252 
+ 705      65616442 
+ 706              	.LASF28:
+ 707 0249 4932435F 		.ascii	"I2C_MasterReadByte\000"
+ 707      4D617374 
+ 707      65725265 
+ 707      61644279 
+ 707      746500
+ 708              	.LASF2:
+ 709 025c 73686F72 		.ascii	"short int\000"
+ 709      7420696E 
+ 709      7400
+ 710              	.LASF6:
+ 711 0266 6C6F6E67 		.ascii	"long int\000"
+ 711      20696E74 
+ 711      00
+ 712              	.LASF16:
+ 713 026f 6C6F6E67 		.ascii	"long double\000"
+ 713      20646F75 
+ 713      626C6500 
+ 714              	.LASF0:
+ 715 027b 7369676E 		.ascii	"signed char\000"
+ 715      65642063 
+ 715      68617200 
+ 716              	.LASF22:
+ 717 0287 72686561 		.ascii	"rhea_i2c_masterSendStop_impl\000"
+ 717      5F693263 
+ 717      5F6D6173 
+ 717      74657253 
+ 717      656E6453 
+ 718              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

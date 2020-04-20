@@ -1,0 +1,2305 @@
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"alarm.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.rhea_rtc_formatAlarm,"ax",%progbits
+  20              		.align	2
+  21              		.global	rhea_rtc_formatAlarm
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	rhea_rtc_formatAlarm, %function
+  25              	rhea_rtc_formatAlarm:
+  26              	.LFB0:
+  27              		.file 1 "rhea\\rtc\\alarm\\alarm.c"
+   1:rhea\rtc\alarm/alarm.c **** /*********************************************************************************
+   2:rhea\rtc\alarm/alarm.c ****  * Copyright (c) 2020 Peter Gyulai
+   3:rhea\rtc\alarm/alarm.c ****  *
+   4:rhea\rtc\alarm/alarm.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy
+   5:rhea\rtc\alarm/alarm.c ****  * of this software and associated documentation files (the "Software"), to deal
+   6:rhea\rtc\alarm/alarm.c ****  * in the Software without restriction, including without limitation the rights
+   7:rhea\rtc\alarm/alarm.c ****  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   8:rhea\rtc\alarm/alarm.c ****  * copies of the Software, and to permit persons to whom the Software is
+   9:rhea\rtc\alarm/alarm.c ****  * furnished to do so, subject to the following conditions:
+  10:rhea\rtc\alarm/alarm.c ****  *
+  11:rhea\rtc\alarm/alarm.c ****  * The above copyright notice and this permission notice shall be included in all
+  12:rhea\rtc\alarm/alarm.c ****  * copies or substantial portions of the Software.
+  13:rhea\rtc\alarm/alarm.c ****  *
+  14:rhea\rtc\alarm/alarm.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  15:rhea\rtc\alarm/alarm.c ****  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  16:rhea\rtc\alarm/alarm.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  17:rhea\rtc\alarm/alarm.c ****  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  18:rhea\rtc\alarm/alarm.c ****  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  19:rhea\rtc\alarm/alarm.c ****  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+  20:rhea\rtc\alarm/alarm.c ****  * OR OTHER DEALINGS IN THE SOFTWARE.
+  21:rhea\rtc\alarm/alarm.c **** **********************************************************************************/
+  22:rhea\rtc\alarm/alarm.c **** 
+  23:rhea\rtc\alarm/alarm.c **** /**
+  24:rhea\rtc\alarm/alarm.c ****  * @file    alarm.c
+  25:rhea\rtc\alarm/alarm.c ****  * @author  Peter Gyulai
+  26:rhea\rtc\alarm/alarm.c ****  * @version 1.0.0
+  27:rhea\rtc\alarm/alarm.c ****  * @date    2020.04.16
+  28:rhea\rtc\alarm/alarm.c ****  * @brief   Library implementation.
+  29:rhea\rtc\alarm/alarm.c ****  * @details
+  30:rhea\rtc\alarm/alarm.c ****  * This file contains the alarm utility implementation.
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 2
+
+
+  31:rhea\rtc\alarm/alarm.c ****  */
+  32:rhea\rtc\alarm/alarm.c **** 
+  33:rhea\rtc\alarm/alarm.c **** // Doxygen documentation duplication suppression
+  34:rhea\rtc\alarm/alarm.c **** #ifndef DOXYGEN_SHOULD_SKIP_THIS
+  35:rhea\rtc\alarm/alarm.c **** 
+  36:rhea\rtc\alarm/alarm.c **** // Standard includes
+  37:rhea\rtc\alarm/alarm.c **** #include <string.h>
+  38:rhea\rtc\alarm/alarm.c **** 
+  39:rhea\rtc\alarm/alarm.c **** // Project includes
+  40:rhea\rtc\alarm/alarm.c **** #include "alarm.h"
+  41:rhea\rtc\alarm/alarm.c ****     
+  42:rhea\rtc\alarm/alarm.c **** 
+  43:rhea\rtc\alarm/alarm.c **** void rhea_rtc_formatAlarm(const rhea_rtc_alarm alarm, char *buffer) {
+  28              		.loc 1 43 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 70B5     		push	{r4, r5, r6, lr}
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 4, -16
+  36              		.cfi_offset 5, -12
+  37              		.cfi_offset 6, -8
+  38              		.cfi_offset 14, -4
+  39 0002 84B0     		sub	sp, sp, #16
+  40              		.cfi_def_cfa_offset 32
+  41 0004 01AC     		add	r4, sp, #4
+  42 0006 84E80700 		stmia	r4, {r0, r1, r2}
+  43 000a 1D46     		mov	r5, r3
+  44:rhea\rtc\alarm/alarm.c **** 
+  45:rhea\rtc\alarm/alarm.c ****     // Printing formatted datetime of the alarm
+  46:rhea\rtc\alarm/alarm.c ****     rhea_rtc_formatDate(alarm.datetime, rhea_rtc_datetimeFormatGeneral, buffer);
+  44              		.loc 1 46 0
+  45 000c 404A     		ldr	r2, .L14
+  46 000e 94E80300 		ldmia	r4, {r0, r1}
+  47 0012 FFF7FEFF 		bl	rhea_rtc_formatDate
+  48              	.LVL1:
+  47:rhea\rtc\alarm/alarm.c **** 
+  48:rhea\rtc\alarm/alarm.c ****     // Printing alarm mode
+  49:rhea\rtc\alarm/alarm.c ****     switch(alarm.mode) {
+  49              		.loc 1 49 0
+  50 0016 9DF80E30 		ldrb	r3, [sp, #14]	@ zero_extendqisi2
+  51 001a 062B     		cmp	r3, #6
+  52 001c 6DD8     		bhi	.L2
+  53 001e DFE803F0 		tbb	[pc, r3]
+  54              	.L4:
+  55 0022 04       		.byte	(.L3-.L4)/2
+  56 0023 13       		.byte	(.L5-.L4)/2
+  57 0024 22       		.byte	(.L6-.L4)/2
+  58 0025 31       		.byte	(.L7-.L4)/2
+  59 0026 40       		.byte	(.L8-.L4)/2
+  60 0027 4F       		.byte	(.L9-.L4)/2
+  61 0028 5E       		.byte	(.L10-.L4)/2
+  62 0029 00       		.p2align 1
+  63              	.L3:
+  50:rhea\rtc\alarm/alarm.c ****     case EveryMinute:   strcat(buffer, " [EveryMinute]"); break;
+  64              		.loc 1 50 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 3
+
+
+  65 002a 2846     		mov	r0, r5
+  66 002c FFF7FEFF 		bl	strlen
+  67              	.LVL2:
+  68 0030 0646     		mov	r6, r0
+  69 0032 2C18     		adds	r4, r5, r0
+  70 0034 374B     		ldr	r3, .L14+4
+  71 0036 07CB     		ldmia	r3!, {r0, r1, r2}
+  72 0038 A851     		str	r0, [r5, r6]	@ unaligned
+  73 003a 6160     		str	r1, [r4, #4]	@ unaligned
+  74 003c A260     		str	r2, [r4, #8]	@ unaligned
+  75 003e 1A88     		ldrh	r2, [r3]	@ unaligned
+  76 0040 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  77 0042 A281     		strh	r2, [r4, #12]	@ unaligned
+  78 0044 A373     		strb	r3, [r4, #14]
+  79 0046 58E0     		b	.L2
+  80              	.L5:
+  51:rhea\rtc\alarm/alarm.c ****     case EveryHour:     strcat(buffer, " [EveryHour]  "); break;
+  81              		.loc 1 51 0
+  82 0048 2846     		mov	r0, r5
+  83 004a FFF7FEFF 		bl	strlen
+  84              	.LVL3:
+  85 004e 0646     		mov	r6, r0
+  86 0050 2C18     		adds	r4, r5, r0
+  87 0052 314B     		ldr	r3, .L14+8
+  88 0054 07CB     		ldmia	r3!, {r0, r1, r2}
+  89 0056 A851     		str	r0, [r5, r6]	@ unaligned
+  90 0058 6160     		str	r1, [r4, #4]	@ unaligned
+  91 005a A260     		str	r2, [r4, #8]	@ unaligned
+  92 005c 1A88     		ldrh	r2, [r3]	@ unaligned
+  93 005e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+  94 0060 A281     		strh	r2, [r4, #12]	@ unaligned
+  95 0062 A373     		strb	r3, [r4, #14]
+  96 0064 49E0     		b	.L2
+  97              	.L6:
+  52:rhea\rtc\alarm/alarm.c ****     case EveryDay:      strcat(buffer, " [EveryDay]   "); break;
+  98              		.loc 1 52 0
+  99 0066 2846     		mov	r0, r5
+ 100 0068 FFF7FEFF 		bl	strlen
+ 101              	.LVL4:
+ 102 006c 0646     		mov	r6, r0
+ 103 006e 2C18     		adds	r4, r5, r0
+ 104 0070 2A4B     		ldr	r3, .L14+12
+ 105 0072 07CB     		ldmia	r3!, {r0, r1, r2}
+ 106 0074 A851     		str	r0, [r5, r6]	@ unaligned
+ 107 0076 6160     		str	r1, [r4, #4]	@ unaligned
+ 108 0078 A260     		str	r2, [r4, #8]	@ unaligned
+ 109 007a 1A88     		ldrh	r2, [r3]	@ unaligned
+ 110 007c 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 111 007e A281     		strh	r2, [r4, #12]	@ unaligned
+ 112 0080 A373     		strb	r3, [r4, #14]
+ 113 0082 3AE0     		b	.L2
+ 114              	.L7:
+  53:rhea\rtc\alarm/alarm.c ****     case EveryWeek:     strcat(buffer, " [EveryWeek]  "); break;
+ 115              		.loc 1 53 0
+ 116 0084 2846     		mov	r0, r5
+ 117 0086 FFF7FEFF 		bl	strlen
+ 118              	.LVL5:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 4
+
+
+ 119 008a 0646     		mov	r6, r0
+ 120 008c 2C18     		adds	r4, r5, r0
+ 121 008e 244B     		ldr	r3, .L14+16
+ 122 0090 07CB     		ldmia	r3!, {r0, r1, r2}
+ 123 0092 A851     		str	r0, [r5, r6]	@ unaligned
+ 124 0094 6160     		str	r1, [r4, #4]	@ unaligned
+ 125 0096 A260     		str	r2, [r4, #8]	@ unaligned
+ 126 0098 1A88     		ldrh	r2, [r3]	@ unaligned
+ 127 009a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 128 009c A281     		strh	r2, [r4, #12]	@ unaligned
+ 129 009e A373     		strb	r3, [r4, #14]
+ 130 00a0 2BE0     		b	.L2
+ 131              	.L8:
+  54:rhea\rtc\alarm/alarm.c ****     case EveryMonth:    strcat(buffer, " [EveryMonth] "); break;
+ 132              		.loc 1 54 0
+ 133 00a2 2846     		mov	r0, r5
+ 134 00a4 FFF7FEFF 		bl	strlen
+ 135              	.LVL6:
+ 136 00a8 0646     		mov	r6, r0
+ 137 00aa 2C18     		adds	r4, r5, r0
+ 138 00ac 1D4B     		ldr	r3, .L14+20
+ 139 00ae 07CB     		ldmia	r3!, {r0, r1, r2}
+ 140 00b0 A851     		str	r0, [r5, r6]	@ unaligned
+ 141 00b2 6160     		str	r1, [r4, #4]	@ unaligned
+ 142 00b4 A260     		str	r2, [r4, #8]	@ unaligned
+ 143 00b6 1A88     		ldrh	r2, [r3]	@ unaligned
+ 144 00b8 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 145 00ba A281     		strh	r2, [r4, #12]	@ unaligned
+ 146 00bc A373     		strb	r3, [r4, #14]
+ 147 00be 1CE0     		b	.L2
+ 148              	.L9:
+  55:rhea\rtc\alarm/alarm.c ****     case EveryYear:     strcat(buffer, " [EveryYear]  "); break;
+ 149              		.loc 1 55 0
+ 150 00c0 2846     		mov	r0, r5
+ 151 00c2 FFF7FEFF 		bl	strlen
+ 152              	.LVL7:
+ 153 00c6 0646     		mov	r6, r0
+ 154 00c8 2C18     		adds	r4, r5, r0
+ 155 00ca 174B     		ldr	r3, .L14+24
+ 156 00cc 07CB     		ldmia	r3!, {r0, r1, r2}
+ 157 00ce A851     		str	r0, [r5, r6]	@ unaligned
+ 158 00d0 6160     		str	r1, [r4, #4]	@ unaligned
+ 159 00d2 A260     		str	r2, [r4, #8]	@ unaligned
+ 160 00d4 1A88     		ldrh	r2, [r3]	@ unaligned
+ 161 00d6 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 162 00d8 A281     		strh	r2, [r4, #12]	@ unaligned
+ 163 00da A373     		strb	r3, [r4, #14]
+ 164 00dc 0DE0     		b	.L2
+ 165              	.L10:
+  56:rhea\rtc\alarm/alarm.c ****     case FutureDate:    strcat(buffer, " [FutureDate] "); break;
+ 166              		.loc 1 56 0
+ 167 00de 2846     		mov	r0, r5
+ 168 00e0 FFF7FEFF 		bl	strlen
+ 169              	.LVL8:
+ 170 00e4 0646     		mov	r6, r0
+ 171 00e6 2C18     		adds	r4, r5, r0
+ 172 00e8 104B     		ldr	r3, .L14+28
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 5
+
+
+ 173 00ea 07CB     		ldmia	r3!, {r0, r1, r2}
+ 174 00ec A851     		str	r0, [r5, r6]	@ unaligned
+ 175 00ee 6160     		str	r1, [r4, #4]	@ unaligned
+ 176 00f0 A260     		str	r2, [r4, #8]	@ unaligned
+ 177 00f2 1A88     		ldrh	r2, [r3]	@ unaligned
+ 178 00f4 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 179 00f6 A281     		strh	r2, [r4, #12]	@ unaligned
+ 180 00f8 A373     		strb	r3, [r4, #14]
+ 181              	.L2:
+  57:rhea\rtc\alarm/alarm.c ****     };
+  58:rhea\rtc\alarm/alarm.c **** 
+  59:rhea\rtc\alarm/alarm.c ****     // Printing recurring status
+  60:rhea\rtc\alarm/alarm.c ****     strcat(buffer, (alarm.recurring ? " [recurring]" : " [one-shot]"));
+ 182              		.loc 1 60 0
+ 183 00fa 9DF80C30 		ldrb	r3, [sp, #12]	@ zero_extendqisi2
+ 184 00fe 0BB1     		cbz	r3, .L12
+ 185 0100 0B49     		ldr	r1, .L14+32
+ 186 0102 00E0     		b	.L11
+ 187              	.L12:
+ 188 0104 0B49     		ldr	r1, .L14+36
+ 189              	.L11:
+ 190              		.loc 1 60 0 is_stmt 0 discriminator 4
+ 191 0106 2846     		mov	r0, r5
+ 192 0108 FFF7FEFF 		bl	strcat
+ 193              	.LVL9:
+  61:rhea\rtc\alarm/alarm.c **** }
+ 194              		.loc 1 61 0 is_stmt 1 discriminator 4
+ 195 010c 04B0     		add	sp, sp, #16
+ 196              		.cfi_def_cfa_offset 16
+ 197              		@ sp needed
+ 198 010e 70BD     		pop	{r4, r5, r6, pc}
+ 199              	.LVL10:
+ 200              	.L15:
+ 201              		.align	2
+ 202              	.L14:
+ 203 0110 00000000 		.word	.LANCHOR0
+ 204 0114 1C000000 		.word	.LC2
+ 205 0118 2C000000 		.word	.LC3
+ 206 011c 3C000000 		.word	.LC4
+ 207 0120 4C000000 		.word	.LC5
+ 208 0124 5C000000 		.word	.LC6
+ 209 0128 6C000000 		.word	.LC7
+ 210 012c 7C000000 		.word	.LC8
+ 211 0130 00000000 		.word	.LC0
+ 212 0134 10000000 		.word	.LC1
+ 213              		.cfi_endproc
+ 214              	.LFE0:
+ 215              		.size	rhea_rtc_formatAlarm, .-rhea_rtc_formatAlarm
+ 216              		.section	.text.rhea_rtc_weekdayDifference,"ax",%progbits
+ 217              		.align	2
+ 218              		.global	rhea_rtc_weekdayDifference
+ 219              		.thumb
+ 220              		.thumb_func
+ 221              		.type	rhea_rtc_weekdayDifference, %function
+ 222              	rhea_rtc_weekdayDifference:
+ 223              	.LFB1:
+  62:rhea\rtc\alarm/alarm.c **** 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 6
+
+
+  63:rhea\rtc\alarm/alarm.c **** // Algorithm source: https://howardhinnant.github.io/date_algorithms.html#weekday_difference
+  64:rhea\rtc\alarm/alarm.c **** unsigned rhea_rtc_weekdayDifference(unsigned x, unsigned y) {
+ 224              		.loc 1 64 0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228              		@ link register save eliminated.
+ 229              	.LVL11:
+  65:rhea\rtc\alarm/alarm.c ****     x -= y;
+ 230              		.loc 1 65 0
+ 231 0000 401A     		subs	r0, r0, r1
+ 232              	.LVL12:
+  66:rhea\rtc\alarm/alarm.c ****     return x <= 6 ? x : x + 7;
+ 233              		.loc 1 66 0
+ 234 0002 0628     		cmp	r0, #6
+ 235 0004 00D9     		bls	.L17
+ 236              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 237 0006 0730     		adds	r0, r0, #7
+ 238              	.LVL13:
+ 239              	.L17:
+  67:rhea\rtc\alarm/alarm.c **** }
+ 240              		.loc 1 67 0 is_stmt 1 discriminator 4
+ 241 0008 7047     		bx	lr
+ 242              		.cfi_endproc
+ 243              	.LFE1:
+ 244              		.size	rhea_rtc_weekdayDifference, .-rhea_rtc_weekdayDifference
+ 245 000a 00BF     		.section	.text.rhea_rtc_normalizeAlarm,"ax",%progbits
+ 246              		.align	2
+ 247              		.global	rhea_rtc_normalizeAlarm
+ 248              		.thumb
+ 249              		.thumb_func
+ 250              		.type	rhea_rtc_normalizeAlarm, %function
+ 251              	rhea_rtc_normalizeAlarm:
+ 252              	.LFB2:
+  68:rhea\rtc\alarm/alarm.c **** 
+  69:rhea\rtc\alarm/alarm.c **** void rhea_rtc_normalizeAlarm(rhea_rtc_alarm *alarm, const rhea_rtc_datetime after) {
+ 253              		.loc 1 69 0
+ 254              		.cfi_startproc
+ 255              		@ args = 0, pretend = 0, frame = 32
+ 256              		@ frame_needed = 0, uses_anonymous_args = 0
+ 257              	.LVL14:
+ 258 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 259              		.cfi_def_cfa_offset 28
+ 260              		.cfi_offset 4, -28
+ 261              		.cfi_offset 5, -24
+ 262              		.cfi_offset 6, -20
+ 263              		.cfi_offset 7, -16
+ 264              		.cfi_offset 8, -12
+ 265              		.cfi_offset 9, -8
+ 266              		.cfi_offset 14, -4
+ 267 0004 89B0     		sub	sp, sp, #36
+ 268              		.cfi_def_cfa_offset 64
+ 269 0006 02AB     		add	r3, sp, #8
+ 270 0008 83E80600 		stmia	r3, {r1, r2}
+  70:rhea\rtc\alarm/alarm.c ****     
+  71:rhea\rtc\alarm/alarm.c ****     // FutureDate alarms are not normalizable
+  72:rhea\rtc\alarm/alarm.c ****     if(alarm->mode == FutureDate) {
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 7
+
+
+ 271              		.loc 1 72 0
+ 272 000c 837A     		ldrb	r3, [r0, #10]	@ zero_extendqisi2
+ 273 000e 062B     		cmp	r3, #6
+ 274 0010 02D1     		bne	.L20
+  73:rhea\rtc\alarm/alarm.c ****         alarm->active = 0;
+ 275              		.loc 1 73 0
+ 276 0012 0023     		movs	r3, #0
+ 277 0014 4372     		strb	r3, [r0, #9]
+  74:rhea\rtc\alarm/alarm.c ****         return;
+ 278              		.loc 1 74 0
+ 279 0016 B2E0     		b	.L19
+ 280              	.L20:
+ 281 0018 0446     		mov	r4, r0
+  75:rhea\rtc\alarm/alarm.c ****     }
+  76:rhea\rtc\alarm/alarm.c ****     
+  77:rhea\rtc\alarm/alarm.c ****     int64_t afterSeconds = rhea_rtc_toSeconds(after);
+ 282              		.loc 1 77 0
+ 283 001a 02AD     		add	r5, sp, #8
+ 284 001c 95E80300 		ldmia	r5, {r0, r1}
+ 285              	.LVL15:
+ 286 0020 FFF7FEFF 		bl	rhea_rtc_toSeconds
+ 287              	.LVL16:
+ 288 0024 0646     		mov	r6, r0
+ 289 0026 0F46     		mov	r7, r1
+ 290              	.LVL17:
+  78:rhea\rtc\alarm/alarm.c ****     rhea_rtc_alarm newAlarm = {after, alarm->recurring, alarm->active, alarm->mode};
+ 291              		.loc 1 78 0
+ 292 0028 05AB     		add	r3, sp, #20
+ 293 002a 95E80300 		ldmia	r5, {r0, r1}
+ 294 002e 83E80300 		stmia	r3, {r0, r1}
+ 295 0032 237A     		ldrb	r3, [r4, #8]	@ zero_extendqisi2
+ 296 0034 8DF81C30 		strb	r3, [sp, #28]
+ 297 0038 637A     		ldrb	r3, [r4, #9]	@ zero_extendqisi2
+ 298 003a 8DF81D30 		strb	r3, [sp, #29]
+ 299 003e A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 300 0040 8DF81E30 		strb	r3, [sp, #30]
+  79:rhea\rtc\alarm/alarm.c ****     
+  80:rhea\rtc\alarm/alarm.c ****     if(alarm->mode >= EveryMinute) newAlarm.datetime.second  = alarm->datetime.second;
+ 301              		.loc 1 80 0
+ 302 0044 E279     		ldrb	r2, [r4, #7]	@ zero_extendqisi2
+ 303 0046 8DF81B20 		strb	r2, [sp, #27]
+  81:rhea\rtc\alarm/alarm.c ****     if(alarm->mode >= EveryHour)   newAlarm.datetime.minute  = alarm->datetime.minute;
+ 304              		.loc 1 81 0
+ 305 004a 13B1     		cbz	r3, .L22
+ 306              		.loc 1 81 0 is_stmt 0 discriminator 1
+ 307 004c A279     		ldrb	r2, [r4, #6]	@ zero_extendqisi2
+ 308 004e 8DF81A20 		strb	r2, [sp, #26]
+ 309              	.L22:
+  82:rhea\rtc\alarm/alarm.c ****     if(alarm->mode >= EveryDay)    newAlarm.datetime.hour    = alarm->datetime.hour;
+ 310              		.loc 1 82 0 is_stmt 1
+ 311 0052 012B     		cmp	r3, #1
+ 312 0054 02D9     		bls	.L23
+ 313              		.loc 1 82 0 is_stmt 0 discriminator 1
+ 314 0056 6279     		ldrb	r2, [r4, #5]	@ zero_extendqisi2
+ 315 0058 8DF81920 		strb	r2, [sp, #25]
+ 316              	.L23:
+  83:rhea\rtc\alarm/alarm.c ****     if(alarm->mode >= EveryMonth)  newAlarm.datetime.date    = alarm->datetime.date;
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 8
+
+
+ 317              		.loc 1 83 0 is_stmt 1
+ 318 005c 032B     		cmp	r3, #3
+ 319 005e 02D9     		bls	.L24
+ 320              		.loc 1 83 0 is_stmt 0 discriminator 1
+ 321 0060 E278     		ldrb	r2, [r4, #3]	@ zero_extendqisi2
+ 322 0062 8DF81720 		strb	r2, [sp, #23]
+ 323              	.L24:
+  84:rhea\rtc\alarm/alarm.c ****     if(alarm->mode >= EveryYear)   newAlarm.datetime.month   = alarm->datetime.month;
+ 324              		.loc 1 84 0 is_stmt 1
+ 325 0066 042B     		cmp	r3, #4
+ 326 0068 02D9     		bls	.L25
+ 327              		.loc 1 84 0 is_stmt 0 discriminator 1
+ 328 006a A278     		ldrb	r2, [r4, #2]	@ zero_extendqisi2
+ 329 006c 8DF81620 		strb	r2, [sp, #22]
+ 330              	.L25:
+  85:rhea\rtc\alarm/alarm.c ****     if(alarm->mode == EveryWeek) {
+ 331              		.loc 1 85 0 is_stmt 1
+ 332 0070 032B     		cmp	r3, #3
+ 333 0072 1CD1     		bne	.L26
+ 334              	.LBB2:
+  86:rhea\rtc\alarm/alarm.c ****         
+  87:rhea\rtc\alarm/alarm.c ****         // Adding number of days so the day of week matches
+  88:rhea\rtc\alarm/alarm.c ****         uint8_t inc_days = rhea_rtc_weekdayDifference(alarm->datetime.weekday, newAlarm.datetime.we
+ 335              		.loc 1 88 0
+ 336 0074 9DF81810 		ldrb	r1, [sp, #24]	@ zero_extendqisi2
+ 337 0078 2079     		ldrb	r0, [r4, #4]	@ zero_extendqisi2
+ 338 007a FFF7FEFF 		bl	rhea_rtc_weekdayDifference
+ 339              	.LVL18:
+ 340 007e 8046     		mov	r8, r0
+ 341              	.LVL19:
+  89:rhea\rtc\alarm/alarm.c ****         int64_t new_secs = rhea_rtc_toSeconds(newAlarm.datetime) + inc_days * RHEA_RTC_SECONDS_PER_
+ 342              		.loc 1 89 0
+ 343 0080 05AD     		add	r5, sp, #20
+ 344 0082 95E80300 		ldmia	r5, {r0, r1}
+ 345 0086 FFF7FEFF 		bl	rhea_rtc_toSeconds
+ 346              	.LVL20:
+ 347 008a 5FFA88F2 		uxtb	r2, r8
+ 348 008e 3D4B     		ldr	r3, .L39
+ 349 0090 03FB02F2 		mul	r2, r3, r2
+ 350              	.LVL21:
+  90:rhea\rtc\alarm/alarm.c ****         newAlarm.datetime = rhea_rtc_fromSeconds(new_secs);
+ 351              		.loc 1 90 0
+ 352 0094 10EB0208 		adds	r8, r0, r2
+ 353              	.LVL22:
+ 354 0098 41EBE279 		adc	r9, r1, r2, asr #31
+ 355 009c 4246     		mov	r2, r8
+ 356              	.LVL23:
+ 357 009e 4B46     		mov	r3, r9
+ 358 00a0 6846     		mov	r0, sp
+ 359 00a2 FFF7FEFF 		bl	rhea_rtc_fromSeconds
+ 360              	.LVL24:
+ 361 00a6 2B46     		mov	r3, r5
+ 362 00a8 0098     		ldr	r0, [sp]	@ unaligned
+ 363 00aa 0199     		ldr	r1, [sp, #4]	@ unaligned
+ 364 00ac 03C3     		stmia	r3!, {r0, r1}
+ 365              	.L26:
+ 366              	.LBE2:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 9
+
+
+  91:rhea\rtc\alarm/alarm.c ****     }
+  92:rhea\rtc\alarm/alarm.c **** 
+  93:rhea\rtc\alarm/alarm.c ****     // Calculating new alarm timestamp
+  94:rhea\rtc\alarm/alarm.c ****     int64_t newAlarmTimestamp = rhea_rtc_toSeconds(newAlarm.datetime);
+ 367              		.loc 1 94 0
+ 368 00ae 05AB     		add	r3, sp, #20
+ 369 00b0 93E80300 		ldmia	r3, {r0, r1}
+ 370 00b4 FFF7FEFF 		bl	rhea_rtc_toSeconds
+ 371              	.LVL25:
+  95:rhea\rtc\alarm/alarm.c ****     
+  96:rhea\rtc\alarm/alarm.c ****     // Checking if the alarm is already normalized
+  97:rhea\rtc\alarm/alarm.c ****     if(newAlarmTimestamp > afterSeconds) {
+ 372              		.loc 1 97 0
+ 373 00b8 8642     		cmp	r6, r0
+ 374 00ba 77EB0103 		sbcs	r3, r7, r1
+ 375 00be 08DA     		bge	.L27
+  98:rhea\rtc\alarm/alarm.c ****         
+  99:rhea\rtc\alarm/alarm.c ****         // Recalculating day of week
+ 100:rhea\rtc\alarm/alarm.c ****         rhea_rtc_setWeekday(&newAlarm.datetime);
+ 376              		.loc 1 100 0
+ 377 00c0 05A8     		add	r0, sp, #20
+ 378              	.LVL26:
+ 379 00c2 FFF7FEFF 		bl	rhea_rtc_setWeekday
+ 380              	.LVL27:
+ 101:rhea\rtc\alarm/alarm.c ****         
+ 102:rhea\rtc\alarm/alarm.c ****         // Applying changes
+ 103:rhea\rtc\alarm/alarm.c ****         *alarm = newAlarm;   
+ 381              		.loc 1 103 0
+ 382 00c6 05AB     		add	r3, sp, #20
+ 383 00c8 07CB     		ldmia	r3!, {r0, r1, r2}
+ 384 00ca 2060     		str	r0, [r4]	@ unaligned
+ 385 00cc 6160     		str	r1, [r4, #4]	@ unaligned
+ 386 00ce A260     		str	r2, [r4, #8]	@ unaligned
+ 104:rhea\rtc\alarm/alarm.c ****         return;
+ 387              		.loc 1 104 0
+ 388 00d0 55E0     		b	.L19
+ 389              	.LVL28:
+ 390              	.L27:
+ 105:rhea\rtc\alarm/alarm.c ****     }
+ 106:rhea\rtc\alarm/alarm.c ****         
+ 107:rhea\rtc\alarm/alarm.c ****     // Incrementing alarm datetime by one unit based on mode
+ 108:rhea\rtc\alarm/alarm.c ****     switch(alarm->mode) {
+ 391              		.loc 1 108 0
+ 392 00d2 A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 393 00d4 052B     		cmp	r3, #5
+ 394 00d6 4AD8     		bhi	.L28
+ 395 00d8 DFE803F0 		tbb	[pc, r3]
+ 396              	.L30:
+ 397 00dc 03       		.byte	(.L29-.L30)/2
+ 398 00dd 0F       		.byte	(.L31-.L30)/2
+ 399 00de 1B       		.byte	(.L32-.L30)/2
+ 400 00df 27       		.byte	(.L33-.L30)/2
+ 401 00e0 33       		.byte	(.L34-.L30)/2
+ 402 00e1 44       		.byte	(.L35-.L30)/2
+ 403              		.p2align 1
+ 404              	.L29:
+ 109:rhea\rtc\alarm/alarm.c ****     case EveryMinute:   newAlarm.datetime = rhea_rtc_fromSeconds(newAlarmTimestamp + RHEA_RTC_SECON
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 10
+
+
+ 405              		.loc 1 109 0
+ 406 00e2 10F13C02 		adds	r2, r0, #60
+ 407 00e6 41F10003 		adc	r3, r1, #0
+ 408 00ea 6846     		mov	r0, sp
+ 409              	.LVL29:
+ 410 00ec FFF7FEFF 		bl	rhea_rtc_fromSeconds
+ 411              	.LVL30:
+ 412 00f0 05AB     		add	r3, sp, #20
+ 413 00f2 0098     		ldr	r0, [sp]	@ unaligned
+ 414 00f4 0199     		ldr	r1, [sp, #4]	@ unaligned
+ 415 00f6 03C3     		stmia	r3!, {r0, r1}
+ 110:rhea\rtc\alarm/alarm.c ****                         break;
+ 416              		.loc 1 110 0
+ 417 00f8 39E0     		b	.L28
+ 418              	.LVL31:
+ 419              	.L31:
+ 111:rhea\rtc\alarm/alarm.c ****     case EveryHour:     newAlarm.datetime = rhea_rtc_fromSeconds(newAlarmTimestamp + RHEA_RTC_SECON
+ 420              		.loc 1 111 0
+ 421 00fa 10F56162 		adds	r2, r0, #3600
+ 422 00fe 41F10003 		adc	r3, r1, #0
+ 423 0102 6846     		mov	r0, sp
+ 424              	.LVL32:
+ 425 0104 FFF7FEFF 		bl	rhea_rtc_fromSeconds
+ 426              	.LVL33:
+ 427 0108 05AB     		add	r3, sp, #20
+ 428 010a 0098     		ldr	r0, [sp]	@ unaligned
+ 429 010c 0199     		ldr	r1, [sp, #4]	@ unaligned
+ 430 010e 03C3     		stmia	r3!, {r0, r1}
+ 112:rhea\rtc\alarm/alarm.c ****                         break;
+ 431              		.loc 1 112 0
+ 432 0110 2DE0     		b	.L28
+ 433              	.LVL34:
+ 434              	.L32:
+ 113:rhea\rtc\alarm/alarm.c ****     case EveryDay:      newAlarm.datetime = rhea_rtc_fromSeconds(newAlarmTimestamp + RHEA_RTC_SECON
+ 435              		.loc 1 113 0
+ 436 0112 1C4A     		ldr	r2, .L39
+ 437 0114 0023     		movs	r3, #0
+ 438 0116 1218     		adds	r2, r2, r0
+ 439 0118 4B41     		adcs	r3, r3, r1
+ 440 011a 6846     		mov	r0, sp
+ 441              	.LVL35:
+ 442 011c FFF7FEFF 		bl	rhea_rtc_fromSeconds
+ 443              	.LVL36:
+ 444 0120 05AB     		add	r3, sp, #20
+ 445 0122 0098     		ldr	r0, [sp]	@ unaligned
+ 446 0124 0199     		ldr	r1, [sp, #4]	@ unaligned
+ 447 0126 03C3     		stmia	r3!, {r0, r1}
+ 114:rhea\rtc\alarm/alarm.c ****                         break;
+ 448              		.loc 1 114 0
+ 449 0128 21E0     		b	.L28
+ 450              	.LVL37:
+ 451              	.L33:
+ 115:rhea\rtc\alarm/alarm.c ****     case EveryWeek:     newAlarm.datetime = rhea_rtc_fromSeconds(newAlarmTimestamp + RHEA_RTC_SECON
+ 452              		.loc 1 115 0
+ 453 012a 174A     		ldr	r2, .L39+4
+ 454 012c 0023     		movs	r3, #0
+ 455 012e 1218     		adds	r2, r2, r0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 11
+
+
+ 456 0130 4B41     		adcs	r3, r3, r1
+ 457 0132 6846     		mov	r0, sp
+ 458              	.LVL38:
+ 459 0134 FFF7FEFF 		bl	rhea_rtc_fromSeconds
+ 460              	.LVL39:
+ 461 0138 05AB     		add	r3, sp, #20
+ 462 013a 0098     		ldr	r0, [sp]	@ unaligned
+ 463 013c 0199     		ldr	r1, [sp, #4]	@ unaligned
+ 464 013e 03C3     		stmia	r3!, {r0, r1}
+ 116:rhea\rtc\alarm/alarm.c ****                         break;
+ 465              		.loc 1 116 0
+ 466 0140 15E0     		b	.L28
+ 467              	.LVL40:
+ 468              	.L34:
+ 117:rhea\rtc\alarm/alarm.c ****     case EveryMonth:    if(newAlarm.datetime.month == 12) { newAlarm.datetime.month = 1; newAlarm.d
+ 469              		.loc 1 117 0
+ 470 0142 9DF81630 		ldrb	r3, [sp, #22]	@ zero_extendqisi2
+ 471 0146 0C2B     		cmp	r3, #12
+ 472 0148 08D1     		bne	.L36
+ 473              		.loc 1 117 0 is_stmt 0 discriminator 1
+ 474 014a 0123     		movs	r3, #1
+ 475 014c 8DF81630 		strb	r3, [sp, #22]
+ 476 0150 BDF81430 		ldrh	r3, [sp, #20]
+ 477 0154 0133     		adds	r3, r3, #1
+ 478 0156 ADF81430 		strh	r3, [sp, #20]	@ movhi
+ 479 015a 08E0     		b	.L28
+ 480              	.L36:
+ 118:rhea\rtc\alarm/alarm.c ****                         else newAlarm.datetime.month++;
+ 481              		.loc 1 118 0 is_stmt 1
+ 482 015c 0133     		adds	r3, r3, #1
+ 483 015e 8DF81630 		strb	r3, [sp, #22]
+ 484 0162 04E0     		b	.L28
+ 485              	.L35:
+ 119:rhea\rtc\alarm/alarm.c ****                         break;
+ 120:rhea\rtc\alarm/alarm.c ****     case EveryYear:     newAlarm.datetime.year++;
+ 486              		.loc 1 120 0
+ 487 0164 BDF81430 		ldrh	r3, [sp, #20]
+ 488 0168 0133     		adds	r3, r3, #1
+ 489 016a ADF81430 		strh	r3, [sp, #20]	@ movhi
+ 490              	.LVL41:
+ 491              	.L28:
+ 121:rhea\rtc\alarm/alarm.c ****     };
+ 122:rhea\rtc\alarm/alarm.c ****     
+ 123:rhea\rtc\alarm/alarm.c ****     // Recalculating day of week
+ 124:rhea\rtc\alarm/alarm.c ****     rhea_rtc_setWeekday(&newAlarm.datetime);
+ 492              		.loc 1 124 0 discriminator 1
+ 493 016e 05A8     		add	r0, sp, #20
+ 494 0170 FFF7FEFF 		bl	rhea_rtc_setWeekday
+ 495              	.LVL42:
+ 125:rhea\rtc\alarm/alarm.c ****     
+ 126:rhea\rtc\alarm/alarm.c ****     // Applying changes
+ 127:rhea\rtc\alarm/alarm.c ****     *alarm = newAlarm;
+ 496              		.loc 1 127 0 discriminator 1
+ 497 0174 05AB     		add	r3, sp, #20
+ 498 0176 07CB     		ldmia	r3!, {r0, r1, r2}
+ 499 0178 2060     		str	r0, [r4]	@ unaligned
+ 500 017a 6160     		str	r1, [r4, #4]	@ unaligned
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 12
+
+
+ 501 017c A260     		str	r2, [r4, #8]	@ unaligned
+ 502              	.LVL43:
+ 503              	.L19:
+ 128:rhea\rtc\alarm/alarm.c **** }
+ 504              		.loc 1 128 0
+ 505 017e 09B0     		add	sp, sp, #36
+ 506              		.cfi_def_cfa_offset 28
+ 507              		@ sp needed
+ 508 0180 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 509              	.L40:
+ 510              		.align	2
+ 511              	.L39:
+ 512 0184 80510100 		.word	86400
+ 513 0188 803A0900 		.word	604800
+ 514              		.cfi_endproc
+ 515              	.LFE2:
+ 516              		.size	rhea_rtc_normalizeAlarm, .-rhea_rtc_normalizeAlarm
+ 517              		.section	.rodata
+ 518              		.align	2
+ 519              		.set	.LANCHOR0,. + 0
+ 520              		.type	rhea_rtc_datetimeFormatGeneral, %object
+ 521              		.size	rhea_rtc_datetimeFormatGeneral, 20
+ 522              	rhea_rtc_datetimeFormatGeneral:
+ 523 0000 59595959 		.ascii	"YYYY/MM/dd hh:mm:ss\000"
+ 523      2F4D4D2F 
+ 523      64642068 
+ 523      683A6D6D 
+ 523      3A737300 
+ 524              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 525              		.align	2
+ 526              	.LC0:
+ 527 0000 205B7265 		.ascii	" [recurring]\000"
+ 527      63757272 
+ 527      696E675D 
+ 527      00
+ 528 000d 000000   		.space	3
+ 529              	.LC1:
+ 530 0010 205B6F6E 		.ascii	" [one-shot]\000"
+ 530      652D7368 
+ 530      6F745D00 
+ 531              	.LC2:
+ 532 001c 205B4576 		.ascii	" [EveryMinute]\000"
+ 532      6572794D 
+ 532      696E7574 
+ 532      655D00
+ 533 002b 00       		.space	1
+ 534              	.LC3:
+ 535 002c 205B4576 		.ascii	" [EveryHour]  \000"
+ 535      65727948 
+ 535      6F75725D 
+ 535      202000
+ 536 003b 00       		.space	1
+ 537              	.LC4:
+ 538 003c 205B4576 		.ascii	" [EveryDay]   \000"
+ 538      65727944 
+ 538      61795D20 
+ 538      202000
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 13
+
+
+ 539 004b 00       		.space	1
+ 540              	.LC5:
+ 541 004c 205B4576 		.ascii	" [EveryWeek]  \000"
+ 541      65727957 
+ 541      65656B5D 
+ 541      202000
+ 542 005b 00       		.space	1
+ 543              	.LC6:
+ 544 005c 205B4576 		.ascii	" [EveryMonth] \000"
+ 544      6572794D 
+ 544      6F6E7468 
+ 544      5D2000
+ 545 006b 00       		.space	1
+ 546              	.LC7:
+ 547 006c 205B4576 		.ascii	" [EveryYear]  \000"
+ 547      65727959 
+ 547      6561725D 
+ 547      202000
+ 548 007b 00       		.space	1
+ 549              	.LC8:
+ 550 007c 205B4675 		.ascii	" [FutureDate] \000"
+ 550      74757265 
+ 550      44617465 
+ 550      5D2000
+ 551              		.text
+ 552              	.Letext0:
+ 553              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 554              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 555              		.file 4 "rhea\\rtc\\alarm\\../datetime/datetime.h"
+ 556              		.file 5 "rhea\\rtc\\alarm\\alarm.h"
+ 557              		.file 6 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 558              		.file 7 "<built-in>"
+ 559              		.section	.debug_info,"",%progbits
+ 560              	.Ldebug_info0:
+ 561 0000 B2040000 		.4byte	0x4b2
+ 562 0004 0400     		.2byte	0x4
+ 563 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 564 000a 04       		.byte	0x4
+ 565 000b 01       		.uleb128 0x1
+ 566 000c 32020000 		.4byte	.LASF56
+ 567 0010 0C       		.byte	0xc
+ 568 0011 30030000 		.4byte	.LASF57
+ 569 0015 C0020000 		.4byte	.LASF58
+ 570 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 571 001d 00000000 		.4byte	0
+ 572 0021 00000000 		.4byte	.Ldebug_line0
+ 573 0025 02       		.uleb128 0x2
+ 574 0026 08       		.byte	0x8
+ 575 0027 07       		.byte	0x7
+ 576 0028 3B000000 		.4byte	.LASF0
+ 577 002c 03       		.uleb128 0x3
+ 578 002d 04       		.byte	0x4
+ 579 002e 05       		.byte	0x5
+ 580 002f 696E7400 		.ascii	"int\000"
+ 581 0033 02       		.uleb128 0x2
+ 582 0034 04       		.byte	0x4
+ 583 0035 07       		.byte	0x7
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 14
+
+
+ 584 0036 FC000000 		.4byte	.LASF1
+ 585 003a 02       		.uleb128 0x2
+ 586 003b 08       		.byte	0x8
+ 587 003c 05       		.byte	0x5
+ 588 003d 5C000000 		.4byte	.LASF2
+ 589 0041 02       		.uleb128 0x2
+ 590 0042 08       		.byte	0x8
+ 591 0043 04       		.byte	0x4
+ 592 0044 BB010000 		.4byte	.LASF3
+ 593 0048 02       		.uleb128 0x2
+ 594 0049 01       		.byte	0x1
+ 595 004a 06       		.byte	0x6
+ 596 004b 6A000000 		.4byte	.LASF4
+ 597 004f 04       		.uleb128 0x4
+ 598 0050 19000000 		.4byte	.LASF7
+ 599 0054 02       		.byte	0x2
+ 600 0055 1D       		.byte	0x1d
+ 601 0056 5A000000 		.4byte	0x5a
+ 602 005a 02       		.uleb128 0x2
+ 603 005b 01       		.byte	0x1
+ 604 005c 08       		.byte	0x8
+ 605 005d 0D020000 		.4byte	.LASF5
+ 606 0061 02       		.uleb128 0x2
+ 607 0062 02       		.byte	0x2
+ 608 0063 05       		.byte	0x5
+ 609 0064 1B020000 		.4byte	.LASF6
+ 610 0068 04       		.uleb128 0x4
+ 611 0069 25030000 		.4byte	.LASF8
+ 612 006d 02       		.byte	0x2
+ 613 006e 2B       		.byte	0x2b
+ 614 006f 73000000 		.4byte	0x73
+ 615 0073 02       		.uleb128 0x2
+ 616 0074 02       		.byte	0x2
+ 617 0075 07       		.byte	0x7
+ 618 0076 54010000 		.4byte	.LASF9
+ 619 007a 02       		.uleb128 0x2
+ 620 007b 04       		.byte	0x4
+ 621 007c 05       		.byte	0x5
+ 622 007d B7000000 		.4byte	.LASF10
+ 623 0081 02       		.uleb128 0x2
+ 624 0082 04       		.byte	0x4
+ 625 0083 07       		.byte	0x7
+ 626 0084 26010000 		.4byte	.LASF11
+ 627 0088 04       		.uleb128 0x4
+ 628 0089 52000000 		.4byte	.LASF12
+ 629 008d 02       		.byte	0x2
+ 630 008e 59       		.byte	0x59
+ 631 008f 3A000000 		.4byte	0x3a
+ 632 0093 02       		.uleb128 0x2
+ 633 0094 04       		.byte	0x4
+ 634 0095 07       		.byte	0x7
+ 635 0096 B2010000 		.4byte	.LASF13
+ 636 009a 05       		.uleb128 0x5
+ 637 009b 04       		.byte	0x4
+ 638 009c A0000000 		.4byte	0xa0
+ 639 00a0 02       		.uleb128 0x2
+ 640 00a1 01       		.byte	0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 15
+
+
+ 641 00a2 08       		.byte	0x8
+ 642 00a3 1B030000 		.4byte	.LASF14
+ 643 00a7 06       		.uleb128 0x6
+ 644 00a8 A0000000 		.4byte	0xa0
+ 645 00ac 04       		.uleb128 0x4
+ 646 00ad 8D030000 		.4byte	.LASF15
+ 647 00b1 03       		.byte	0x3
+ 648 00b2 18       		.byte	0x18
+ 649 00b3 4F000000 		.4byte	0x4f
+ 650 00b7 04       		.uleb128 0x4
+ 651 00b8 C6000000 		.4byte	.LASF16
+ 652 00bc 03       		.byte	0x3
+ 653 00bd 24       		.byte	0x24
+ 654 00be 68000000 		.4byte	0x68
+ 655 00c2 04       		.uleb128 0x4
+ 656 00c3 C7030000 		.4byte	.LASF17
+ 657 00c7 03       		.byte	0x3
+ 658 00c8 38       		.byte	0x38
+ 659 00c9 88000000 		.4byte	0x88
+ 660 00cd 07       		.uleb128 0x7
+ 661 00ce 08       		.byte	0x8
+ 662 00cf 04       		.byte	0x4
+ 663 00d0 30       		.byte	0x30
+ 664 00d1 2A010000 		.4byte	0x12a
+ 665 00d5 08       		.uleb128 0x8
+ 666 00d6 9E000000 		.4byte	.LASF18
+ 667 00da 04       		.byte	0x4
+ 668 00db 31       		.byte	0x31
+ 669 00dc B7000000 		.4byte	0xb7
+ 670 00e0 00       		.byte	0
+ 671 00e1 08       		.uleb128 0x8
+ 672 00e2 F6000000 		.4byte	.LASF19
+ 673 00e6 04       		.byte	0x4
+ 674 00e7 32       		.byte	0x32
+ 675 00e8 AC000000 		.4byte	0xac
+ 676 00ec 02       		.byte	0x2
+ 677 00ed 08       		.uleb128 0x8
+ 678 00ee 67010000 		.4byte	.LASF20
+ 679 00f2 04       		.byte	0x4
+ 680 00f3 33       		.byte	0x33
+ 681 00f4 AC000000 		.4byte	0xac
+ 682 00f8 03       		.byte	0x3
+ 683 00f9 08       		.uleb128 0x8
+ 684 00fa 47030000 		.4byte	.LASF21
+ 685 00fe 04       		.byte	0x4
+ 686 00ff 34       		.byte	0x34
+ 687 0100 AC000000 		.4byte	0xac
+ 688 0104 04       		.byte	0x4
+ 689 0105 08       		.uleb128 0x8
+ 690 0106 F3010000 		.4byte	.LASF22
+ 691 010a 04       		.byte	0x4
+ 692 010b 35       		.byte	0x35
+ 693 010c AC000000 		.4byte	0xac
+ 694 0110 05       		.byte	0x5
+ 695 0111 08       		.uleb128 0x8
+ 696 0112 74030000 		.4byte	.LASF23
+ 697 0116 04       		.byte	0x4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 16
+
+
+ 698 0117 36       		.byte	0x36
+ 699 0118 AC000000 		.4byte	0xac
+ 700 011c 06       		.byte	0x6
+ 701 011d 08       		.uleb128 0x8
+ 702 011e 97000000 		.4byte	.LASF24
+ 703 0122 04       		.byte	0x4
+ 704 0123 37       		.byte	0x37
+ 705 0124 AC000000 		.4byte	0xac
+ 706 0128 07       		.byte	0x7
+ 707 0129 00       		.byte	0
+ 708 012a 04       		.uleb128 0x4
+ 709 012b 7B030000 		.4byte	.LASF25
+ 710 012f 04       		.byte	0x4
+ 711 0130 38       		.byte	0x38
+ 712 0131 CD000000 		.4byte	0xcd
+ 713 0135 09       		.uleb128 0x9
+ 714 0136 B4030000 		.4byte	.LASF59
+ 715 013a 01       		.byte	0x1
+ 716 013b 5A000000 		.4byte	0x5a
+ 717 013f 05       		.byte	0x5
+ 718 0140 34       		.byte	0x34
+ 719 0141 70010000 		.4byte	0x170
+ 720 0145 0A       		.uleb128 0xa
+ 721 0146 13010000 		.4byte	.LASF26
+ 722 014a 00       		.byte	0
+ 723 014b 0A       		.uleb128 0xa
+ 724 014c EC000000 		.4byte	.LASF27
+ 725 0150 01       		.byte	0x1
+ 726 0151 0A       		.uleb128 0xa
+ 727 0152 A9010000 		.4byte	.LASF28
+ 728 0156 02       		.byte	0x2
+ 729 0157 0A       		.uleb128 0xa
+ 730 0158 09010000 		.4byte	.LASF29
+ 731 015c 03       		.byte	0x3
+ 732 015d 0A       		.uleb128 0xa
+ 733 015e 6C010000 		.4byte	.LASF30
+ 734 0162 04       		.byte	0x4
+ 735 0163 0A       		.uleb128 0xa
+ 736 0164 03020000 		.4byte	.LASF31
+ 737 0168 05       		.byte	0x5
+ 738 0169 0A       		.uleb128 0xa
+ 739 016a F8010000 		.4byte	.LASF32
+ 740 016e 06       		.byte	0x6
+ 741 016f 00       		.byte	0
+ 742 0170 0B       		.uleb128 0xb
+ 743 0171 0A000000 		.4byte	.LASF37
+ 744 0175 0C       		.byte	0xc
+ 745 0176 05       		.byte	0x5
+ 746 0177 48       		.byte	0x48
+ 747 0178 AD010000 		.4byte	0x1ad
+ 748 017c 08       		.uleb128 0x8
+ 749 017d 87010000 		.4byte	.LASF33
+ 750 0181 05       		.byte	0x5
+ 751 0182 49       		.byte	0x49
+ 752 0183 2A010000 		.4byte	0x12a
+ 753 0187 00       		.byte	0
+ 754 0188 08       		.uleb128 0x8
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 17
+
+
+ 755 0189 00000000 		.4byte	.LASF34
+ 756 018d 05       		.byte	0x5
+ 757 018e 4A       		.byte	0x4a
+ 758 018f AC000000 		.4byte	0xac
+ 759 0193 08       		.byte	0x8
+ 760 0194 08       		.uleb128 0x8
+ 761 0195 90010000 		.4byte	.LASF35
+ 762 0199 05       		.byte	0x5
+ 763 019a 4B       		.byte	0x4b
+ 764 019b AC000000 		.4byte	0xac
+ 765 019f 09       		.byte	0x9
+ 766 01a0 08       		.uleb128 0x8
+ 767 01a1 20030000 		.4byte	.LASF36
+ 768 01a5 05       		.byte	0x5
+ 769 01a6 4C       		.byte	0x4c
+ 770 01a7 AC000000 		.4byte	0xac
+ 771 01ab 0A       		.byte	0xa
+ 772 01ac 00       		.byte	0
+ 773 01ad 04       		.uleb128 0x4
+ 774 01ae 0A000000 		.4byte	.LASF37
+ 775 01b2 05       		.byte	0x5
+ 776 01b3 50       		.byte	0x50
+ 777 01b4 70010000 		.4byte	0x170
+ 778 01b8 0C       		.uleb128 0xc
+ 779 01b9 56030000 		.4byte	.LASF40
+ 780 01bd 01       		.byte	0x1
+ 781 01be 2B       		.byte	0x2b
+ 782 01bf 00000000 		.4byte	.LFB0
+ 783 01c3 38010000 		.4byte	.LFE0-.LFB0
+ 784 01c7 01       		.uleb128 0x1
+ 785 01c8 9C       		.byte	0x9c
+ 786 01c9 A4020000 		.4byte	0x2a4
+ 787 01cd 0D       		.uleb128 0xd
+ 788 01ce C0000000 		.4byte	.LASF38
+ 789 01d2 01       		.byte	0x1
+ 790 01d3 2B       		.byte	0x2b
+ 791 01d4 A4020000 		.4byte	0x2a4
+ 792 01d8 02       		.uleb128 0x2
+ 793 01d9 91       		.byte	0x91
+ 794 01da 64       		.sleb128 -28
+ 795 01db 0E       		.uleb128 0xe
+ 796 01dc 4F030000 		.4byte	.LASF39
+ 797 01e0 01       		.byte	0x1
+ 798 01e1 2B       		.byte	0x2b
+ 799 01e2 9A000000 		.4byte	0x9a
+ 800 01e6 00000000 		.4byte	.LLST0
+ 801 01ea 0F       		.uleb128 0xf
+ 802 01eb 16000000 		.4byte	.LVL1
+ 803 01ef 6F040000 		.4byte	0x46f
+ 804 01f3 07020000 		.4byte	0x207
+ 805 01f7 10       		.uleb128 0x10
+ 806 01f8 01       		.uleb128 0x1
+ 807 01f9 52       		.byte	0x52
+ 808 01fa 05       		.uleb128 0x5
+ 809 01fb 03       		.byte	0x3
+ 810 01fc 00000000 		.4byte	.LANCHOR0
+ 811 0200 10       		.uleb128 0x10
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 18
+
+
+ 812 0201 01       		.uleb128 0x1
+ 813 0202 53       		.byte	0x53
+ 814 0203 02       		.uleb128 0x2
+ 815 0204 75       		.byte	0x75
+ 816 0205 00       		.sleb128 0
+ 817 0206 00       		.byte	0
+ 818 0207 0F       		.uleb128 0xf
+ 819 0208 30000000 		.4byte	.LVL2
+ 820 020c 7A040000 		.4byte	0x47a
+ 821 0210 1B020000 		.4byte	0x21b
+ 822 0214 10       		.uleb128 0x10
+ 823 0215 01       		.uleb128 0x1
+ 824 0216 50       		.byte	0x50
+ 825 0217 02       		.uleb128 0x2
+ 826 0218 75       		.byte	0x75
+ 827 0219 00       		.sleb128 0
+ 828 021a 00       		.byte	0
+ 829 021b 0F       		.uleb128 0xf
+ 830 021c 4E000000 		.4byte	.LVL3
+ 831 0220 7A040000 		.4byte	0x47a
+ 832 0224 2F020000 		.4byte	0x22f
+ 833 0228 10       		.uleb128 0x10
+ 834 0229 01       		.uleb128 0x1
+ 835 022a 50       		.byte	0x50
+ 836 022b 02       		.uleb128 0x2
+ 837 022c 75       		.byte	0x75
+ 838 022d 00       		.sleb128 0
+ 839 022e 00       		.byte	0
+ 840 022f 0F       		.uleb128 0xf
+ 841 0230 6C000000 		.4byte	.LVL4
+ 842 0234 7A040000 		.4byte	0x47a
+ 843 0238 43020000 		.4byte	0x243
+ 844 023c 10       		.uleb128 0x10
+ 845 023d 01       		.uleb128 0x1
+ 846 023e 50       		.byte	0x50
+ 847 023f 02       		.uleb128 0x2
+ 848 0240 75       		.byte	0x75
+ 849 0241 00       		.sleb128 0
+ 850 0242 00       		.byte	0
+ 851 0243 0F       		.uleb128 0xf
+ 852 0244 8A000000 		.4byte	.LVL5
+ 853 0248 7A040000 		.4byte	0x47a
+ 854 024c 57020000 		.4byte	0x257
+ 855 0250 10       		.uleb128 0x10
+ 856 0251 01       		.uleb128 0x1
+ 857 0252 50       		.byte	0x50
+ 858 0253 02       		.uleb128 0x2
+ 859 0254 75       		.byte	0x75
+ 860 0255 00       		.sleb128 0
+ 861 0256 00       		.byte	0
+ 862 0257 0F       		.uleb128 0xf
+ 863 0258 A8000000 		.4byte	.LVL6
+ 864 025c 7A040000 		.4byte	0x47a
+ 865 0260 6B020000 		.4byte	0x26b
+ 866 0264 10       		.uleb128 0x10
+ 867 0265 01       		.uleb128 0x1
+ 868 0266 50       		.byte	0x50
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 19
+
+
+ 869 0267 02       		.uleb128 0x2
+ 870 0268 75       		.byte	0x75
+ 871 0269 00       		.sleb128 0
+ 872 026a 00       		.byte	0
+ 873 026b 0F       		.uleb128 0xf
+ 874 026c C6000000 		.4byte	.LVL7
+ 875 0270 7A040000 		.4byte	0x47a
+ 876 0274 7F020000 		.4byte	0x27f
+ 877 0278 10       		.uleb128 0x10
+ 878 0279 01       		.uleb128 0x1
+ 879 027a 50       		.byte	0x50
+ 880 027b 02       		.uleb128 0x2
+ 881 027c 75       		.byte	0x75
+ 882 027d 00       		.sleb128 0
+ 883 027e 00       		.byte	0
+ 884 027f 0F       		.uleb128 0xf
+ 885 0280 E4000000 		.4byte	.LVL8
+ 886 0284 7A040000 		.4byte	0x47a
+ 887 0288 93020000 		.4byte	0x293
+ 888 028c 10       		.uleb128 0x10
+ 889 028d 01       		.uleb128 0x1
+ 890 028e 50       		.byte	0x50
+ 891 028f 02       		.uleb128 0x2
+ 892 0290 75       		.byte	0x75
+ 893 0291 00       		.sleb128 0
+ 894 0292 00       		.byte	0
+ 895 0293 11       		.uleb128 0x11
+ 896 0294 0C010000 		.4byte	.LVL9
+ 897 0298 89040000 		.4byte	0x489
+ 898 029c 10       		.uleb128 0x10
+ 899 029d 01       		.uleb128 0x1
+ 900 029e 50       		.byte	0x50
+ 901 029f 02       		.uleb128 0x2
+ 902 02a0 75       		.byte	0x75
+ 903 02a1 00       		.sleb128 0
+ 904 02a2 00       		.byte	0
+ 905 02a3 00       		.byte	0
+ 906 02a4 06       		.uleb128 0x6
+ 907 02a5 AD010000 		.4byte	0x1ad
+ 908 02a9 12       		.uleb128 0x12
+ 909 02aa D8010000 		.4byte	.LASF60
+ 910 02ae 01       		.byte	0x1
+ 911 02af 40       		.byte	0x40
+ 912 02b0 33000000 		.4byte	0x33
+ 913 02b4 00000000 		.4byte	.LFB1
+ 914 02b8 0A000000 		.4byte	.LFE1-.LFB1
+ 915 02bc 01       		.uleb128 0x1
+ 916 02bd 9C       		.byte	0x9c
+ 917 02be DB020000 		.4byte	0x2db
+ 918 02c2 13       		.uleb128 0x13
+ 919 02c3 7800     		.ascii	"x\000"
+ 920 02c5 01       		.byte	0x1
+ 921 02c6 40       		.byte	0x40
+ 922 02c7 33000000 		.4byte	0x33
+ 923 02cb 2C000000 		.4byte	.LLST1
+ 924 02cf 14       		.uleb128 0x14
+ 925 02d0 7900     		.ascii	"y\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 20
+
+
+ 926 02d2 01       		.byte	0x1
+ 927 02d3 40       		.byte	0x40
+ 928 02d4 33000000 		.4byte	0x33
+ 929 02d8 01       		.uleb128 0x1
+ 930 02d9 51       		.byte	0x51
+ 931 02da 00       		.byte	0
+ 932 02db 0C       		.uleb128 0xc
+ 933 02dc 23000000 		.4byte	.LASF41
+ 934 02e0 01       		.byte	0x1
+ 935 02e1 45       		.byte	0x45
+ 936 02e2 00000000 		.4byte	.LFB2
+ 937 02e6 8C010000 		.4byte	.LFE2-.LFB2
+ 938 02ea 01       		.uleb128 0x1
+ 939 02eb 9C       		.byte	0x9c
+ 940 02ec 0E040000 		.4byte	0x40e
+ 941 02f0 0E       		.uleb128 0xe
+ 942 02f1 C0000000 		.4byte	.LASF38
+ 943 02f5 01       		.byte	0x1
+ 944 02f6 45       		.byte	0x45
+ 945 02f7 0E040000 		.4byte	0x40e
+ 946 02fb 5B000000 		.4byte	.LLST2
+ 947 02ff 0D       		.uleb128 0xd
+ 948 0300 ED020000 		.4byte	.LASF42
+ 949 0304 01       		.byte	0x1
+ 950 0305 45       		.byte	0x45
+ 951 0306 14040000 		.4byte	0x414
+ 952 030a 02       		.uleb128 0x2
+ 953 030b 91       		.byte	0x91
+ 954 030c 48       		.sleb128 -56
+ 955 030d 15       		.uleb128 0x15
+ 956 030e 25020000 		.4byte	.LASF43
+ 957 0312 01       		.byte	0x1
+ 958 0313 4D       		.byte	0x4d
+ 959 0314 C2000000 		.4byte	0xc2
+ 960 0318 87000000 		.4byte	.LLST3
+ 961 031c 16       		.uleb128 0x16
+ 962 031d 6B030000 		.4byte	.LASF44
+ 963 0321 01       		.byte	0x1
+ 964 0322 4E       		.byte	0x4e
+ 965 0323 AD010000 		.4byte	0x1ad
+ 966 0327 02       		.uleb128 0x2
+ 967 0328 91       		.byte	0x91
+ 968 0329 54       		.sleb128 -44
+ 969 032a 15       		.uleb128 0x15
+ 970 032b 97010000 		.4byte	.LASF45
+ 971 032f 01       		.byte	0x1
+ 972 0330 5E       		.byte	0x5e
+ 973 0331 C2000000 		.4byte	0xc2
+ 974 0335 9F000000 		.4byte	.LLST4
+ 975 0339 17       		.uleb128 0x17
+ 976 033a 74000000 		.4byte	.LBB2
+ 977 033e 3A000000 		.4byte	.LBE2-.LBB2
+ 978 0342 87030000 		.4byte	0x387
+ 979 0346 15       		.uleb128 0x15
+ 980 0347 77010000 		.4byte	.LASF46
+ 981 034b 01       		.byte	0x1
+ 982 034c 58       		.byte	0x58
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 21
+
+
+ 983 034d AC000000 		.4byte	0xac
+ 984 0351 07010000 		.4byte	.LLST5
+ 985 0355 15       		.uleb128 0x15
+ 986 0356 CF000000 		.4byte	.LASF47
+ 987 035a 01       		.byte	0x1
+ 988 035b 59       		.byte	0x59
+ 989 035c C2000000 		.4byte	0xc2
+ 990 0360 1A010000 		.4byte	.LLST6
+ 991 0364 18       		.uleb128 0x18
+ 992 0365 7E000000 		.4byte	.LVL18
+ 993 0369 A9020000 		.4byte	0x2a9
+ 994 036d 18       		.uleb128 0x18
+ 995 036e 8A000000 		.4byte	.LVL20
+ 996 0372 94040000 		.4byte	0x494
+ 997 0376 11       		.uleb128 0x11
+ 998 0377 A6000000 		.4byte	.LVL24
+ 999 037b 9F040000 		.4byte	0x49f
+ 1000 037f 10       		.uleb128 0x10
+ 1001 0380 01       		.uleb128 0x1
+ 1002 0381 50       		.byte	0x50
+ 1003 0382 02       		.uleb128 0x2
+ 1004 0383 7D       		.byte	0x7d
+ 1005 0384 00       		.sleb128 0
+ 1006 0385 00       		.byte	0
+ 1007 0386 00       		.byte	0
+ 1008 0387 18       		.uleb128 0x18
+ 1009 0388 24000000 		.4byte	.LVL16
+ 1010 038c 94040000 		.4byte	0x494
+ 1011 0390 18       		.uleb128 0x18
+ 1012 0391 B8000000 		.4byte	.LVL25
+ 1013 0395 94040000 		.4byte	0x494
+ 1014 0399 0F       		.uleb128 0xf
+ 1015 039a C6000000 		.4byte	.LVL27
+ 1016 039e AA040000 		.4byte	0x4aa
+ 1017 03a2 AD030000 		.4byte	0x3ad
+ 1018 03a6 10       		.uleb128 0x10
+ 1019 03a7 01       		.uleb128 0x1
+ 1020 03a8 50       		.byte	0x50
+ 1021 03a9 02       		.uleb128 0x2
+ 1022 03aa 91       		.byte	0x91
+ 1023 03ab 54       		.sleb128 -44
+ 1024 03ac 00       		.byte	0
+ 1025 03ad 0F       		.uleb128 0xf
+ 1026 03ae F0000000 		.4byte	.LVL30
+ 1027 03b2 9F040000 		.4byte	0x49f
+ 1028 03b6 C1030000 		.4byte	0x3c1
+ 1029 03ba 10       		.uleb128 0x10
+ 1030 03bb 01       		.uleb128 0x1
+ 1031 03bc 50       		.byte	0x50
+ 1032 03bd 02       		.uleb128 0x2
+ 1033 03be 7D       		.byte	0x7d
+ 1034 03bf 00       		.sleb128 0
+ 1035 03c0 00       		.byte	0
+ 1036 03c1 0F       		.uleb128 0xf
+ 1037 03c2 08010000 		.4byte	.LVL33
+ 1038 03c6 9F040000 		.4byte	0x49f
+ 1039 03ca D5030000 		.4byte	0x3d5
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 22
+
+
+ 1040 03ce 10       		.uleb128 0x10
+ 1041 03cf 01       		.uleb128 0x1
+ 1042 03d0 50       		.byte	0x50
+ 1043 03d1 02       		.uleb128 0x2
+ 1044 03d2 7D       		.byte	0x7d
+ 1045 03d3 00       		.sleb128 0
+ 1046 03d4 00       		.byte	0
+ 1047 03d5 0F       		.uleb128 0xf
+ 1048 03d6 20010000 		.4byte	.LVL36
+ 1049 03da 9F040000 		.4byte	0x49f
+ 1050 03de E9030000 		.4byte	0x3e9
+ 1051 03e2 10       		.uleb128 0x10
+ 1052 03e3 01       		.uleb128 0x1
+ 1053 03e4 50       		.byte	0x50
+ 1054 03e5 02       		.uleb128 0x2
+ 1055 03e6 7D       		.byte	0x7d
+ 1056 03e7 00       		.sleb128 0
+ 1057 03e8 00       		.byte	0
+ 1058 03e9 0F       		.uleb128 0xf
+ 1059 03ea 38010000 		.4byte	.LVL39
+ 1060 03ee 9F040000 		.4byte	0x49f
+ 1061 03f2 FD030000 		.4byte	0x3fd
+ 1062 03f6 10       		.uleb128 0x10
+ 1063 03f7 01       		.uleb128 0x1
+ 1064 03f8 50       		.byte	0x50
+ 1065 03f9 02       		.uleb128 0x2
+ 1066 03fa 7D       		.byte	0x7d
+ 1067 03fb 00       		.sleb128 0
+ 1068 03fc 00       		.byte	0
+ 1069 03fd 11       		.uleb128 0x11
+ 1070 03fe 74010000 		.4byte	.LVL42
+ 1071 0402 AA040000 		.4byte	0x4aa
+ 1072 0406 10       		.uleb128 0x10
+ 1073 0407 01       		.uleb128 0x1
+ 1074 0408 50       		.byte	0x50
+ 1075 0409 02       		.uleb128 0x2
+ 1076 040a 91       		.byte	0x91
+ 1077 040b 54       		.sleb128 -44
+ 1078 040c 00       		.byte	0
+ 1079 040d 00       		.byte	0
+ 1080 040e 05       		.uleb128 0x5
+ 1081 040f 04       		.byte	0x4
+ 1082 0410 AD010000 		.4byte	0x1ad
+ 1083 0414 06       		.uleb128 0x6
+ 1084 0415 2A010000 		.4byte	0x12a
+ 1085 0419 19       		.uleb128 0x19
+ 1086 041a A7000000 		.4byte	0xa7
+ 1087 041e 29040000 		.4byte	0x429
+ 1088 0422 1A       		.uleb128 0x1a
+ 1089 0423 93000000 		.4byte	0x93
+ 1090 0427 13       		.byte	0x13
+ 1091 0428 00       		.byte	0
+ 1092 0429 16       		.uleb128 0x16
+ 1093 042a 95030000 		.4byte	.LASF48
+ 1094 042e 04       		.byte	0x4
+ 1095 042f 48       		.byte	0x48
+ 1096 0430 3A040000 		.4byte	0x43a
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 23
+
+
+ 1097 0434 05       		.uleb128 0x5
+ 1098 0435 03       		.byte	0x3
+ 1099 0436 00000000 		.4byte	rhea_rtc_datetimeFormatGeneral
+ 1100 043a 06       		.uleb128 0x6
+ 1101 043b 19040000 		.4byte	0x419
+ 1102 043f 19       		.uleb128 0x19
+ 1103 0440 A7000000 		.4byte	0xa7
+ 1104 0444 4F040000 		.4byte	0x44f
+ 1105 0448 1A       		.uleb128 0x1a
+ 1106 0449 93000000 		.4byte	0x93
+ 1107 044d 15       		.byte	0x15
+ 1108 044e 00       		.byte	0
+ 1109 044f 1B       		.uleb128 0x1b
+ 1110 0450 76000000 		.4byte	.LASF49
+ 1111 0454 04       		.byte	0x4
+ 1112 0455 4A       		.byte	0x4a
+ 1113 0456 5A040000 		.4byte	0x45a
+ 1114 045a 06       		.uleb128 0x6
+ 1115 045b 3F040000 		.4byte	0x43f
+ 1116 045f 1B       		.uleb128 0x1b
+ 1117 0460 38010000 		.4byte	.LASF50
+ 1118 0464 04       		.byte	0x4
+ 1119 0465 4C       		.byte	0x4c
+ 1120 0466 6A040000 		.4byte	0x46a
+ 1121 046a 06       		.uleb128 0x6
+ 1122 046b 3F040000 		.4byte	0x43f
+ 1123 046f 1C       		.uleb128 0x1c
+ 1124 0470 A3000000 		.4byte	.LASF51
+ 1125 0474 A3000000 		.4byte	.LASF51
+ 1126 0478 04       		.byte	0x4
+ 1127 0479 5D       		.byte	0x5d
+ 1128 047a 1D       		.uleb128 0x1d
+ 1129 047b 1F010000 		.4byte	.LASF61
+ 1130 047f C7010000 		.4byte	.LASF62
+ 1131 0483 07       		.byte	0x7
+ 1132 0484 00       		.byte	0
+ 1133 0485 1F010000 		.4byte	.LASF61
+ 1134 0489 1C       		.uleb128 0x1c
+ 1135 048a 80010000 		.4byte	.LASF52
+ 1136 048e 80010000 		.4byte	.LASF52
+ 1137 0492 06       		.byte	0x6
+ 1138 0493 1A       		.byte	0x1a
+ 1139 0494 1C       		.uleb128 0x1c
+ 1140 0495 08030000 		.4byte	.LASF53
+ 1141 0499 08030000 		.4byte	.LASF53
+ 1142 049d 04       		.byte	0x4
+ 1143 049e 64       		.byte	0x64
+ 1144 049f 1C       		.uleb128 0x1c
+ 1145 04a0 F3020000 		.4byte	.LASF54
+ 1146 04a4 F3020000 		.4byte	.LASF54
+ 1147 04a8 04       		.byte	0x4
+ 1148 04a9 6B       		.byte	0x6b
+ 1149 04aa 1C       		.uleb128 0x1c
+ 1150 04ab D8000000 		.4byte	.LASF55
+ 1151 04af D8000000 		.4byte	.LASF55
+ 1152 04b3 04       		.byte	0x4
+ 1153 04b4 7A       		.byte	0x7a
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 24
+
+
+ 1154 04b5 00       		.byte	0
+ 1155              		.section	.debug_abbrev,"",%progbits
+ 1156              	.Ldebug_abbrev0:
+ 1157 0000 01       		.uleb128 0x1
+ 1158 0001 11       		.uleb128 0x11
+ 1159 0002 01       		.byte	0x1
+ 1160 0003 25       		.uleb128 0x25
+ 1161 0004 0E       		.uleb128 0xe
+ 1162 0005 13       		.uleb128 0x13
+ 1163 0006 0B       		.uleb128 0xb
+ 1164 0007 03       		.uleb128 0x3
+ 1165 0008 0E       		.uleb128 0xe
+ 1166 0009 1B       		.uleb128 0x1b
+ 1167 000a 0E       		.uleb128 0xe
+ 1168 000b 55       		.uleb128 0x55
+ 1169 000c 17       		.uleb128 0x17
+ 1170 000d 11       		.uleb128 0x11
+ 1171 000e 01       		.uleb128 0x1
+ 1172 000f 10       		.uleb128 0x10
+ 1173 0010 17       		.uleb128 0x17
+ 1174 0011 00       		.byte	0
+ 1175 0012 00       		.byte	0
+ 1176 0013 02       		.uleb128 0x2
+ 1177 0014 24       		.uleb128 0x24
+ 1178 0015 00       		.byte	0
+ 1179 0016 0B       		.uleb128 0xb
+ 1180 0017 0B       		.uleb128 0xb
+ 1181 0018 3E       		.uleb128 0x3e
+ 1182 0019 0B       		.uleb128 0xb
+ 1183 001a 03       		.uleb128 0x3
+ 1184 001b 0E       		.uleb128 0xe
+ 1185 001c 00       		.byte	0
+ 1186 001d 00       		.byte	0
+ 1187 001e 03       		.uleb128 0x3
+ 1188 001f 24       		.uleb128 0x24
+ 1189 0020 00       		.byte	0
+ 1190 0021 0B       		.uleb128 0xb
+ 1191 0022 0B       		.uleb128 0xb
+ 1192 0023 3E       		.uleb128 0x3e
+ 1193 0024 0B       		.uleb128 0xb
+ 1194 0025 03       		.uleb128 0x3
+ 1195 0026 08       		.uleb128 0x8
+ 1196 0027 00       		.byte	0
+ 1197 0028 00       		.byte	0
+ 1198 0029 04       		.uleb128 0x4
+ 1199 002a 16       		.uleb128 0x16
+ 1200 002b 00       		.byte	0
+ 1201 002c 03       		.uleb128 0x3
+ 1202 002d 0E       		.uleb128 0xe
+ 1203 002e 3A       		.uleb128 0x3a
+ 1204 002f 0B       		.uleb128 0xb
+ 1205 0030 3B       		.uleb128 0x3b
+ 1206 0031 0B       		.uleb128 0xb
+ 1207 0032 49       		.uleb128 0x49
+ 1208 0033 13       		.uleb128 0x13
+ 1209 0034 00       		.byte	0
+ 1210 0035 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 25
+
+
+ 1211 0036 05       		.uleb128 0x5
+ 1212 0037 0F       		.uleb128 0xf
+ 1213 0038 00       		.byte	0
+ 1214 0039 0B       		.uleb128 0xb
+ 1215 003a 0B       		.uleb128 0xb
+ 1216 003b 49       		.uleb128 0x49
+ 1217 003c 13       		.uleb128 0x13
+ 1218 003d 00       		.byte	0
+ 1219 003e 00       		.byte	0
+ 1220 003f 06       		.uleb128 0x6
+ 1221 0040 26       		.uleb128 0x26
+ 1222 0041 00       		.byte	0
+ 1223 0042 49       		.uleb128 0x49
+ 1224 0043 13       		.uleb128 0x13
+ 1225 0044 00       		.byte	0
+ 1226 0045 00       		.byte	0
+ 1227 0046 07       		.uleb128 0x7
+ 1228 0047 13       		.uleb128 0x13
+ 1229 0048 01       		.byte	0x1
+ 1230 0049 0B       		.uleb128 0xb
+ 1231 004a 0B       		.uleb128 0xb
+ 1232 004b 3A       		.uleb128 0x3a
+ 1233 004c 0B       		.uleb128 0xb
+ 1234 004d 3B       		.uleb128 0x3b
+ 1235 004e 0B       		.uleb128 0xb
+ 1236 004f 01       		.uleb128 0x1
+ 1237 0050 13       		.uleb128 0x13
+ 1238 0051 00       		.byte	0
+ 1239 0052 00       		.byte	0
+ 1240 0053 08       		.uleb128 0x8
+ 1241 0054 0D       		.uleb128 0xd
+ 1242 0055 00       		.byte	0
+ 1243 0056 03       		.uleb128 0x3
+ 1244 0057 0E       		.uleb128 0xe
+ 1245 0058 3A       		.uleb128 0x3a
+ 1246 0059 0B       		.uleb128 0xb
+ 1247 005a 3B       		.uleb128 0x3b
+ 1248 005b 0B       		.uleb128 0xb
+ 1249 005c 49       		.uleb128 0x49
+ 1250 005d 13       		.uleb128 0x13
+ 1251 005e 38       		.uleb128 0x38
+ 1252 005f 0B       		.uleb128 0xb
+ 1253 0060 00       		.byte	0
+ 1254 0061 00       		.byte	0
+ 1255 0062 09       		.uleb128 0x9
+ 1256 0063 04       		.uleb128 0x4
+ 1257 0064 01       		.byte	0x1
+ 1258 0065 03       		.uleb128 0x3
+ 1259 0066 0E       		.uleb128 0xe
+ 1260 0067 0B       		.uleb128 0xb
+ 1261 0068 0B       		.uleb128 0xb
+ 1262 0069 49       		.uleb128 0x49
+ 1263 006a 13       		.uleb128 0x13
+ 1264 006b 3A       		.uleb128 0x3a
+ 1265 006c 0B       		.uleb128 0xb
+ 1266 006d 3B       		.uleb128 0x3b
+ 1267 006e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 26
+
+
+ 1268 006f 01       		.uleb128 0x1
+ 1269 0070 13       		.uleb128 0x13
+ 1270 0071 00       		.byte	0
+ 1271 0072 00       		.byte	0
+ 1272 0073 0A       		.uleb128 0xa
+ 1273 0074 28       		.uleb128 0x28
+ 1274 0075 00       		.byte	0
+ 1275 0076 03       		.uleb128 0x3
+ 1276 0077 0E       		.uleb128 0xe
+ 1277 0078 1C       		.uleb128 0x1c
+ 1278 0079 0B       		.uleb128 0xb
+ 1279 007a 00       		.byte	0
+ 1280 007b 00       		.byte	0
+ 1281 007c 0B       		.uleb128 0xb
+ 1282 007d 13       		.uleb128 0x13
+ 1283 007e 01       		.byte	0x1
+ 1284 007f 03       		.uleb128 0x3
+ 1285 0080 0E       		.uleb128 0xe
+ 1286 0081 0B       		.uleb128 0xb
+ 1287 0082 0B       		.uleb128 0xb
+ 1288 0083 3A       		.uleb128 0x3a
+ 1289 0084 0B       		.uleb128 0xb
+ 1290 0085 3B       		.uleb128 0x3b
+ 1291 0086 0B       		.uleb128 0xb
+ 1292 0087 01       		.uleb128 0x1
+ 1293 0088 13       		.uleb128 0x13
+ 1294 0089 00       		.byte	0
+ 1295 008a 00       		.byte	0
+ 1296 008b 0C       		.uleb128 0xc
+ 1297 008c 2E       		.uleb128 0x2e
+ 1298 008d 01       		.byte	0x1
+ 1299 008e 3F       		.uleb128 0x3f
+ 1300 008f 19       		.uleb128 0x19
+ 1301 0090 03       		.uleb128 0x3
+ 1302 0091 0E       		.uleb128 0xe
+ 1303 0092 3A       		.uleb128 0x3a
+ 1304 0093 0B       		.uleb128 0xb
+ 1305 0094 3B       		.uleb128 0x3b
+ 1306 0095 0B       		.uleb128 0xb
+ 1307 0096 27       		.uleb128 0x27
+ 1308 0097 19       		.uleb128 0x19
+ 1309 0098 11       		.uleb128 0x11
+ 1310 0099 01       		.uleb128 0x1
+ 1311 009a 12       		.uleb128 0x12
+ 1312 009b 06       		.uleb128 0x6
+ 1313 009c 40       		.uleb128 0x40
+ 1314 009d 18       		.uleb128 0x18
+ 1315 009e 9742     		.uleb128 0x2117
+ 1316 00a0 19       		.uleb128 0x19
+ 1317 00a1 01       		.uleb128 0x1
+ 1318 00a2 13       		.uleb128 0x13
+ 1319 00a3 00       		.byte	0
+ 1320 00a4 00       		.byte	0
+ 1321 00a5 0D       		.uleb128 0xd
+ 1322 00a6 05       		.uleb128 0x5
+ 1323 00a7 00       		.byte	0
+ 1324 00a8 03       		.uleb128 0x3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 27
+
+
+ 1325 00a9 0E       		.uleb128 0xe
+ 1326 00aa 3A       		.uleb128 0x3a
+ 1327 00ab 0B       		.uleb128 0xb
+ 1328 00ac 3B       		.uleb128 0x3b
+ 1329 00ad 0B       		.uleb128 0xb
+ 1330 00ae 49       		.uleb128 0x49
+ 1331 00af 13       		.uleb128 0x13
+ 1332 00b0 02       		.uleb128 0x2
+ 1333 00b1 18       		.uleb128 0x18
+ 1334 00b2 00       		.byte	0
+ 1335 00b3 00       		.byte	0
+ 1336 00b4 0E       		.uleb128 0xe
+ 1337 00b5 05       		.uleb128 0x5
+ 1338 00b6 00       		.byte	0
+ 1339 00b7 03       		.uleb128 0x3
+ 1340 00b8 0E       		.uleb128 0xe
+ 1341 00b9 3A       		.uleb128 0x3a
+ 1342 00ba 0B       		.uleb128 0xb
+ 1343 00bb 3B       		.uleb128 0x3b
+ 1344 00bc 0B       		.uleb128 0xb
+ 1345 00bd 49       		.uleb128 0x49
+ 1346 00be 13       		.uleb128 0x13
+ 1347 00bf 02       		.uleb128 0x2
+ 1348 00c0 17       		.uleb128 0x17
+ 1349 00c1 00       		.byte	0
+ 1350 00c2 00       		.byte	0
+ 1351 00c3 0F       		.uleb128 0xf
+ 1352 00c4 898201   		.uleb128 0x4109
+ 1353 00c7 01       		.byte	0x1
+ 1354 00c8 11       		.uleb128 0x11
+ 1355 00c9 01       		.uleb128 0x1
+ 1356 00ca 31       		.uleb128 0x31
+ 1357 00cb 13       		.uleb128 0x13
+ 1358 00cc 01       		.uleb128 0x1
+ 1359 00cd 13       		.uleb128 0x13
+ 1360 00ce 00       		.byte	0
+ 1361 00cf 00       		.byte	0
+ 1362 00d0 10       		.uleb128 0x10
+ 1363 00d1 8A8201   		.uleb128 0x410a
+ 1364 00d4 00       		.byte	0
+ 1365 00d5 02       		.uleb128 0x2
+ 1366 00d6 18       		.uleb128 0x18
+ 1367 00d7 9142     		.uleb128 0x2111
+ 1368 00d9 18       		.uleb128 0x18
+ 1369 00da 00       		.byte	0
+ 1370 00db 00       		.byte	0
+ 1371 00dc 11       		.uleb128 0x11
+ 1372 00dd 898201   		.uleb128 0x4109
+ 1373 00e0 01       		.byte	0x1
+ 1374 00e1 11       		.uleb128 0x11
+ 1375 00e2 01       		.uleb128 0x1
+ 1376 00e3 31       		.uleb128 0x31
+ 1377 00e4 13       		.uleb128 0x13
+ 1378 00e5 00       		.byte	0
+ 1379 00e6 00       		.byte	0
+ 1380 00e7 12       		.uleb128 0x12
+ 1381 00e8 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 28
+
+
+ 1382 00e9 01       		.byte	0x1
+ 1383 00ea 3F       		.uleb128 0x3f
+ 1384 00eb 19       		.uleb128 0x19
+ 1385 00ec 03       		.uleb128 0x3
+ 1386 00ed 0E       		.uleb128 0xe
+ 1387 00ee 3A       		.uleb128 0x3a
+ 1388 00ef 0B       		.uleb128 0xb
+ 1389 00f0 3B       		.uleb128 0x3b
+ 1390 00f1 0B       		.uleb128 0xb
+ 1391 00f2 27       		.uleb128 0x27
+ 1392 00f3 19       		.uleb128 0x19
+ 1393 00f4 49       		.uleb128 0x49
+ 1394 00f5 13       		.uleb128 0x13
+ 1395 00f6 11       		.uleb128 0x11
+ 1396 00f7 01       		.uleb128 0x1
+ 1397 00f8 12       		.uleb128 0x12
+ 1398 00f9 06       		.uleb128 0x6
+ 1399 00fa 40       		.uleb128 0x40
+ 1400 00fb 18       		.uleb128 0x18
+ 1401 00fc 9742     		.uleb128 0x2117
+ 1402 00fe 19       		.uleb128 0x19
+ 1403 00ff 01       		.uleb128 0x1
+ 1404 0100 13       		.uleb128 0x13
+ 1405 0101 00       		.byte	0
+ 1406 0102 00       		.byte	0
+ 1407 0103 13       		.uleb128 0x13
+ 1408 0104 05       		.uleb128 0x5
+ 1409 0105 00       		.byte	0
+ 1410 0106 03       		.uleb128 0x3
+ 1411 0107 08       		.uleb128 0x8
+ 1412 0108 3A       		.uleb128 0x3a
+ 1413 0109 0B       		.uleb128 0xb
+ 1414 010a 3B       		.uleb128 0x3b
+ 1415 010b 0B       		.uleb128 0xb
+ 1416 010c 49       		.uleb128 0x49
+ 1417 010d 13       		.uleb128 0x13
+ 1418 010e 02       		.uleb128 0x2
+ 1419 010f 17       		.uleb128 0x17
+ 1420 0110 00       		.byte	0
+ 1421 0111 00       		.byte	0
+ 1422 0112 14       		.uleb128 0x14
+ 1423 0113 05       		.uleb128 0x5
+ 1424 0114 00       		.byte	0
+ 1425 0115 03       		.uleb128 0x3
+ 1426 0116 08       		.uleb128 0x8
+ 1427 0117 3A       		.uleb128 0x3a
+ 1428 0118 0B       		.uleb128 0xb
+ 1429 0119 3B       		.uleb128 0x3b
+ 1430 011a 0B       		.uleb128 0xb
+ 1431 011b 49       		.uleb128 0x49
+ 1432 011c 13       		.uleb128 0x13
+ 1433 011d 02       		.uleb128 0x2
+ 1434 011e 18       		.uleb128 0x18
+ 1435 011f 00       		.byte	0
+ 1436 0120 00       		.byte	0
+ 1437 0121 15       		.uleb128 0x15
+ 1438 0122 34       		.uleb128 0x34
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 29
+
+
+ 1439 0123 00       		.byte	0
+ 1440 0124 03       		.uleb128 0x3
+ 1441 0125 0E       		.uleb128 0xe
+ 1442 0126 3A       		.uleb128 0x3a
+ 1443 0127 0B       		.uleb128 0xb
+ 1444 0128 3B       		.uleb128 0x3b
+ 1445 0129 0B       		.uleb128 0xb
+ 1446 012a 49       		.uleb128 0x49
+ 1447 012b 13       		.uleb128 0x13
+ 1448 012c 02       		.uleb128 0x2
+ 1449 012d 17       		.uleb128 0x17
+ 1450 012e 00       		.byte	0
+ 1451 012f 00       		.byte	0
+ 1452 0130 16       		.uleb128 0x16
+ 1453 0131 34       		.uleb128 0x34
+ 1454 0132 00       		.byte	0
+ 1455 0133 03       		.uleb128 0x3
+ 1456 0134 0E       		.uleb128 0xe
+ 1457 0135 3A       		.uleb128 0x3a
+ 1458 0136 0B       		.uleb128 0xb
+ 1459 0137 3B       		.uleb128 0x3b
+ 1460 0138 0B       		.uleb128 0xb
+ 1461 0139 49       		.uleb128 0x49
+ 1462 013a 13       		.uleb128 0x13
+ 1463 013b 02       		.uleb128 0x2
+ 1464 013c 18       		.uleb128 0x18
+ 1465 013d 00       		.byte	0
+ 1466 013e 00       		.byte	0
+ 1467 013f 17       		.uleb128 0x17
+ 1468 0140 0B       		.uleb128 0xb
+ 1469 0141 01       		.byte	0x1
+ 1470 0142 11       		.uleb128 0x11
+ 1471 0143 01       		.uleb128 0x1
+ 1472 0144 12       		.uleb128 0x12
+ 1473 0145 06       		.uleb128 0x6
+ 1474 0146 01       		.uleb128 0x1
+ 1475 0147 13       		.uleb128 0x13
+ 1476 0148 00       		.byte	0
+ 1477 0149 00       		.byte	0
+ 1478 014a 18       		.uleb128 0x18
+ 1479 014b 898201   		.uleb128 0x4109
+ 1480 014e 00       		.byte	0
+ 1481 014f 11       		.uleb128 0x11
+ 1482 0150 01       		.uleb128 0x1
+ 1483 0151 31       		.uleb128 0x31
+ 1484 0152 13       		.uleb128 0x13
+ 1485 0153 00       		.byte	0
+ 1486 0154 00       		.byte	0
+ 1487 0155 19       		.uleb128 0x19
+ 1488 0156 01       		.uleb128 0x1
+ 1489 0157 01       		.byte	0x1
+ 1490 0158 49       		.uleb128 0x49
+ 1491 0159 13       		.uleb128 0x13
+ 1492 015a 01       		.uleb128 0x1
+ 1493 015b 13       		.uleb128 0x13
+ 1494 015c 00       		.byte	0
+ 1495 015d 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 30
+
+
+ 1496 015e 1A       		.uleb128 0x1a
+ 1497 015f 21       		.uleb128 0x21
+ 1498 0160 00       		.byte	0
+ 1499 0161 49       		.uleb128 0x49
+ 1500 0162 13       		.uleb128 0x13
+ 1501 0163 2F       		.uleb128 0x2f
+ 1502 0164 0B       		.uleb128 0xb
+ 1503 0165 00       		.byte	0
+ 1504 0166 00       		.byte	0
+ 1505 0167 1B       		.uleb128 0x1b
+ 1506 0168 34       		.uleb128 0x34
+ 1507 0169 00       		.byte	0
+ 1508 016a 03       		.uleb128 0x3
+ 1509 016b 0E       		.uleb128 0xe
+ 1510 016c 3A       		.uleb128 0x3a
+ 1511 016d 0B       		.uleb128 0xb
+ 1512 016e 3B       		.uleb128 0x3b
+ 1513 016f 0B       		.uleb128 0xb
+ 1514 0170 49       		.uleb128 0x49
+ 1515 0171 13       		.uleb128 0x13
+ 1516 0172 00       		.byte	0
+ 1517 0173 00       		.byte	0
+ 1518 0174 1C       		.uleb128 0x1c
+ 1519 0175 2E       		.uleb128 0x2e
+ 1520 0176 00       		.byte	0
+ 1521 0177 3F       		.uleb128 0x3f
+ 1522 0178 19       		.uleb128 0x19
+ 1523 0179 3C       		.uleb128 0x3c
+ 1524 017a 19       		.uleb128 0x19
+ 1525 017b 6E       		.uleb128 0x6e
+ 1526 017c 0E       		.uleb128 0xe
+ 1527 017d 03       		.uleb128 0x3
+ 1528 017e 0E       		.uleb128 0xe
+ 1529 017f 3A       		.uleb128 0x3a
+ 1530 0180 0B       		.uleb128 0xb
+ 1531 0181 3B       		.uleb128 0x3b
+ 1532 0182 0B       		.uleb128 0xb
+ 1533 0183 00       		.byte	0
+ 1534 0184 00       		.byte	0
+ 1535 0185 1D       		.uleb128 0x1d
+ 1536 0186 2E       		.uleb128 0x2e
+ 1537 0187 00       		.byte	0
+ 1538 0188 3F       		.uleb128 0x3f
+ 1539 0189 19       		.uleb128 0x19
+ 1540 018a 3C       		.uleb128 0x3c
+ 1541 018b 19       		.uleb128 0x19
+ 1542 018c 6E       		.uleb128 0x6e
+ 1543 018d 0E       		.uleb128 0xe
+ 1544 018e 03       		.uleb128 0x3
+ 1545 018f 0E       		.uleb128 0xe
+ 1546 0190 3A       		.uleb128 0x3a
+ 1547 0191 0B       		.uleb128 0xb
+ 1548 0192 3B       		.uleb128 0x3b
+ 1549 0193 0B       		.uleb128 0xb
+ 1550 0194 6E       		.uleb128 0x6e
+ 1551 0195 0E       		.uleb128 0xe
+ 1552 0196 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 31
+
+
+ 1553 0197 00       		.byte	0
+ 1554 0198 00       		.byte	0
+ 1555              		.section	.debug_loc,"",%progbits
+ 1556              	.Ldebug_loc0:
+ 1557              	.LLST0:
+ 1558 0000 00000000 		.4byte	.LVL0
+ 1559 0004 15000000 		.4byte	.LVL1-1
+ 1560 0008 0100     		.2byte	0x1
+ 1561 000a 53       		.byte	0x53
+ 1562 000b 15000000 		.4byte	.LVL1-1
+ 1563 000f 10010000 		.4byte	.LVL10
+ 1564 0013 0100     		.2byte	0x1
+ 1565 0015 55       		.byte	0x55
+ 1566 0016 10010000 		.4byte	.LVL10
+ 1567 001a 38010000 		.4byte	.LFE0
+ 1568 001e 0400     		.2byte	0x4
+ 1569 0020 F3       		.byte	0xf3
+ 1570 0021 01       		.uleb128 0x1
+ 1571 0022 53       		.byte	0x53
+ 1572 0023 9F       		.byte	0x9f
+ 1573 0024 00000000 		.4byte	0
+ 1574 0028 00000000 		.4byte	0
+ 1575              	.LLST1:
+ 1576 002c 00000000 		.4byte	.LVL11
+ 1577 0030 02000000 		.4byte	.LVL12
+ 1578 0034 0100     		.2byte	0x1
+ 1579 0036 50       		.byte	0x50
+ 1580 0037 02000000 		.4byte	.LVL12
+ 1581 003b 08000000 		.4byte	.LVL13
+ 1582 003f 0100     		.2byte	0x1
+ 1583 0041 50       		.byte	0x50
+ 1584 0042 08000000 		.4byte	.LVL13
+ 1585 0046 0A000000 		.4byte	.LFE1
+ 1586 004a 0700     		.2byte	0x7
+ 1587 004c F3       		.byte	0xf3
+ 1588 004d 01       		.uleb128 0x1
+ 1589 004e 50       		.byte	0x50
+ 1590 004f 71       		.byte	0x71
+ 1591 0050 00       		.sleb128 0
+ 1592 0051 1C       		.byte	0x1c
+ 1593 0052 9F       		.byte	0x9f
+ 1594 0053 00000000 		.4byte	0
+ 1595 0057 00000000 		.4byte	0
+ 1596              	.LLST2:
+ 1597 005b 00000000 		.4byte	.LVL14
+ 1598 005f 20000000 		.4byte	.LVL15
+ 1599 0063 0100     		.2byte	0x1
+ 1600 0065 50       		.byte	0x50
+ 1601 0066 20000000 		.4byte	.LVL15
+ 1602 006a 7E010000 		.4byte	.LVL43
+ 1603 006e 0100     		.2byte	0x1
+ 1604 0070 54       		.byte	0x54
+ 1605 0071 7E010000 		.4byte	.LVL43
+ 1606 0075 8C010000 		.4byte	.LFE2
+ 1607 0079 0400     		.2byte	0x4
+ 1608 007b F3       		.byte	0xf3
+ 1609 007c 01       		.uleb128 0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 32
+
+
+ 1610 007d 50       		.byte	0x50
+ 1611 007e 9F       		.byte	0x9f
+ 1612 007f 00000000 		.4byte	0
+ 1613 0083 00000000 		.4byte	0
+ 1614              	.LLST3:
+ 1615 0087 28000000 		.4byte	.LVL17
+ 1616 008b 7E010000 		.4byte	.LVL43
+ 1617 008f 0600     		.2byte	0x6
+ 1618 0091 56       		.byte	0x56
+ 1619 0092 93       		.byte	0x93
+ 1620 0093 04       		.uleb128 0x4
+ 1621 0094 57       		.byte	0x57
+ 1622 0095 93       		.byte	0x93
+ 1623 0096 04       		.uleb128 0x4
+ 1624 0097 00000000 		.4byte	0
+ 1625 009b 00000000 		.4byte	0
+ 1626              	.LLST4:
+ 1627 009f B8000000 		.4byte	.LVL25
+ 1628 00a3 C2000000 		.4byte	.LVL26
+ 1629 00a7 0600     		.2byte	0x6
+ 1630 00a9 50       		.byte	0x50
+ 1631 00aa 93       		.byte	0x93
+ 1632 00ab 04       		.uleb128 0x4
+ 1633 00ac 51       		.byte	0x51
+ 1634 00ad 93       		.byte	0x93
+ 1635 00ae 04       		.uleb128 0x4
+ 1636 00af D2000000 		.4byte	.LVL28
+ 1637 00b3 EC000000 		.4byte	.LVL29
+ 1638 00b7 0600     		.2byte	0x6
+ 1639 00b9 50       		.byte	0x50
+ 1640 00ba 93       		.byte	0x93
+ 1641 00bb 04       		.uleb128 0x4
+ 1642 00bc 51       		.byte	0x51
+ 1643 00bd 93       		.byte	0x93
+ 1644 00be 04       		.uleb128 0x4
+ 1645 00bf FA000000 		.4byte	.LVL31
+ 1646 00c3 04010000 		.4byte	.LVL32
+ 1647 00c7 0600     		.2byte	0x6
+ 1648 00c9 50       		.byte	0x50
+ 1649 00ca 93       		.byte	0x93
+ 1650 00cb 04       		.uleb128 0x4
+ 1651 00cc 51       		.byte	0x51
+ 1652 00cd 93       		.byte	0x93
+ 1653 00ce 04       		.uleb128 0x4
+ 1654 00cf 12010000 		.4byte	.LVL34
+ 1655 00d3 1C010000 		.4byte	.LVL35
+ 1656 00d7 0600     		.2byte	0x6
+ 1657 00d9 50       		.byte	0x50
+ 1658 00da 93       		.byte	0x93
+ 1659 00db 04       		.uleb128 0x4
+ 1660 00dc 51       		.byte	0x51
+ 1661 00dd 93       		.byte	0x93
+ 1662 00de 04       		.uleb128 0x4
+ 1663 00df 2A010000 		.4byte	.LVL37
+ 1664 00e3 34010000 		.4byte	.LVL38
+ 1665 00e7 0600     		.2byte	0x6
+ 1666 00e9 50       		.byte	0x50
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 33
+
+
+ 1667 00ea 93       		.byte	0x93
+ 1668 00eb 04       		.uleb128 0x4
+ 1669 00ec 51       		.byte	0x51
+ 1670 00ed 93       		.byte	0x93
+ 1671 00ee 04       		.uleb128 0x4
+ 1672 00ef 42010000 		.4byte	.LVL40
+ 1673 00f3 6E010000 		.4byte	.LVL41
+ 1674 00f7 0600     		.2byte	0x6
+ 1675 00f9 50       		.byte	0x50
+ 1676 00fa 93       		.byte	0x93
+ 1677 00fb 04       		.uleb128 0x4
+ 1678 00fc 51       		.byte	0x51
+ 1679 00fd 93       		.byte	0x93
+ 1680 00fe 04       		.uleb128 0x4
+ 1681 00ff 00000000 		.4byte	0
+ 1682 0103 00000000 		.4byte	0
+ 1683              	.LLST5:
+ 1684 0107 80000000 		.4byte	.LVL19
+ 1685 010b 98000000 		.4byte	.LVL22
+ 1686 010f 0100     		.2byte	0x1
+ 1687 0111 58       		.byte	0x58
+ 1688 0112 00000000 		.4byte	0
+ 1689 0116 00000000 		.4byte	0
+ 1690              	.LLST6:
+ 1691 011a 94000000 		.4byte	.LVL21
+ 1692 011e 9E000000 		.4byte	.LVL23
+ 1693 0122 0B00     		.2byte	0xb
+ 1694 0124 72       		.byte	0x72
+ 1695 0125 00       		.sleb128 0
+ 1696 0126 F7       		.byte	0xf7
+ 1697 0127 2C       		.uleb128 0x2c
+ 1698 0128 F7       		.byte	0xf7
+ 1699 0129 25       		.uleb128 0x25
+ 1700 012a F5       		.byte	0xf5
+ 1701 012b 00       		.uleb128 0
+ 1702 012c 25       		.uleb128 0x25
+ 1703 012d 22       		.byte	0x22
+ 1704 012e 9F       		.byte	0x9f
+ 1705 012f 00000000 		.4byte	0
+ 1706 0133 00000000 		.4byte	0
+ 1707              		.section	.debug_aranges,"",%progbits
+ 1708 0000 2C000000 		.4byte	0x2c
+ 1709 0004 0200     		.2byte	0x2
+ 1710 0006 00000000 		.4byte	.Ldebug_info0
+ 1711 000a 04       		.byte	0x4
+ 1712 000b 00       		.byte	0
+ 1713 000c 0000     		.2byte	0
+ 1714 000e 0000     		.2byte	0
+ 1715 0010 00000000 		.4byte	.LFB0
+ 1716 0014 38010000 		.4byte	.LFE0-.LFB0
+ 1717 0018 00000000 		.4byte	.LFB1
+ 1718 001c 0A000000 		.4byte	.LFE1-.LFB1
+ 1719 0020 00000000 		.4byte	.LFB2
+ 1720 0024 8C010000 		.4byte	.LFE2-.LFB2
+ 1721 0028 00000000 		.4byte	0
+ 1722 002c 00000000 		.4byte	0
+ 1723              		.section	.debug_ranges,"",%progbits
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 34
+
+
+ 1724              	.Ldebug_ranges0:
+ 1725 0000 00000000 		.4byte	.LFB0
+ 1726 0004 38010000 		.4byte	.LFE0
+ 1727 0008 00000000 		.4byte	.LFB1
+ 1728 000c 0A000000 		.4byte	.LFE1
+ 1729 0010 00000000 		.4byte	.LFB2
+ 1730 0014 8C010000 		.4byte	.LFE2
+ 1731 0018 00000000 		.4byte	0
+ 1732 001c 00000000 		.4byte	0
+ 1733              		.section	.debug_line,"",%progbits
+ 1734              	.Ldebug_line0:
+ 1735 0000 49020000 		.section	.debug_str,"MS",%progbits,1
+ 1735      0200A401 
+ 1735      00000201 
+ 1735      FB0E0D00 
+ 1735      01010101 
+ 1736              	.LASF34:
+ 1737 0000 72656375 		.ascii	"recurring\000"
+ 1737      7272696E 
+ 1737      6700
+ 1738              	.LASF37:
+ 1739 000a 72686561 		.ascii	"rhea_rtc_alarm\000"
+ 1739      5F727463 
+ 1739      5F616C61 
+ 1739      726D00
+ 1740              	.LASF7:
+ 1741 0019 5F5F7569 		.ascii	"__uint8_t\000"
+ 1741      6E74385F 
+ 1741      7400
+ 1742              	.LASF41:
+ 1743 0023 72686561 		.ascii	"rhea_rtc_normalizeAlarm\000"
+ 1743      5F727463 
+ 1743      5F6E6F72 
+ 1743      6D616C69 
+ 1743      7A65416C 
+ 1744              	.LASF0:
+ 1745 003b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1745      206C6F6E 
+ 1745      6720756E 
+ 1745      7369676E 
+ 1745      65642069 
+ 1746              	.LASF12:
+ 1747 0052 5F5F696E 		.ascii	"__int64_t\000"
+ 1747      7436345F 
+ 1747      7400
+ 1748              	.LASF2:
+ 1749 005c 6C6F6E67 		.ascii	"long long int\000"
+ 1749      206C6F6E 
+ 1749      6720696E 
+ 1749      7400
+ 1750              	.LASF4:
+ 1751 006a 7369676E 		.ascii	"signed char\000"
+ 1751      65642063 
+ 1751      68617200 
+ 1752              	.LASF49:
+ 1753 0076 72686561 		.ascii	"rhea_rtc_datetimeFormatGeneralUS\000"
+ 1753      5F727463 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 35
+
+
+ 1753      5F646174 
+ 1753      6574696D 
+ 1753      65466F72 
+ 1754              	.LASF24:
+ 1755 0097 7365636F 		.ascii	"second\000"
+ 1755      6E6400
+ 1756              	.LASF18:
+ 1757 009e 79656172 		.ascii	"year\000"
+ 1757      00
+ 1758              	.LASF51:
+ 1759 00a3 72686561 		.ascii	"rhea_rtc_formatDate\000"
+ 1759      5F727463 
+ 1759      5F666F72 
+ 1759      6D617444 
+ 1759      61746500 
+ 1760              	.LASF10:
+ 1761 00b7 6C6F6E67 		.ascii	"long int\000"
+ 1761      20696E74 
+ 1761      00
+ 1762              	.LASF38:
+ 1763 00c0 616C6172 		.ascii	"alarm\000"
+ 1763      6D00
+ 1764              	.LASF16:
+ 1765 00c6 75696E74 		.ascii	"uint16_t\000"
+ 1765      31365F74 
+ 1765      00
+ 1766              	.LASF47:
+ 1767 00cf 6E65775F 		.ascii	"new_secs\000"
+ 1767      73656373 
+ 1767      00
+ 1768              	.LASF55:
+ 1769 00d8 72686561 		.ascii	"rhea_rtc_setWeekday\000"
+ 1769      5F727463 
+ 1769      5F736574 
+ 1769      5765656B 
+ 1769      64617900 
+ 1770              	.LASF27:
+ 1771 00ec 45766572 		.ascii	"EveryHour\000"
+ 1771      79486F75 
+ 1771      7200
+ 1772              	.LASF19:
+ 1773 00f6 6D6F6E74 		.ascii	"month\000"
+ 1773      6800
+ 1774              	.LASF1:
+ 1775 00fc 756E7369 		.ascii	"unsigned int\000"
+ 1775      676E6564 
+ 1775      20696E74 
+ 1775      00
+ 1776              	.LASF29:
+ 1777 0109 45766572 		.ascii	"EveryWeek\000"
+ 1777      79576565 
+ 1777      6B00
+ 1778              	.LASF26:
+ 1779 0113 45766572 		.ascii	"EveryMinute\000"
+ 1779      794D696E 
+ 1779      75746500 
+ 1780              	.LASF61:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 36
+
+
+ 1781 011f 7374726C 		.ascii	"strlen\000"
+ 1781      656E00
+ 1782              	.LASF11:
+ 1783 0126 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1783      20756E73 
+ 1783      69676E65 
+ 1783      6420696E 
+ 1783      7400
+ 1784              	.LASF50:
+ 1785 0138 72686561 		.ascii	"rhea_rtc_datetimeFormatFull\000"
+ 1785      5F727463 
+ 1785      5F646174 
+ 1785      6574696D 
+ 1785      65466F72 
+ 1786              	.LASF9:
+ 1787 0154 73686F72 		.ascii	"short unsigned int\000"
+ 1787      7420756E 
+ 1787      7369676E 
+ 1787      65642069 
+ 1787      6E7400
+ 1788              	.LASF20:
+ 1789 0167 64617465 		.ascii	"date\000"
+ 1789      00
+ 1790              	.LASF30:
+ 1791 016c 45766572 		.ascii	"EveryMonth\000"
+ 1791      794D6F6E 
+ 1791      746800
+ 1792              	.LASF46:
+ 1793 0177 696E635F 		.ascii	"inc_days\000"
+ 1793      64617973 
+ 1793      00
+ 1794              	.LASF52:
+ 1795 0180 73747263 		.ascii	"strcat\000"
+ 1795      617400
+ 1796              	.LASF33:
+ 1797 0187 64617465 		.ascii	"datetime\000"
+ 1797      74696D65 
+ 1797      00
+ 1798              	.LASF35:
+ 1799 0190 61637469 		.ascii	"active\000"
+ 1799      766500
+ 1800              	.LASF45:
+ 1801 0197 6E657741 		.ascii	"newAlarmTimestamp\000"
+ 1801      6C61726D 
+ 1801      54696D65 
+ 1801      7374616D 
+ 1801      7000
+ 1802              	.LASF28:
+ 1803 01a9 45766572 		.ascii	"EveryDay\000"
+ 1803      79446179 
+ 1803      00
+ 1804              	.LASF13:
+ 1805 01b2 73697A65 		.ascii	"sizetype\000"
+ 1805      74797065 
+ 1805      00
+ 1806              	.LASF3:
+ 1807 01bb 6C6F6E67 		.ascii	"long double\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 37
+
+
+ 1807      20646F75 
+ 1807      626C6500 
+ 1808              	.LASF62:
+ 1809 01c7 5F5F6275 		.ascii	"__builtin_strlen\000"
+ 1809      696C7469 
+ 1809      6E5F7374 
+ 1809      726C656E 
+ 1809      00
+ 1810              	.LASF60:
+ 1811 01d8 72686561 		.ascii	"rhea_rtc_weekdayDifference\000"
+ 1811      5F727463 
+ 1811      5F776565 
+ 1811      6B646179 
+ 1811      44696666 
+ 1812              	.LASF22:
+ 1813 01f3 686F7572 		.ascii	"hour\000"
+ 1813      00
+ 1814              	.LASF32:
+ 1815 01f8 46757475 		.ascii	"FutureDate\000"
+ 1815      72654461 
+ 1815      746500
+ 1816              	.LASF31:
+ 1817 0203 45766572 		.ascii	"EveryYear\000"
+ 1817      79596561 
+ 1817      7200
+ 1818              	.LASF5:
+ 1819 020d 756E7369 		.ascii	"unsigned char\000"
+ 1819      676E6564 
+ 1819      20636861 
+ 1819      7200
+ 1820              	.LASF6:
+ 1821 021b 73686F72 		.ascii	"short int\000"
+ 1821      7420696E 
+ 1821      7400
+ 1822              	.LASF43:
+ 1823 0225 61667465 		.ascii	"afterSeconds\000"
+ 1823      72536563 
+ 1823      6F6E6473 
+ 1823      00
+ 1824              	.LASF56:
+ 1825 0232 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1825      43313120 
+ 1825      352E342E 
+ 1825      31203230 
+ 1825      31363036 
+ 1826 0265 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1826      20726576 
+ 1826      6973696F 
+ 1826      6E203233 
+ 1826      37373135 
+ 1827 0298 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1827      66756E63 
+ 1827      74696F6E 
+ 1827      2D736563 
+ 1827      74696F6E 
+ 1828              	.LASF58:
+ 1829 02c0 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 38
+
+
+ 1829      79707265 
+ 1829      73735C50 
+ 1829      726F6A65 
+ 1829      6374735C 
+ 1830              	.LASF42:
+ 1831 02ed 61667465 		.ascii	"after\000"
+ 1831      7200
+ 1832              	.LASF54:
+ 1833 02f3 72686561 		.ascii	"rhea_rtc_fromSeconds\000"
+ 1833      5F727463 
+ 1833      5F66726F 
+ 1833      6D536563 
+ 1833      6F6E6473 
+ 1834              	.LASF53:
+ 1835 0308 72686561 		.ascii	"rhea_rtc_toSeconds\000"
+ 1835      5F727463 
+ 1835      5F746F53 
+ 1835      65636F6E 
+ 1835      647300
+ 1836              	.LASF14:
+ 1837 031b 63686172 		.ascii	"char\000"
+ 1837      00
+ 1838              	.LASF36:
+ 1839 0320 6D6F6465 		.ascii	"mode\000"
+ 1839      00
+ 1840              	.LASF8:
+ 1841 0325 5F5F7569 		.ascii	"__uint16_t\000"
+ 1841      6E743136 
+ 1841      5F7400
+ 1842              	.LASF57:
+ 1843 0330 72686561 		.ascii	"rhea\\rtc\\alarm\\alarm.c\000"
+ 1843      5C727463 
+ 1843      5C616C61 
+ 1843      726D5C61 
+ 1843      6C61726D 
+ 1844              	.LASF21:
+ 1845 0347 7765656B 		.ascii	"weekday\000"
+ 1845      64617900 
+ 1846              	.LASF39:
+ 1847 034f 62756666 		.ascii	"buffer\000"
+ 1847      657200
+ 1848              	.LASF40:
+ 1849 0356 72686561 		.ascii	"rhea_rtc_formatAlarm\000"
+ 1849      5F727463 
+ 1849      5F666F72 
+ 1849      6D617441 
+ 1849      6C61726D 
+ 1850              	.LASF44:
+ 1851 036b 6E657741 		.ascii	"newAlarm\000"
+ 1851      6C61726D 
+ 1851      00
+ 1852              	.LASF23:
+ 1853 0374 6D696E75 		.ascii	"minute\000"
+ 1853      746500
+ 1854              	.LASF25:
+ 1855 037b 72686561 		.ascii	"rhea_rtc_datetime\000"
+ 1855      5F727463 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccf5Xpo6.s 			page 39
+
+
+ 1855      5F646174 
+ 1855      6574696D 
+ 1855      6500
+ 1856              	.LASF15:
+ 1857 038d 75696E74 		.ascii	"uint8_t\000"
+ 1857      385F7400 
+ 1858              	.LASF48:
+ 1859 0395 72686561 		.ascii	"rhea_rtc_datetimeFormatGeneral\000"
+ 1859      5F727463 
+ 1859      5F646174 
+ 1859      6574696D 
+ 1859      65466F72 
+ 1860              	.LASF59:
+ 1861 03b4 72686561 		.ascii	"rhea_rtc_alarmMode\000"
+ 1861      5F727463 
+ 1861      5F616C61 
+ 1861      726D4D6F 
+ 1861      646500
+ 1862              	.LASF17:
+ 1863 03c7 696E7436 		.ascii	"int64_t\000"
+ 1863      345F7400 
+ 1864              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

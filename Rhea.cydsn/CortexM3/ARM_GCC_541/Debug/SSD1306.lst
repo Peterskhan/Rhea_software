@@ -1,0 +1,2411 @@
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"SSD1306.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.SSD1306_SetI2CController,"ax",%progbits
+  20              		.align	2
+  21              		.global	SSD1306_SetI2CController
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	SSD1306_SetI2CController, %function
+  25              	SSD1306_SetI2CController:
+  26              	.LFB0:
+  27              		.file 1 "rhea\\drivers\\SSD1306\\SSD1306.c"
+   1:rhea\drivers\SSD1306/SSD1306.c **** /*********************************************************************************
+   2:rhea\drivers\SSD1306/SSD1306.c ****  * Copyright (c) 2020 Peter Gyulai
+   3:rhea\drivers\SSD1306/SSD1306.c ****  *
+   4:rhea\drivers\SSD1306/SSD1306.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy
+   5:rhea\drivers\SSD1306/SSD1306.c ****  * of this software and associated documentation files (the "Software"), to deal
+   6:rhea\drivers\SSD1306/SSD1306.c ****  * in the Software without restriction, including without limitation the rights
+   7:rhea\drivers\SSD1306/SSD1306.c ****  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   8:rhea\drivers\SSD1306/SSD1306.c ****  * copies of the Software, and to permit persons to whom the Software is
+   9:rhea\drivers\SSD1306/SSD1306.c ****  * furnished to do so, subject to the following conditions:
+  10:rhea\drivers\SSD1306/SSD1306.c ****  *
+  11:rhea\drivers\SSD1306/SSD1306.c ****  * The above copyright notice and this permission notice shall be included in all
+  12:rhea\drivers\SSD1306/SSD1306.c ****  * copies or substantial portions of the Software.
+  13:rhea\drivers\SSD1306/SSD1306.c ****  *
+  14:rhea\drivers\SSD1306/SSD1306.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  15:rhea\drivers\SSD1306/SSD1306.c ****  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  16:rhea\drivers\SSD1306/SSD1306.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  17:rhea\drivers\SSD1306/SSD1306.c ****  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  18:rhea\drivers\SSD1306/SSD1306.c ****  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  19:rhea\drivers\SSD1306/SSD1306.c ****  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+  20:rhea\drivers\SSD1306/SSD1306.c ****  * OR OTHER DEALINGS IN THE SOFTWARE.
+  21:rhea\drivers\SSD1306/SSD1306.c **** **********************************************************************************/
+  22:rhea\drivers\SSD1306/SSD1306.c **** 
+  23:rhea\drivers\SSD1306/SSD1306.c **** /**
+  24:rhea\drivers\SSD1306/SSD1306.c ****  * @file    SSD1306.c
+  25:rhea\drivers\SSD1306/SSD1306.c ****  * @author  Peter Gyulai
+  26:rhea\drivers\SSD1306/SSD1306.c ****  * @version 1.0.1
+  27:rhea\drivers\SSD1306/SSD1306.c ****  * @date    2020.03.20
+  28:rhea\drivers\SSD1306/SSD1306.c ****  * @brief   Library implementation.
+  29:rhea\drivers\SSD1306/SSD1306.c ****  * @details
+  30:rhea\drivers\SSD1306/SSD1306.c ****  * This file contains the function definitions and static variable definitions used
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 2
+
+
+  31:rhea\drivers\SSD1306/SSD1306.c ****  * by the SSD1306 driver library.
+  32:rhea\drivers\SSD1306/SSD1306.c ****  */
+  33:rhea\drivers\SSD1306/SSD1306.c **** 
+  34:rhea\drivers\SSD1306/SSD1306.c ****  // Doxygen documentation duplication suppression
+  35:rhea\drivers\SSD1306/SSD1306.c **** #ifndef DOXYGEN_SHOULD_SKIP_THIS
+  36:rhea\drivers\SSD1306/SSD1306.c **** 
+  37:rhea\drivers\SSD1306/SSD1306.c **** // Project includes
+  38:rhea\drivers\SSD1306/SSD1306.c **** #include "SSD1306.h"
+  39:rhea\drivers\SSD1306/SSD1306.c **** 
+  40:rhea\drivers\SSD1306/SSD1306.c **** 
+  41:rhea\drivers\SSD1306/SSD1306.c **** // Structure holding function pointers to I2C handlers
+  42:rhea\drivers\SSD1306/SSD1306.c **** static SSD1306_I2CControllerStruct SSD1306_I2CController;
+  43:rhea\drivers\SSD1306/SSD1306.c **** 
+  44:rhea\drivers\SSD1306/SSD1306.c **** // Shadow buffer for display data
+  45:rhea\drivers\SSD1306/SSD1306.c **** static uint8_t SSD1306_PixelData[SSD1306_BUFFER_SIZE];
+  46:rhea\drivers\SSD1306/SSD1306.c **** 
+  47:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_SetI2CController(SSD1306_I2CControllerStruct controller) {
+  28              		.loc 1 47 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 10B4     		push	{r4}
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 4, -4
+  36 0002 85B0     		sub	sp, sp, #20
+  37              		.cfi_def_cfa_offset 24
+  38 0004 01AB     		add	r3, sp, #4
+  39 0006 83E80700 		stmia	r3, {r0, r1, r2}
+  48:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController = controller;
+  40              		.loc 1 48 0
+  41 000a 044C     		ldr	r4, .L3
+  42 000c 93E80700 		ldmia	r3, {r0, r1, r2}
+  43 0010 84E80700 		stmia	r4, {r0, r1, r2}
+  49:rhea\drivers\SSD1306/SSD1306.c **** }
+  44              		.loc 1 49 0
+  45 0014 05B0     		add	sp, sp, #20
+  46              		.cfi_def_cfa_offset 4
+  47              		@ sp needed
+  48 0016 10BC     		pop	{r4}
+  49              		.cfi_restore 4
+  50              		.cfi_def_cfa_offset 0
+  51 0018 7047     		bx	lr
+  52              	.L4:
+  53 001a 00BF     		.align	2
+  54              	.L3:
+  55 001c 00000000 		.word	.LANCHOR0
+  56              		.cfi_endproc
+  57              	.LFE0:
+  58              		.size	SSD1306_SetI2CController, .-SSD1306_SetI2CController
+  59              		.section	.text.SSD1306_GetDisplayBuffer,"ax",%progbits
+  60              		.align	2
+  61              		.global	SSD1306_GetDisplayBuffer
+  62              		.thumb
+  63              		.thumb_func
+  64              		.type	SSD1306_GetDisplayBuffer, %function
+  65              	SSD1306_GetDisplayBuffer:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 3
+
+
+  66              	.LFB3:
+  50:rhea\drivers\SSD1306/SSD1306.c **** 
+  51:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_Init() {
+  52:rhea\drivers\SSD1306/SSD1306.c **** 
+  53:rhea\drivers\SSD1306/SSD1306.c **** 	// Initializing command sequence
+  54:rhea\drivers\SSD1306/SSD1306.c **** 	uint8_t commands[] = {
+  55:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_DISPLAY_OFF,
+  56:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_CLOCK_DIV_OSC,
+  57:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_CLOCK_DIV_OSC_DEFAULT,
+  58:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_MULTIPLEX_RATIO,
+  59:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_MULTIPLEX_RATIO_DEFAULT,
+  60:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_DISPLAY_OFFSET,
+  61:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_DISPLAY_OFFSET_DEFAULT,
+  62:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_DISPLAY_START_LINE | SSD1306_DISPLAY_START_LINE_DEFAULT,
+  63:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_CHARGEPUMP,
+  64:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_CHARGEPUMP_ON,
+  65:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_MEMORY_MODE,
+  66:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_MEMORY_MODE_HORIZONTAL,
+  67:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_SEGMENT_REMAP_ON,
+  68:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_COM_SCAN_INC,
+  69:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_COM_PINS,
+  70:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_COM_PINS_DEFAULT,
+  71:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_CONTRAST,
+  72:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_CONTRAST_DEFAULT,
+  73:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_PRECHARGE_PERIOD,
+  74:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_PRECHARGE_PERIOD_DEFAULT,
+  75:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_VCOM_DESELECT,
+  76:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_VCOM_DESELECT_DEFAULT,
+  77:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_LOWER_COLUMN_ADDR_START,
+  78:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_HIGHER_COLUMN_ADDR_START,
+  79:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_ENTIRE_DISPLAY_RESUME,
+  80:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_DISPLAY_NORMAL,
+  81:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_DISPLAY_ON
+  82:rhea\drivers\SSD1306/SSD1306.c **** 	};
+  83:rhea\drivers\SSD1306/SSD1306.c **** 
+  84:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending initialization commands
+  85:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_WriteCommands(commands, 25);
+  86:rhea\drivers\SSD1306/SSD1306.c **** 
+  87:rhea\drivers\SSD1306/SSD1306.c **** 	// Clearing display shadow buffer
+  88:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_ClearDisplay();
+  89:rhea\drivers\SSD1306/SSD1306.c **** }
+  90:rhea\drivers\SSD1306/SSD1306.c **** 
+  91:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_Reset(void) {
+  92:rhea\drivers\SSD1306/SSD1306.c **** 
+  93:rhea\drivers\SSD1306/SSD1306.c **** 	// Restoring initial settings
+  94:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_Init();
+  95:rhea\drivers\SSD1306/SSD1306.c **** 
+  96:rhea\drivers\SSD1306/SSD1306.c **** 	// Clearing display
+  97:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_RefreshDisplay();
+  98:rhea\drivers\SSD1306/SSD1306.c **** }
+  99:rhea\drivers\SSD1306/SSD1306.c **** 
+ 100:rhea\drivers\SSD1306/SSD1306.c **** uint8_t* SSD1306_GetDisplayBuffer(void) {
+  67              		.loc 1 100 0
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71              		@ link register save eliminated.
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 4
+
+
+ 101:rhea\drivers\SSD1306/SSD1306.c **** 	return SSD1306_PixelData;
+ 102:rhea\drivers\SSD1306/SSD1306.c **** }
+  72              		.loc 1 102 0
+  73 0000 0048     		ldr	r0, .L6
+  74 0002 7047     		bx	lr
+  75              	.L7:
+  76              		.align	2
+  77              	.L6:
+  78 0004 0C000000 		.word	.LANCHOR0+12
+  79              		.cfi_endproc
+  80              	.LFE3:
+  81              		.size	SSD1306_GetDisplayBuffer, .-SSD1306_GetDisplayBuffer
+  82              		.section	.text.SSD1306_WriteCommand,"ax",%progbits
+  83              		.align	2
+  84              		.global	SSD1306_WriteCommand
+  85              		.thumb
+  86              		.thumb_func
+  87              		.type	SSD1306_WriteCommand, %function
+  88              	SSD1306_WriteCommand:
+  89              	.LFB4:
+ 103:rhea\drivers\SSD1306/SSD1306.c **** 
+ 104:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_WriteCommand(uint8_t command) {
+  90              		.loc 1 104 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              	.LVL0:
+  95 0000 38B5     		push	{r3, r4, r5, lr}
+  96              		.cfi_def_cfa_offset 16
+  97              		.cfi_offset 3, -16
+  98              		.cfi_offset 4, -12
+  99              		.cfi_offset 5, -8
+ 100              		.cfi_offset 14, -4
+ 101 0002 0546     		mov	r5, r0
+ 105:rhea\drivers\SSD1306/SSD1306.c **** 
+ 106:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending START condition & indicating command
+ 107:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStart(SSD1306_I2C_ADDR, SSD1306_I2C_WRITE);
+ 102              		.loc 1 107 0
+ 103 0004 064C     		ldr	r4, .L10
+ 104 0006 2368     		ldr	r3, [r4]
+ 105 0008 0021     		movs	r1, #0
+ 106 000a 3D20     		movs	r0, #61
+ 107              	.LVL1:
+ 108 000c 9847     		blx	r3
+ 109              	.LVL2:
+ 108:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(SSD1306_COMMAND);
+ 110              		.loc 1 108 0
+ 111 000e A368     		ldr	r3, [r4, #8]
+ 112 0010 0020     		movs	r0, #0
+ 113 0012 9847     		blx	r3
+ 114              	.LVL3:
+ 109:rhea\drivers\SSD1306/SSD1306.c **** 
+ 110:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending command
+ 111:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(command);
+ 115              		.loc 1 111 0
+ 116 0014 A368     		ldr	r3, [r4, #8]
+ 117 0016 2846     		mov	r0, r5
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 5
+
+
+ 118 0018 9847     		blx	r3
+ 119              	.LVL4:
+ 112:rhea\drivers\SSD1306/SSD1306.c **** 
+ 113:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending STOP condition
+ 114:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStop();
+ 120              		.loc 1 114 0
+ 121 001a 6368     		ldr	r3, [r4, #4]
+ 122 001c 9847     		blx	r3
+ 123              	.LVL5:
+ 124 001e 38BD     		pop	{r3, r4, r5, pc}
+ 125              	.L11:
+ 126              		.align	2
+ 127              	.L10:
+ 128 0020 00000000 		.word	.LANCHOR0
+ 129              		.cfi_endproc
+ 130              	.LFE4:
+ 131              		.size	SSD1306_WriteCommand, .-SSD1306_WriteCommand
+ 132              		.section	.text.SSD1306_WriteCommands,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	SSD1306_WriteCommands
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.type	SSD1306_WriteCommands, %function
+ 138              	SSD1306_WriteCommands:
+ 139              	.LFB5:
+ 115:rhea\drivers\SSD1306/SSD1306.c **** }
+ 116:rhea\drivers\SSD1306/SSD1306.c **** 
+ 117:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_WriteCommands(uint8_t commands[], uint8_t count) {
+ 140              		.loc 1 117 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              	.LVL6:
+ 145 0000 70B5     		push	{r4, r5, r6, lr}
+ 146              		.cfi_def_cfa_offset 16
+ 147              		.cfi_offset 4, -16
+ 148              		.cfi_offset 5, -12
+ 149              		.cfi_offset 6, -8
+ 150              		.cfi_offset 14, -4
+ 151 0002 0646     		mov	r6, r0
+ 152 0004 0D46     		mov	r5, r1
+ 118:rhea\drivers\SSD1306/SSD1306.c **** 
+ 119:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending START condition & indicating command stream 
+ 120:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStart(SSD1306_I2C_ADDR, SSD1306_I2C_WRITE);
+ 153              		.loc 1 120 0
+ 154 0006 0B4C     		ldr	r4, .L16
+ 155 0008 2368     		ldr	r3, [r4]
+ 156 000a 0021     		movs	r1, #0
+ 157              	.LVL7:
+ 158 000c 3D20     		movs	r0, #61
+ 159              	.LVL8:
+ 160 000e 9847     		blx	r3
+ 161              	.LVL9:
+ 121:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(SSD1306_COMMAND);
+ 162              		.loc 1 121 0
+ 163 0010 A368     		ldr	r3, [r4, #8]
+ 164 0012 0020     		movs	r0, #0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 6
+
+
+ 165 0014 9847     		blx	r3
+ 166              	.LVL10:
+ 167              	.LBB2:
+ 122:rhea\drivers\SSD1306/SSD1306.c **** 
+ 123:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending commands
+ 124:rhea\drivers\SSD1306/SSD1306.c **** 	for (uint8_t i = 0; i < count; i++) {
+ 168              		.loc 1 124 0
+ 169 0016 0024     		movs	r4, #0
+ 170 0018 05E0     		b	.L13
+ 171              	.LVL11:
+ 172              	.L14:
+ 125:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_I2CController.MasterWriteByte(commands[i]);
+ 173              		.loc 1 125 0 discriminator 3
+ 174 001a 064B     		ldr	r3, .L16
+ 175 001c 9B68     		ldr	r3, [r3, #8]
+ 176 001e 305D     		ldrb	r0, [r6, r4]	@ zero_extendqisi2
+ 177 0020 9847     		blx	r3
+ 178              	.LVL12:
+ 124:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_I2CController.MasterWriteByte(commands[i]);
+ 179              		.loc 1 124 0 discriminator 3
+ 180 0022 0134     		adds	r4, r4, #1
+ 181              	.LVL13:
+ 182 0024 E4B2     		uxtb	r4, r4
+ 183              	.LVL14:
+ 184              	.L13:
+ 124:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_I2CController.MasterWriteByte(commands[i]);
+ 185              		.loc 1 124 0 is_stmt 0 discriminator 1
+ 186 0026 AC42     		cmp	r4, r5
+ 187 0028 F7D3     		bcc	.L14
+ 188              	.LBE2:
+ 126:rhea\drivers\SSD1306/SSD1306.c **** 	}
+ 127:rhea\drivers\SSD1306/SSD1306.c **** 
+ 128:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending STOP condition
+ 129:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStop();
+ 189              		.loc 1 129 0 is_stmt 1
+ 190 002a 024B     		ldr	r3, .L16
+ 191 002c 5B68     		ldr	r3, [r3, #4]
+ 192 002e 9847     		blx	r3
+ 193              	.LVL15:
+ 194 0030 70BD     		pop	{r4, r5, r6, pc}
+ 195              	.LVL16:
+ 196              	.L17:
+ 197 0032 00BF     		.align	2
+ 198              	.L16:
+ 199 0034 00000000 		.word	.LANCHOR0
+ 200              		.cfi_endproc
+ 201              	.LFE5:
+ 202              		.size	SSD1306_WriteCommands, .-SSD1306_WriteCommands
+ 203              		.section	.text.SSD1306_WriteData,"ax",%progbits
+ 204              		.align	2
+ 205              		.global	SSD1306_WriteData
+ 206              		.thumb
+ 207              		.thumb_func
+ 208              		.type	SSD1306_WriteData, %function
+ 209              	SSD1306_WriteData:
+ 210              	.LFB6:
+ 130:rhea\drivers\SSD1306/SSD1306.c **** }
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 7
+
+
+ 131:rhea\drivers\SSD1306/SSD1306.c **** 
+ 132:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_WriteData(uint8_t data[], uint16_t count) {
+ 211              		.loc 1 132 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 0
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215              	.LVL17:
+ 216 0000 70B5     		push	{r4, r5, r6, lr}
+ 217              		.cfi_def_cfa_offset 16
+ 218              		.cfi_offset 4, -16
+ 219              		.cfi_offset 5, -12
+ 220              		.cfi_offset 6, -8
+ 221              		.cfi_offset 14, -4
+ 222 0002 0646     		mov	r6, r0
+ 223 0004 0D46     		mov	r5, r1
+ 133:rhea\drivers\SSD1306/SSD1306.c **** 
+ 134:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending START condition & indicating data stream 
+ 135:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStart(SSD1306_I2C_ADDR, SSD1306_I2C_WRITE);
+ 224              		.loc 1 135 0
+ 225 0006 0B4C     		ldr	r4, .L22
+ 226 0008 2368     		ldr	r3, [r4]
+ 227 000a 0021     		movs	r1, #0
+ 228              	.LVL18:
+ 229 000c 3D20     		movs	r0, #61
+ 230              	.LVL19:
+ 231 000e 9847     		blx	r3
+ 232              	.LVL20:
+ 136:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(SSD1306_DATA);
+ 233              		.loc 1 136 0
+ 234 0010 A368     		ldr	r3, [r4, #8]
+ 235 0012 4020     		movs	r0, #64
+ 236 0014 9847     		blx	r3
+ 237              	.LVL21:
+ 238              	.LBB3:
+ 137:rhea\drivers\SSD1306/SSD1306.c **** 
+ 138:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending data
+ 139:rhea\drivers\SSD1306/SSD1306.c **** 	for (uint16_t i = 0; i < count; i++) {
+ 239              		.loc 1 139 0
+ 240 0016 0024     		movs	r4, #0
+ 241 0018 05E0     		b	.L19
+ 242              	.LVL22:
+ 243              	.L20:
+ 140:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_I2CController.MasterWriteByte(data[i]);
+ 244              		.loc 1 140 0 discriminator 3
+ 245 001a 064B     		ldr	r3, .L22
+ 246 001c 9B68     		ldr	r3, [r3, #8]
+ 247 001e 305D     		ldrb	r0, [r6, r4]	@ zero_extendqisi2
+ 248 0020 9847     		blx	r3
+ 249              	.LVL23:
+ 139:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_I2CController.MasterWriteByte(data[i]);
+ 250              		.loc 1 139 0 discriminator 3
+ 251 0022 0134     		adds	r4, r4, #1
+ 252              	.LVL24:
+ 253 0024 A4B2     		uxth	r4, r4
+ 254              	.LVL25:
+ 255              	.L19:
+ 139:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_I2CController.MasterWriteByte(data[i]);
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 8
+
+
+ 256              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 257 0026 AC42     		cmp	r4, r5
+ 258 0028 F7D3     		bcc	.L20
+ 259              	.LBE3:
+ 141:rhea\drivers\SSD1306/SSD1306.c **** 	}
+ 142:rhea\drivers\SSD1306/SSD1306.c **** 
+ 143:rhea\drivers\SSD1306/SSD1306.c **** 	// Sending STOP condition
+ 144:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStop();
+ 260              		.loc 1 144 0 is_stmt 1
+ 261 002a 024B     		ldr	r3, .L22
+ 262 002c 5B68     		ldr	r3, [r3, #4]
+ 263 002e 9847     		blx	r3
+ 264              	.LVL26:
+ 265 0030 70BD     		pop	{r4, r5, r6, pc}
+ 266              	.LVL27:
+ 267              	.L23:
+ 268 0032 00BF     		.align	2
+ 269              	.L22:
+ 270 0034 00000000 		.word	.LANCHOR0
+ 271              		.cfi_endproc
+ 272              	.LFE6:
+ 273              		.size	SSD1306_WriteData, .-SSD1306_WriteData
+ 274              		.section	.text.SSD1306_WritePixel,"ax",%progbits
+ 275              		.align	2
+ 276              		.global	SSD1306_WritePixel
+ 277              		.thumb
+ 278              		.thumb_func
+ 279              		.type	SSD1306_WritePixel, %function
+ 280              	SSD1306_WritePixel:
+ 281              	.LFB7:
+ 145:rhea\drivers\SSD1306/SSD1306.c **** }
+ 146:rhea\drivers\SSD1306/SSD1306.c **** 
+ 147:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_WritePixel(uint8_t x, uint8_t y, uint8_t color) {
+ 282              		.loc 1 147 0
+ 283              		.cfi_startproc
+ 284              		@ args = 0, pretend = 0, frame = 0
+ 285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 286              		@ link register save eliminated.
+ 287              	.LVL28:
+ 148:rhea\drivers\SSD1306/SSD1306.c **** 
+ 149:rhea\drivers\SSD1306/SSD1306.c **** 	// CODE WORKS FOR HORIZONTAL MODE ONLY!!!
+ 150:rhea\drivers\SSD1306/SSD1306.c **** 
+ 151:rhea\drivers\SSD1306/SSD1306.c **** 	// Coordinate bounds check
+ 152:rhea\drivers\SSD1306/SSD1306.c **** 	if (x > SSD1306_WIDTH - 1 || y > SSD1306_HEIGHT - 1) return;
+ 288              		.loc 1 152 0
+ 289 0000 10F0800F 		tst	r0, #128
+ 290 0004 1DD1     		bne	.L24
+ 291              		.loc 1 152 0 is_stmt 0 discriminator 1
+ 292 0006 3F29     		cmp	r1, #63
+ 293 0008 1BD8     		bhi	.L24
+ 153:rhea\drivers\SSD1306/SSD1306.c **** 
+ 154:rhea\drivers\SSD1306/SSD1306.c **** 	// Calculating page and column index
+ 155:rhea\drivers\SSD1306/SSD1306.c **** 	uint8_t page = y / 8;
+ 294              		.loc 1 155 0 is_stmt 1
+ 295 000a CB08     		lsrs	r3, r1, #3
+ 296              	.LVL29:
+ 156:rhea\drivers\SSD1306/SSD1306.c **** 	uint8_t column = x;
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 9
+
+
+ 157:rhea\drivers\SSD1306/SSD1306.c **** 
+ 158:rhea\drivers\SSD1306/SSD1306.c **** 	// Calculating byte index in pixelData & bitshift value
+ 159:rhea\drivers\SSD1306/SSD1306.c **** 	uint16_t byteIndex = page * SSD1306_WIDTH + column;
+ 297              		.loc 1 159 0
+ 298 000c 00EBC310 		add	r0, r0, r3, lsl #7
+ 299              	.LVL30:
+ 160:rhea\drivers\SSD1306/SSD1306.c **** 	uint8_t bitIndex = y % 8;
+ 300              		.loc 1 160 0
+ 301 0010 01F00701 		and	r1, r1, #7
+ 302              	.LVL31:
+ 161:rhea\drivers\SSD1306/SSD1306.c **** 
+ 162:rhea\drivers\SSD1306/SSD1306.c **** 	// Setting or clearing the selected bit
+ 163:rhea\drivers\SSD1306/SSD1306.c **** 	if (color) SSD1306_PixelData[byteIndex] |= (1 << (7 - bitIndex));
+ 303              		.loc 1 163 0
+ 304 0014 52B1     		cbz	r2, .L26
+ 305              		.loc 1 163 0 is_stmt 0 discriminator 1
+ 306 0016 C1F10701 		rsb	r1, r1, #7
+ 307              	.LVL32:
+ 308 001a 0123     		movs	r3, #1
+ 309              	.LVL33:
+ 310 001c 03FA01F1 		lsl	r1, r3, r1
+ 311 0020 084B     		ldr	r3, .L27
+ 312 0022 1844     		add	r0, r0, r3
+ 313              	.LVL34:
+ 314 0024 037B     		ldrb	r3, [r0, #12]	@ zero_extendqisi2
+ 315 0026 1943     		orrs	r1, r1, r3
+ 316 0028 0173     		strb	r1, [r0, #12]
+ 317 002a 7047     		bx	lr
+ 318              	.LVL35:
+ 319              	.L26:
+ 164:rhea\drivers\SSD1306/SSD1306.c **** 	else       SSD1306_PixelData[byteIndex] &= ~(1 << (7 - bitIndex));
+ 320              		.loc 1 164 0 is_stmt 1
+ 321 002c C1F10701 		rsb	r1, r1, #7
+ 322              	.LVL36:
+ 323 0030 0123     		movs	r3, #1
+ 324              	.LVL37:
+ 325 0032 03FA01F1 		lsl	r1, r3, r1
+ 326 0036 034B     		ldr	r3, .L27
+ 327 0038 1844     		add	r0, r0, r3
+ 328              	.LVL38:
+ 329 003a 037B     		ldrb	r3, [r0, #12]	@ zero_extendqisi2
+ 330 003c 23EA0101 		bic	r1, r3, r1
+ 331 0040 0173     		strb	r1, [r0, #12]
+ 332              	.LVL39:
+ 333              	.L24:
+ 334 0042 7047     		bx	lr
+ 335              	.L28:
+ 336              		.align	2
+ 337              	.L27:
+ 338 0044 00000000 		.word	.LANCHOR0
+ 339              		.cfi_endproc
+ 340              	.LFE7:
+ 341              		.size	SSD1306_WritePixel, .-SSD1306_WritePixel
+ 342              		.section	.text.SSD1306_ClearDisplay,"ax",%progbits
+ 343              		.align	2
+ 344              		.global	SSD1306_ClearDisplay
+ 345              		.thumb
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 10
+
+
+ 346              		.thumb_func
+ 347              		.type	SSD1306_ClearDisplay, %function
+ 348              	SSD1306_ClearDisplay:
+ 349              	.LFB8:
+ 165:rhea\drivers\SSD1306/SSD1306.c **** }
+ 166:rhea\drivers\SSD1306/SSD1306.c **** 
+ 167:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_ClearDisplay(void) {
+ 350              		.loc 1 167 0
+ 351              		.cfi_startproc
+ 352              		@ args = 0, pretend = 0, frame = 0
+ 353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 354              		@ link register save eliminated.
+ 355              	.LVL40:
+ 356              	.LBB4:
+ 168:rhea\drivers\SSD1306/SSD1306.c **** 
+ 169:rhea\drivers\SSD1306/SSD1306.c **** 	// Clearing shadow buffer content
+ 170:rhea\drivers\SSD1306/SSD1306.c **** 	for (unsigned int i = 0; i < SSD1306_BUFFER_SIZE; i++) {
+ 357              		.loc 1 170 0
+ 358 0000 0023     		movs	r3, #0
+ 359 0002 04E0     		b	.L30
+ 360              	.LVL41:
+ 361              	.L31:
+ 171:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_PixelData[i] = 0x00;
+ 362              		.loc 1 171 0 discriminator 3
+ 363 0004 044A     		ldr	r2, .L32
+ 364 0006 1A44     		add	r2, r2, r3
+ 365 0008 0021     		movs	r1, #0
+ 366 000a 1173     		strb	r1, [r2, #12]
+ 170:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_PixelData[i] = 0x00;
+ 367              		.loc 1 170 0 discriminator 3
+ 368 000c 0133     		adds	r3, r3, #1
+ 369              	.LVL42:
+ 370              	.L30:
+ 170:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_PixelData[i] = 0x00;
+ 371              		.loc 1 170 0 is_stmt 0 discriminator 1
+ 372 000e B3F5806F 		cmp	r3, #1024
+ 373 0012 F7D3     		bcc	.L31
+ 374              	.LBE4:
+ 172:rhea\drivers\SSD1306/SSD1306.c **** 	}
+ 173:rhea\drivers\SSD1306/SSD1306.c **** }
+ 375              		.loc 1 173 0 is_stmt 1
+ 376 0014 7047     		bx	lr
+ 377              	.L33:
+ 378 0016 00BF     		.align	2
+ 379              	.L32:
+ 380 0018 00000000 		.word	.LANCHOR0
+ 381              		.cfi_endproc
+ 382              	.LFE8:
+ 383              		.size	SSD1306_ClearDisplay, .-SSD1306_ClearDisplay
+ 384              		.section	.text.SSD1306_Init,"ax",%progbits
+ 385              		.align	2
+ 386              		.global	SSD1306_Init
+ 387              		.thumb
+ 388              		.thumb_func
+ 389              		.type	SSD1306_Init, %function
+ 390              	SSD1306_Init:
+ 391              	.LFB1:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 11
+
+
+  51:rhea\drivers\SSD1306/SSD1306.c **** 
+ 392              		.loc 1 51 0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 32
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396 0000 30B5     		push	{r4, r5, lr}
+ 397              		.cfi_def_cfa_offset 12
+ 398              		.cfi_offset 4, -12
+ 399              		.cfi_offset 5, -8
+ 400              		.cfi_offset 14, -4
+ 401 0002 89B0     		sub	sp, sp, #36
+ 402              		.cfi_def_cfa_offset 48
+  54:rhea\drivers\SSD1306/SSD1306.c **** 		SSD1306_DISPLAY_OFF,
+ 403              		.loc 1 54 0
+ 404 0004 0A4D     		ldr	r5, .L36
+ 405 0006 01AC     		add	r4, sp, #4
+ 406 0008 2868     		ldr	r0, [r5]	@ unaligned
+ 407 000a 6968     		ldr	r1, [r5, #4]	@ unaligned
+ 408 000c AA68     		ldr	r2, [r5, #8]	@ unaligned
+ 409 000e EB68     		ldr	r3, [r5, #12]	@ unaligned
+ 410 0010 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 411 0012 2869     		ldr	r0, [r5, #16]	@ unaligned
+ 412 0014 6969     		ldr	r1, [r5, #20]	@ unaligned
+ 413 0016 03C4     		stmia	r4!, {r0, r1}
+ 414 0018 2A8B     		ldrh	r2, [r5, #24]	@ unaligned
+ 415 001a AB7E     		ldrb	r3, [r5, #26]	@ zero_extendqisi2
+ 416 001c 2280     		strh	r2, [r4]	@ unaligned
+ 417 001e A370     		strb	r3, [r4, #2]
+  85:rhea\drivers\SSD1306/SSD1306.c **** 
+ 418              		.loc 1 85 0
+ 419 0020 1921     		movs	r1, #25
+ 420 0022 01A8     		add	r0, sp, #4
+ 421 0024 FFF7FEFF 		bl	SSD1306_WriteCommands
+ 422              	.LVL43:
+  88:rhea\drivers\SSD1306/SSD1306.c **** }
+ 423              		.loc 1 88 0
+ 424 0028 FFF7FEFF 		bl	SSD1306_ClearDisplay
+ 425              	.LVL44:
+  89:rhea\drivers\SSD1306/SSD1306.c **** 
+ 426              		.loc 1 89 0
+ 427 002c 09B0     		add	sp, sp, #36
+ 428              		.cfi_def_cfa_offset 12
+ 429              		@ sp needed
+ 430 002e 30BD     		pop	{r4, r5, pc}
+ 431              	.L37:
+ 432              		.align	2
+ 433              	.L36:
+ 434 0030 00000000 		.word	.LANCHOR1
+ 435              		.cfi_endproc
+ 436              	.LFE1:
+ 437              		.size	SSD1306_Init, .-SSD1306_Init
+ 438              		.section	.text.SSD1306_RefreshDisplay,"ax",%progbits
+ 439              		.align	2
+ 440              		.global	SSD1306_RefreshDisplay
+ 441              		.thumb
+ 442              		.thumb_func
+ 443              		.type	SSD1306_RefreshDisplay, %function
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 12
+
+
+ 444              	SSD1306_RefreshDisplay:
+ 445              	.LFB9:
+ 174:rhea\drivers\SSD1306/SSD1306.c **** 
+ 175:rhea\drivers\SSD1306/SSD1306.c **** void SSD1306_RefreshDisplay(void) {
+ 446              		.loc 1 175 0
+ 447              		.cfi_startproc
+ 448              		@ args = 0, pretend = 0, frame = 0
+ 449              		@ frame_needed = 0, uses_anonymous_args = 0
+ 450 0000 10B5     		push	{r4, lr}
+ 451              		.cfi_def_cfa_offset 8
+ 452              		.cfi_offset 4, -8
+ 453              		.cfi_offset 14, -4
+ 176:rhea\drivers\SSD1306/SSD1306.c **** 
+ 177:rhea\drivers\SSD1306/SSD1306.c **** 	// Initialize memory addressing
+ 178:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStart(SSD1306_I2C_ADDR, SSD1306_I2C_WRITE);
+ 454              		.loc 1 178 0
+ 455 0002 114C     		ldr	r4, .L40
+ 456 0004 2368     		ldr	r3, [r4]
+ 457 0006 0021     		movs	r1, #0
+ 458 0008 3D20     		movs	r0, #61
+ 459 000a 9847     		blx	r3
+ 460              	.LVL45:
+ 179:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(SSD1306_COMMAND);
+ 461              		.loc 1 179 0
+ 462 000c A368     		ldr	r3, [r4, #8]
+ 463 000e 0020     		movs	r0, #0
+ 464 0010 9847     		blx	r3
+ 465              	.LVL46:
+ 180:rhea\drivers\SSD1306/SSD1306.c **** 
+ 181:rhea\drivers\SSD1306/SSD1306.c **** 	// Setting column addressing to fullscale: [0; WIDTH - 1]
+ 182:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(SSD1306_COLUMN_ADDR);
+ 466              		.loc 1 182 0
+ 467 0012 A368     		ldr	r3, [r4, #8]
+ 468 0014 2120     		movs	r0, #33
+ 469 0016 9847     		blx	r3
+ 470              	.LVL47:
+ 183:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(0);
+ 471              		.loc 1 183 0
+ 472 0018 A368     		ldr	r3, [r4, #8]
+ 473 001a 0020     		movs	r0, #0
+ 474 001c 9847     		blx	r3
+ 475              	.LVL48:
+ 184:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(SSD1306_WIDTH - 1);
+ 476              		.loc 1 184 0
+ 477 001e A368     		ldr	r3, [r4, #8]
+ 478 0020 7F20     		movs	r0, #127
+ 479 0022 9847     		blx	r3
+ 480              	.LVL49:
+ 185:rhea\drivers\SSD1306/SSD1306.c **** 
+ 186:rhea\drivers\SSD1306/SSD1306.c **** 	// Setting page addressing to fullscale: [0; PAGES - 1]
+ 187:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(SSD1306_PAGE_ADDR);
+ 481              		.loc 1 187 0
+ 482 0024 A368     		ldr	r3, [r4, #8]
+ 483 0026 2220     		movs	r0, #34
+ 484 0028 9847     		blx	r3
+ 485              	.LVL50:
+ 188:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte(0);
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 13
+
+
+ 486              		.loc 1 188 0
+ 487 002a A368     		ldr	r3, [r4, #8]
+ 488 002c 0020     		movs	r0, #0
+ 489 002e 9847     		blx	r3
+ 490              	.LVL51:
+ 189:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterWriteByte((SSD1306_HEIGHT / 8) - 1);
+ 491              		.loc 1 189 0
+ 492 0030 A368     		ldr	r3, [r4, #8]
+ 493 0032 0720     		movs	r0, #7
+ 494 0034 9847     		blx	r3
+ 495              	.LVL52:
+ 190:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_I2CController.MasterSendStop();
+ 496              		.loc 1 190 0
+ 497 0036 6368     		ldr	r3, [r4, #4]
+ 498 0038 9847     		blx	r3
+ 499              	.LVL53:
+ 191:rhea\drivers\SSD1306/SSD1306.c **** 
+ 192:rhea\drivers\SSD1306/SSD1306.c **** 	// Writing pixel data
+ 193:rhea\drivers\SSD1306/SSD1306.c **** 	SSD1306_WriteData(SSD1306_PixelData, SSD1306_BUFFER_SIZE);
+ 500              		.loc 1 193 0
+ 501 003a 4FF48061 		mov	r1, #1024
+ 502 003e 04F10C00 		add	r0, r4, #12
+ 503 0042 FFF7FEFF 		bl	SSD1306_WriteData
+ 504              	.LVL54:
+ 505 0046 10BD     		pop	{r4, pc}
+ 506              	.L41:
+ 507              		.align	2
+ 508              	.L40:
+ 509 0048 00000000 		.word	.LANCHOR0
+ 510              		.cfi_endproc
+ 511              	.LFE9:
+ 512              		.size	SSD1306_RefreshDisplay, .-SSD1306_RefreshDisplay
+ 513              		.section	.text.SSD1306_Reset,"ax",%progbits
+ 514              		.align	2
+ 515              		.global	SSD1306_Reset
+ 516              		.thumb
+ 517              		.thumb_func
+ 518              		.type	SSD1306_Reset, %function
+ 519              	SSD1306_Reset:
+ 520              	.LFB2:
+  91:rhea\drivers\SSD1306/SSD1306.c **** 
+ 521              		.loc 1 91 0
+ 522              		.cfi_startproc
+ 523              		@ args = 0, pretend = 0, frame = 0
+ 524              		@ frame_needed = 0, uses_anonymous_args = 0
+ 525 0000 08B5     		push	{r3, lr}
+ 526              		.cfi_def_cfa_offset 8
+ 527              		.cfi_offset 3, -8
+ 528              		.cfi_offset 14, -4
+  94:rhea\drivers\SSD1306/SSD1306.c **** 
+ 529              		.loc 1 94 0
+ 530 0002 FFF7FEFF 		bl	SSD1306_Init
+ 531              	.LVL55:
+  97:rhea\drivers\SSD1306/SSD1306.c **** }
+ 532              		.loc 1 97 0
+ 533 0006 FFF7FEFF 		bl	SSD1306_RefreshDisplay
+ 534              	.LVL56:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 14
+
+
+ 535 000a 08BD     		pop	{r3, pc}
+ 536              		.cfi_endproc
+ 537              	.LFE2:
+ 538              		.size	SSD1306_Reset, .-SSD1306_Reset
+ 539              		.section	.rodata
+ 540              		.align	2
+ 541              		.set	.LANCHOR1,. + 0
+ 542              	.LC0:
+ 543 0000 AF       		.byte	-81
+ 544 0001 D5       		.byte	-43
+ 545 0002 80       		.byte	-128
+ 546 0003 A8       		.byte	-88
+ 547 0004 3F       		.byte	63
+ 548 0005 D3       		.byte	-45
+ 549 0006 00       		.byte	0
+ 550 0007 40       		.byte	64
+ 551 0008 8D       		.byte	-115
+ 552 0009 14       		.byte	20
+ 553 000a 20       		.byte	32
+ 554 000b 00       		.byte	0
+ 555 000c A1       		.byte	-95
+ 556 000d C0       		.byte	-64
+ 557 000e DA       		.byte	-38
+ 558 000f 12       		.byte	18
+ 559 0010 81       		.byte	-127
+ 560 0011 CF       		.byte	-49
+ 561 0012 D9       		.byte	-39
+ 562 0013 F1       		.byte	-15
+ 563 0014 DB       		.byte	-37
+ 564 0015 40       		.byte	64
+ 565 0016 00       		.byte	0
+ 566 0017 10       		.byte	16
+ 567 0018 A5       		.byte	-91
+ 568 0019 A6       		.byte	-90
+ 569 001a AE       		.byte	-82
+ 570              		.bss
+ 571              		.align	2
+ 572              		.set	.LANCHOR0,. + 0
+ 573              		.type	SSD1306_I2CController, %object
+ 574              		.size	SSD1306_I2CController, 12
+ 575              	SSD1306_I2CController:
+ 576 0000 00000000 		.space	12
+ 576      00000000 
+ 576      00000000 
+ 577              		.type	SSD1306_PixelData, %object
+ 578              		.size	SSD1306_PixelData, 1024
+ 579              	SSD1306_PixelData:
+ 580 000c 00000000 		.space	1024
+ 580      00000000 
+ 580      00000000 
+ 580      00000000 
+ 580      00000000 
+ 581              		.text
+ 582              	.Letext0:
+ 583              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 584              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 585              		.file 4 "rhea\\drivers\\SSD1306\\SSD1306.h"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 15
+
+
+ 586              		.section	.debug_info,"",%progbits
+ 587              	.Ldebug_info0:
+ 588 0000 7D040000 		.4byte	0x47d
+ 589 0004 0400     		.2byte	0x4
+ 590 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 591 000a 04       		.byte	0x4
+ 592 000b 01       		.uleb128 0x1
+ 593 000c BF000000 		.4byte	.LASF38
+ 594 0010 0C       		.byte	0xc
+ 595 0011 87010000 		.4byte	.LASF39
+ 596 0015 4C000000 		.4byte	.LASF40
+ 597 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 598 001d 00000000 		.4byte	0
+ 599 0021 00000000 		.4byte	.Ldebug_line0
+ 600 0025 02       		.uleb128 0x2
+ 601 0026 01       		.byte	0x1
+ 602 0027 06       		.byte	0x6
+ 603 0028 E2020000 		.4byte	.LASF0
+ 604 002c 03       		.uleb128 0x3
+ 605 002d 21000000 		.4byte	.LASF3
+ 606 0031 02       		.byte	0x2
+ 607 0032 1D       		.byte	0x1d
+ 608 0033 37000000 		.4byte	0x37
+ 609 0037 02       		.uleb128 0x2
+ 610 0038 01       		.byte	0x1
+ 611 0039 08       		.byte	0x8
+ 612 003a B1000000 		.4byte	.LASF1
+ 613 003e 02       		.uleb128 0x2
+ 614 003f 02       		.byte	0x2
+ 615 0040 05       		.byte	0x5
+ 616 0041 7A020000 		.4byte	.LASF2
+ 617 0045 03       		.uleb128 0x3
+ 618 0046 BD010000 		.4byte	.LASF4
+ 619 004a 02       		.byte	0x2
+ 620 004b 2B       		.byte	0x2b
+ 621 004c 50000000 		.4byte	0x50
+ 622 0050 02       		.uleb128 0x2
+ 623 0051 02       		.byte	0x2
+ 624 0052 07       		.byte	0x7
+ 625 0053 74010000 		.4byte	.LASF5
+ 626 0057 02       		.uleb128 0x2
+ 627 0058 04       		.byte	0x4
+ 628 0059 05       		.byte	0x5
+ 629 005a B6020000 		.4byte	.LASF6
+ 630 005e 02       		.uleb128 0x2
+ 631 005f 04       		.byte	0x4
+ 632 0060 07       		.byte	0x7
+ 633 0061 4D010000 		.4byte	.LASF7
+ 634 0065 02       		.uleb128 0x2
+ 635 0066 08       		.byte	0x8
+ 636 0067 05       		.byte	0x5
+ 637 0068 4F020000 		.4byte	.LASF8
+ 638 006c 02       		.uleb128 0x2
+ 639 006d 08       		.byte	0x8
+ 640 006e 07       		.byte	0x7
+ 641 006f 04020000 		.4byte	.LASF9
+ 642 0073 04       		.uleb128 0x4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 16
+
+
+ 643 0074 04       		.byte	0x4
+ 644 0075 05       		.byte	0x5
+ 645 0076 696E7400 		.ascii	"int\000"
+ 646 007a 02       		.uleb128 0x2
+ 647 007b 04       		.byte	0x4
+ 648 007c 07       		.byte	0x7
+ 649 007d F7010000 		.4byte	.LASF10
+ 650 0081 03       		.uleb128 0x3
+ 651 0082 1B020000 		.4byte	.LASF11
+ 652 0086 03       		.byte	0x3
+ 653 0087 18       		.byte	0x18
+ 654 0088 2C000000 		.4byte	0x2c
+ 655 008c 03       		.uleb128 0x3
+ 656 008d 9A020000 		.4byte	.LASF12
+ 657 0091 03       		.byte	0x3
+ 658 0092 24       		.byte	0x24
+ 659 0093 45000000 		.4byte	0x45
+ 660 0097 05       		.uleb128 0x5
+ 661 0098 95000000 		.4byte	.LASF16
+ 662 009c 0C       		.byte	0xc
+ 663 009d 04       		.byte	0x4
+ 664 009e 39       		.byte	0x39
+ 665 009f C8000000 		.4byte	0xc8
+ 666 00a3 06       		.uleb128 0x6
+ 667 00a4 CE010000 		.4byte	.LASF13
+ 668 00a8 04       		.byte	0x4
+ 669 00a9 40       		.byte	0x40
+ 670 00aa D8000000 		.4byte	0xd8
+ 671 00ae 00       		.byte	0
+ 672 00af 06       		.uleb128 0x6
+ 673 00b0 00000000 		.4byte	.LASF14
+ 674 00b4 04       		.byte	0x4
+ 675 00b5 45       		.byte	0x45
+ 676 00b6 DF000000 		.4byte	0xdf
+ 677 00ba 04       		.byte	0x4
+ 678 00bb 06       		.uleb128 0x6
+ 679 00bc EE020000 		.4byte	.LASF15
+ 680 00c0 04       		.byte	0x4
+ 681 00c1 4B       		.byte	0x4b
+ 682 00c2 F0000000 		.4byte	0xf0
+ 683 00c6 08       		.byte	0x8
+ 684 00c7 00       		.byte	0
+ 685 00c8 07       		.uleb128 0x7
+ 686 00c9 D8000000 		.4byte	0xd8
+ 687 00cd 08       		.uleb128 0x8
+ 688 00ce 81000000 		.4byte	0x81
+ 689 00d2 08       		.uleb128 0x8
+ 690 00d3 81000000 		.4byte	0x81
+ 691 00d7 00       		.byte	0
+ 692 00d8 09       		.uleb128 0x9
+ 693 00d9 04       		.byte	0x4
+ 694 00da C8000000 		.4byte	0xc8
+ 695 00de 0A       		.uleb128 0xa
+ 696 00df 09       		.uleb128 0x9
+ 697 00e0 04       		.byte	0x4
+ 698 00e1 DE000000 		.4byte	0xde
+ 699 00e5 07       		.uleb128 0x7
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 17
+
+
+ 700 00e6 F0000000 		.4byte	0xf0
+ 701 00ea 08       		.uleb128 0x8
+ 702 00eb 81000000 		.4byte	0x81
+ 703 00ef 00       		.byte	0
+ 704 00f0 09       		.uleb128 0x9
+ 705 00f1 04       		.byte	0x4
+ 706 00f2 E5000000 		.4byte	0xe5
+ 707 00f6 03       		.uleb128 0x3
+ 708 00f7 95000000 		.4byte	.LASF16
+ 709 00fb 04       		.byte	0x4
+ 710 00fc 4D       		.byte	0x4d
+ 711 00fd 97000000 		.4byte	0x97
+ 712 0101 0B       		.uleb128 0xb
+ 713 0102 23020000 		.4byte	.LASF17
+ 714 0106 01       		.byte	0x1
+ 715 0107 2F       		.byte	0x2f
+ 716 0108 00000000 		.4byte	.LFB0
+ 717 010c 20000000 		.4byte	.LFE0-.LFB0
+ 718 0110 01       		.uleb128 0x1
+ 719 0111 9C       		.byte	0x9c
+ 720 0112 25010000 		.4byte	0x125
+ 721 0116 0C       		.uleb128 0xc
+ 722 0117 6F020000 		.4byte	.LASF19
+ 723 011b 01       		.byte	0x1
+ 724 011c 2F       		.byte	0x2f
+ 725 011d F6000000 		.4byte	0xf6
+ 726 0121 02       		.uleb128 0x2
+ 727 0122 91       		.byte	0x91
+ 728 0123 6C       		.sleb128 -20
+ 729 0124 00       		.byte	0
+ 730 0125 0D       		.uleb128 0xd
+ 731 0126 DE010000 		.4byte	.LASF41
+ 732 012a 01       		.byte	0x1
+ 733 012b 64       		.byte	0x64
+ 734 012c 3A010000 		.4byte	0x13a
+ 735 0130 00000000 		.4byte	.LFB3
+ 736 0134 08000000 		.4byte	.LFE3-.LFB3
+ 737 0138 01       		.uleb128 0x1
+ 738 0139 9C       		.byte	0x9c
+ 739 013a 09       		.uleb128 0x9
+ 740 013b 04       		.byte	0x4
+ 741 013c 81000000 		.4byte	0x81
+ 742 0140 0E       		.uleb128 0xe
+ 743 0141 80000000 		.4byte	.LASF18
+ 744 0145 01       		.byte	0x1
+ 745 0146 68       		.byte	0x68
+ 746 0147 00000000 		.4byte	.LFB4
+ 747 014b 24000000 		.4byte	.LFE4-.LFB4
+ 748 014f 01       		.uleb128 0x1
+ 749 0150 9C       		.byte	0x9c
+ 750 0151 95010000 		.4byte	0x195
+ 751 0155 0F       		.uleb128 0xf
+ 752 0156 3A000000 		.4byte	.LASF20
+ 753 015a 01       		.byte	0x1
+ 754 015b 68       		.byte	0x68
+ 755 015c 81000000 		.4byte	0x81
+ 756 0160 00000000 		.4byte	.LLST0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 18
+
+
+ 757 0164 10       		.uleb128 0x10
+ 758 0165 0E000000 		.4byte	.LVL2
+ 759 0169 79010000 		.4byte	0x179
+ 760 016d 11       		.uleb128 0x11
+ 761 016e 01       		.uleb128 0x1
+ 762 016f 50       		.byte	0x50
+ 763 0170 02       		.uleb128 0x2
+ 764 0171 08       		.byte	0x8
+ 765 0172 3D       		.byte	0x3d
+ 766 0173 11       		.uleb128 0x11
+ 767 0174 01       		.uleb128 0x1
+ 768 0175 51       		.byte	0x51
+ 769 0176 01       		.uleb128 0x1
+ 770 0177 30       		.byte	0x30
+ 771 0178 00       		.byte	0
+ 772 0179 10       		.uleb128 0x10
+ 773 017a 14000000 		.4byte	.LVL3
+ 774 017e 88010000 		.4byte	0x188
+ 775 0182 11       		.uleb128 0x11
+ 776 0183 01       		.uleb128 0x1
+ 777 0184 50       		.byte	0x50
+ 778 0185 01       		.uleb128 0x1
+ 779 0186 30       		.byte	0x30
+ 780 0187 00       		.byte	0
+ 781 0188 12       		.uleb128 0x12
+ 782 0189 1A000000 		.4byte	.LVL4
+ 783 018d 11       		.uleb128 0x11
+ 784 018e 01       		.uleb128 0x1
+ 785 018f 50       		.byte	0x50
+ 786 0190 02       		.uleb128 0x2
+ 787 0191 75       		.byte	0x75
+ 788 0192 00       		.sleb128 0
+ 789 0193 00       		.byte	0
+ 790 0194 00       		.byte	0
+ 791 0195 0E       		.uleb128 0xe
+ 792 0196 84020000 		.4byte	.LASF21
+ 793 019a 01       		.byte	0x1
+ 794 019b 75       		.byte	0x75
+ 795 019c 00000000 		.4byte	.LFB5
+ 796 01a0 38000000 		.4byte	.LFE5-.LFB5
+ 797 01a4 01       		.uleb128 0x1
+ 798 01a5 9C       		.byte	0x9c
+ 799 01a6 04020000 		.4byte	0x204
+ 800 01aa 0F       		.uleb128 0xf
+ 801 01ab 2B000000 		.4byte	.LASF22
+ 802 01af 01       		.byte	0x1
+ 803 01b0 75       		.byte	0x75
+ 804 01b1 3A010000 		.4byte	0x13a
+ 805 01b5 21000000 		.4byte	.LLST1
+ 806 01b9 0F       		.uleb128 0xf
+ 807 01ba 34000000 		.4byte	.LASF23
+ 808 01be 01       		.byte	0x1
+ 809 01bf 75       		.byte	0x75
+ 810 01c0 81000000 		.4byte	0x81
+ 811 01c4 4D000000 		.4byte	.LLST2
+ 812 01c8 13       		.uleb128 0x13
+ 813 01c9 16000000 		.4byte	.LBB2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 19
+
+
+ 814 01cd 14000000 		.4byte	.LBE2-.LBB2
+ 815 01d1 E3010000 		.4byte	0x1e3
+ 816 01d5 14       		.uleb128 0x14
+ 817 01d6 6900     		.ascii	"i\000"
+ 818 01d8 01       		.byte	0x1
+ 819 01d9 7C       		.byte	0x7c
+ 820 01da 81000000 		.4byte	0x81
+ 821 01de 6E000000 		.4byte	.LLST3
+ 822 01e2 00       		.byte	0
+ 823 01e3 10       		.uleb128 0x10
+ 824 01e4 10000000 		.4byte	.LVL9
+ 825 01e8 F8010000 		.4byte	0x1f8
+ 826 01ec 11       		.uleb128 0x11
+ 827 01ed 01       		.uleb128 0x1
+ 828 01ee 50       		.byte	0x50
+ 829 01ef 02       		.uleb128 0x2
+ 830 01f0 08       		.byte	0x8
+ 831 01f1 3D       		.byte	0x3d
+ 832 01f2 11       		.uleb128 0x11
+ 833 01f3 01       		.uleb128 0x1
+ 834 01f4 51       		.byte	0x51
+ 835 01f5 01       		.uleb128 0x1
+ 836 01f6 30       		.byte	0x30
+ 837 01f7 00       		.byte	0
+ 838 01f8 12       		.uleb128 0x12
+ 839 01f9 16000000 		.4byte	.LVL10
+ 840 01fd 11       		.uleb128 0x11
+ 841 01fe 01       		.uleb128 0x1
+ 842 01ff 50       		.byte	0x50
+ 843 0200 01       		.uleb128 0x1
+ 844 0201 30       		.byte	0x30
+ 845 0202 00       		.byte	0
+ 846 0203 00       		.byte	0
+ 847 0204 0E       		.uleb128 0xe
+ 848 0205 5D020000 		.4byte	.LASF24
+ 849 0209 01       		.byte	0x1
+ 850 020a 84       		.byte	0x84
+ 851 020b 00000000 		.4byte	.LFB6
+ 852 020f 38000000 		.4byte	.LFE6-.LFB6
+ 853 0213 01       		.uleb128 0x1
+ 854 0214 9C       		.byte	0x9c
+ 855 0215 74020000 		.4byte	0x274
+ 856 0219 0F       		.uleb128 0xf
+ 857 021a 42000000 		.4byte	.LASF25
+ 858 021e 01       		.byte	0x1
+ 859 021f 84       		.byte	0x84
+ 860 0220 3A010000 		.4byte	0x13a
+ 861 0224 98000000 		.4byte	.LLST4
+ 862 0228 0F       		.uleb128 0xf
+ 863 0229 34000000 		.4byte	.LASF23
+ 864 022d 01       		.byte	0x1
+ 865 022e 84       		.byte	0x84
+ 866 022f 8C000000 		.4byte	0x8c
+ 867 0233 C4000000 		.4byte	.LLST5
+ 868 0237 13       		.uleb128 0x13
+ 869 0238 16000000 		.4byte	.LBB3
+ 870 023c 14000000 		.4byte	.LBE3-.LBB3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 20
+
+
+ 871 0240 52020000 		.4byte	0x252
+ 872 0244 14       		.uleb128 0x14
+ 873 0245 6900     		.ascii	"i\000"
+ 874 0247 01       		.byte	0x1
+ 875 0248 8B       		.byte	0x8b
+ 876 0249 8C000000 		.4byte	0x8c
+ 877 024d E5000000 		.4byte	.LLST6
+ 878 0251 00       		.byte	0
+ 879 0252 10       		.uleb128 0x10
+ 880 0253 10000000 		.4byte	.LVL20
+ 881 0257 67020000 		.4byte	0x267
+ 882 025b 11       		.uleb128 0x11
+ 883 025c 01       		.uleb128 0x1
+ 884 025d 50       		.byte	0x50
+ 885 025e 02       		.uleb128 0x2
+ 886 025f 08       		.byte	0x8
+ 887 0260 3D       		.byte	0x3d
+ 888 0261 11       		.uleb128 0x11
+ 889 0262 01       		.uleb128 0x1
+ 890 0263 51       		.byte	0x51
+ 891 0264 01       		.uleb128 0x1
+ 892 0265 30       		.byte	0x30
+ 893 0266 00       		.byte	0
+ 894 0267 12       		.uleb128 0x12
+ 895 0268 16000000 		.4byte	.LVL21
+ 896 026c 11       		.uleb128 0x11
+ 897 026d 01       		.uleb128 0x1
+ 898 026e 50       		.byte	0x50
+ 899 026f 02       		.uleb128 0x2
+ 900 0270 08       		.byte	0x8
+ 901 0271 40       		.byte	0x40
+ 902 0272 00       		.byte	0
+ 903 0273 00       		.byte	0
+ 904 0274 0B       		.uleb128 0xb
+ 905 0275 A3020000 		.4byte	.LASF26
+ 906 0279 01       		.byte	0x1
+ 907 027a 93       		.byte	0x93
+ 908 027b 00000000 		.4byte	.LFB7
+ 909 027f 48000000 		.4byte	.LFE7-.LFB7
+ 910 0283 01       		.uleb128 0x1
+ 911 0284 9C       		.byte	0x9c
+ 912 0285 ED020000 		.4byte	0x2ed
+ 913 0289 15       		.uleb128 0x15
+ 914 028a 7800     		.ascii	"x\000"
+ 915 028c 01       		.byte	0x1
+ 916 028d 93       		.byte	0x93
+ 917 028e 81000000 		.4byte	0x81
+ 918 0292 0F010000 		.4byte	.LLST7
+ 919 0296 15       		.uleb128 0x15
+ 920 0297 7900     		.ascii	"y\000"
+ 921 0299 01       		.byte	0x1
+ 922 029a 93       		.byte	0x93
+ 923 029b 81000000 		.4byte	0x81
+ 924 029f 30010000 		.4byte	.LLST8
+ 925 02a3 0C       		.uleb128 0xc
+ 926 02a4 C8010000 		.4byte	.LASF27
+ 927 02a8 01       		.byte	0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 21
+
+
+ 928 02a9 93       		.byte	0x93
+ 929 02aa 81000000 		.4byte	0x81
+ 930 02ae 01       		.uleb128 0x1
+ 931 02af 52       		.byte	0x52
+ 932 02b0 16       		.uleb128 0x16
+ 933 02b1 47000000 		.4byte	.LASF28
+ 934 02b5 01       		.byte	0x1
+ 935 02b6 9B       		.byte	0x9b
+ 936 02b7 81000000 		.4byte	0x81
+ 937 02bb 51010000 		.4byte	.LLST9
+ 938 02bf 16       		.uleb128 0x16
+ 939 02c0 79000000 		.4byte	.LASF29
+ 940 02c4 01       		.byte	0x1
+ 941 02c5 9C       		.byte	0x9c
+ 942 02c6 81000000 		.4byte	0x81
+ 943 02ca 6F010000 		.4byte	.LLST10
+ 944 02ce 16       		.uleb128 0x16
+ 945 02cf 3C020000 		.4byte	.LASF30
+ 946 02d3 01       		.byte	0x1
+ 947 02d4 9F       		.byte	0x9f
+ 948 02d5 8C000000 		.4byte	0x8c
+ 949 02d9 90010000 		.4byte	.LLST11
+ 950 02dd 16       		.uleb128 0x16
+ 951 02de 0C030000 		.4byte	.LASF31
+ 952 02e2 01       		.byte	0x1
+ 953 02e3 A0       		.byte	0xa0
+ 954 02e4 81000000 		.4byte	0x81
+ 955 02e8 D4010000 		.4byte	.LLST12
+ 956 02ec 00       		.byte	0
+ 957 02ed 0B       		.uleb128 0xb
+ 958 02ee 5F010000 		.4byte	.LASF32
+ 959 02f2 01       		.byte	0x1
+ 960 02f3 A7       		.byte	0xa7
+ 961 02f4 00000000 		.4byte	.LFB8
+ 962 02f8 1C000000 		.4byte	.LFE8-.LFB8
+ 963 02fc 01       		.uleb128 0x1
+ 964 02fd 9C       		.byte	0x9c
+ 965 02fe 1A030000 		.4byte	0x31a
+ 966 0302 17       		.uleb128 0x17
+ 967 0303 00000000 		.4byte	.LBB4
+ 968 0307 14000000 		.4byte	.LBE4-.LBB4
+ 969 030b 14       		.uleb128 0x14
+ 970 030c 6900     		.ascii	"i\000"
+ 971 030e 01       		.byte	0x1
+ 972 030f AA       		.byte	0xaa
+ 973 0310 7A000000 		.4byte	0x7a
+ 974 0314 F2010000 		.4byte	.LLST13
+ 975 0318 00       		.byte	0
+ 976 0319 00       		.byte	0
+ 977 031a 18       		.uleb128 0x18
+ 978 031b D5020000 		.4byte	.LASF42
+ 979 031f 01       		.byte	0x1
+ 980 0320 33       		.byte	0x33
+ 981 0321 00000000 		.4byte	.LFB1
+ 982 0325 34000000 		.4byte	.LFE1-.LFB1
+ 983 0329 01       		.uleb128 0x1
+ 984 032a 9C       		.byte	0x9c
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 22
+
+
+ 985 032b 60030000 		.4byte	0x360
+ 986 032f 19       		.uleb128 0x19
+ 987 0330 2B000000 		.4byte	.LASF22
+ 988 0334 01       		.byte	0x1
+ 989 0335 36       		.byte	0x36
+ 990 0336 60030000 		.4byte	0x360
+ 991 033a 02       		.uleb128 0x2
+ 992 033b 91       		.byte	0x91
+ 993 033c 54       		.sleb128 -44
+ 994 033d 1A       		.uleb128 0x1a
+ 995 033e 28000000 		.4byte	.LVL43
+ 996 0342 95010000 		.4byte	0x195
+ 997 0346 56030000 		.4byte	0x356
+ 998 034a 11       		.uleb128 0x11
+ 999 034b 01       		.uleb128 0x1
+ 1000 034c 50       		.byte	0x50
+ 1001 034d 02       		.uleb128 0x2
+ 1002 034e 74       		.byte	0x74
+ 1003 034f 68       		.sleb128 -24
+ 1004 0350 11       		.uleb128 0x11
+ 1005 0351 01       		.uleb128 0x1
+ 1006 0352 51       		.byte	0x51
+ 1007 0353 01       		.uleb128 0x1
+ 1008 0354 49       		.byte	0x49
+ 1009 0355 00       		.byte	0
+ 1010 0356 1B       		.uleb128 0x1b
+ 1011 0357 2C000000 		.4byte	.LVL44
+ 1012 035b ED020000 		.4byte	0x2ed
+ 1013 035f 00       		.byte	0
+ 1014 0360 1C       		.uleb128 0x1c
+ 1015 0361 81000000 		.4byte	0x81
+ 1016 0365 70030000 		.4byte	0x370
+ 1017 0369 1D       		.uleb128 0x1d
+ 1018 036a 70030000 		.4byte	0x370
+ 1019 036e 1A       		.byte	0x1a
+ 1020 036f 00       		.byte	0
+ 1021 0370 02       		.uleb128 0x2
+ 1022 0371 04       		.byte	0x4
+ 1023 0372 07       		.byte	0x7
+ 1024 0373 46020000 		.4byte	.LASF33
+ 1025 0377 0E       		.uleb128 0xe
+ 1026 0378 A6010000 		.4byte	.LASF34
+ 1027 037c 01       		.byte	0x1
+ 1028 037d AF       		.byte	0xaf
+ 1029 037e 00000000 		.4byte	.LFB9
+ 1030 0382 4C000000 		.4byte	.LFE9-.LFB9
+ 1031 0386 01       		.uleb128 0x1
+ 1032 0387 9C       		.byte	0x9c
+ 1033 0388 25040000 		.4byte	0x425
+ 1034 038c 10       		.uleb128 0x10
+ 1035 038d 0C000000 		.4byte	.LVL45
+ 1036 0391 A1030000 		.4byte	0x3a1
+ 1037 0395 11       		.uleb128 0x11
+ 1038 0396 01       		.uleb128 0x1
+ 1039 0397 50       		.byte	0x50
+ 1040 0398 02       		.uleb128 0x2
+ 1041 0399 08       		.byte	0x8
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 23
+
+
+ 1042 039a 3D       		.byte	0x3d
+ 1043 039b 11       		.uleb128 0x11
+ 1044 039c 01       		.uleb128 0x1
+ 1045 039d 51       		.byte	0x51
+ 1046 039e 01       		.uleb128 0x1
+ 1047 039f 30       		.byte	0x30
+ 1048 03a0 00       		.byte	0
+ 1049 03a1 10       		.uleb128 0x10
+ 1050 03a2 12000000 		.4byte	.LVL46
+ 1051 03a6 B0030000 		.4byte	0x3b0
+ 1052 03aa 11       		.uleb128 0x11
+ 1053 03ab 01       		.uleb128 0x1
+ 1054 03ac 50       		.byte	0x50
+ 1055 03ad 01       		.uleb128 0x1
+ 1056 03ae 30       		.byte	0x30
+ 1057 03af 00       		.byte	0
+ 1058 03b0 10       		.uleb128 0x10
+ 1059 03b1 18000000 		.4byte	.LVL47
+ 1060 03b5 C0030000 		.4byte	0x3c0
+ 1061 03b9 11       		.uleb128 0x11
+ 1062 03ba 01       		.uleb128 0x1
+ 1063 03bb 50       		.byte	0x50
+ 1064 03bc 02       		.uleb128 0x2
+ 1065 03bd 08       		.byte	0x8
+ 1066 03be 21       		.byte	0x21
+ 1067 03bf 00       		.byte	0
+ 1068 03c0 10       		.uleb128 0x10
+ 1069 03c1 1E000000 		.4byte	.LVL48
+ 1070 03c5 CF030000 		.4byte	0x3cf
+ 1071 03c9 11       		.uleb128 0x11
+ 1072 03ca 01       		.uleb128 0x1
+ 1073 03cb 50       		.byte	0x50
+ 1074 03cc 01       		.uleb128 0x1
+ 1075 03cd 30       		.byte	0x30
+ 1076 03ce 00       		.byte	0
+ 1077 03cf 10       		.uleb128 0x10
+ 1078 03d0 24000000 		.4byte	.LVL49
+ 1079 03d4 DF030000 		.4byte	0x3df
+ 1080 03d8 11       		.uleb128 0x11
+ 1081 03d9 01       		.uleb128 0x1
+ 1082 03da 50       		.byte	0x50
+ 1083 03db 02       		.uleb128 0x2
+ 1084 03dc 08       		.byte	0x8
+ 1085 03dd 7F       		.byte	0x7f
+ 1086 03de 00       		.byte	0
+ 1087 03df 10       		.uleb128 0x10
+ 1088 03e0 2A000000 		.4byte	.LVL50
+ 1089 03e4 EF030000 		.4byte	0x3ef
+ 1090 03e8 11       		.uleb128 0x11
+ 1091 03e9 01       		.uleb128 0x1
+ 1092 03ea 50       		.byte	0x50
+ 1093 03eb 02       		.uleb128 0x2
+ 1094 03ec 08       		.byte	0x8
+ 1095 03ed 22       		.byte	0x22
+ 1096 03ee 00       		.byte	0
+ 1097 03ef 10       		.uleb128 0x10
+ 1098 03f0 30000000 		.4byte	.LVL51
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 24
+
+
+ 1099 03f4 FE030000 		.4byte	0x3fe
+ 1100 03f8 11       		.uleb128 0x11
+ 1101 03f9 01       		.uleb128 0x1
+ 1102 03fa 50       		.byte	0x50
+ 1103 03fb 01       		.uleb128 0x1
+ 1104 03fc 30       		.byte	0x30
+ 1105 03fd 00       		.byte	0
+ 1106 03fe 10       		.uleb128 0x10
+ 1107 03ff 36000000 		.4byte	.LVL52
+ 1108 0403 0D040000 		.4byte	0x40d
+ 1109 0407 11       		.uleb128 0x11
+ 1110 0408 01       		.uleb128 0x1
+ 1111 0409 50       		.byte	0x50
+ 1112 040a 01       		.uleb128 0x1
+ 1113 040b 37       		.byte	0x37
+ 1114 040c 00       		.byte	0
+ 1115 040d 1E       		.uleb128 0x1e
+ 1116 040e 46000000 		.4byte	.LVL54
+ 1117 0412 04020000 		.4byte	0x204
+ 1118 0416 11       		.uleb128 0x11
+ 1119 0417 01       		.uleb128 0x1
+ 1120 0418 50       		.byte	0x50
+ 1121 0419 02       		.uleb128 0x2
+ 1122 041a 74       		.byte	0x74
+ 1123 041b 0C       		.sleb128 12
+ 1124 041c 11       		.uleb128 0x11
+ 1125 041d 01       		.uleb128 0x1
+ 1126 041e 51       		.byte	0x51
+ 1127 041f 03       		.uleb128 0x3
+ 1128 0420 0A       		.byte	0xa
+ 1129 0421 0004     		.2byte	0x400
+ 1130 0423 00       		.byte	0
+ 1131 0424 00       		.byte	0
+ 1132 0425 0B       		.uleb128 0xb
+ 1133 0426 FE020000 		.4byte	.LASF35
+ 1134 042a 01       		.byte	0x1
+ 1135 042b 5B       		.byte	0x5b
+ 1136 042c 00000000 		.4byte	.LFB2
+ 1137 0430 0C000000 		.4byte	.LFE2-.LFB2
+ 1138 0434 01       		.uleb128 0x1
+ 1139 0435 9C       		.byte	0x9c
+ 1140 0436 4D040000 		.4byte	0x44d
+ 1141 043a 1B       		.uleb128 0x1b
+ 1142 043b 06000000 		.4byte	.LVL55
+ 1143 043f 1A030000 		.4byte	0x31a
+ 1144 0443 1B       		.uleb128 0x1b
+ 1145 0444 0A000000 		.4byte	.LVL56
+ 1146 0448 77030000 		.4byte	0x377
+ 1147 044c 00       		.byte	0
+ 1148 044d 19       		.uleb128 0x19
+ 1149 044e BF020000 		.4byte	.LASF36
+ 1150 0452 01       		.byte	0x1
+ 1151 0453 2A       		.byte	0x2a
+ 1152 0454 F6000000 		.4byte	0xf6
+ 1153 0458 05       		.uleb128 0x5
+ 1154 0459 03       		.byte	0x3
+ 1155 045a 00000000 		.4byte	SSD1306_I2CController
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 25
+
+
+ 1156 045e 1C       		.uleb128 0x1c
+ 1157 045f 81000000 		.4byte	0x81
+ 1158 0463 6F040000 		.4byte	0x46f
+ 1159 0467 1F       		.uleb128 0x1f
+ 1160 0468 70030000 		.4byte	0x370
+ 1161 046c FF03     		.2byte	0x3ff
+ 1162 046e 00       		.byte	0
+ 1163 046f 19       		.uleb128 0x19
+ 1164 0470 0F000000 		.4byte	.LASF37
+ 1165 0474 01       		.byte	0x1
+ 1166 0475 2D       		.byte	0x2d
+ 1167 0476 5E040000 		.4byte	0x45e
+ 1168 047a 05       		.uleb128 0x5
+ 1169 047b 03       		.byte	0x3
+ 1170 047c 0C000000 		.4byte	SSD1306_PixelData
+ 1171 0480 00       		.byte	0
+ 1172              		.section	.debug_abbrev,"",%progbits
+ 1173              	.Ldebug_abbrev0:
+ 1174 0000 01       		.uleb128 0x1
+ 1175 0001 11       		.uleb128 0x11
+ 1176 0002 01       		.byte	0x1
+ 1177 0003 25       		.uleb128 0x25
+ 1178 0004 0E       		.uleb128 0xe
+ 1179 0005 13       		.uleb128 0x13
+ 1180 0006 0B       		.uleb128 0xb
+ 1181 0007 03       		.uleb128 0x3
+ 1182 0008 0E       		.uleb128 0xe
+ 1183 0009 1B       		.uleb128 0x1b
+ 1184 000a 0E       		.uleb128 0xe
+ 1185 000b 55       		.uleb128 0x55
+ 1186 000c 17       		.uleb128 0x17
+ 1187 000d 11       		.uleb128 0x11
+ 1188 000e 01       		.uleb128 0x1
+ 1189 000f 10       		.uleb128 0x10
+ 1190 0010 17       		.uleb128 0x17
+ 1191 0011 00       		.byte	0
+ 1192 0012 00       		.byte	0
+ 1193 0013 02       		.uleb128 0x2
+ 1194 0014 24       		.uleb128 0x24
+ 1195 0015 00       		.byte	0
+ 1196 0016 0B       		.uleb128 0xb
+ 1197 0017 0B       		.uleb128 0xb
+ 1198 0018 3E       		.uleb128 0x3e
+ 1199 0019 0B       		.uleb128 0xb
+ 1200 001a 03       		.uleb128 0x3
+ 1201 001b 0E       		.uleb128 0xe
+ 1202 001c 00       		.byte	0
+ 1203 001d 00       		.byte	0
+ 1204 001e 03       		.uleb128 0x3
+ 1205 001f 16       		.uleb128 0x16
+ 1206 0020 00       		.byte	0
+ 1207 0021 03       		.uleb128 0x3
+ 1208 0022 0E       		.uleb128 0xe
+ 1209 0023 3A       		.uleb128 0x3a
+ 1210 0024 0B       		.uleb128 0xb
+ 1211 0025 3B       		.uleb128 0x3b
+ 1212 0026 0B       		.uleb128 0xb
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 26
+
+
+ 1213 0027 49       		.uleb128 0x49
+ 1214 0028 13       		.uleb128 0x13
+ 1215 0029 00       		.byte	0
+ 1216 002a 00       		.byte	0
+ 1217 002b 04       		.uleb128 0x4
+ 1218 002c 24       		.uleb128 0x24
+ 1219 002d 00       		.byte	0
+ 1220 002e 0B       		.uleb128 0xb
+ 1221 002f 0B       		.uleb128 0xb
+ 1222 0030 3E       		.uleb128 0x3e
+ 1223 0031 0B       		.uleb128 0xb
+ 1224 0032 03       		.uleb128 0x3
+ 1225 0033 08       		.uleb128 0x8
+ 1226 0034 00       		.byte	0
+ 1227 0035 00       		.byte	0
+ 1228 0036 05       		.uleb128 0x5
+ 1229 0037 13       		.uleb128 0x13
+ 1230 0038 01       		.byte	0x1
+ 1231 0039 03       		.uleb128 0x3
+ 1232 003a 0E       		.uleb128 0xe
+ 1233 003b 0B       		.uleb128 0xb
+ 1234 003c 0B       		.uleb128 0xb
+ 1235 003d 3A       		.uleb128 0x3a
+ 1236 003e 0B       		.uleb128 0xb
+ 1237 003f 3B       		.uleb128 0x3b
+ 1238 0040 0B       		.uleb128 0xb
+ 1239 0041 01       		.uleb128 0x1
+ 1240 0042 13       		.uleb128 0x13
+ 1241 0043 00       		.byte	0
+ 1242 0044 00       		.byte	0
+ 1243 0045 06       		.uleb128 0x6
+ 1244 0046 0D       		.uleb128 0xd
+ 1245 0047 00       		.byte	0
+ 1246 0048 03       		.uleb128 0x3
+ 1247 0049 0E       		.uleb128 0xe
+ 1248 004a 3A       		.uleb128 0x3a
+ 1249 004b 0B       		.uleb128 0xb
+ 1250 004c 3B       		.uleb128 0x3b
+ 1251 004d 0B       		.uleb128 0xb
+ 1252 004e 49       		.uleb128 0x49
+ 1253 004f 13       		.uleb128 0x13
+ 1254 0050 38       		.uleb128 0x38
+ 1255 0051 0B       		.uleb128 0xb
+ 1256 0052 00       		.byte	0
+ 1257 0053 00       		.byte	0
+ 1258 0054 07       		.uleb128 0x7
+ 1259 0055 15       		.uleb128 0x15
+ 1260 0056 01       		.byte	0x1
+ 1261 0057 27       		.uleb128 0x27
+ 1262 0058 19       		.uleb128 0x19
+ 1263 0059 01       		.uleb128 0x1
+ 1264 005a 13       		.uleb128 0x13
+ 1265 005b 00       		.byte	0
+ 1266 005c 00       		.byte	0
+ 1267 005d 08       		.uleb128 0x8
+ 1268 005e 05       		.uleb128 0x5
+ 1269 005f 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 27
+
+
+ 1270 0060 49       		.uleb128 0x49
+ 1271 0061 13       		.uleb128 0x13
+ 1272 0062 00       		.byte	0
+ 1273 0063 00       		.byte	0
+ 1274 0064 09       		.uleb128 0x9
+ 1275 0065 0F       		.uleb128 0xf
+ 1276 0066 00       		.byte	0
+ 1277 0067 0B       		.uleb128 0xb
+ 1278 0068 0B       		.uleb128 0xb
+ 1279 0069 49       		.uleb128 0x49
+ 1280 006a 13       		.uleb128 0x13
+ 1281 006b 00       		.byte	0
+ 1282 006c 00       		.byte	0
+ 1283 006d 0A       		.uleb128 0xa
+ 1284 006e 15       		.uleb128 0x15
+ 1285 006f 00       		.byte	0
+ 1286 0070 27       		.uleb128 0x27
+ 1287 0071 19       		.uleb128 0x19
+ 1288 0072 00       		.byte	0
+ 1289 0073 00       		.byte	0
+ 1290 0074 0B       		.uleb128 0xb
+ 1291 0075 2E       		.uleb128 0x2e
+ 1292 0076 01       		.byte	0x1
+ 1293 0077 3F       		.uleb128 0x3f
+ 1294 0078 19       		.uleb128 0x19
+ 1295 0079 03       		.uleb128 0x3
+ 1296 007a 0E       		.uleb128 0xe
+ 1297 007b 3A       		.uleb128 0x3a
+ 1298 007c 0B       		.uleb128 0xb
+ 1299 007d 3B       		.uleb128 0x3b
+ 1300 007e 0B       		.uleb128 0xb
+ 1301 007f 27       		.uleb128 0x27
+ 1302 0080 19       		.uleb128 0x19
+ 1303 0081 11       		.uleb128 0x11
+ 1304 0082 01       		.uleb128 0x1
+ 1305 0083 12       		.uleb128 0x12
+ 1306 0084 06       		.uleb128 0x6
+ 1307 0085 40       		.uleb128 0x40
+ 1308 0086 18       		.uleb128 0x18
+ 1309 0087 9742     		.uleb128 0x2117
+ 1310 0089 19       		.uleb128 0x19
+ 1311 008a 01       		.uleb128 0x1
+ 1312 008b 13       		.uleb128 0x13
+ 1313 008c 00       		.byte	0
+ 1314 008d 00       		.byte	0
+ 1315 008e 0C       		.uleb128 0xc
+ 1316 008f 05       		.uleb128 0x5
+ 1317 0090 00       		.byte	0
+ 1318 0091 03       		.uleb128 0x3
+ 1319 0092 0E       		.uleb128 0xe
+ 1320 0093 3A       		.uleb128 0x3a
+ 1321 0094 0B       		.uleb128 0xb
+ 1322 0095 3B       		.uleb128 0x3b
+ 1323 0096 0B       		.uleb128 0xb
+ 1324 0097 49       		.uleb128 0x49
+ 1325 0098 13       		.uleb128 0x13
+ 1326 0099 02       		.uleb128 0x2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 28
+
+
+ 1327 009a 18       		.uleb128 0x18
+ 1328 009b 00       		.byte	0
+ 1329 009c 00       		.byte	0
+ 1330 009d 0D       		.uleb128 0xd
+ 1331 009e 2E       		.uleb128 0x2e
+ 1332 009f 00       		.byte	0
+ 1333 00a0 3F       		.uleb128 0x3f
+ 1334 00a1 19       		.uleb128 0x19
+ 1335 00a2 03       		.uleb128 0x3
+ 1336 00a3 0E       		.uleb128 0xe
+ 1337 00a4 3A       		.uleb128 0x3a
+ 1338 00a5 0B       		.uleb128 0xb
+ 1339 00a6 3B       		.uleb128 0x3b
+ 1340 00a7 0B       		.uleb128 0xb
+ 1341 00a8 27       		.uleb128 0x27
+ 1342 00a9 19       		.uleb128 0x19
+ 1343 00aa 49       		.uleb128 0x49
+ 1344 00ab 13       		.uleb128 0x13
+ 1345 00ac 11       		.uleb128 0x11
+ 1346 00ad 01       		.uleb128 0x1
+ 1347 00ae 12       		.uleb128 0x12
+ 1348 00af 06       		.uleb128 0x6
+ 1349 00b0 40       		.uleb128 0x40
+ 1350 00b1 18       		.uleb128 0x18
+ 1351 00b2 9742     		.uleb128 0x2117
+ 1352 00b4 19       		.uleb128 0x19
+ 1353 00b5 00       		.byte	0
+ 1354 00b6 00       		.byte	0
+ 1355 00b7 0E       		.uleb128 0xe
+ 1356 00b8 2E       		.uleb128 0x2e
+ 1357 00b9 01       		.byte	0x1
+ 1358 00ba 3F       		.uleb128 0x3f
+ 1359 00bb 19       		.uleb128 0x19
+ 1360 00bc 03       		.uleb128 0x3
+ 1361 00bd 0E       		.uleb128 0xe
+ 1362 00be 3A       		.uleb128 0x3a
+ 1363 00bf 0B       		.uleb128 0xb
+ 1364 00c0 3B       		.uleb128 0x3b
+ 1365 00c1 0B       		.uleb128 0xb
+ 1366 00c2 27       		.uleb128 0x27
+ 1367 00c3 19       		.uleb128 0x19
+ 1368 00c4 11       		.uleb128 0x11
+ 1369 00c5 01       		.uleb128 0x1
+ 1370 00c6 12       		.uleb128 0x12
+ 1371 00c7 06       		.uleb128 0x6
+ 1372 00c8 40       		.uleb128 0x40
+ 1373 00c9 18       		.uleb128 0x18
+ 1374 00ca 9642     		.uleb128 0x2116
+ 1375 00cc 19       		.uleb128 0x19
+ 1376 00cd 01       		.uleb128 0x1
+ 1377 00ce 13       		.uleb128 0x13
+ 1378 00cf 00       		.byte	0
+ 1379 00d0 00       		.byte	0
+ 1380 00d1 0F       		.uleb128 0xf
+ 1381 00d2 05       		.uleb128 0x5
+ 1382 00d3 00       		.byte	0
+ 1383 00d4 03       		.uleb128 0x3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 29
+
+
+ 1384 00d5 0E       		.uleb128 0xe
+ 1385 00d6 3A       		.uleb128 0x3a
+ 1386 00d7 0B       		.uleb128 0xb
+ 1387 00d8 3B       		.uleb128 0x3b
+ 1388 00d9 0B       		.uleb128 0xb
+ 1389 00da 49       		.uleb128 0x49
+ 1390 00db 13       		.uleb128 0x13
+ 1391 00dc 02       		.uleb128 0x2
+ 1392 00dd 17       		.uleb128 0x17
+ 1393 00de 00       		.byte	0
+ 1394 00df 00       		.byte	0
+ 1395 00e0 10       		.uleb128 0x10
+ 1396 00e1 898201   		.uleb128 0x4109
+ 1397 00e4 01       		.byte	0x1
+ 1398 00e5 11       		.uleb128 0x11
+ 1399 00e6 01       		.uleb128 0x1
+ 1400 00e7 01       		.uleb128 0x1
+ 1401 00e8 13       		.uleb128 0x13
+ 1402 00e9 00       		.byte	0
+ 1403 00ea 00       		.byte	0
+ 1404 00eb 11       		.uleb128 0x11
+ 1405 00ec 8A8201   		.uleb128 0x410a
+ 1406 00ef 00       		.byte	0
+ 1407 00f0 02       		.uleb128 0x2
+ 1408 00f1 18       		.uleb128 0x18
+ 1409 00f2 9142     		.uleb128 0x2111
+ 1410 00f4 18       		.uleb128 0x18
+ 1411 00f5 00       		.byte	0
+ 1412 00f6 00       		.byte	0
+ 1413 00f7 12       		.uleb128 0x12
+ 1414 00f8 898201   		.uleb128 0x4109
+ 1415 00fb 01       		.byte	0x1
+ 1416 00fc 11       		.uleb128 0x11
+ 1417 00fd 01       		.uleb128 0x1
+ 1418 00fe 00       		.byte	0
+ 1419 00ff 00       		.byte	0
+ 1420 0100 13       		.uleb128 0x13
+ 1421 0101 0B       		.uleb128 0xb
+ 1422 0102 01       		.byte	0x1
+ 1423 0103 11       		.uleb128 0x11
+ 1424 0104 01       		.uleb128 0x1
+ 1425 0105 12       		.uleb128 0x12
+ 1426 0106 06       		.uleb128 0x6
+ 1427 0107 01       		.uleb128 0x1
+ 1428 0108 13       		.uleb128 0x13
+ 1429 0109 00       		.byte	0
+ 1430 010a 00       		.byte	0
+ 1431 010b 14       		.uleb128 0x14
+ 1432 010c 34       		.uleb128 0x34
+ 1433 010d 00       		.byte	0
+ 1434 010e 03       		.uleb128 0x3
+ 1435 010f 08       		.uleb128 0x8
+ 1436 0110 3A       		.uleb128 0x3a
+ 1437 0111 0B       		.uleb128 0xb
+ 1438 0112 3B       		.uleb128 0x3b
+ 1439 0113 0B       		.uleb128 0xb
+ 1440 0114 49       		.uleb128 0x49
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 30
+
+
+ 1441 0115 13       		.uleb128 0x13
+ 1442 0116 02       		.uleb128 0x2
+ 1443 0117 17       		.uleb128 0x17
+ 1444 0118 00       		.byte	0
+ 1445 0119 00       		.byte	0
+ 1446 011a 15       		.uleb128 0x15
+ 1447 011b 05       		.uleb128 0x5
+ 1448 011c 00       		.byte	0
+ 1449 011d 03       		.uleb128 0x3
+ 1450 011e 08       		.uleb128 0x8
+ 1451 011f 3A       		.uleb128 0x3a
+ 1452 0120 0B       		.uleb128 0xb
+ 1453 0121 3B       		.uleb128 0x3b
+ 1454 0122 0B       		.uleb128 0xb
+ 1455 0123 49       		.uleb128 0x49
+ 1456 0124 13       		.uleb128 0x13
+ 1457 0125 02       		.uleb128 0x2
+ 1458 0126 17       		.uleb128 0x17
+ 1459 0127 00       		.byte	0
+ 1460 0128 00       		.byte	0
+ 1461 0129 16       		.uleb128 0x16
+ 1462 012a 34       		.uleb128 0x34
+ 1463 012b 00       		.byte	0
+ 1464 012c 03       		.uleb128 0x3
+ 1465 012d 0E       		.uleb128 0xe
+ 1466 012e 3A       		.uleb128 0x3a
+ 1467 012f 0B       		.uleb128 0xb
+ 1468 0130 3B       		.uleb128 0x3b
+ 1469 0131 0B       		.uleb128 0xb
+ 1470 0132 49       		.uleb128 0x49
+ 1471 0133 13       		.uleb128 0x13
+ 1472 0134 02       		.uleb128 0x2
+ 1473 0135 17       		.uleb128 0x17
+ 1474 0136 00       		.byte	0
+ 1475 0137 00       		.byte	0
+ 1476 0138 17       		.uleb128 0x17
+ 1477 0139 0B       		.uleb128 0xb
+ 1478 013a 01       		.byte	0x1
+ 1479 013b 11       		.uleb128 0x11
+ 1480 013c 01       		.uleb128 0x1
+ 1481 013d 12       		.uleb128 0x12
+ 1482 013e 06       		.uleb128 0x6
+ 1483 013f 00       		.byte	0
+ 1484 0140 00       		.byte	0
+ 1485 0141 18       		.uleb128 0x18
+ 1486 0142 2E       		.uleb128 0x2e
+ 1487 0143 01       		.byte	0x1
+ 1488 0144 3F       		.uleb128 0x3f
+ 1489 0145 19       		.uleb128 0x19
+ 1490 0146 03       		.uleb128 0x3
+ 1491 0147 0E       		.uleb128 0xe
+ 1492 0148 3A       		.uleb128 0x3a
+ 1493 0149 0B       		.uleb128 0xb
+ 1494 014a 3B       		.uleb128 0x3b
+ 1495 014b 0B       		.uleb128 0xb
+ 1496 014c 11       		.uleb128 0x11
+ 1497 014d 01       		.uleb128 0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 31
+
+
+ 1498 014e 12       		.uleb128 0x12
+ 1499 014f 06       		.uleb128 0x6
+ 1500 0150 40       		.uleb128 0x40
+ 1501 0151 18       		.uleb128 0x18
+ 1502 0152 9742     		.uleb128 0x2117
+ 1503 0154 19       		.uleb128 0x19
+ 1504 0155 01       		.uleb128 0x1
+ 1505 0156 13       		.uleb128 0x13
+ 1506 0157 00       		.byte	0
+ 1507 0158 00       		.byte	0
+ 1508 0159 19       		.uleb128 0x19
+ 1509 015a 34       		.uleb128 0x34
+ 1510 015b 00       		.byte	0
+ 1511 015c 03       		.uleb128 0x3
+ 1512 015d 0E       		.uleb128 0xe
+ 1513 015e 3A       		.uleb128 0x3a
+ 1514 015f 0B       		.uleb128 0xb
+ 1515 0160 3B       		.uleb128 0x3b
+ 1516 0161 0B       		.uleb128 0xb
+ 1517 0162 49       		.uleb128 0x49
+ 1518 0163 13       		.uleb128 0x13
+ 1519 0164 02       		.uleb128 0x2
+ 1520 0165 18       		.uleb128 0x18
+ 1521 0166 00       		.byte	0
+ 1522 0167 00       		.byte	0
+ 1523 0168 1A       		.uleb128 0x1a
+ 1524 0169 898201   		.uleb128 0x4109
+ 1525 016c 01       		.byte	0x1
+ 1526 016d 11       		.uleb128 0x11
+ 1527 016e 01       		.uleb128 0x1
+ 1528 016f 31       		.uleb128 0x31
+ 1529 0170 13       		.uleb128 0x13
+ 1530 0171 01       		.uleb128 0x1
+ 1531 0172 13       		.uleb128 0x13
+ 1532 0173 00       		.byte	0
+ 1533 0174 00       		.byte	0
+ 1534 0175 1B       		.uleb128 0x1b
+ 1535 0176 898201   		.uleb128 0x4109
+ 1536 0179 00       		.byte	0
+ 1537 017a 11       		.uleb128 0x11
+ 1538 017b 01       		.uleb128 0x1
+ 1539 017c 31       		.uleb128 0x31
+ 1540 017d 13       		.uleb128 0x13
+ 1541 017e 00       		.byte	0
+ 1542 017f 00       		.byte	0
+ 1543 0180 1C       		.uleb128 0x1c
+ 1544 0181 01       		.uleb128 0x1
+ 1545 0182 01       		.byte	0x1
+ 1546 0183 49       		.uleb128 0x49
+ 1547 0184 13       		.uleb128 0x13
+ 1548 0185 01       		.uleb128 0x1
+ 1549 0186 13       		.uleb128 0x13
+ 1550 0187 00       		.byte	0
+ 1551 0188 00       		.byte	0
+ 1552 0189 1D       		.uleb128 0x1d
+ 1553 018a 21       		.uleb128 0x21
+ 1554 018b 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 32
+
+
+ 1555 018c 49       		.uleb128 0x49
+ 1556 018d 13       		.uleb128 0x13
+ 1557 018e 2F       		.uleb128 0x2f
+ 1558 018f 0B       		.uleb128 0xb
+ 1559 0190 00       		.byte	0
+ 1560 0191 00       		.byte	0
+ 1561 0192 1E       		.uleb128 0x1e
+ 1562 0193 898201   		.uleb128 0x4109
+ 1563 0196 01       		.byte	0x1
+ 1564 0197 11       		.uleb128 0x11
+ 1565 0198 01       		.uleb128 0x1
+ 1566 0199 31       		.uleb128 0x31
+ 1567 019a 13       		.uleb128 0x13
+ 1568 019b 00       		.byte	0
+ 1569 019c 00       		.byte	0
+ 1570 019d 1F       		.uleb128 0x1f
+ 1571 019e 21       		.uleb128 0x21
+ 1572 019f 00       		.byte	0
+ 1573 01a0 49       		.uleb128 0x49
+ 1574 01a1 13       		.uleb128 0x13
+ 1575 01a2 2F       		.uleb128 0x2f
+ 1576 01a3 05       		.uleb128 0x5
+ 1577 01a4 00       		.byte	0
+ 1578 01a5 00       		.byte	0
+ 1579 01a6 00       		.byte	0
+ 1580              		.section	.debug_loc,"",%progbits
+ 1581              	.Ldebug_loc0:
+ 1582              	.LLST0:
+ 1583 0000 00000000 		.4byte	.LVL0
+ 1584 0004 0C000000 		.4byte	.LVL1
+ 1585 0008 0100     		.2byte	0x1
+ 1586 000a 50       		.byte	0x50
+ 1587 000b 0C000000 		.4byte	.LVL1
+ 1588 000f 24000000 		.4byte	.LFE4
+ 1589 0013 0400     		.2byte	0x4
+ 1590 0015 F3       		.byte	0xf3
+ 1591 0016 01       		.uleb128 0x1
+ 1592 0017 50       		.byte	0x50
+ 1593 0018 9F       		.byte	0x9f
+ 1594 0019 00000000 		.4byte	0
+ 1595 001d 00000000 		.4byte	0
+ 1596              	.LLST1:
+ 1597 0021 00000000 		.4byte	.LVL6
+ 1598 0025 0E000000 		.4byte	.LVL8
+ 1599 0029 0100     		.2byte	0x1
+ 1600 002b 50       		.byte	0x50
+ 1601 002c 0E000000 		.4byte	.LVL8
+ 1602 0030 32000000 		.4byte	.LVL16
+ 1603 0034 0100     		.2byte	0x1
+ 1604 0036 56       		.byte	0x56
+ 1605 0037 32000000 		.4byte	.LVL16
+ 1606 003b 38000000 		.4byte	.LFE5
+ 1607 003f 0400     		.2byte	0x4
+ 1608 0041 F3       		.byte	0xf3
+ 1609 0042 01       		.uleb128 0x1
+ 1610 0043 50       		.byte	0x50
+ 1611 0044 9F       		.byte	0x9f
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 33
+
+
+ 1612 0045 00000000 		.4byte	0
+ 1613 0049 00000000 		.4byte	0
+ 1614              	.LLST2:
+ 1615 004d 00000000 		.4byte	.LVL6
+ 1616 0051 0C000000 		.4byte	.LVL7
+ 1617 0055 0100     		.2byte	0x1
+ 1618 0057 51       		.byte	0x51
+ 1619 0058 0C000000 		.4byte	.LVL7
+ 1620 005c 38000000 		.4byte	.LFE5
+ 1621 0060 0400     		.2byte	0x4
+ 1622 0062 F3       		.byte	0xf3
+ 1623 0063 01       		.uleb128 0x1
+ 1624 0064 51       		.byte	0x51
+ 1625 0065 9F       		.byte	0x9f
+ 1626 0066 00000000 		.4byte	0
+ 1627 006a 00000000 		.4byte	0
+ 1628              	.LLST3:
+ 1629 006e 16000000 		.4byte	.LVL10
+ 1630 0072 1A000000 		.4byte	.LVL11
+ 1631 0076 0200     		.2byte	0x2
+ 1632 0078 30       		.byte	0x30
+ 1633 0079 9F       		.byte	0x9f
+ 1634 007a 1A000000 		.4byte	.LVL11
+ 1635 007e 24000000 		.4byte	.LVL13
+ 1636 0082 0100     		.2byte	0x1
+ 1637 0084 54       		.byte	0x54
+ 1638 0085 26000000 		.4byte	.LVL14
+ 1639 0089 32000000 		.4byte	.LVL16
+ 1640 008d 0100     		.2byte	0x1
+ 1641 008f 54       		.byte	0x54
+ 1642 0090 00000000 		.4byte	0
+ 1643 0094 00000000 		.4byte	0
+ 1644              	.LLST4:
+ 1645 0098 00000000 		.4byte	.LVL17
+ 1646 009c 0E000000 		.4byte	.LVL19
+ 1647 00a0 0100     		.2byte	0x1
+ 1648 00a2 50       		.byte	0x50
+ 1649 00a3 0E000000 		.4byte	.LVL19
+ 1650 00a7 32000000 		.4byte	.LVL27
+ 1651 00ab 0100     		.2byte	0x1
+ 1652 00ad 56       		.byte	0x56
+ 1653 00ae 32000000 		.4byte	.LVL27
+ 1654 00b2 38000000 		.4byte	.LFE6
+ 1655 00b6 0400     		.2byte	0x4
+ 1656 00b8 F3       		.byte	0xf3
+ 1657 00b9 01       		.uleb128 0x1
+ 1658 00ba 50       		.byte	0x50
+ 1659 00bb 9F       		.byte	0x9f
+ 1660 00bc 00000000 		.4byte	0
+ 1661 00c0 00000000 		.4byte	0
+ 1662              	.LLST5:
+ 1663 00c4 00000000 		.4byte	.LVL17
+ 1664 00c8 0C000000 		.4byte	.LVL18
+ 1665 00cc 0100     		.2byte	0x1
+ 1666 00ce 51       		.byte	0x51
+ 1667 00cf 0C000000 		.4byte	.LVL18
+ 1668 00d3 38000000 		.4byte	.LFE6
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 34
+
+
+ 1669 00d7 0400     		.2byte	0x4
+ 1670 00d9 F3       		.byte	0xf3
+ 1671 00da 01       		.uleb128 0x1
+ 1672 00db 51       		.byte	0x51
+ 1673 00dc 9F       		.byte	0x9f
+ 1674 00dd 00000000 		.4byte	0
+ 1675 00e1 00000000 		.4byte	0
+ 1676              	.LLST6:
+ 1677 00e5 16000000 		.4byte	.LVL21
+ 1678 00e9 1A000000 		.4byte	.LVL22
+ 1679 00ed 0200     		.2byte	0x2
+ 1680 00ef 30       		.byte	0x30
+ 1681 00f0 9F       		.byte	0x9f
+ 1682 00f1 1A000000 		.4byte	.LVL22
+ 1683 00f5 24000000 		.4byte	.LVL24
+ 1684 00f9 0100     		.2byte	0x1
+ 1685 00fb 54       		.byte	0x54
+ 1686 00fc 26000000 		.4byte	.LVL25
+ 1687 0100 32000000 		.4byte	.LVL27
+ 1688 0104 0100     		.2byte	0x1
+ 1689 0106 54       		.byte	0x54
+ 1690 0107 00000000 		.4byte	0
+ 1691 010b 00000000 		.4byte	0
+ 1692              	.LLST7:
+ 1693 010f 00000000 		.4byte	.LVL28
+ 1694 0113 10000000 		.4byte	.LVL30
+ 1695 0117 0100     		.2byte	0x1
+ 1696 0119 50       		.byte	0x50
+ 1697 011a 10000000 		.4byte	.LVL30
+ 1698 011e 48000000 		.4byte	.LFE7
+ 1699 0122 0400     		.2byte	0x4
+ 1700 0124 F3       		.byte	0xf3
+ 1701 0125 01       		.uleb128 0x1
+ 1702 0126 50       		.byte	0x50
+ 1703 0127 9F       		.byte	0x9f
+ 1704 0128 00000000 		.4byte	0
+ 1705 012c 00000000 		.4byte	0
+ 1706              	.LLST8:
+ 1707 0130 00000000 		.4byte	.LVL28
+ 1708 0134 14000000 		.4byte	.LVL31
+ 1709 0138 0100     		.2byte	0x1
+ 1710 013a 51       		.byte	0x51
+ 1711 013b 14000000 		.4byte	.LVL31
+ 1712 013f 48000000 		.4byte	.LFE7
+ 1713 0143 0400     		.2byte	0x4
+ 1714 0145 F3       		.byte	0xf3
+ 1715 0146 01       		.uleb128 0x1
+ 1716 0147 51       		.byte	0x51
+ 1717 0148 9F       		.byte	0x9f
+ 1718 0149 00000000 		.4byte	0
+ 1719 014d 00000000 		.4byte	0
+ 1720              	.LLST9:
+ 1721 0151 0C000000 		.4byte	.LVL29
+ 1722 0155 1C000000 		.4byte	.LVL33
+ 1723 0159 0100     		.2byte	0x1
+ 1724 015b 53       		.byte	0x53
+ 1725 015c 2C000000 		.4byte	.LVL35
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 35
+
+
+ 1726 0160 32000000 		.4byte	.LVL37
+ 1727 0164 0100     		.2byte	0x1
+ 1728 0166 53       		.byte	0x53
+ 1729 0167 00000000 		.4byte	0
+ 1730 016b 00000000 		.4byte	0
+ 1731              	.LLST10:
+ 1732 016f 0C000000 		.4byte	.LVL29
+ 1733 0173 10000000 		.4byte	.LVL30
+ 1734 0177 0100     		.2byte	0x1
+ 1735 0179 50       		.byte	0x50
+ 1736 017a 10000000 		.4byte	.LVL30
+ 1737 017e 42000000 		.4byte	.LVL39
+ 1738 0182 0400     		.2byte	0x4
+ 1739 0184 F3       		.byte	0xf3
+ 1740 0185 01       		.uleb128 0x1
+ 1741 0186 50       		.byte	0x50
+ 1742 0187 9F       		.byte	0x9f
+ 1743 0188 00000000 		.4byte	0
+ 1744 018c 00000000 		.4byte	0
+ 1745              	.LLST11:
+ 1746 0190 10000000 		.4byte	.LVL30
+ 1747 0194 24000000 		.4byte	.LVL34
+ 1748 0198 0100     		.2byte	0x1
+ 1749 019a 50       		.byte	0x50
+ 1750 019b 24000000 		.4byte	.LVL34
+ 1751 019f 2C000000 		.4byte	.LVL35
+ 1752 01a3 0900     		.2byte	0x9
+ 1753 01a5 70       		.byte	0x70
+ 1754 01a6 00       		.sleb128 0
+ 1755 01a7 03       		.byte	0x3
+ 1756 01a8 00000000 		.4byte	.LANCHOR0
+ 1757 01ac 1C       		.byte	0x1c
+ 1758 01ad 9F       		.byte	0x9f
+ 1759 01ae 2C000000 		.4byte	.LVL35
+ 1760 01b2 3A000000 		.4byte	.LVL38
+ 1761 01b6 0100     		.2byte	0x1
+ 1762 01b8 50       		.byte	0x50
+ 1763 01b9 3A000000 		.4byte	.LVL38
+ 1764 01bd 42000000 		.4byte	.LVL39
+ 1765 01c1 0900     		.2byte	0x9
+ 1766 01c3 70       		.byte	0x70
+ 1767 01c4 00       		.sleb128 0
+ 1768 01c5 03       		.byte	0x3
+ 1769 01c6 00000000 		.4byte	.LANCHOR0
+ 1770 01ca 1C       		.byte	0x1c
+ 1771 01cb 9F       		.byte	0x9f
+ 1772 01cc 00000000 		.4byte	0
+ 1773 01d0 00000000 		.4byte	0
+ 1774              	.LLST12:
+ 1775 01d4 14000000 		.4byte	.LVL31
+ 1776 01d8 1A000000 		.4byte	.LVL32
+ 1777 01dc 0100     		.2byte	0x1
+ 1778 01de 51       		.byte	0x51
+ 1779 01df 2C000000 		.4byte	.LVL35
+ 1780 01e3 30000000 		.4byte	.LVL36
+ 1781 01e7 0100     		.2byte	0x1
+ 1782 01e9 51       		.byte	0x51
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 36
+
+
+ 1783 01ea 00000000 		.4byte	0
+ 1784 01ee 00000000 		.4byte	0
+ 1785              	.LLST13:
+ 1786 01f2 00000000 		.4byte	.LVL40
+ 1787 01f6 04000000 		.4byte	.LVL41
+ 1788 01fa 0200     		.2byte	0x2
+ 1789 01fc 30       		.byte	0x30
+ 1790 01fd 9F       		.byte	0x9f
+ 1791 01fe 04000000 		.4byte	.LVL41
+ 1792 0202 1C000000 		.4byte	.LFE8
+ 1793 0206 0100     		.2byte	0x1
+ 1794 0208 53       		.byte	0x53
+ 1795 0209 00000000 		.4byte	0
+ 1796 020d 00000000 		.4byte	0
+ 1797              		.section	.debug_aranges,"",%progbits
+ 1798 0000 64000000 		.4byte	0x64
+ 1799 0004 0200     		.2byte	0x2
+ 1800 0006 00000000 		.4byte	.Ldebug_info0
+ 1801 000a 04       		.byte	0x4
+ 1802 000b 00       		.byte	0
+ 1803 000c 0000     		.2byte	0
+ 1804 000e 0000     		.2byte	0
+ 1805 0010 00000000 		.4byte	.LFB0
+ 1806 0014 20000000 		.4byte	.LFE0-.LFB0
+ 1807 0018 00000000 		.4byte	.LFB3
+ 1808 001c 08000000 		.4byte	.LFE3-.LFB3
+ 1809 0020 00000000 		.4byte	.LFB4
+ 1810 0024 24000000 		.4byte	.LFE4-.LFB4
+ 1811 0028 00000000 		.4byte	.LFB5
+ 1812 002c 38000000 		.4byte	.LFE5-.LFB5
+ 1813 0030 00000000 		.4byte	.LFB6
+ 1814 0034 38000000 		.4byte	.LFE6-.LFB6
+ 1815 0038 00000000 		.4byte	.LFB7
+ 1816 003c 48000000 		.4byte	.LFE7-.LFB7
+ 1817 0040 00000000 		.4byte	.LFB8
+ 1818 0044 1C000000 		.4byte	.LFE8-.LFB8
+ 1819 0048 00000000 		.4byte	.LFB1
+ 1820 004c 34000000 		.4byte	.LFE1-.LFB1
+ 1821 0050 00000000 		.4byte	.LFB9
+ 1822 0054 4C000000 		.4byte	.LFE9-.LFB9
+ 1823 0058 00000000 		.4byte	.LFB2
+ 1824 005c 0C000000 		.4byte	.LFE2-.LFB2
+ 1825 0060 00000000 		.4byte	0
+ 1826 0064 00000000 		.4byte	0
+ 1827              		.section	.debug_ranges,"",%progbits
+ 1828              	.Ldebug_ranges0:
+ 1829 0000 00000000 		.4byte	.LFB0
+ 1830 0004 20000000 		.4byte	.LFE0
+ 1831 0008 00000000 		.4byte	.LFB3
+ 1832 000c 08000000 		.4byte	.LFE3
+ 1833 0010 00000000 		.4byte	.LFB4
+ 1834 0014 24000000 		.4byte	.LFE4
+ 1835 0018 00000000 		.4byte	.LFB5
+ 1836 001c 38000000 		.4byte	.LFE5
+ 1837 0020 00000000 		.4byte	.LFB6
+ 1838 0024 38000000 		.4byte	.LFE6
+ 1839 0028 00000000 		.4byte	.LFB7
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 37
+
+
+ 1840 002c 48000000 		.4byte	.LFE7
+ 1841 0030 00000000 		.4byte	.LFB8
+ 1842 0034 1C000000 		.4byte	.LFE8
+ 1843 0038 00000000 		.4byte	.LFB1
+ 1844 003c 34000000 		.4byte	.LFE1
+ 1845 0040 00000000 		.4byte	.LFB9
+ 1846 0044 4C000000 		.4byte	.LFE9
+ 1847 0048 00000000 		.4byte	.LFB2
+ 1848 004c 0C000000 		.4byte	.LFE2
+ 1849 0050 00000000 		.4byte	0
+ 1850 0054 00000000 		.4byte	0
+ 1851              		.section	.debug_line,"",%progbits
+ 1852              	.Ldebug_line0:
+ 1853 0000 25020000 		.section	.debug_str,"MS",%progbits,1
+ 1853      02001701 
+ 1853      00000201 
+ 1853      FB0E0D00 
+ 1853      01010101 
+ 1854              	.LASF14:
+ 1855 0000 4D617374 		.ascii	"MasterSendStop\000"
+ 1855      65725365 
+ 1855      6E645374 
+ 1855      6F7000
+ 1856              	.LASF37:
+ 1857 000f 53534431 		.ascii	"SSD1306_PixelData\000"
+ 1857      3330365F 
+ 1857      50697865 
+ 1857      6C446174 
+ 1857      6100
+ 1858              	.LASF3:
+ 1859 0021 5F5F7569 		.ascii	"__uint8_t\000"
+ 1859      6E74385F 
+ 1859      7400
+ 1860              	.LASF22:
+ 1861 002b 636F6D6D 		.ascii	"commands\000"
+ 1861      616E6473 
+ 1861      00
+ 1862              	.LASF23:
+ 1863 0034 636F756E 		.ascii	"count\000"
+ 1863      7400
+ 1864              	.LASF20:
+ 1865 003a 636F6D6D 		.ascii	"command\000"
+ 1865      616E6400 
+ 1866              	.LASF25:
+ 1867 0042 64617461 		.ascii	"data\000"
+ 1867      00
+ 1868              	.LASF28:
+ 1869 0047 70616765 		.ascii	"page\000"
+ 1869      00
+ 1870              	.LASF40:
+ 1871 004c 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ 1871      79707265 
+ 1871      73735C50 
+ 1871      726F6A65 
+ 1871      6374735C 
+ 1872              	.LASF29:
+ 1873 0079 636F6C75 		.ascii	"column\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 38
+
+
+ 1873      6D6E00
+ 1874              	.LASF18:
+ 1875 0080 53534431 		.ascii	"SSD1306_WriteCommand\000"
+ 1875      3330365F 
+ 1875      57726974 
+ 1875      65436F6D 
+ 1875      6D616E64 
+ 1876              	.LASF16:
+ 1877 0095 53534431 		.ascii	"SSD1306_I2CControllerStruct\000"
+ 1877      3330365F 
+ 1877      49324343 
+ 1877      6F6E7472 
+ 1877      6F6C6C65 
+ 1878              	.LASF1:
+ 1879 00b1 756E7369 		.ascii	"unsigned char\000"
+ 1879      676E6564 
+ 1879      20636861 
+ 1879      7200
+ 1880              	.LASF38:
+ 1881 00bf 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1881      43313120 
+ 1881      352E342E 
+ 1881      31203230 
+ 1881      31363036 
+ 1882 00f2 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1882      20726576 
+ 1882      6973696F 
+ 1882      6E203233 
+ 1882      37373135 
+ 1883 0125 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1883      66756E63 
+ 1883      74696F6E 
+ 1883      2D736563 
+ 1883      74696F6E 
+ 1884              	.LASF7:
+ 1885 014d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1885      20756E73 
+ 1885      69676E65 
+ 1885      6420696E 
+ 1885      7400
+ 1886              	.LASF32:
+ 1887 015f 53534431 		.ascii	"SSD1306_ClearDisplay\000"
+ 1887      3330365F 
+ 1887      436C6561 
+ 1887      72446973 
+ 1887      706C6179 
+ 1888              	.LASF5:
+ 1889 0174 73686F72 		.ascii	"short unsigned int\000"
+ 1889      7420756E 
+ 1889      7369676E 
+ 1889      65642069 
+ 1889      6E7400
+ 1890              	.LASF39:
+ 1891 0187 72686561 		.ascii	"rhea\\drivers\\SSD1306\\SSD1306.c\000"
+ 1891      5C647269 
+ 1891      76657273 
+ 1891      5C535344 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 39
+
+
+ 1891      31333036 
+ 1892              	.LASF34:
+ 1893 01a6 53534431 		.ascii	"SSD1306_RefreshDisplay\000"
+ 1893      3330365F 
+ 1893      52656672 
+ 1893      65736844 
+ 1893      6973706C 
+ 1894              	.LASF4:
+ 1895 01bd 5F5F7569 		.ascii	"__uint16_t\000"
+ 1895      6E743136 
+ 1895      5F7400
+ 1896              	.LASF27:
+ 1897 01c8 636F6C6F 		.ascii	"color\000"
+ 1897      7200
+ 1898              	.LASF13:
+ 1899 01ce 4D617374 		.ascii	"MasterSendStart\000"
+ 1899      65725365 
+ 1899      6E645374 
+ 1899      61727400 
+ 1900              	.LASF41:
+ 1901 01de 53534431 		.ascii	"SSD1306_GetDisplayBuffer\000"
+ 1901      3330365F 
+ 1901      47657444 
+ 1901      6973706C 
+ 1901      61794275 
+ 1902              	.LASF10:
+ 1903 01f7 756E7369 		.ascii	"unsigned int\000"
+ 1903      676E6564 
+ 1903      20696E74 
+ 1903      00
+ 1904              	.LASF9:
+ 1905 0204 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1905      206C6F6E 
+ 1905      6720756E 
+ 1905      7369676E 
+ 1905      65642069 
+ 1906              	.LASF11:
+ 1907 021b 75696E74 		.ascii	"uint8_t\000"
+ 1907      385F7400 
+ 1908              	.LASF17:
+ 1909 0223 53534431 		.ascii	"SSD1306_SetI2CController\000"
+ 1909      3330365F 
+ 1909      53657449 
+ 1909      3243436F 
+ 1909      6E74726F 
+ 1910              	.LASF30:
+ 1911 023c 62797465 		.ascii	"byteIndex\000"
+ 1911      496E6465 
+ 1911      7800
+ 1912              	.LASF33:
+ 1913 0246 73697A65 		.ascii	"sizetype\000"
+ 1913      74797065 
+ 1913      00
+ 1914              	.LASF8:
+ 1915 024f 6C6F6E67 		.ascii	"long long int\000"
+ 1915      206C6F6E 
+ 1915      6720696E 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 40
+
+
+ 1915      7400
+ 1916              	.LASF24:
+ 1917 025d 53534431 		.ascii	"SSD1306_WriteData\000"
+ 1917      3330365F 
+ 1917      57726974 
+ 1917      65446174 
+ 1917      6100
+ 1918              	.LASF19:
+ 1919 026f 636F6E74 		.ascii	"controller\000"
+ 1919      726F6C6C 
+ 1919      657200
+ 1920              	.LASF2:
+ 1921 027a 73686F72 		.ascii	"short int\000"
+ 1921      7420696E 
+ 1921      7400
+ 1922              	.LASF21:
+ 1923 0284 53534431 		.ascii	"SSD1306_WriteCommands\000"
+ 1923      3330365F 
+ 1923      57726974 
+ 1923      65436F6D 
+ 1923      6D616E64 
+ 1924              	.LASF12:
+ 1925 029a 75696E74 		.ascii	"uint16_t\000"
+ 1925      31365F74 
+ 1925      00
+ 1926              	.LASF26:
+ 1927 02a3 53534431 		.ascii	"SSD1306_WritePixel\000"
+ 1927      3330365F 
+ 1927      57726974 
+ 1927      65506978 
+ 1927      656C00
+ 1928              	.LASF6:
+ 1929 02b6 6C6F6E67 		.ascii	"long int\000"
+ 1929      20696E74 
+ 1929      00
+ 1930              	.LASF36:
+ 1931 02bf 53534431 		.ascii	"SSD1306_I2CController\000"
+ 1931      3330365F 
+ 1931      49324343 
+ 1931      6F6E7472 
+ 1931      6F6C6C65 
+ 1932              	.LASF42:
+ 1933 02d5 53534431 		.ascii	"SSD1306_Init\000"
+ 1933      3330365F 
+ 1933      496E6974 
+ 1933      00
+ 1934              	.LASF0:
+ 1935 02e2 7369676E 		.ascii	"signed char\000"
+ 1935      65642063 
+ 1935      68617200 
+ 1936              	.LASF15:
+ 1937 02ee 4D617374 		.ascii	"MasterWriteByte\000"
+ 1937      65725772 
+ 1937      69746542 
+ 1937      79746500 
+ 1938              	.LASF35:
+ 1939 02fe 53534431 		.ascii	"SSD1306_Reset\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwOZwzY.s 			page 41
+
+
+ 1939      3330365F 
+ 1939      52657365 
+ 1939      7400
+ 1940              	.LASF31:
+ 1941 030c 62697449 		.ascii	"bitIndex\000"
+ 1941      6E646578 
+ 1941      00
+ 1942              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

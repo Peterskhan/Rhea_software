@@ -1,0 +1,2596 @@
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"BME280_INTF.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_i2d
+  20              		.section	.text.bme280_GetTemperatureCelsius,"ax",%progbits
+  21              		.align	2
+  22              		.global	bme280_GetTemperatureCelsius
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	bme280_GetTemperatureCelsius, %function
+  26              	bme280_GetTemperatureCelsius:
+  27              	.LFB1:
+  28              		.file 1 "rhea\\sensor\\interfaces\\BME280\\BME280_INTF.c"
+   1:rhea\sensor\interfaces\BME280/BME280_INTF.c **** /*********************************************************************************
+   2:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * Copyright (c) 2020 Peter Gyulai
+   3:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  *
+   4:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy
+   5:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * of this software and associated documentation files (the "Software"), to deal
+   6:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * in the Software without restriction, including without limitation the rights
+   7:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   8:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * copies of the Software, and to permit persons to whom the Software is
+   9:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * furnished to do so, subject to the following conditions:
+  10:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  *
+  11:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * The above copyright notice and this permission notice shall be included in all
+  12:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * copies or substantial portions of the Software.
+  13:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  *
+  14:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  15:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  16:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  17:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  18:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  19:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+  20:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * OR OTHER DEALINGS IN THE SOFTWARE.
+  21:rhea\sensor\interfaces\BME280/BME280_INTF.c **** **********************************************************************************/
+  22:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+  23:rhea\sensor\interfaces\BME280/BME280_INTF.c **** /**
+  24:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * @file    BME280_INTF.c
+  25:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * @author  Peter Gyulai
+  26:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * @version 1.0.0
+  27:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * @date    2020.04.19
+  28:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * @brief   BME280 Rhea interface implementation.
+  29:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * @details
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 2
+
+
+  30:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  * This file contains the BME280 Rhea sensor interface implementation.
+  31:rhea\sensor\interfaces\BME280/BME280_INTF.c ****  */
+  32:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+  33:rhea\sensor\interfaces\BME280/BME280_INTF.c **** // Project includes
+  34:rhea\sensor\interfaces\BME280/BME280_INTF.c **** #include "../../../i2c/i2c.h"
+  35:rhea\sensor\interfaces\BME280/BME280_INTF.c **** #include "BME280_INTF.h"
+  36:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+  37:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+  38:rhea\sensor\interfaces\BME280/BME280_INTF.c **** void bme280_addInterface(void) {
+  39:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  40:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Setting up BME280 measurement callbacks
+  41:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddMeasurement("BME280", "temperature", 0, bme280_GetTemperatureCelsius);
+  42:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddMeasurement("BME280", "pressure",    0, bme280_GetPressure);
+  43:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddMeasurement("BME280", "humidity",    0, bme280_GetHumidity);
+  44:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  45:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Setting up BME280 attribute getter & setter callbacks
+  46:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "filter",      bme280_GetFilterMode,      bme280_SetFilterMo
+  47:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "temperature", bme280_GetTemperatureMode, bme280_SetTemperat
+  48:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "pressure",    bme280_GetPressureMode,    bme280_SetPressure
+  49:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "humidity",    bme280_GetHumidityMode,    bme280_SetHumidity
+  50:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "mode",        bme280_GetMeasurementMode, bme280_SetMeasurem
+  51:rhea\sensor\interfaces\BME280/BME280_INTF.c ****         
+  52:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Function pointers for I2C driver
+  53:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_I2CControllerStruct cntr = {
+  54:rhea\sensor\interfaces\BME280/BME280_INTF.c ****         rhea_i2c_MasterSendStart,
+  55:rhea\sensor\interfaces\BME280/BME280_INTF.c ****         rhea_i2c_MasterSendStop,
+  56:rhea\sensor\interfaces\BME280/BME280_INTF.c ****         rhea_i2c_MasterWriteByte,
+  57:rhea\sensor\interfaces\BME280/BME280_INTF.c ****         rhea_i2c_MasterReadByte
+  58:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     };
+  59:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  60:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Initializing the BME280
+  61:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetI2CController(cntr);
+  62:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_Init();
+  63:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  64:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Setting measurement parameters for the BME280
+  65:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "filter",      BME280_FILTER_OFF);
+  66:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "temperature", BME280_TEMPERATURE_OVERSAMPLING_1X);
+  67:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "pressure",    BME280_PRESSURE_OVERSAMPLING_1X);
+  68:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "humidity",    BME280_HUMIDITY_OVERSAMPLING_1X);
+  69:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "mode",        BME280_MODE_FORCED);
+  70:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+  71:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+  72:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_MEASUREMENT_TYPE bme280_GetTemperatureCelsius(void) {
+  29              		.loc 1 72 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 38B5     		push	{r3, r4, r5, lr}
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 3, -16
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  73:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  74:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Reading measurement
+  75:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     RHEA_SENSOR_MEASUREMENT_TYPE result = BME280_GetTemperatureCelsius(1);
+  39              		.loc 1 75 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 3
+
+
+  40 0002 0120     		movs	r0, #1
+  41 0004 FFF7FEFF 		bl	BME280_GetTemperatureCelsius
+  42              	.LVL0:
+  43 0008 FFF7FEFF 		bl	__aeabi_i2d
+  44              	.LVL1:
+  45 000c 0446     		mov	r4, r0
+  46 000e 0D46     		mov	r5, r1
+  47              	.LVL2:
+  76:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  77:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Starting next measurement
+  78:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetMeasurementMode(BME280_MODE_FORCED);
+  48              		.loc 1 78 0
+  49 0010 0120     		movs	r0, #1
+  50 0012 FFF7FEFF 		bl	BME280_SetMeasurementMode
+  51              	.LVL3:
+  79:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  80:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return result;
+  81:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+  52              		.loc 1 81 0
+  53 0016 2046     		mov	r0, r4
+  54 0018 2946     		mov	r1, r5
+  55 001a 38BD     		pop	{r3, r4, r5, pc}
+  56              		.cfi_endproc
+  57              	.LFE1:
+  58              		.size	bme280_GetTemperatureCelsius, .-bme280_GetTemperatureCelsius
+  59              		.section	.text.bme280_SetMeasurementMode,"ax",%progbits
+  60              		.align	2
+  61              		.global	bme280_SetMeasurementMode
+  62              		.thumb
+  63              		.thumb_func
+  64              		.type	bme280_SetMeasurementMode, %function
+  65              	bme280_SetMeasurementMode:
+  66              	.LFB12:
+  82:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+  83:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_MEASUREMENT_TYPE bme280_GetPressure(void) {
+  84:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  85:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Reading measurement
+  86:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     RHEA_SENSOR_MEASUREMENT_TYPE result = BME280_GetPressure(1);
+  87:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  88:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Starting next measurement
+  89:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetMeasurementMode(BME280_MODE_FORCED);
+  90:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  91:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return result;
+  92:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+  93:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+  94:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_MEASUREMENT_TYPE bme280_GetHumidity(void) {
+  95:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  96:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Reading measurement
+  97:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     RHEA_SENSOR_MEASUREMENT_TYPE result = BME280_GetHumidity(1);
+  98:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  99:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     // Starting next measurement
+ 100:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetMeasurementMode(BME280_MODE_FORCED);
+ 101:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+ 102:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return result;
+ 103:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 104:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 105:rhea\sensor\interfaces\BME280/BME280_INTF.c **** void bme280_SetFilterMode(RHEA_SENSOR_ATTRIBUTE_TYPE value) {
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 4
+
+
+ 106:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetFilterMode(value);
+ 107:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 108:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 109:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_ATTRIBUTE_TYPE bme280_GetFilterMode(void) {
+ 110:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetFilterMode();
+ 111:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 112:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 113:rhea\sensor\interfaces\BME280/BME280_INTF.c **** void bme280_SetTemperatureMode(RHEA_SENSOR_ATTRIBUTE_TYPE value) {
+ 114:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetTemperatureMode(value);
+ 115:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 116:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 117:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_ATTRIBUTE_TYPE bme280_GetTemperatureMode(void) {
+ 118:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetTemperatureMode();
+ 119:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 120:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 121:rhea\sensor\interfaces\BME280/BME280_INTF.c **** void bme280_SetPressureMode(RHEA_SENSOR_ATTRIBUTE_TYPE value) {
+ 122:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetPressureMode(value);
+ 123:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 124:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 125:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_ATTRIBUTE_TYPE bme280_GetPressureMode(void) {
+ 126:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetPressureMode();
+ 127:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 128:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 129:rhea\sensor\interfaces\BME280/BME280_INTF.c **** void bme280_SetHumidityMode(RHEA_SENSOR_ATTRIBUTE_TYPE value) {
+ 130:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetHumidityMode(value);
+ 131:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 132:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 133:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_ATTRIBUTE_TYPE bme280_GetHumidityMode(void) {
+ 134:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetHumidityMode();
+ 135:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 136:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 137:rhea\sensor\interfaces\BME280/BME280_INTF.c **** void bme280_SetMeasurementMode(RHEA_SENSOR_ATTRIBUTE_TYPE value) {
+  67              		.loc 1 137 0
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71              	.LVL4:
+  72 0000 08B5     		push	{r3, lr}
+  73              		.cfi_def_cfa_offset 8
+  74              		.cfi_offset 3, -8
+  75              		.cfi_offset 14, -4
+ 138:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetMeasurementMode(value);
+  76              		.loc 1 138 0
+  77 0002 C0B2     		uxtb	r0, r0
+  78              	.LVL5:
+  79 0004 FFF7FEFF 		bl	BME280_SetMeasurementMode
+  80              	.LVL6:
+  81 0008 08BD     		pop	{r3, pc}
+  82              		.cfi_endproc
+  83              	.LFE12:
+  84              		.size	bme280_SetMeasurementMode, .-bme280_SetMeasurementMode
+  85              		.global	__aeabi_ui2d
+  86 000a 00BF     		.section	.text.bme280_GetPressure,"ax",%progbits
+  87              		.align	2
+  88              		.global	bme280_GetPressure
+  89              		.thumb
+  90              		.thumb_func
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 5
+
+
+  91              		.type	bme280_GetPressure, %function
+  92              	bme280_GetPressure:
+  93              	.LFB2:
+  83:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+  94              		.loc 1 83 0
+  95              		.cfi_startproc
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98 0000 38B5     		push	{r3, r4, r5, lr}
+  99              		.cfi_def_cfa_offset 16
+ 100              		.cfi_offset 3, -16
+ 101              		.cfi_offset 4, -12
+ 102              		.cfi_offset 5, -8
+ 103              		.cfi_offset 14, -4
+  86:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+ 104              		.loc 1 86 0
+ 105 0002 0120     		movs	r0, #1
+ 106 0004 FFF7FEFF 		bl	BME280_GetPressure
+ 107              	.LVL7:
+ 108 0008 FFF7FEFF 		bl	__aeabi_ui2d
+ 109              	.LVL8:
+ 110 000c 0446     		mov	r4, r0
+ 111 000e 0D46     		mov	r5, r1
+ 112              	.LVL9:
+  89:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+ 113              		.loc 1 89 0
+ 114 0010 0120     		movs	r0, #1
+ 115 0012 FFF7FEFF 		bl	BME280_SetMeasurementMode
+ 116              	.LVL10:
+  92:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 117              		.loc 1 92 0
+ 118 0016 2046     		mov	r0, r4
+ 119 0018 2946     		mov	r1, r5
+ 120 001a 38BD     		pop	{r3, r4, r5, pc}
+ 121              		.cfi_endproc
+ 122              	.LFE2:
+ 123              		.size	bme280_GetPressure, .-bme280_GetPressure
+ 124              		.section	.text.bme280_GetHumidity,"ax",%progbits
+ 125              		.align	2
+ 126              		.global	bme280_GetHumidity
+ 127              		.thumb
+ 128              		.thumb_func
+ 129              		.type	bme280_GetHumidity, %function
+ 130              	bme280_GetHumidity:
+ 131              	.LFB3:
+  94:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+ 132              		.loc 1 94 0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 38B5     		push	{r3, r4, r5, lr}
+ 137              		.cfi_def_cfa_offset 16
+ 138              		.cfi_offset 3, -16
+ 139              		.cfi_offset 4, -12
+ 140              		.cfi_offset 5, -8
+ 141              		.cfi_offset 14, -4
+  97:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 6
+
+
+ 142              		.loc 1 97 0
+ 143 0002 0120     		movs	r0, #1
+ 144 0004 FFF7FEFF 		bl	BME280_GetHumidity
+ 145              	.LVL11:
+ 146 0008 FFF7FEFF 		bl	__aeabi_ui2d
+ 147              	.LVL12:
+ 148 000c 0446     		mov	r4, r0
+ 149 000e 0D46     		mov	r5, r1
+ 150              	.LVL13:
+ 100:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     
+ 151              		.loc 1 100 0
+ 152 0010 0120     		movs	r0, #1
+ 153 0012 FFF7FEFF 		bl	BME280_SetMeasurementMode
+ 154              	.LVL14:
+ 103:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 155              		.loc 1 103 0
+ 156 0016 2046     		mov	r0, r4
+ 157 0018 2946     		mov	r1, r5
+ 158 001a 38BD     		pop	{r3, r4, r5, pc}
+ 159              		.cfi_endproc
+ 160              	.LFE3:
+ 161              		.size	bme280_GetHumidity, .-bme280_GetHumidity
+ 162              		.section	.text.bme280_SetFilterMode,"ax",%progbits
+ 163              		.align	2
+ 164              		.global	bme280_SetFilterMode
+ 165              		.thumb
+ 166              		.thumb_func
+ 167              		.type	bme280_SetFilterMode, %function
+ 168              	bme280_SetFilterMode:
+ 169              	.LFB4:
+ 105:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetFilterMode(value);
+ 170              		.loc 1 105 0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174              	.LVL15:
+ 175 0000 08B5     		push	{r3, lr}
+ 176              		.cfi_def_cfa_offset 8
+ 177              		.cfi_offset 3, -8
+ 178              		.cfi_offset 14, -4
+ 106:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 179              		.loc 1 106 0
+ 180 0002 C0B2     		uxtb	r0, r0
+ 181              	.LVL16:
+ 182 0004 FFF7FEFF 		bl	BME280_SetFilterMode
+ 183              	.LVL17:
+ 184 0008 08BD     		pop	{r3, pc}
+ 185              		.cfi_endproc
+ 186              	.LFE4:
+ 187              		.size	bme280_SetFilterMode, .-bme280_SetFilterMode
+ 188              		.section	.text.bme280_GetFilterMode,"ax",%progbits
+ 189              		.align	2
+ 190              		.global	bme280_GetFilterMode
+ 191              		.thumb
+ 192              		.thumb_func
+ 193              		.type	bme280_GetFilterMode, %function
+ 194              	bme280_GetFilterMode:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 7
+
+
+ 195              	.LFB5:
+ 109:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetFilterMode();
+ 196              		.loc 1 109 0
+ 197              		.cfi_startproc
+ 198              		@ args = 0, pretend = 0, frame = 0
+ 199              		@ frame_needed = 0, uses_anonymous_args = 0
+ 200 0000 08B5     		push	{r3, lr}
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 3, -8
+ 203              		.cfi_offset 14, -4
+ 110:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 204              		.loc 1 110 0
+ 205 0002 FFF7FEFF 		bl	BME280_GetFilterMode
+ 206              	.LVL18:
+ 111:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 207              		.loc 1 111 0
+ 208 0006 C0B2     		uxtb	r0, r0
+ 209 0008 0021     		movs	r1, #0
+ 210 000a 08BD     		pop	{r3, pc}
+ 211              		.cfi_endproc
+ 212              	.LFE5:
+ 213              		.size	bme280_GetFilterMode, .-bme280_GetFilterMode
+ 214              		.section	.text.bme280_SetTemperatureMode,"ax",%progbits
+ 215              		.align	2
+ 216              		.global	bme280_SetTemperatureMode
+ 217              		.thumb
+ 218              		.thumb_func
+ 219              		.type	bme280_SetTemperatureMode, %function
+ 220              	bme280_SetTemperatureMode:
+ 221              	.LFB6:
+ 113:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetTemperatureMode(value);
+ 222              		.loc 1 113 0
+ 223              		.cfi_startproc
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226              	.LVL19:
+ 227 0000 08B5     		push	{r3, lr}
+ 228              		.cfi_def_cfa_offset 8
+ 229              		.cfi_offset 3, -8
+ 230              		.cfi_offset 14, -4
+ 114:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 231              		.loc 1 114 0
+ 232 0002 C0B2     		uxtb	r0, r0
+ 233              	.LVL20:
+ 234 0004 FFF7FEFF 		bl	BME280_SetTemperatureMode
+ 235              	.LVL21:
+ 236 0008 08BD     		pop	{r3, pc}
+ 237              		.cfi_endproc
+ 238              	.LFE6:
+ 239              		.size	bme280_SetTemperatureMode, .-bme280_SetTemperatureMode
+ 240              		.section	.text.bme280_GetTemperatureMode,"ax",%progbits
+ 241              		.align	2
+ 242              		.global	bme280_GetTemperatureMode
+ 243              		.thumb
+ 244              		.thumb_func
+ 245              		.type	bme280_GetTemperatureMode, %function
+ 246              	bme280_GetTemperatureMode:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 8
+
+
+ 247              	.LFB7:
+ 117:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetTemperatureMode();
+ 248              		.loc 1 117 0
+ 249              		.cfi_startproc
+ 250              		@ args = 0, pretend = 0, frame = 0
+ 251              		@ frame_needed = 0, uses_anonymous_args = 0
+ 252 0000 08B5     		push	{r3, lr}
+ 253              		.cfi_def_cfa_offset 8
+ 254              		.cfi_offset 3, -8
+ 255              		.cfi_offset 14, -4
+ 118:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 256              		.loc 1 118 0
+ 257 0002 FFF7FEFF 		bl	BME280_GetTemperatureMode
+ 258              	.LVL22:
+ 119:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 259              		.loc 1 119 0
+ 260 0006 C0B2     		uxtb	r0, r0
+ 261 0008 0021     		movs	r1, #0
+ 262 000a 08BD     		pop	{r3, pc}
+ 263              		.cfi_endproc
+ 264              	.LFE7:
+ 265              		.size	bme280_GetTemperatureMode, .-bme280_GetTemperatureMode
+ 266              		.section	.text.bme280_SetPressureMode,"ax",%progbits
+ 267              		.align	2
+ 268              		.global	bme280_SetPressureMode
+ 269              		.thumb
+ 270              		.thumb_func
+ 271              		.type	bme280_SetPressureMode, %function
+ 272              	bme280_SetPressureMode:
+ 273              	.LFB8:
+ 121:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetPressureMode(value);
+ 274              		.loc 1 121 0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 0
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+ 278              	.LVL23:
+ 279 0000 08B5     		push	{r3, lr}
+ 280              		.cfi_def_cfa_offset 8
+ 281              		.cfi_offset 3, -8
+ 282              		.cfi_offset 14, -4
+ 122:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 283              		.loc 1 122 0
+ 284 0002 C0B2     		uxtb	r0, r0
+ 285              	.LVL24:
+ 286 0004 FFF7FEFF 		bl	BME280_SetPressureMode
+ 287              	.LVL25:
+ 288 0008 08BD     		pop	{r3, pc}
+ 289              		.cfi_endproc
+ 290              	.LFE8:
+ 291              		.size	bme280_SetPressureMode, .-bme280_SetPressureMode
+ 292              		.section	.text.bme280_GetPressureMode,"ax",%progbits
+ 293              		.align	2
+ 294              		.global	bme280_GetPressureMode
+ 295              		.thumb
+ 296              		.thumb_func
+ 297              		.type	bme280_GetPressureMode, %function
+ 298              	bme280_GetPressureMode:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 9
+
+
+ 299              	.LFB9:
+ 125:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetPressureMode();
+ 300              		.loc 1 125 0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304 0000 08B5     		push	{r3, lr}
+ 305              		.cfi_def_cfa_offset 8
+ 306              		.cfi_offset 3, -8
+ 307              		.cfi_offset 14, -4
+ 126:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 308              		.loc 1 126 0
+ 309 0002 FFF7FEFF 		bl	BME280_GetPressureMode
+ 310              	.LVL26:
+ 127:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 311              		.loc 1 127 0
+ 312 0006 C0B2     		uxtb	r0, r0
+ 313 0008 0021     		movs	r1, #0
+ 314 000a 08BD     		pop	{r3, pc}
+ 315              		.cfi_endproc
+ 316              	.LFE9:
+ 317              		.size	bme280_GetPressureMode, .-bme280_GetPressureMode
+ 318              		.section	.text.bme280_SetHumidityMode,"ax",%progbits
+ 319              		.align	2
+ 320              		.global	bme280_SetHumidityMode
+ 321              		.thumb
+ 322              		.thumb_func
+ 323              		.type	bme280_SetHumidityMode, %function
+ 324              	bme280_SetHumidityMode:
+ 325              	.LFB10:
+ 129:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetHumidityMode(value);
+ 326              		.loc 1 129 0
+ 327              		.cfi_startproc
+ 328              		@ args = 0, pretend = 0, frame = 0
+ 329              		@ frame_needed = 0, uses_anonymous_args = 0
+ 330              	.LVL27:
+ 331 0000 08B5     		push	{r3, lr}
+ 332              		.cfi_def_cfa_offset 8
+ 333              		.cfi_offset 3, -8
+ 334              		.cfi_offset 14, -4
+ 130:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 335              		.loc 1 130 0
+ 336 0002 C0B2     		uxtb	r0, r0
+ 337              	.LVL28:
+ 338 0004 FFF7FEFF 		bl	BME280_SetHumidityMode
+ 339              	.LVL29:
+ 340 0008 08BD     		pop	{r3, pc}
+ 341              		.cfi_endproc
+ 342              	.LFE10:
+ 343              		.size	bme280_SetHumidityMode, .-bme280_SetHumidityMode
+ 344              		.section	.text.bme280_GetHumidityMode,"ax",%progbits
+ 345              		.align	2
+ 346              		.global	bme280_GetHumidityMode
+ 347              		.thumb
+ 348              		.thumb_func
+ 349              		.type	bme280_GetHumidityMode, %function
+ 350              	bme280_GetHumidityMode:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 10
+
+
+ 351              	.LFB11:
+ 133:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetHumidityMode();
+ 352              		.loc 1 133 0
+ 353              		.cfi_startproc
+ 354              		@ args = 0, pretend = 0, frame = 0
+ 355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 356 0000 08B5     		push	{r3, lr}
+ 357              		.cfi_def_cfa_offset 8
+ 358              		.cfi_offset 3, -8
+ 359              		.cfi_offset 14, -4
+ 134:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 360              		.loc 1 134 0
+ 361 0002 FFF7FEFF 		bl	BME280_GetHumidityMode
+ 362              	.LVL30:
+ 135:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 363              		.loc 1 135 0
+ 364 0006 C0B2     		uxtb	r0, r0
+ 365 0008 0021     		movs	r1, #0
+ 366 000a 08BD     		pop	{r3, pc}
+ 367              		.cfi_endproc
+ 368              	.LFE11:
+ 369              		.size	bme280_GetHumidityMode, .-bme280_GetHumidityMode
+ 370              		.section	.text.bme280_GetMeasurementMode,"ax",%progbits
+ 371              		.align	2
+ 372              		.global	bme280_GetMeasurementMode
+ 373              		.thumb
+ 374              		.thumb_func
+ 375              		.type	bme280_GetMeasurementMode, %function
+ 376              	bme280_GetMeasurementMode:
+ 377              	.LFB13:
+ 139:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 140:rhea\sensor\interfaces\BME280/BME280_INTF.c **** 
+ 141:rhea\sensor\interfaces\BME280/BME280_INTF.c **** RHEA_SENSOR_ATTRIBUTE_TYPE bme280_GetMeasurementMode(void) {
+ 378              		.loc 1 141 0
+ 379              		.cfi_startproc
+ 380              		@ args = 0, pretend = 0, frame = 0
+ 381              		@ frame_needed = 0, uses_anonymous_args = 0
+ 382 0000 08B5     		push	{r3, lr}
+ 383              		.cfi_def_cfa_offset 8
+ 384              		.cfi_offset 3, -8
+ 385              		.cfi_offset 14, -4
+ 142:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     return BME280_GetMeasurementMode();
+ 386              		.loc 1 142 0
+ 387 0002 FFF7FEFF 		bl	BME280_GetMeasurementMode
+ 388              	.LVL31:
+ 143:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }...
+ 389              		.loc 1 143 0
+ 390 0006 C0B2     		uxtb	r0, r0
+ 391 0008 0021     		movs	r1, #0
+ 392 000a 08BD     		pop	{r3, pc}
+ 393              		.cfi_endproc
+ 394              	.LFE13:
+ 395              		.size	bme280_GetMeasurementMode, .-bme280_GetMeasurementMode
+ 396              		.section	.text.bme280_addInterface,"ax",%progbits
+ 397              		.align	2
+ 398              		.global	bme280_addInterface
+ 399              		.thumb
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 11
+
+
+ 400              		.thumb_func
+ 401              		.type	bme280_addInterface, %function
+ 402              	bme280_addInterface:
+ 403              	.LFB0:
+  38:rhea\sensor\interfaces\BME280/BME280_INTF.c **** void bme280_addInterface(void) {
+ 404              		.loc 1 38 0
+ 405              		.cfi_startproc
+ 406              		@ args = 0, pretend = 0, frame = 16
+ 407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 408 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 409              		.cfi_def_cfa_offset 32
+ 410              		.cfi_offset 4, -32
+ 411              		.cfi_offset 5, -28
+ 412              		.cfi_offset 6, -24
+ 413              		.cfi_offset 7, -20
+ 414              		.cfi_offset 8, -16
+ 415              		.cfi_offset 9, -12
+ 416              		.cfi_offset 10, -8
+ 417              		.cfi_offset 14, -4
+ 418 0004 86B0     		sub	sp, sp, #24
+ 419              		.cfi_def_cfa_offset 56
+  41:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddMeasurement("BME280", "temperature", 0, bme280_GetTemperatureCelsius);
+ 420              		.loc 1 41 0
+ 421 0006 DFF81481 		ldr	r8, .L29+68
+ 422 000a 334C     		ldr	r4, .L29
+ 423 000c 334B     		ldr	r3, .L29+4
+ 424 000e 0093     		str	r3, [sp]
+ 425 0010 0022     		movs	r2, #0
+ 426 0012 0023     		movs	r3, #0
+ 427 0014 4146     		mov	r1, r8
+ 428 0016 2046     		mov	r0, r4
+ 429 0018 FFF7FEFF 		bl	rhea_sensor_AddMeasurement
+ 430              	.LVL32:
+  42:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddMeasurement("BME280", "pressure",    0, bme280_GetPressure);
+ 431              		.loc 1 42 0
+ 432 001c 304F     		ldr	r7, .L29+8
+ 433 001e 314B     		ldr	r3, .L29+12
+ 434 0020 0093     		str	r3, [sp]
+ 435 0022 0022     		movs	r2, #0
+ 436 0024 0023     		movs	r3, #0
+ 437 0026 3946     		mov	r1, r7
+ 438 0028 2046     		mov	r0, r4
+ 439 002a FFF7FEFF 		bl	rhea_sensor_AddMeasurement
+ 440              	.LVL33:
+  43:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddMeasurement("BME280", "humidity",    0, bme280_GetHumidity);
+ 441              		.loc 1 43 0
+ 442 002e 2E4E     		ldr	r6, .L29+16
+ 443 0030 2E4B     		ldr	r3, .L29+20
+ 444 0032 0093     		str	r3, [sp]
+ 445 0034 0022     		movs	r2, #0
+ 446 0036 0023     		movs	r3, #0
+ 447 0038 3146     		mov	r1, r6
+ 448 003a 2046     		mov	r0, r4
+ 449 003c FFF7FEFF 		bl	rhea_sensor_AddMeasurement
+ 450              	.LVL34:
+  46:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "filter",      bme280_GetFilterMode,      bme280_SetFilterMo
+ 451              		.loc 1 46 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 12
+
+
+ 452 0040 DFF8DCA0 		ldr	r10, .L29+72
+ 453 0044 2A4B     		ldr	r3, .L29+24
+ 454 0046 2B4A     		ldr	r2, .L29+28
+ 455 0048 5146     		mov	r1, r10
+ 456 004a 2046     		mov	r0, r4
+ 457 004c FFF7FEFF 		bl	rhea_sensor_AddAttribute
+ 458              	.LVL35:
+  47:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "temperature", bme280_GetTemperatureMode, bme280_SetTemperat
+ 459              		.loc 1 47 0
+ 460 0050 294B     		ldr	r3, .L29+32
+ 461 0052 2A4A     		ldr	r2, .L29+36
+ 462 0054 4146     		mov	r1, r8
+ 463 0056 2046     		mov	r0, r4
+ 464 0058 FFF7FEFF 		bl	rhea_sensor_AddAttribute
+ 465              	.LVL36:
+  48:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "pressure",    bme280_GetPressureMode,    bme280_SetPressure
+ 466              		.loc 1 48 0
+ 467 005c 284B     		ldr	r3, .L29+40
+ 468 005e 294A     		ldr	r2, .L29+44
+ 469 0060 3946     		mov	r1, r7
+ 470 0062 2046     		mov	r0, r4
+ 471 0064 FFF7FEFF 		bl	rhea_sensor_AddAttribute
+ 472              	.LVL37:
+  49:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "humidity",    bme280_GetHumidityMode,    bme280_SetHumidity
+ 473              		.loc 1 49 0
+ 474 0068 274B     		ldr	r3, .L29+48
+ 475 006a 284A     		ldr	r2, .L29+52
+ 476 006c 3146     		mov	r1, r6
+ 477 006e 2046     		mov	r0, r4
+ 478 0070 FFF7FEFF 		bl	rhea_sensor_AddAttribute
+ 479              	.LVL38:
+  50:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_AddAttribute("BME280", "mode",        bme280_GetMeasurementMode, bme280_SetMeasurem
+ 480              		.loc 1 50 0
+ 481 0074 DFF8AC90 		ldr	r9, .L29+76
+ 482 0078 254B     		ldr	r3, .L29+56
+ 483 007a 264A     		ldr	r2, .L29+60
+ 484 007c 4946     		mov	r1, r9
+ 485 007e 2046     		mov	r0, r4
+ 486 0080 FFF7FEFF 		bl	rhea_sensor_AddAttribute
+ 487              	.LVL39:
+  53:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_I2CControllerStruct cntr = {
+ 488              		.loc 1 53 0
+ 489 0084 244B     		ldr	r3, .L29+64
+ 490 0086 02AD     		add	r5, sp, #8
+ 491 0088 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 492 008a 85E80F00 		stmia	r5, {r0, r1, r2, r3}
+  61:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_SetI2CController(cntr);
+ 493              		.loc 1 61 0
+ 494 008e FFF7FEFF 		bl	BME280_SetI2CController
+ 495              	.LVL40:
+  62:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     BME280_Init();
+ 496              		.loc 1 62 0
+ 497 0092 FFF7FEFF 		bl	BME280_Init
+ 498              	.LVL41:
+  65:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "filter",      BME280_FILTER_OFF);
+ 499              		.loc 1 65 0
+ 500 0096 0022     		movs	r2, #0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 13
+
+
+ 501 0098 0023     		movs	r3, #0
+ 502 009a 5146     		mov	r1, r10
+ 503 009c 2046     		mov	r0, r4
+ 504 009e FFF7FEFF 		bl	rhea_sensor_SetAttribute
+ 505              	.LVL42:
+  66:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "temperature", BME280_TEMPERATURE_OVERSAMPLING_1X);
+ 506              		.loc 1 66 0
+ 507 00a2 2022     		movs	r2, #32
+ 508 00a4 0023     		movs	r3, #0
+ 509 00a6 4146     		mov	r1, r8
+ 510 00a8 2046     		mov	r0, r4
+ 511 00aa FFF7FEFF 		bl	rhea_sensor_SetAttribute
+ 512              	.LVL43:
+  67:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "pressure",    BME280_PRESSURE_OVERSAMPLING_1X);
+ 513              		.loc 1 67 0
+ 514 00ae 0422     		movs	r2, #4
+ 515 00b0 0023     		movs	r3, #0
+ 516 00b2 3946     		mov	r1, r7
+ 517 00b4 2046     		mov	r0, r4
+ 518 00b6 FFF7FEFF 		bl	rhea_sensor_SetAttribute
+ 519              	.LVL44:
+  68:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "humidity",    BME280_HUMIDITY_OVERSAMPLING_1X);
+ 520              		.loc 1 68 0
+ 521 00ba 0122     		movs	r2, #1
+ 522 00bc 0023     		movs	r3, #0
+ 523 00be 3146     		mov	r1, r6
+ 524 00c0 2046     		mov	r0, r4
+ 525 00c2 FFF7FEFF 		bl	rhea_sensor_SetAttribute
+ 526              	.LVL45:
+  69:rhea\sensor\interfaces\BME280/BME280_INTF.c ****     rhea_sensor_SetAttribute("BME280", "mode",        BME280_MODE_FORCED);
+ 527              		.loc 1 69 0
+ 528 00c6 0122     		movs	r2, #1
+ 529 00c8 0023     		movs	r3, #0
+ 530 00ca 4946     		mov	r1, r9
+ 531 00cc 2046     		mov	r0, r4
+ 532 00ce FFF7FEFF 		bl	rhea_sensor_SetAttribute
+ 533              	.LVL46:
+  70:rhea\sensor\interfaces\BME280/BME280_INTF.c **** }
+ 534              		.loc 1 70 0
+ 535 00d2 06B0     		add	sp, sp, #24
+ 536              		.cfi_def_cfa_offset 32
+ 537              		@ sp needed
+ 538 00d4 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 539              	.L30:
+ 540              		.align	2
+ 541              	.L29:
+ 542 00d8 0C000000 		.word	.LC2
+ 543 00dc 00000000 		.word	bme280_GetTemperatureCelsius
+ 544 00e0 14000000 		.word	.LC3
+ 545 00e4 00000000 		.word	bme280_GetPressure
+ 546 00e8 20000000 		.word	.LC4
+ 547 00ec 00000000 		.word	bme280_GetHumidity
+ 548 00f0 00000000 		.word	bme280_SetFilterMode
+ 549 00f4 00000000 		.word	bme280_GetFilterMode
+ 550 00f8 00000000 		.word	bme280_SetTemperatureMode
+ 551 00fc 00000000 		.word	bme280_GetTemperatureMode
+ 552 0100 00000000 		.word	bme280_SetPressureMode
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 14
+
+
+ 553 0104 00000000 		.word	bme280_GetPressureMode
+ 554 0108 00000000 		.word	bme280_SetHumidityMode
+ 555 010c 00000000 		.word	bme280_GetHumidityMode
+ 556 0110 00000000 		.word	bme280_SetMeasurementMode
+ 557 0114 00000000 		.word	bme280_GetMeasurementMode
+ 558 0118 00000000 		.word	.LANCHOR0
+ 559 011c 00000000 		.word	.LC1
+ 560 0120 2C000000 		.word	.LC5
+ 561 0124 34000000 		.word	.LC6
+ 562              		.cfi_endproc
+ 563              	.LFE0:
+ 564              		.size	bme280_addInterface, .-bme280_addInterface
+ 565              		.section	.rodata
+ 566              		.align	2
+ 567              		.set	.LANCHOR0,. + 0
+ 568              	.LC0:
+ 569 0000 00000000 		.word	rhea_i2c_MasterSendStart
+ 570 0004 00000000 		.word	rhea_i2c_MasterSendStop
+ 571 0008 00000000 		.word	rhea_i2c_MasterWriteByte
+ 572 000c 00000000 		.word	rhea_i2c_MasterReadByte
+ 573              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 574              		.align	2
+ 575              	.LC1:
+ 576 0000 74656D70 		.ascii	"temperature\000"
+ 576      65726174 
+ 576      75726500 
+ 577              	.LC2:
+ 578 000c 424D4532 		.ascii	"BME280\000"
+ 578      383000
+ 579 0013 00       		.space	1
+ 580              	.LC3:
+ 581 0014 70726573 		.ascii	"pressure\000"
+ 581      73757265 
+ 581      00
+ 582 001d 000000   		.space	3
+ 583              	.LC4:
+ 584 0020 68756D69 		.ascii	"humidity\000"
+ 584      64697479 
+ 584      00
+ 585 0029 000000   		.space	3
+ 586              	.LC5:
+ 587 002c 66696C74 		.ascii	"filter\000"
+ 587      657200
+ 588 0033 00       		.space	1
+ 589              	.LC6:
+ 590 0034 6D6F6465 		.ascii	"mode\000"
+ 590      00
+ 591              		.text
+ 592              	.Letext0:
+ 593              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 594              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 595              		.file 4 "rhea\\sensor\\interfaces\\BME280\\../../../drivers/BME280/BME280.h"
+ 596              		.file 5 "rhea\\sensor\\interfaces\\BME280\\../../sensor.h"
+ 597              		.section	.debug_info,"",%progbits
+ 598              	.Ldebug_info0:
+ 599 0000 7A060000 		.4byte	0x67a
+ 600 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 15
+
+
+ 601 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 602 000a 04       		.byte	0x4
+ 603 000b 01       		.uleb128 0x1
+ 604 000c 08040000 		.4byte	.LASF55
+ 605 0010 0C       		.byte	0xc
+ 606 0011 6C020000 		.4byte	.LASF56
+ 607 0015 46010000 		.4byte	.LASF57
+ 608 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 609 001d 00000000 		.4byte	0
+ 610 0021 00000000 		.4byte	.Ldebug_line0
+ 611 0025 02       		.uleb128 0x2
+ 612 0026 08       		.byte	0x8
+ 613 0027 07       		.byte	0x7
+ 614 0028 48020000 		.4byte	.LASF0
+ 615 002c 02       		.uleb128 0x2
+ 616 002d 01       		.byte	0x1
+ 617 002e 06       		.byte	0x6
+ 618 002f 3C020000 		.4byte	.LASF1
+ 619 0033 03       		.uleb128 0x3
+ 620 0034 F9010000 		.4byte	.LASF7
+ 621 0038 02       		.byte	0x2
+ 622 0039 1D       		.byte	0x1d
+ 623 003a 3E000000 		.4byte	0x3e
+ 624 003e 02       		.uleb128 0x2
+ 625 003f 01       		.byte	0x1
+ 626 0040 08       		.byte	0x8
+ 627 0041 1F020000 		.4byte	.LASF2
+ 628 0045 02       		.uleb128 0x2
+ 629 0046 02       		.byte	0x2
+ 630 0047 05       		.byte	0x5
+ 631 0048 29000000 		.4byte	.LASF3
+ 632 004c 02       		.uleb128 0x2
+ 633 004d 02       		.byte	0x2
+ 634 004e 07       		.byte	0x7
+ 635 004f B2020000 		.4byte	.LASF4
+ 636 0053 02       		.uleb128 0x2
+ 637 0054 04       		.byte	0x4
+ 638 0055 05       		.byte	0x5
+ 639 0056 BE010000 		.4byte	.LASF5
+ 640 005a 02       		.uleb128 0x2
+ 641 005b 04       		.byte	0x4
+ 642 005c 07       		.byte	0x7
+ 643 005d 3F030000 		.4byte	.LASF6
+ 644 0061 03       		.uleb128 0x3
+ 645 0062 C7010000 		.4byte	.LASF8
+ 646 0066 02       		.byte	0x2
+ 647 0067 59       		.byte	0x59
+ 648 0068 6C000000 		.4byte	0x6c
+ 649 006c 02       		.uleb128 0x2
+ 650 006d 08       		.byte	0x8
+ 651 006e 05       		.byte	0x5
+ 652 006f 1E010000 		.4byte	.LASF9
+ 653 0073 04       		.uleb128 0x4
+ 654 0074 04       		.byte	0x4
+ 655 0075 05       		.byte	0x5
+ 656 0076 696E7400 		.ascii	"int\000"
+ 657 007a 02       		.uleb128 0x2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 16
+
+
+ 658 007b 04       		.byte	0x4
+ 659 007c 07       		.byte	0x7
+ 660 007d 5F020000 		.4byte	.LASF10
+ 661 0081 03       		.uleb128 0x3
+ 662 0082 5C000000 		.4byte	.LASF11
+ 663 0086 03       		.byte	0x3
+ 664 0087 18       		.byte	0x18
+ 665 0088 33000000 		.4byte	0x33
+ 666 008c 03       		.uleb128 0x3
+ 667 008d 4E000000 		.4byte	.LASF12
+ 668 0091 03       		.byte	0x3
+ 669 0092 38       		.byte	0x38
+ 670 0093 61000000 		.4byte	0x61
+ 671 0097 05       		.uleb128 0x5
+ 672 0098 33000000 		.4byte	.LASF17
+ 673 009c 10       		.byte	0x10
+ 674 009d 04       		.byte	0x4
+ 675 009e 39       		.byte	0x39
+ 676 009f D4000000 		.4byte	0xd4
+ 677 00a3 06       		.uleb128 0x6
+ 678 00a4 0F020000 		.4byte	.LASF13
+ 679 00a8 04       		.byte	0x4
+ 680 00a9 40       		.byte	0x40
+ 681 00aa E4000000 		.4byte	0xe4
+ 682 00ae 00       		.byte	0
+ 683 00af 06       		.uleb128 0x6
+ 684 00b0 A9040000 		.4byte	.LASF14
+ 685 00b4 04       		.byte	0x4
+ 686 00b5 45       		.byte	0x45
+ 687 00b6 EB000000 		.4byte	0xeb
+ 688 00ba 04       		.byte	0x4
+ 689 00bb 06       		.uleb128 0x6
+ 690 00bc 84030000 		.4byte	.LASF15
+ 691 00c0 04       		.byte	0x4
+ 692 00c1 4B       		.byte	0x4b
+ 693 00c2 FC000000 		.4byte	0xfc
+ 694 00c6 08       		.byte	0x8
+ 695 00c7 06       		.uleb128 0x6
+ 696 00c8 2D020000 		.4byte	.LASF16
+ 697 00cc 04       		.byte	0x4
+ 698 00cd 52       		.byte	0x52
+ 699 00ce 11010000 		.4byte	0x111
+ 700 00d2 0C       		.byte	0xc
+ 701 00d3 00       		.byte	0
+ 702 00d4 07       		.uleb128 0x7
+ 703 00d5 E4000000 		.4byte	0xe4
+ 704 00d9 08       		.uleb128 0x8
+ 705 00da 81000000 		.4byte	0x81
+ 706 00de 08       		.uleb128 0x8
+ 707 00df 81000000 		.4byte	0x81
+ 708 00e3 00       		.byte	0
+ 709 00e4 09       		.uleb128 0x9
+ 710 00e5 04       		.byte	0x4
+ 711 00e6 D4000000 		.4byte	0xd4
+ 712 00ea 0A       		.uleb128 0xa
+ 713 00eb 09       		.uleb128 0x9
+ 714 00ec 04       		.byte	0x4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 17
+
+
+ 715 00ed EA000000 		.4byte	0xea
+ 716 00f1 07       		.uleb128 0x7
+ 717 00f2 FC000000 		.4byte	0xfc
+ 718 00f6 08       		.uleb128 0x8
+ 719 00f7 81000000 		.4byte	0x81
+ 720 00fb 00       		.byte	0
+ 721 00fc 09       		.uleb128 0x9
+ 722 00fd 04       		.byte	0x4
+ 723 00fe F1000000 		.4byte	0xf1
+ 724 0102 0B       		.uleb128 0xb
+ 725 0103 81000000 		.4byte	0x81
+ 726 0107 11010000 		.4byte	0x111
+ 727 010b 08       		.uleb128 0x8
+ 728 010c 81000000 		.4byte	0x81
+ 729 0110 00       		.byte	0
+ 730 0111 09       		.uleb128 0x9
+ 731 0112 04       		.byte	0x4
+ 732 0113 02010000 		.4byte	0x102
+ 733 0117 03       		.uleb128 0x3
+ 734 0118 33000000 		.4byte	.LASF17
+ 735 011c 04       		.byte	0x4
+ 736 011d 54       		.byte	0x54
+ 737 011e 97000000 		.4byte	0x97
+ 738 0122 02       		.uleb128 0x2
+ 739 0123 08       		.byte	0x8
+ 740 0124 04       		.byte	0x4
+ 741 0125 51030000 		.4byte	.LASF18
+ 742 0129 02       		.uleb128 0x2
+ 743 012a 01       		.byte	0x1
+ 744 012b 08       		.byte	0x8
+ 745 012c C5020000 		.4byte	.LASF19
+ 746 0130 0C       		.uleb128 0xc
+ 747 0131 F6020000 		.4byte	.LASF20
+ 748 0135 01       		.byte	0x1
+ 749 0136 48       		.byte	0x48
+ 750 0137 22010000 		.4byte	0x122
+ 751 013b 00000000 		.4byte	.LFB1
+ 752 013f 1C000000 		.4byte	.LFE1-.LFB1
+ 753 0143 01       		.uleb128 0x1
+ 754 0144 9C       		.byte	0x9c
+ 755 0145 7E010000 		.4byte	0x17e
+ 756 0149 0D       		.uleb128 0xd
+ 757 014a 00000000 		.4byte	.LASF22
+ 758 014e 01       		.byte	0x1
+ 759 014f 4B       		.byte	0x4b
+ 760 0150 22010000 		.4byte	0x122
+ 761 0154 06       		.uleb128 0x6
+ 762 0155 54       		.byte	0x54
+ 763 0156 93       		.byte	0x93
+ 764 0157 04       		.uleb128 0x4
+ 765 0158 55       		.byte	0x55
+ 766 0159 93       		.byte	0x93
+ 767 015a 04       		.uleb128 0x4
+ 768 015b 0E       		.uleb128 0xe
+ 769 015c 08000000 		.4byte	.LVL0
+ 770 0160 AB050000 		.4byte	0x5ab
+ 771 0164 6E010000 		.4byte	0x16e
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 18
+
+
+ 772 0168 0F       		.uleb128 0xf
+ 773 0169 01       		.uleb128 0x1
+ 774 016a 50       		.byte	0x50
+ 775 016b 01       		.uleb128 0x1
+ 776 016c 31       		.byte	0x31
+ 777 016d 00       		.byte	0
+ 778 016e 10       		.uleb128 0x10
+ 779 016f 16000000 		.4byte	.LVL3
+ 780 0173 B6050000 		.4byte	0x5b6
+ 781 0177 0F       		.uleb128 0xf
+ 782 0178 01       		.uleb128 0x1
+ 783 0179 50       		.byte	0x50
+ 784 017a 01       		.uleb128 0x1
+ 785 017b 31       		.byte	0x31
+ 786 017c 00       		.byte	0
+ 787 017d 00       		.byte	0
+ 788 017e 11       		.uleb128 0x11
+ 789 017f D6000000 		.4byte	.LASF24
+ 790 0183 01       		.byte	0x1
+ 791 0184 89       		.byte	0x89
+ 792 0185 00000000 		.4byte	.LFB12
+ 793 0189 0A000000 		.4byte	.LFE12-.LFB12
+ 794 018d 01       		.uleb128 0x1
+ 795 018e 9C       		.byte	0x9c
+ 796 018f AC010000 		.4byte	0x1ac
+ 797 0193 12       		.uleb128 0x12
+ 798 0194 56000000 		.4byte	.LASF26
+ 799 0198 01       		.byte	0x1
+ 800 0199 89       		.byte	0x89
+ 801 019a 8C000000 		.4byte	0x8c
+ 802 019e 00000000 		.4byte	.LLST0
+ 803 01a2 13       		.uleb128 0x13
+ 804 01a3 08000000 		.4byte	.LVL6
+ 805 01a7 B6050000 		.4byte	0x5b6
+ 806 01ab 00       		.byte	0
+ 807 01ac 0C       		.uleb128 0xc
+ 808 01ad D1010000 		.4byte	.LASF21
+ 809 01b1 01       		.byte	0x1
+ 810 01b2 53       		.byte	0x53
+ 811 01b3 22010000 		.4byte	0x122
+ 812 01b7 00000000 		.4byte	.LFB2
+ 813 01bb 1C000000 		.4byte	.LFE2-.LFB2
+ 814 01bf 01       		.uleb128 0x1
+ 815 01c0 9C       		.byte	0x9c
+ 816 01c1 FA010000 		.4byte	0x1fa
+ 817 01c5 0D       		.uleb128 0xd
+ 818 01c6 00000000 		.4byte	.LASF22
+ 819 01ca 01       		.byte	0x1
+ 820 01cb 56       		.byte	0x56
+ 821 01cc 22010000 		.4byte	0x122
+ 822 01d0 06       		.uleb128 0x6
+ 823 01d1 54       		.byte	0x54
+ 824 01d2 93       		.byte	0x93
+ 825 01d3 04       		.uleb128 0x4
+ 826 01d4 55       		.byte	0x55
+ 827 01d5 93       		.byte	0x93
+ 828 01d6 04       		.uleb128 0x4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 19
+
+
+ 829 01d7 0E       		.uleb128 0xe
+ 830 01d8 08000000 		.4byte	.LVL7
+ 831 01dc C2050000 		.4byte	0x5c2
+ 832 01e0 EA010000 		.4byte	0x1ea
+ 833 01e4 0F       		.uleb128 0xf
+ 834 01e5 01       		.uleb128 0x1
+ 835 01e6 50       		.byte	0x50
+ 836 01e7 01       		.uleb128 0x1
+ 837 01e8 31       		.byte	0x31
+ 838 01e9 00       		.byte	0
+ 839 01ea 10       		.uleb128 0x10
+ 840 01eb 16000000 		.4byte	.LVL10
+ 841 01ef B6050000 		.4byte	0x5b6
+ 842 01f3 0F       		.uleb128 0xf
+ 843 01f4 01       		.uleb128 0x1
+ 844 01f5 50       		.byte	0x50
+ 845 01f6 01       		.uleb128 0x1
+ 846 01f7 31       		.byte	0x31
+ 847 01f8 00       		.byte	0
+ 848 01f9 00       		.byte	0
+ 849 01fa 0C       		.uleb128 0xc
+ 850 01fb 71030000 		.4byte	.LASF23
+ 851 01ff 01       		.byte	0x1
+ 852 0200 5E       		.byte	0x5e
+ 853 0201 22010000 		.4byte	0x122
+ 854 0205 00000000 		.4byte	.LFB3
+ 855 0209 1C000000 		.4byte	.LFE3-.LFB3
+ 856 020d 01       		.uleb128 0x1
+ 857 020e 9C       		.byte	0x9c
+ 858 020f 48020000 		.4byte	0x248
+ 859 0213 0D       		.uleb128 0xd
+ 860 0214 00000000 		.4byte	.LASF22
+ 861 0218 01       		.byte	0x1
+ 862 0219 61       		.byte	0x61
+ 863 021a 22010000 		.4byte	0x122
+ 864 021e 06       		.uleb128 0x6
+ 865 021f 54       		.byte	0x54
+ 866 0220 93       		.byte	0x93
+ 867 0221 04       		.uleb128 0x4
+ 868 0222 55       		.byte	0x55
+ 869 0223 93       		.byte	0x93
+ 870 0224 04       		.uleb128 0x4
+ 871 0225 0E       		.uleb128 0xe
+ 872 0226 08000000 		.4byte	.LVL11
+ 873 022a CE050000 		.4byte	0x5ce
+ 874 022e 38020000 		.4byte	0x238
+ 875 0232 0F       		.uleb128 0xf
+ 876 0233 01       		.uleb128 0x1
+ 877 0234 50       		.byte	0x50
+ 878 0235 01       		.uleb128 0x1
+ 879 0236 31       		.byte	0x31
+ 880 0237 00       		.byte	0
+ 881 0238 10       		.uleb128 0x10
+ 882 0239 16000000 		.4byte	.LVL14
+ 883 023d B6050000 		.4byte	0x5b6
+ 884 0241 0F       		.uleb128 0xf
+ 885 0242 01       		.uleb128 0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 20
+
+
+ 886 0243 50       		.byte	0x50
+ 887 0244 01       		.uleb128 0x1
+ 888 0245 31       		.byte	0x31
+ 889 0246 00       		.byte	0
+ 890 0247 00       		.byte	0
+ 891 0248 11       		.uleb128 0x11
+ 892 0249 E4010000 		.4byte	.LASF25
+ 893 024d 01       		.byte	0x1
+ 894 024e 69       		.byte	0x69
+ 895 024f 00000000 		.4byte	.LFB4
+ 896 0253 0A000000 		.4byte	.LFE4-.LFB4
+ 897 0257 01       		.uleb128 0x1
+ 898 0258 9C       		.byte	0x9c
+ 899 0259 76020000 		.4byte	0x276
+ 900 025d 12       		.uleb128 0x12
+ 901 025e 56000000 		.4byte	.LASF26
+ 902 0262 01       		.byte	0x1
+ 903 0263 69       		.byte	0x69
+ 904 0264 8C000000 		.4byte	0x8c
+ 905 0268 28000000 		.4byte	.LLST1
+ 906 026c 13       		.uleb128 0x13
+ 907 026d 08000000 		.4byte	.LVL17
+ 908 0271 DA050000 		.4byte	0x5da
+ 909 0275 00       		.byte	0
+ 910 0276 14       		.uleb128 0x14
+ 911 0277 2A030000 		.4byte	.LASF27
+ 912 027b 01       		.byte	0x1
+ 913 027c 6D       		.byte	0x6d
+ 914 027d 8C000000 		.4byte	0x8c
+ 915 0281 00000000 		.4byte	.LFB5
+ 916 0285 0C000000 		.4byte	.LFE5-.LFB5
+ 917 0289 01       		.uleb128 0x1
+ 918 028a 9C       		.byte	0x9c
+ 919 028b 99020000 		.4byte	0x299
+ 920 028f 13       		.uleb128 0x13
+ 921 0290 06000000 		.4byte	.LVL18
+ 922 0294 E6050000 		.4byte	0x5e6
+ 923 0298 00       		.byte	0
+ 924 0299 11       		.uleb128 0x11
+ 925 029a A4010000 		.4byte	.LASF28
+ 926 029e 01       		.byte	0x1
+ 927 029f 71       		.byte	0x71
+ 928 02a0 00000000 		.4byte	.LFB6
+ 929 02a4 0A000000 		.4byte	.LFE6-.LFB6
+ 930 02a8 01       		.uleb128 0x1
+ 931 02a9 9C       		.byte	0x9c
+ 932 02aa C7020000 		.4byte	0x2c7
+ 933 02ae 12       		.uleb128 0x12
+ 934 02af 56000000 		.4byte	.LASF26
+ 935 02b3 01       		.byte	0x1
+ 936 02b4 71       		.byte	0x71
+ 937 02b5 8C000000 		.4byte	0x8c
+ 938 02b9 50000000 		.4byte	.LLST2
+ 939 02bd 13       		.uleb128 0x13
+ 940 02be 08000000 		.4byte	.LVL21
+ 941 02c2 F2050000 		.4byte	0x5f2
+ 942 02c6 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 21
+
+
+ 943 02c7 14       		.uleb128 0x14
+ 944 02c8 B8040000 		.4byte	.LASF29
+ 945 02cc 01       		.byte	0x1
+ 946 02cd 75       		.byte	0x75
+ 947 02ce 8C000000 		.4byte	0x8c
+ 948 02d2 00000000 		.4byte	.LFB7
+ 949 02d6 0C000000 		.4byte	.LFE7-.LFB7
+ 950 02da 01       		.uleb128 0x1
+ 951 02db 9C       		.byte	0x9c
+ 952 02dc EA020000 		.4byte	0x2ea
+ 953 02e0 13       		.uleb128 0x13
+ 954 02e1 06000000 		.4byte	.LVL22
+ 955 02e5 FE050000 		.4byte	0x5fe
+ 956 02e9 00       		.byte	0
+ 957 02ea 11       		.uleb128 0x11
+ 958 02eb 94030000 		.4byte	.LASF30
+ 959 02ef 01       		.byte	0x1
+ 960 02f0 79       		.byte	0x79
+ 961 02f1 00000000 		.4byte	.LFB8
+ 962 02f5 0A000000 		.4byte	.LFE8-.LFB8
+ 963 02f9 01       		.uleb128 0x1
+ 964 02fa 9C       		.byte	0x9c
+ 965 02fb 18030000 		.4byte	0x318
+ 966 02ff 12       		.uleb128 0x12
+ 967 0300 56000000 		.4byte	.LASF26
+ 968 0304 01       		.byte	0x1
+ 969 0305 79       		.byte	0x79
+ 970 0306 8C000000 		.4byte	0x8c
+ 971 030a 78000000 		.4byte	.LLST3
+ 972 030e 13       		.uleb128 0x13
+ 973 030f 08000000 		.4byte	.LVL25
+ 974 0313 0A060000 		.4byte	0x60a
+ 975 0317 00       		.byte	0
+ 976 0318 14       		.uleb128 0x14
+ 977 0319 F0000000 		.4byte	.LASF31
+ 978 031d 01       		.byte	0x1
+ 979 031e 7D       		.byte	0x7d
+ 980 031f 8C000000 		.4byte	0x8c
+ 981 0323 00000000 		.4byte	.LFB9
+ 982 0327 0C000000 		.4byte	.LFE9-.LFB9
+ 983 032b 01       		.uleb128 0x1
+ 984 032c 9C       		.byte	0x9c
+ 985 032d 3B030000 		.4byte	0x33b
+ 986 0331 13       		.uleb128 0x13
+ 987 0332 06000000 		.4byte	.LVL26
+ 988 0336 16060000 		.4byte	0x616
+ 989 033a 00       		.byte	0
+ 990 033b 11       		.uleb128 0x11
+ 991 033c 13030000 		.4byte	.LASF32
+ 992 0340 01       		.byte	0x1
+ 993 0341 81       		.byte	0x81
+ 994 0342 00000000 		.4byte	.LFB10
+ 995 0346 0A000000 		.4byte	.LFE10-.LFB10
+ 996 034a 01       		.uleb128 0x1
+ 997 034b 9C       		.byte	0x9c
+ 998 034c 69030000 		.4byte	0x369
+ 999 0350 12       		.uleb128 0x12
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 22
+
+
+ 1000 0351 56000000 		.4byte	.LASF26
+ 1001 0355 01       		.byte	0x1
+ 1002 0356 81       		.byte	0x81
+ 1003 0357 8C000000 		.4byte	0x8c
+ 1004 035b A0000000 		.4byte	.LLST4
+ 1005 035f 13       		.uleb128 0x13
+ 1006 0360 08000000 		.4byte	.LVL29
+ 1007 0364 22060000 		.4byte	0x622
+ 1008 0368 00       		.byte	0
+ 1009 0369 14       		.uleb128 0x14
+ 1010 036a F1030000 		.4byte	.LASF33
+ 1011 036e 01       		.byte	0x1
+ 1012 036f 85       		.byte	0x85
+ 1013 0370 8C000000 		.4byte	0x8c
+ 1014 0374 00000000 		.4byte	.LFB11
+ 1015 0378 0C000000 		.4byte	.LFE11-.LFB11
+ 1016 037c 01       		.uleb128 0x1
+ 1017 037d 9C       		.byte	0x9c
+ 1018 037e 8C030000 		.4byte	0x38c
+ 1019 0382 13       		.uleb128 0x13
+ 1020 0383 06000000 		.4byte	.LVL30
+ 1021 0387 2E060000 		.4byte	0x62e
+ 1022 038b 00       		.byte	0
+ 1023 038c 14       		.uleb128 0x14
+ 1024 038d D7030000 		.4byte	.LASF34
+ 1025 0391 01       		.byte	0x1
+ 1026 0392 8D       		.byte	0x8d
+ 1027 0393 8C000000 		.4byte	0x8c
+ 1028 0397 00000000 		.4byte	.LFB13
+ 1029 039b 0C000000 		.4byte	.LFE13-.LFB13
+ 1030 039f 01       		.uleb128 0x1
+ 1031 03a0 9C       		.byte	0x9c
+ 1032 03a1 AF030000 		.4byte	0x3af
+ 1033 03a5 13       		.uleb128 0x13
+ 1034 03a6 06000000 		.4byte	.LVL31
+ 1035 03aa 3A060000 		.4byte	0x63a
+ 1036 03ae 00       		.byte	0
+ 1037 03af 11       		.uleb128 0x11
+ 1038 03b0 64000000 		.4byte	.LASF35
+ 1039 03b4 01       		.byte	0x1
+ 1040 03b5 26       		.byte	0x26
+ 1041 03b6 00000000 		.4byte	.LFB0
+ 1042 03ba 28010000 		.4byte	.LFE0-.LFB0
+ 1043 03be 01       		.uleb128 0x1
+ 1044 03bf 9C       		.byte	0x9c
+ 1045 03c0 AB050000 		.4byte	0x5ab
+ 1046 03c4 0D       		.uleb128 0xd
+ 1047 03c5 07000000 		.4byte	.LASF36
+ 1048 03c9 01       		.byte	0x1
+ 1049 03ca 35       		.byte	0x35
+ 1050 03cb 17010000 		.4byte	0x117
+ 1051 03cf 02       		.uleb128 0x2
+ 1052 03d0 91       		.byte	0x91
+ 1053 03d1 50       		.sleb128 -48
+ 1054 03d2 0E       		.uleb128 0xe
+ 1055 03d3 1C000000 		.4byte	.LVL32
+ 1056 03d7 46060000 		.4byte	0x646
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 23
+
+
+ 1057 03db F6030000 		.4byte	0x3f6
+ 1058 03df 0F       		.uleb128 0xf
+ 1059 03e0 01       		.uleb128 0x1
+ 1060 03e1 50       		.byte	0x50
+ 1061 03e2 02       		.uleb128 0x2
+ 1062 03e3 74       		.byte	0x74
+ 1063 03e4 00       		.sleb128 0
+ 1064 03e5 0F       		.uleb128 0xf
+ 1065 03e6 01       		.uleb128 0x1
+ 1066 03e7 51       		.byte	0x51
+ 1067 03e8 02       		.uleb128 0x2
+ 1068 03e9 78       		.byte	0x78
+ 1069 03ea 00       		.sleb128 0
+ 1070 03eb 0F       		.uleb128 0xf
+ 1071 03ec 02       		.uleb128 0x2
+ 1072 03ed 7D       		.byte	0x7d
+ 1073 03ee 00       		.sleb128 0
+ 1074 03ef 05       		.uleb128 0x5
+ 1075 03f0 03       		.byte	0x3
+ 1076 03f1 00000000 		.4byte	bme280_GetTemperatureCelsius
+ 1077 03f5 00       		.byte	0
+ 1078 03f6 0E       		.uleb128 0xe
+ 1079 03f7 2E000000 		.4byte	.LVL33
+ 1080 03fb 46060000 		.4byte	0x646
+ 1081 03ff 1A040000 		.4byte	0x41a
+ 1082 0403 0F       		.uleb128 0xf
+ 1083 0404 01       		.uleb128 0x1
+ 1084 0405 50       		.byte	0x50
+ 1085 0406 02       		.uleb128 0x2
+ 1086 0407 74       		.byte	0x74
+ 1087 0408 00       		.sleb128 0
+ 1088 0409 0F       		.uleb128 0xf
+ 1089 040a 01       		.uleb128 0x1
+ 1090 040b 51       		.byte	0x51
+ 1091 040c 02       		.uleb128 0x2
+ 1092 040d 77       		.byte	0x77
+ 1093 040e 00       		.sleb128 0
+ 1094 040f 0F       		.uleb128 0xf
+ 1095 0410 02       		.uleb128 0x2
+ 1096 0411 7D       		.byte	0x7d
+ 1097 0412 00       		.sleb128 0
+ 1098 0413 05       		.uleb128 0x5
+ 1099 0414 03       		.byte	0x3
+ 1100 0415 00000000 		.4byte	bme280_GetPressure
+ 1101 0419 00       		.byte	0
+ 1102 041a 0E       		.uleb128 0xe
+ 1103 041b 40000000 		.4byte	.LVL34
+ 1104 041f 46060000 		.4byte	0x646
+ 1105 0423 3E040000 		.4byte	0x43e
+ 1106 0427 0F       		.uleb128 0xf
+ 1107 0428 01       		.uleb128 0x1
+ 1108 0429 50       		.byte	0x50
+ 1109 042a 02       		.uleb128 0x2
+ 1110 042b 74       		.byte	0x74
+ 1111 042c 00       		.sleb128 0
+ 1112 042d 0F       		.uleb128 0xf
+ 1113 042e 01       		.uleb128 0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 24
+
+
+ 1114 042f 51       		.byte	0x51
+ 1115 0430 02       		.uleb128 0x2
+ 1116 0431 76       		.byte	0x76
+ 1117 0432 00       		.sleb128 0
+ 1118 0433 0F       		.uleb128 0xf
+ 1119 0434 02       		.uleb128 0x2
+ 1120 0435 7D       		.byte	0x7d
+ 1121 0436 00       		.sleb128 0
+ 1122 0437 05       		.uleb128 0x5
+ 1123 0438 03       		.byte	0x3
+ 1124 0439 00000000 		.4byte	bme280_GetHumidity
+ 1125 043d 00       		.byte	0
+ 1126 043e 0E       		.uleb128 0xe
+ 1127 043f 50000000 		.4byte	.LVL35
+ 1128 0443 51060000 		.4byte	0x651
+ 1129 0447 6A040000 		.4byte	0x46a
+ 1130 044b 0F       		.uleb128 0xf
+ 1131 044c 01       		.uleb128 0x1
+ 1132 044d 50       		.byte	0x50
+ 1133 044e 02       		.uleb128 0x2
+ 1134 044f 74       		.byte	0x74
+ 1135 0450 00       		.sleb128 0
+ 1136 0451 0F       		.uleb128 0xf
+ 1137 0452 01       		.uleb128 0x1
+ 1138 0453 51       		.byte	0x51
+ 1139 0454 02       		.uleb128 0x2
+ 1140 0455 7A       		.byte	0x7a
+ 1141 0456 00       		.sleb128 0
+ 1142 0457 0F       		.uleb128 0xf
+ 1143 0458 01       		.uleb128 0x1
+ 1144 0459 52       		.byte	0x52
+ 1145 045a 05       		.uleb128 0x5
+ 1146 045b 03       		.byte	0x3
+ 1147 045c 00000000 		.4byte	bme280_GetFilterMode
+ 1148 0460 0F       		.uleb128 0xf
+ 1149 0461 01       		.uleb128 0x1
+ 1150 0462 53       		.byte	0x53
+ 1151 0463 05       		.uleb128 0x5
+ 1152 0464 03       		.byte	0x3
+ 1153 0465 00000000 		.4byte	bme280_SetFilterMode
+ 1154 0469 00       		.byte	0
+ 1155 046a 0E       		.uleb128 0xe
+ 1156 046b 5C000000 		.4byte	.LVL36
+ 1157 046f 51060000 		.4byte	0x651
+ 1158 0473 96040000 		.4byte	0x496
+ 1159 0477 0F       		.uleb128 0xf
+ 1160 0478 01       		.uleb128 0x1
+ 1161 0479 50       		.byte	0x50
+ 1162 047a 02       		.uleb128 0x2
+ 1163 047b 74       		.byte	0x74
+ 1164 047c 00       		.sleb128 0
+ 1165 047d 0F       		.uleb128 0xf
+ 1166 047e 01       		.uleb128 0x1
+ 1167 047f 51       		.byte	0x51
+ 1168 0480 02       		.uleb128 0x2
+ 1169 0481 78       		.byte	0x78
+ 1170 0482 00       		.sleb128 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 25
+
+
+ 1171 0483 0F       		.uleb128 0xf
+ 1172 0484 01       		.uleb128 0x1
+ 1173 0485 52       		.byte	0x52
+ 1174 0486 05       		.uleb128 0x5
+ 1175 0487 03       		.byte	0x3
+ 1176 0488 00000000 		.4byte	bme280_GetTemperatureMode
+ 1177 048c 0F       		.uleb128 0xf
+ 1178 048d 01       		.uleb128 0x1
+ 1179 048e 53       		.byte	0x53
+ 1180 048f 05       		.uleb128 0x5
+ 1181 0490 03       		.byte	0x3
+ 1182 0491 00000000 		.4byte	bme280_SetTemperatureMode
+ 1183 0495 00       		.byte	0
+ 1184 0496 0E       		.uleb128 0xe
+ 1185 0497 68000000 		.4byte	.LVL37
+ 1186 049b 51060000 		.4byte	0x651
+ 1187 049f C2040000 		.4byte	0x4c2
+ 1188 04a3 0F       		.uleb128 0xf
+ 1189 04a4 01       		.uleb128 0x1
+ 1190 04a5 50       		.byte	0x50
+ 1191 04a6 02       		.uleb128 0x2
+ 1192 04a7 74       		.byte	0x74
+ 1193 04a8 00       		.sleb128 0
+ 1194 04a9 0F       		.uleb128 0xf
+ 1195 04aa 01       		.uleb128 0x1
+ 1196 04ab 51       		.byte	0x51
+ 1197 04ac 02       		.uleb128 0x2
+ 1198 04ad 77       		.byte	0x77
+ 1199 04ae 00       		.sleb128 0
+ 1200 04af 0F       		.uleb128 0xf
+ 1201 04b0 01       		.uleb128 0x1
+ 1202 04b1 52       		.byte	0x52
+ 1203 04b2 05       		.uleb128 0x5
+ 1204 04b3 03       		.byte	0x3
+ 1205 04b4 00000000 		.4byte	bme280_GetPressureMode
+ 1206 04b8 0F       		.uleb128 0xf
+ 1207 04b9 01       		.uleb128 0x1
+ 1208 04ba 53       		.byte	0x53
+ 1209 04bb 05       		.uleb128 0x5
+ 1210 04bc 03       		.byte	0x3
+ 1211 04bd 00000000 		.4byte	bme280_SetPressureMode
+ 1212 04c1 00       		.byte	0
+ 1213 04c2 0E       		.uleb128 0xe
+ 1214 04c3 74000000 		.4byte	.LVL38
+ 1215 04c7 51060000 		.4byte	0x651
+ 1216 04cb EE040000 		.4byte	0x4ee
+ 1217 04cf 0F       		.uleb128 0xf
+ 1218 04d0 01       		.uleb128 0x1
+ 1219 04d1 50       		.byte	0x50
+ 1220 04d2 02       		.uleb128 0x2
+ 1221 04d3 74       		.byte	0x74
+ 1222 04d4 00       		.sleb128 0
+ 1223 04d5 0F       		.uleb128 0xf
+ 1224 04d6 01       		.uleb128 0x1
+ 1225 04d7 51       		.byte	0x51
+ 1226 04d8 02       		.uleb128 0x2
+ 1227 04d9 76       		.byte	0x76
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 26
+
+
+ 1228 04da 00       		.sleb128 0
+ 1229 04db 0F       		.uleb128 0xf
+ 1230 04dc 01       		.uleb128 0x1
+ 1231 04dd 52       		.byte	0x52
+ 1232 04de 05       		.uleb128 0x5
+ 1233 04df 03       		.byte	0x3
+ 1234 04e0 00000000 		.4byte	bme280_GetHumidityMode
+ 1235 04e4 0F       		.uleb128 0xf
+ 1236 04e5 01       		.uleb128 0x1
+ 1237 04e6 53       		.byte	0x53
+ 1238 04e7 05       		.uleb128 0x5
+ 1239 04e8 03       		.byte	0x3
+ 1240 04e9 00000000 		.4byte	bme280_SetHumidityMode
+ 1241 04ed 00       		.byte	0
+ 1242 04ee 0E       		.uleb128 0xe
+ 1243 04ef 84000000 		.4byte	.LVL39
+ 1244 04f3 51060000 		.4byte	0x651
+ 1245 04f7 1A050000 		.4byte	0x51a
+ 1246 04fb 0F       		.uleb128 0xf
+ 1247 04fc 01       		.uleb128 0x1
+ 1248 04fd 50       		.byte	0x50
+ 1249 04fe 02       		.uleb128 0x2
+ 1250 04ff 74       		.byte	0x74
+ 1251 0500 00       		.sleb128 0
+ 1252 0501 0F       		.uleb128 0xf
+ 1253 0502 01       		.uleb128 0x1
+ 1254 0503 51       		.byte	0x51
+ 1255 0504 02       		.uleb128 0x2
+ 1256 0505 79       		.byte	0x79
+ 1257 0506 00       		.sleb128 0
+ 1258 0507 0F       		.uleb128 0xf
+ 1259 0508 01       		.uleb128 0x1
+ 1260 0509 52       		.byte	0x52
+ 1261 050a 05       		.uleb128 0x5
+ 1262 050b 03       		.byte	0x3
+ 1263 050c 00000000 		.4byte	bme280_GetMeasurementMode
+ 1264 0510 0F       		.uleb128 0xf
+ 1265 0511 01       		.uleb128 0x1
+ 1266 0512 53       		.byte	0x53
+ 1267 0513 05       		.uleb128 0x5
+ 1268 0514 03       		.byte	0x3
+ 1269 0515 00000000 		.4byte	bme280_SetMeasurementMode
+ 1270 0519 00       		.byte	0
+ 1271 051a 13       		.uleb128 0x13
+ 1272 051b 92000000 		.4byte	.LVL40
+ 1273 051f 5C060000 		.4byte	0x65c
+ 1274 0523 13       		.uleb128 0x13
+ 1275 0524 96000000 		.4byte	.LVL41
+ 1276 0528 67060000 		.4byte	0x667
+ 1277 052c 0E       		.uleb128 0xe
+ 1278 052d A2000000 		.4byte	.LVL42
+ 1279 0531 72060000 		.4byte	0x672
+ 1280 0535 46050000 		.4byte	0x546
+ 1281 0539 0F       		.uleb128 0xf
+ 1282 053a 01       		.uleb128 0x1
+ 1283 053b 50       		.byte	0x50
+ 1284 053c 02       		.uleb128 0x2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 27
+
+
+ 1285 053d 74       		.byte	0x74
+ 1286 053e 00       		.sleb128 0
+ 1287 053f 0F       		.uleb128 0xf
+ 1288 0540 01       		.uleb128 0x1
+ 1289 0541 51       		.byte	0x51
+ 1290 0542 02       		.uleb128 0x2
+ 1291 0543 7A       		.byte	0x7a
+ 1292 0544 00       		.sleb128 0
+ 1293 0545 00       		.byte	0
+ 1294 0546 0E       		.uleb128 0xe
+ 1295 0547 AE000000 		.4byte	.LVL43
+ 1296 054b 72060000 		.4byte	0x672
+ 1297 054f 60050000 		.4byte	0x560
+ 1298 0553 0F       		.uleb128 0xf
+ 1299 0554 01       		.uleb128 0x1
+ 1300 0555 50       		.byte	0x50
+ 1301 0556 02       		.uleb128 0x2
+ 1302 0557 74       		.byte	0x74
+ 1303 0558 00       		.sleb128 0
+ 1304 0559 0F       		.uleb128 0xf
+ 1305 055a 01       		.uleb128 0x1
+ 1306 055b 51       		.byte	0x51
+ 1307 055c 02       		.uleb128 0x2
+ 1308 055d 78       		.byte	0x78
+ 1309 055e 00       		.sleb128 0
+ 1310 055f 00       		.byte	0
+ 1311 0560 0E       		.uleb128 0xe
+ 1312 0561 BA000000 		.4byte	.LVL44
+ 1313 0565 72060000 		.4byte	0x672
+ 1314 0569 7A050000 		.4byte	0x57a
+ 1315 056d 0F       		.uleb128 0xf
+ 1316 056e 01       		.uleb128 0x1
+ 1317 056f 50       		.byte	0x50
+ 1318 0570 02       		.uleb128 0x2
+ 1319 0571 74       		.byte	0x74
+ 1320 0572 00       		.sleb128 0
+ 1321 0573 0F       		.uleb128 0xf
+ 1322 0574 01       		.uleb128 0x1
+ 1323 0575 51       		.byte	0x51
+ 1324 0576 02       		.uleb128 0x2
+ 1325 0577 77       		.byte	0x77
+ 1326 0578 00       		.sleb128 0
+ 1327 0579 00       		.byte	0
+ 1328 057a 0E       		.uleb128 0xe
+ 1329 057b C6000000 		.4byte	.LVL45
+ 1330 057f 72060000 		.4byte	0x672
+ 1331 0583 94050000 		.4byte	0x594
+ 1332 0587 0F       		.uleb128 0xf
+ 1333 0588 01       		.uleb128 0x1
+ 1334 0589 50       		.byte	0x50
+ 1335 058a 02       		.uleb128 0x2
+ 1336 058b 74       		.byte	0x74
+ 1337 058c 00       		.sleb128 0
+ 1338 058d 0F       		.uleb128 0xf
+ 1339 058e 01       		.uleb128 0x1
+ 1340 058f 51       		.byte	0x51
+ 1341 0590 02       		.uleb128 0x2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 28
+
+
+ 1342 0591 76       		.byte	0x76
+ 1343 0592 00       		.sleb128 0
+ 1344 0593 00       		.byte	0
+ 1345 0594 10       		.uleb128 0x10
+ 1346 0595 D2000000 		.4byte	.LVL46
+ 1347 0599 72060000 		.4byte	0x672
+ 1348 059d 0F       		.uleb128 0xf
+ 1349 059e 01       		.uleb128 0x1
+ 1350 059f 50       		.byte	0x50
+ 1351 05a0 02       		.uleb128 0x2
+ 1352 05a1 74       		.byte	0x74
+ 1353 05a2 00       		.sleb128 0
+ 1354 05a3 0F       		.uleb128 0xf
+ 1355 05a4 01       		.uleb128 0x1
+ 1356 05a5 51       		.byte	0x51
+ 1357 05a6 02       		.uleb128 0x2
+ 1358 05a7 79       		.byte	0x79
+ 1359 05a8 00       		.sleb128 0
+ 1360 05a9 00       		.byte	0
+ 1361 05aa 00       		.byte	0
+ 1362 05ab 15       		.uleb128 0x15
+ 1363 05ac 0C000000 		.4byte	.LASF37
+ 1364 05b0 0C000000 		.4byte	.LASF37
+ 1365 05b4 04       		.byte	0x4
+ 1366 05b5 F1       		.byte	0xf1
+ 1367 05b6 16       		.uleb128 0x16
+ 1368 05b7 78000000 		.4byte	.LASF38
+ 1369 05bb 78000000 		.4byte	.LASF38
+ 1370 05bf 04       		.byte	0x4
+ 1371 05c0 9101     		.2byte	0x191
+ 1372 05c2 16       		.uleb128 0x16
+ 1373 05c3 96040000 		.4byte	.LASF39
+ 1374 05c7 96040000 		.4byte	.LASF39
+ 1375 05cb 04       		.byte	0x4
+ 1376 05cc 1001     		.2byte	0x110
+ 1377 05ce 16       		.uleb128 0x16
+ 1378 05cf C3000000 		.4byte	.LASF40
+ 1379 05d3 C3000000 		.4byte	.LASF40
+ 1380 05d7 04       		.byte	0x4
+ 1381 05d8 1F01     		.2byte	0x11f
+ 1382 05da 16       		.uleb128 0x16
+ 1383 05db AB030000 		.4byte	.LASF41
+ 1384 05df AB030000 		.4byte	.LASF41
+ 1385 05e3 04       		.byte	0x4
+ 1386 05e4 C301     		.2byte	0x1c3
+ 1387 05e6 16       		.uleb128 0x16
+ 1388 05e7 CA020000 		.4byte	.LASF42
+ 1389 05eb CA020000 		.4byte	.LASF42
+ 1390 05ef 04       		.byte	0x4
+ 1391 05f0 B801     		.2byte	0x1b8
+ 1392 05f2 16       		.uleb128 0x16
+ 1393 05f3 2C010000 		.4byte	.LASF43
+ 1394 05f7 2C010000 		.4byte	.LASF43
+ 1395 05fb 04       		.byte	0x4
+ 1396 05fc 5501     		.2byte	0x155
+ 1397 05fe 16       		.uleb128 0x16
+ 1398 05ff 98020000 		.4byte	.LASF44
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 29
+
+
+ 1399 0603 98020000 		.4byte	.LASF44
+ 1400 0607 04       		.byte	0x4
+ 1401 0608 4901     		.2byte	0x149
+ 1402 060a 16       		.uleb128 0x16
+ 1403 060b AC000000 		.4byte	.LASF45
+ 1404 060f AC000000 		.4byte	.LASF45
+ 1405 0613 04       		.byte	0x4
+ 1406 0614 6D01     		.2byte	0x16d
+ 1407 0616 16       		.uleb128 0x16
+ 1408 0617 DF020000 		.4byte	.LASF46
+ 1409 061b DF020000 		.4byte	.LASF46
+ 1410 061f 04       		.byte	0x4
+ 1411 0620 6101     		.2byte	0x161
+ 1412 0622 16       		.uleb128 0x16
+ 1413 0623 C0030000 		.4byte	.LASF47
+ 1414 0627 C0030000 		.4byte	.LASF47
+ 1415 062b 04       		.byte	0x4
+ 1416 062c 3D01     		.2byte	0x13d
+ 1417 062e 16       		.uleb128 0x16
+ 1418 062f 07010000 		.4byte	.LASF48
+ 1419 0633 07010000 		.4byte	.LASF48
+ 1420 0637 04       		.byte	0x4
+ 1421 0638 3101     		.2byte	0x131
+ 1422 063a 16       		.uleb128 0x16
+ 1423 063b 92000000 		.4byte	.LASF49
+ 1424 063f 92000000 		.4byte	.LASF49
+ 1425 0643 04       		.byte	0x4
+ 1426 0644 8801     		.2byte	0x188
+ 1427 0646 15       		.uleb128 0x15
+ 1428 0647 D2040000 		.4byte	.LASF50
+ 1429 064b D2040000 		.4byte	.LASF50
+ 1430 064f 05       		.byte	0x5
+ 1431 0650 74       		.byte	0x74
+ 1432 0651 15       		.uleb128 0x15
+ 1433 0652 8B010000 		.4byte	.LASF51
+ 1434 0656 8B010000 		.4byte	.LASF51
+ 1435 065a 05       		.byte	0x5
+ 1436 065b A4       		.byte	0xa4
+ 1437 065c 15       		.uleb128 0x15
+ 1438 065d 73010000 		.4byte	.LASF52
+ 1439 0661 73010000 		.4byte	.LASF52
+ 1440 0665 04       		.byte	0x4
+ 1441 0666 5A       		.byte	0x5a
+ 1442 0667 15       		.uleb128 0x15
+ 1443 0668 03020000 		.4byte	.LASF53
+ 1444 066c 03020000 		.4byte	.LASF53
+ 1445 0670 04       		.byte	0x4
+ 1446 0671 A8       		.byte	0xa8
+ 1447 0672 15       		.uleb128 0x15
+ 1448 0673 58030000 		.4byte	.LASF54
+ 1449 0677 58030000 		.4byte	.LASF54
+ 1450 067b 05       		.byte	0x5
+ 1451 067c BA       		.byte	0xba
+ 1452 067d 00       		.byte	0
+ 1453              		.section	.debug_abbrev,"",%progbits
+ 1454              	.Ldebug_abbrev0:
+ 1455 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 30
+
+
+ 1456 0001 11       		.uleb128 0x11
+ 1457 0002 01       		.byte	0x1
+ 1458 0003 25       		.uleb128 0x25
+ 1459 0004 0E       		.uleb128 0xe
+ 1460 0005 13       		.uleb128 0x13
+ 1461 0006 0B       		.uleb128 0xb
+ 1462 0007 03       		.uleb128 0x3
+ 1463 0008 0E       		.uleb128 0xe
+ 1464 0009 1B       		.uleb128 0x1b
+ 1465 000a 0E       		.uleb128 0xe
+ 1466 000b 55       		.uleb128 0x55
+ 1467 000c 17       		.uleb128 0x17
+ 1468 000d 11       		.uleb128 0x11
+ 1469 000e 01       		.uleb128 0x1
+ 1470 000f 10       		.uleb128 0x10
+ 1471 0010 17       		.uleb128 0x17
+ 1472 0011 00       		.byte	0
+ 1473 0012 00       		.byte	0
+ 1474 0013 02       		.uleb128 0x2
+ 1475 0014 24       		.uleb128 0x24
+ 1476 0015 00       		.byte	0
+ 1477 0016 0B       		.uleb128 0xb
+ 1478 0017 0B       		.uleb128 0xb
+ 1479 0018 3E       		.uleb128 0x3e
+ 1480 0019 0B       		.uleb128 0xb
+ 1481 001a 03       		.uleb128 0x3
+ 1482 001b 0E       		.uleb128 0xe
+ 1483 001c 00       		.byte	0
+ 1484 001d 00       		.byte	0
+ 1485 001e 03       		.uleb128 0x3
+ 1486 001f 16       		.uleb128 0x16
+ 1487 0020 00       		.byte	0
+ 1488 0021 03       		.uleb128 0x3
+ 1489 0022 0E       		.uleb128 0xe
+ 1490 0023 3A       		.uleb128 0x3a
+ 1491 0024 0B       		.uleb128 0xb
+ 1492 0025 3B       		.uleb128 0x3b
+ 1493 0026 0B       		.uleb128 0xb
+ 1494 0027 49       		.uleb128 0x49
+ 1495 0028 13       		.uleb128 0x13
+ 1496 0029 00       		.byte	0
+ 1497 002a 00       		.byte	0
+ 1498 002b 04       		.uleb128 0x4
+ 1499 002c 24       		.uleb128 0x24
+ 1500 002d 00       		.byte	0
+ 1501 002e 0B       		.uleb128 0xb
+ 1502 002f 0B       		.uleb128 0xb
+ 1503 0030 3E       		.uleb128 0x3e
+ 1504 0031 0B       		.uleb128 0xb
+ 1505 0032 03       		.uleb128 0x3
+ 1506 0033 08       		.uleb128 0x8
+ 1507 0034 00       		.byte	0
+ 1508 0035 00       		.byte	0
+ 1509 0036 05       		.uleb128 0x5
+ 1510 0037 13       		.uleb128 0x13
+ 1511 0038 01       		.byte	0x1
+ 1512 0039 03       		.uleb128 0x3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 31
+
+
+ 1513 003a 0E       		.uleb128 0xe
+ 1514 003b 0B       		.uleb128 0xb
+ 1515 003c 0B       		.uleb128 0xb
+ 1516 003d 3A       		.uleb128 0x3a
+ 1517 003e 0B       		.uleb128 0xb
+ 1518 003f 3B       		.uleb128 0x3b
+ 1519 0040 0B       		.uleb128 0xb
+ 1520 0041 01       		.uleb128 0x1
+ 1521 0042 13       		.uleb128 0x13
+ 1522 0043 00       		.byte	0
+ 1523 0044 00       		.byte	0
+ 1524 0045 06       		.uleb128 0x6
+ 1525 0046 0D       		.uleb128 0xd
+ 1526 0047 00       		.byte	0
+ 1527 0048 03       		.uleb128 0x3
+ 1528 0049 0E       		.uleb128 0xe
+ 1529 004a 3A       		.uleb128 0x3a
+ 1530 004b 0B       		.uleb128 0xb
+ 1531 004c 3B       		.uleb128 0x3b
+ 1532 004d 0B       		.uleb128 0xb
+ 1533 004e 49       		.uleb128 0x49
+ 1534 004f 13       		.uleb128 0x13
+ 1535 0050 38       		.uleb128 0x38
+ 1536 0051 0B       		.uleb128 0xb
+ 1537 0052 00       		.byte	0
+ 1538 0053 00       		.byte	0
+ 1539 0054 07       		.uleb128 0x7
+ 1540 0055 15       		.uleb128 0x15
+ 1541 0056 01       		.byte	0x1
+ 1542 0057 27       		.uleb128 0x27
+ 1543 0058 19       		.uleb128 0x19
+ 1544 0059 01       		.uleb128 0x1
+ 1545 005a 13       		.uleb128 0x13
+ 1546 005b 00       		.byte	0
+ 1547 005c 00       		.byte	0
+ 1548 005d 08       		.uleb128 0x8
+ 1549 005e 05       		.uleb128 0x5
+ 1550 005f 00       		.byte	0
+ 1551 0060 49       		.uleb128 0x49
+ 1552 0061 13       		.uleb128 0x13
+ 1553 0062 00       		.byte	0
+ 1554 0063 00       		.byte	0
+ 1555 0064 09       		.uleb128 0x9
+ 1556 0065 0F       		.uleb128 0xf
+ 1557 0066 00       		.byte	0
+ 1558 0067 0B       		.uleb128 0xb
+ 1559 0068 0B       		.uleb128 0xb
+ 1560 0069 49       		.uleb128 0x49
+ 1561 006a 13       		.uleb128 0x13
+ 1562 006b 00       		.byte	0
+ 1563 006c 00       		.byte	0
+ 1564 006d 0A       		.uleb128 0xa
+ 1565 006e 15       		.uleb128 0x15
+ 1566 006f 00       		.byte	0
+ 1567 0070 27       		.uleb128 0x27
+ 1568 0071 19       		.uleb128 0x19
+ 1569 0072 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 32
+
+
+ 1570 0073 00       		.byte	0
+ 1571 0074 0B       		.uleb128 0xb
+ 1572 0075 15       		.uleb128 0x15
+ 1573 0076 01       		.byte	0x1
+ 1574 0077 27       		.uleb128 0x27
+ 1575 0078 19       		.uleb128 0x19
+ 1576 0079 49       		.uleb128 0x49
+ 1577 007a 13       		.uleb128 0x13
+ 1578 007b 01       		.uleb128 0x1
+ 1579 007c 13       		.uleb128 0x13
+ 1580 007d 00       		.byte	0
+ 1581 007e 00       		.byte	0
+ 1582 007f 0C       		.uleb128 0xc
+ 1583 0080 2E       		.uleb128 0x2e
+ 1584 0081 01       		.byte	0x1
+ 1585 0082 3F       		.uleb128 0x3f
+ 1586 0083 19       		.uleb128 0x19
+ 1587 0084 03       		.uleb128 0x3
+ 1588 0085 0E       		.uleb128 0xe
+ 1589 0086 3A       		.uleb128 0x3a
+ 1590 0087 0B       		.uleb128 0xb
+ 1591 0088 3B       		.uleb128 0x3b
+ 1592 0089 0B       		.uleb128 0xb
+ 1593 008a 27       		.uleb128 0x27
+ 1594 008b 19       		.uleb128 0x19
+ 1595 008c 49       		.uleb128 0x49
+ 1596 008d 13       		.uleb128 0x13
+ 1597 008e 11       		.uleb128 0x11
+ 1598 008f 01       		.uleb128 0x1
+ 1599 0090 12       		.uleb128 0x12
+ 1600 0091 06       		.uleb128 0x6
+ 1601 0092 40       		.uleb128 0x40
+ 1602 0093 18       		.uleb128 0x18
+ 1603 0094 9642     		.uleb128 0x2116
+ 1604 0096 19       		.uleb128 0x19
+ 1605 0097 01       		.uleb128 0x1
+ 1606 0098 13       		.uleb128 0x13
+ 1607 0099 00       		.byte	0
+ 1608 009a 00       		.byte	0
+ 1609 009b 0D       		.uleb128 0xd
+ 1610 009c 34       		.uleb128 0x34
+ 1611 009d 00       		.byte	0
+ 1612 009e 03       		.uleb128 0x3
+ 1613 009f 0E       		.uleb128 0xe
+ 1614 00a0 3A       		.uleb128 0x3a
+ 1615 00a1 0B       		.uleb128 0xb
+ 1616 00a2 3B       		.uleb128 0x3b
+ 1617 00a3 0B       		.uleb128 0xb
+ 1618 00a4 49       		.uleb128 0x49
+ 1619 00a5 13       		.uleb128 0x13
+ 1620 00a6 02       		.uleb128 0x2
+ 1621 00a7 18       		.uleb128 0x18
+ 1622 00a8 00       		.byte	0
+ 1623 00a9 00       		.byte	0
+ 1624 00aa 0E       		.uleb128 0xe
+ 1625 00ab 898201   		.uleb128 0x4109
+ 1626 00ae 01       		.byte	0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 33
+
+
+ 1627 00af 11       		.uleb128 0x11
+ 1628 00b0 01       		.uleb128 0x1
+ 1629 00b1 31       		.uleb128 0x31
+ 1630 00b2 13       		.uleb128 0x13
+ 1631 00b3 01       		.uleb128 0x1
+ 1632 00b4 13       		.uleb128 0x13
+ 1633 00b5 00       		.byte	0
+ 1634 00b6 00       		.byte	0
+ 1635 00b7 0F       		.uleb128 0xf
+ 1636 00b8 8A8201   		.uleb128 0x410a
+ 1637 00bb 00       		.byte	0
+ 1638 00bc 02       		.uleb128 0x2
+ 1639 00bd 18       		.uleb128 0x18
+ 1640 00be 9142     		.uleb128 0x2111
+ 1641 00c0 18       		.uleb128 0x18
+ 1642 00c1 00       		.byte	0
+ 1643 00c2 00       		.byte	0
+ 1644 00c3 10       		.uleb128 0x10
+ 1645 00c4 898201   		.uleb128 0x4109
+ 1646 00c7 01       		.byte	0x1
+ 1647 00c8 11       		.uleb128 0x11
+ 1648 00c9 01       		.uleb128 0x1
+ 1649 00ca 31       		.uleb128 0x31
+ 1650 00cb 13       		.uleb128 0x13
+ 1651 00cc 00       		.byte	0
+ 1652 00cd 00       		.byte	0
+ 1653 00ce 11       		.uleb128 0x11
+ 1654 00cf 2E       		.uleb128 0x2e
+ 1655 00d0 01       		.byte	0x1
+ 1656 00d1 3F       		.uleb128 0x3f
+ 1657 00d2 19       		.uleb128 0x19
+ 1658 00d3 03       		.uleb128 0x3
+ 1659 00d4 0E       		.uleb128 0xe
+ 1660 00d5 3A       		.uleb128 0x3a
+ 1661 00d6 0B       		.uleb128 0xb
+ 1662 00d7 3B       		.uleb128 0x3b
+ 1663 00d8 0B       		.uleb128 0xb
+ 1664 00d9 27       		.uleb128 0x27
+ 1665 00da 19       		.uleb128 0x19
+ 1666 00db 11       		.uleb128 0x11
+ 1667 00dc 01       		.uleb128 0x1
+ 1668 00dd 12       		.uleb128 0x12
+ 1669 00de 06       		.uleb128 0x6
+ 1670 00df 40       		.uleb128 0x40
+ 1671 00e0 18       		.uleb128 0x18
+ 1672 00e1 9742     		.uleb128 0x2117
+ 1673 00e3 19       		.uleb128 0x19
+ 1674 00e4 01       		.uleb128 0x1
+ 1675 00e5 13       		.uleb128 0x13
+ 1676 00e6 00       		.byte	0
+ 1677 00e7 00       		.byte	0
+ 1678 00e8 12       		.uleb128 0x12
+ 1679 00e9 05       		.uleb128 0x5
+ 1680 00ea 00       		.byte	0
+ 1681 00eb 03       		.uleb128 0x3
+ 1682 00ec 0E       		.uleb128 0xe
+ 1683 00ed 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 34
+
+
+ 1684 00ee 0B       		.uleb128 0xb
+ 1685 00ef 3B       		.uleb128 0x3b
+ 1686 00f0 0B       		.uleb128 0xb
+ 1687 00f1 49       		.uleb128 0x49
+ 1688 00f2 13       		.uleb128 0x13
+ 1689 00f3 02       		.uleb128 0x2
+ 1690 00f4 17       		.uleb128 0x17
+ 1691 00f5 00       		.byte	0
+ 1692 00f6 00       		.byte	0
+ 1693 00f7 13       		.uleb128 0x13
+ 1694 00f8 898201   		.uleb128 0x4109
+ 1695 00fb 00       		.byte	0
+ 1696 00fc 11       		.uleb128 0x11
+ 1697 00fd 01       		.uleb128 0x1
+ 1698 00fe 31       		.uleb128 0x31
+ 1699 00ff 13       		.uleb128 0x13
+ 1700 0100 00       		.byte	0
+ 1701 0101 00       		.byte	0
+ 1702 0102 14       		.uleb128 0x14
+ 1703 0103 2E       		.uleb128 0x2e
+ 1704 0104 01       		.byte	0x1
+ 1705 0105 3F       		.uleb128 0x3f
+ 1706 0106 19       		.uleb128 0x19
+ 1707 0107 03       		.uleb128 0x3
+ 1708 0108 0E       		.uleb128 0xe
+ 1709 0109 3A       		.uleb128 0x3a
+ 1710 010a 0B       		.uleb128 0xb
+ 1711 010b 3B       		.uleb128 0x3b
+ 1712 010c 0B       		.uleb128 0xb
+ 1713 010d 27       		.uleb128 0x27
+ 1714 010e 19       		.uleb128 0x19
+ 1715 010f 49       		.uleb128 0x49
+ 1716 0110 13       		.uleb128 0x13
+ 1717 0111 11       		.uleb128 0x11
+ 1718 0112 01       		.uleb128 0x1
+ 1719 0113 12       		.uleb128 0x12
+ 1720 0114 06       		.uleb128 0x6
+ 1721 0115 40       		.uleb128 0x40
+ 1722 0116 18       		.uleb128 0x18
+ 1723 0117 9742     		.uleb128 0x2117
+ 1724 0119 19       		.uleb128 0x19
+ 1725 011a 01       		.uleb128 0x1
+ 1726 011b 13       		.uleb128 0x13
+ 1727 011c 00       		.byte	0
+ 1728 011d 00       		.byte	0
+ 1729 011e 15       		.uleb128 0x15
+ 1730 011f 2E       		.uleb128 0x2e
+ 1731 0120 00       		.byte	0
+ 1732 0121 3F       		.uleb128 0x3f
+ 1733 0122 19       		.uleb128 0x19
+ 1734 0123 3C       		.uleb128 0x3c
+ 1735 0124 19       		.uleb128 0x19
+ 1736 0125 6E       		.uleb128 0x6e
+ 1737 0126 0E       		.uleb128 0xe
+ 1738 0127 03       		.uleb128 0x3
+ 1739 0128 0E       		.uleb128 0xe
+ 1740 0129 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 35
+
+
+ 1741 012a 0B       		.uleb128 0xb
+ 1742 012b 3B       		.uleb128 0x3b
+ 1743 012c 0B       		.uleb128 0xb
+ 1744 012d 00       		.byte	0
+ 1745 012e 00       		.byte	0
+ 1746 012f 16       		.uleb128 0x16
+ 1747 0130 2E       		.uleb128 0x2e
+ 1748 0131 00       		.byte	0
+ 1749 0132 3F       		.uleb128 0x3f
+ 1750 0133 19       		.uleb128 0x19
+ 1751 0134 3C       		.uleb128 0x3c
+ 1752 0135 19       		.uleb128 0x19
+ 1753 0136 6E       		.uleb128 0x6e
+ 1754 0137 0E       		.uleb128 0xe
+ 1755 0138 03       		.uleb128 0x3
+ 1756 0139 0E       		.uleb128 0xe
+ 1757 013a 3A       		.uleb128 0x3a
+ 1758 013b 0B       		.uleb128 0xb
+ 1759 013c 3B       		.uleb128 0x3b
+ 1760 013d 05       		.uleb128 0x5
+ 1761 013e 00       		.byte	0
+ 1762 013f 00       		.byte	0
+ 1763 0140 00       		.byte	0
+ 1764              		.section	.debug_loc,"",%progbits
+ 1765              	.Ldebug_loc0:
+ 1766              	.LLST0:
+ 1767 0000 00000000 		.4byte	.LVL4
+ 1768 0004 04000000 		.4byte	.LVL5
+ 1769 0008 0600     		.2byte	0x6
+ 1770 000a 50       		.byte	0x50
+ 1771 000b 93       		.byte	0x93
+ 1772 000c 04       		.uleb128 0x4
+ 1773 000d 51       		.byte	0x51
+ 1774 000e 93       		.byte	0x93
+ 1775 000f 04       		.uleb128 0x4
+ 1776 0010 04000000 		.4byte	.LVL5
+ 1777 0014 0A000000 		.4byte	.LFE12
+ 1778 0018 0600     		.2byte	0x6
+ 1779 001a F3       		.byte	0xf3
+ 1780 001b 03       		.uleb128 0x3
+ 1781 001c F5       		.byte	0xf5
+ 1782 001d 00       		.uleb128 0
+ 1783 001e 25       		.uleb128 0x25
+ 1784 001f 9F       		.byte	0x9f
+ 1785 0020 00000000 		.4byte	0
+ 1786 0024 00000000 		.4byte	0
+ 1787              	.LLST1:
+ 1788 0028 00000000 		.4byte	.LVL15
+ 1789 002c 04000000 		.4byte	.LVL16
+ 1790 0030 0600     		.2byte	0x6
+ 1791 0032 50       		.byte	0x50
+ 1792 0033 93       		.byte	0x93
+ 1793 0034 04       		.uleb128 0x4
+ 1794 0035 51       		.byte	0x51
+ 1795 0036 93       		.byte	0x93
+ 1796 0037 04       		.uleb128 0x4
+ 1797 0038 04000000 		.4byte	.LVL16
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 36
+
+
+ 1798 003c 0A000000 		.4byte	.LFE4
+ 1799 0040 0600     		.2byte	0x6
+ 1800 0042 F3       		.byte	0xf3
+ 1801 0043 03       		.uleb128 0x3
+ 1802 0044 F5       		.byte	0xf5
+ 1803 0045 00       		.uleb128 0
+ 1804 0046 25       		.uleb128 0x25
+ 1805 0047 9F       		.byte	0x9f
+ 1806 0048 00000000 		.4byte	0
+ 1807 004c 00000000 		.4byte	0
+ 1808              	.LLST2:
+ 1809 0050 00000000 		.4byte	.LVL19
+ 1810 0054 04000000 		.4byte	.LVL20
+ 1811 0058 0600     		.2byte	0x6
+ 1812 005a 50       		.byte	0x50
+ 1813 005b 93       		.byte	0x93
+ 1814 005c 04       		.uleb128 0x4
+ 1815 005d 51       		.byte	0x51
+ 1816 005e 93       		.byte	0x93
+ 1817 005f 04       		.uleb128 0x4
+ 1818 0060 04000000 		.4byte	.LVL20
+ 1819 0064 0A000000 		.4byte	.LFE6
+ 1820 0068 0600     		.2byte	0x6
+ 1821 006a F3       		.byte	0xf3
+ 1822 006b 03       		.uleb128 0x3
+ 1823 006c F5       		.byte	0xf5
+ 1824 006d 00       		.uleb128 0
+ 1825 006e 25       		.uleb128 0x25
+ 1826 006f 9F       		.byte	0x9f
+ 1827 0070 00000000 		.4byte	0
+ 1828 0074 00000000 		.4byte	0
+ 1829              	.LLST3:
+ 1830 0078 00000000 		.4byte	.LVL23
+ 1831 007c 04000000 		.4byte	.LVL24
+ 1832 0080 0600     		.2byte	0x6
+ 1833 0082 50       		.byte	0x50
+ 1834 0083 93       		.byte	0x93
+ 1835 0084 04       		.uleb128 0x4
+ 1836 0085 51       		.byte	0x51
+ 1837 0086 93       		.byte	0x93
+ 1838 0087 04       		.uleb128 0x4
+ 1839 0088 04000000 		.4byte	.LVL24
+ 1840 008c 0A000000 		.4byte	.LFE8
+ 1841 0090 0600     		.2byte	0x6
+ 1842 0092 F3       		.byte	0xf3
+ 1843 0093 03       		.uleb128 0x3
+ 1844 0094 F5       		.byte	0xf5
+ 1845 0095 00       		.uleb128 0
+ 1846 0096 25       		.uleb128 0x25
+ 1847 0097 9F       		.byte	0x9f
+ 1848 0098 00000000 		.4byte	0
+ 1849 009c 00000000 		.4byte	0
+ 1850              	.LLST4:
+ 1851 00a0 00000000 		.4byte	.LVL27
+ 1852 00a4 04000000 		.4byte	.LVL28
+ 1853 00a8 0600     		.2byte	0x6
+ 1854 00aa 50       		.byte	0x50
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 37
+
+
+ 1855 00ab 93       		.byte	0x93
+ 1856 00ac 04       		.uleb128 0x4
+ 1857 00ad 51       		.byte	0x51
+ 1858 00ae 93       		.byte	0x93
+ 1859 00af 04       		.uleb128 0x4
+ 1860 00b0 04000000 		.4byte	.LVL28
+ 1861 00b4 0A000000 		.4byte	.LFE10
+ 1862 00b8 0600     		.2byte	0x6
+ 1863 00ba F3       		.byte	0xf3
+ 1864 00bb 03       		.uleb128 0x3
+ 1865 00bc F5       		.byte	0xf5
+ 1866 00bd 00       		.uleb128 0
+ 1867 00be 25       		.uleb128 0x25
+ 1868 00bf 9F       		.byte	0x9f
+ 1869 00c0 00000000 		.4byte	0
+ 1870 00c4 00000000 		.4byte	0
+ 1871              		.section	.debug_aranges,"",%progbits
+ 1872 0000 84000000 		.4byte	0x84
+ 1873 0004 0200     		.2byte	0x2
+ 1874 0006 00000000 		.4byte	.Ldebug_info0
+ 1875 000a 04       		.byte	0x4
+ 1876 000b 00       		.byte	0
+ 1877 000c 0000     		.2byte	0
+ 1878 000e 0000     		.2byte	0
+ 1879 0010 00000000 		.4byte	.LFB1
+ 1880 0014 1C000000 		.4byte	.LFE1-.LFB1
+ 1881 0018 00000000 		.4byte	.LFB12
+ 1882 001c 0A000000 		.4byte	.LFE12-.LFB12
+ 1883 0020 00000000 		.4byte	.LFB2
+ 1884 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 1885 0028 00000000 		.4byte	.LFB3
+ 1886 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 1887 0030 00000000 		.4byte	.LFB4
+ 1888 0034 0A000000 		.4byte	.LFE4-.LFB4
+ 1889 0038 00000000 		.4byte	.LFB5
+ 1890 003c 0C000000 		.4byte	.LFE5-.LFB5
+ 1891 0040 00000000 		.4byte	.LFB6
+ 1892 0044 0A000000 		.4byte	.LFE6-.LFB6
+ 1893 0048 00000000 		.4byte	.LFB7
+ 1894 004c 0C000000 		.4byte	.LFE7-.LFB7
+ 1895 0050 00000000 		.4byte	.LFB8
+ 1896 0054 0A000000 		.4byte	.LFE8-.LFB8
+ 1897 0058 00000000 		.4byte	.LFB9
+ 1898 005c 0C000000 		.4byte	.LFE9-.LFB9
+ 1899 0060 00000000 		.4byte	.LFB10
+ 1900 0064 0A000000 		.4byte	.LFE10-.LFB10
+ 1901 0068 00000000 		.4byte	.LFB11
+ 1902 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1903 0070 00000000 		.4byte	.LFB13
+ 1904 0074 0C000000 		.4byte	.LFE13-.LFB13
+ 1905 0078 00000000 		.4byte	.LFB0
+ 1906 007c 28010000 		.4byte	.LFE0-.LFB0
+ 1907 0080 00000000 		.4byte	0
+ 1908 0084 00000000 		.4byte	0
+ 1909              		.section	.debug_ranges,"",%progbits
+ 1910              	.Ldebug_ranges0:
+ 1911 0000 00000000 		.4byte	.LFB1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 38
+
+
+ 1912 0004 1C000000 		.4byte	.LFE1
+ 1913 0008 00000000 		.4byte	.LFB12
+ 1914 000c 0A000000 		.4byte	.LFE12
+ 1915 0010 00000000 		.4byte	.LFB2
+ 1916 0014 1C000000 		.4byte	.LFE2
+ 1917 0018 00000000 		.4byte	.LFB3
+ 1918 001c 1C000000 		.4byte	.LFE3
+ 1919 0020 00000000 		.4byte	.LFB4
+ 1920 0024 0A000000 		.4byte	.LFE4
+ 1921 0028 00000000 		.4byte	.LFB5
+ 1922 002c 0C000000 		.4byte	.LFE5
+ 1923 0030 00000000 		.4byte	.LFB6
+ 1924 0034 0A000000 		.4byte	.LFE6
+ 1925 0038 00000000 		.4byte	.LFB7
+ 1926 003c 0C000000 		.4byte	.LFE7
+ 1927 0040 00000000 		.4byte	.LFB8
+ 1928 0044 0A000000 		.4byte	.LFE8
+ 1929 0048 00000000 		.4byte	.LFB9
+ 1930 004c 0C000000 		.4byte	.LFE9
+ 1931 0050 00000000 		.4byte	.LFB10
+ 1932 0054 0A000000 		.4byte	.LFE10
+ 1933 0058 00000000 		.4byte	.LFB11
+ 1934 005c 0C000000 		.4byte	.LFE11
+ 1935 0060 00000000 		.4byte	.LFB13
+ 1936 0064 0C000000 		.4byte	.LFE13
+ 1937 0068 00000000 		.4byte	.LFB0
+ 1938 006c 28010000 		.4byte	.LFE0
+ 1939 0070 00000000 		.4byte	0
+ 1940 0074 00000000 		.4byte	0
+ 1941              		.section	.debug_line,"",%progbits
+ 1942              	.Ldebug_line0:
+ 1943 0000 97020000 		.section	.debug_str,"MS",%progbits,1
+ 1943      02008901 
+ 1943      00000201 
+ 1943      FB0E0D00 
+ 1943      01010101 
+ 1944              	.LASF22:
+ 1945 0000 72657375 		.ascii	"result\000"
+ 1945      6C7400
+ 1946              	.LASF36:
+ 1947 0007 636E7472 		.ascii	"cntr\000"
+ 1947      00
+ 1948              	.LASF37:
+ 1949 000c 424D4532 		.ascii	"BME280_GetTemperatureCelsius\000"
+ 1949      38305F47 
+ 1949      65745465 
+ 1949      6D706572 
+ 1949      61747572 
+ 1950              	.LASF3:
+ 1951 0029 73686F72 		.ascii	"short int\000"
+ 1951      7420696E 
+ 1951      7400
+ 1952              	.LASF17:
+ 1953 0033 424D4532 		.ascii	"BME280_I2CControllerStruct\000"
+ 1953      38305F49 
+ 1953      3243436F 
+ 1953      6E74726F 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 39
+
+
+ 1953      6C6C6572 
+ 1954              	.LASF12:
+ 1955 004e 696E7436 		.ascii	"int64_t\000"
+ 1955      345F7400 
+ 1956              	.LASF26:
+ 1957 0056 76616C75 		.ascii	"value\000"
+ 1957      6500
+ 1958              	.LASF11:
+ 1959 005c 75696E74 		.ascii	"uint8_t\000"
+ 1959      385F7400 
+ 1960              	.LASF35:
+ 1961 0064 626D6532 		.ascii	"bme280_addInterface\000"
+ 1961      38305F61 
+ 1961      6464496E 
+ 1961      74657266 
+ 1961      61636500 
+ 1962              	.LASF38:
+ 1963 0078 424D4532 		.ascii	"BME280_SetMeasurementMode\000"
+ 1963      38305F53 
+ 1963      65744D65 
+ 1963      61737572 
+ 1963      656D656E 
+ 1964              	.LASF49:
+ 1965 0092 424D4532 		.ascii	"BME280_GetMeasurementMode\000"
+ 1965      38305F47 
+ 1965      65744D65 
+ 1965      61737572 
+ 1965      656D656E 
+ 1966              	.LASF45:
+ 1967 00ac 424D4532 		.ascii	"BME280_SetPressureMode\000"
+ 1967      38305F53 
+ 1967      65745072 
+ 1967      65737375 
+ 1967      72654D6F 
+ 1968              	.LASF40:
+ 1969 00c3 424D4532 		.ascii	"BME280_GetHumidity\000"
+ 1969      38305F47 
+ 1969      65744875 
+ 1969      6D696469 
+ 1969      747900
+ 1970              	.LASF24:
+ 1971 00d6 626D6532 		.ascii	"bme280_SetMeasurementMode\000"
+ 1971      38305F53 
+ 1971      65744D65 
+ 1971      61737572 
+ 1971      656D656E 
+ 1972              	.LASF31:
+ 1973 00f0 626D6532 		.ascii	"bme280_GetPressureMode\000"
+ 1973      38305F47 
+ 1973      65745072 
+ 1973      65737375 
+ 1973      72654D6F 
+ 1974              	.LASF48:
+ 1975 0107 424D4532 		.ascii	"BME280_GetHumidityMode\000"
+ 1975      38305F47 
+ 1975      65744875 
+ 1975      6D696469 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 40
+
+
+ 1975      74794D6F 
+ 1976              	.LASF9:
+ 1977 011e 6C6F6E67 		.ascii	"long long int\000"
+ 1977      206C6F6E 
+ 1977      6720696E 
+ 1977      7400
+ 1978              	.LASF43:
+ 1979 012c 424D4532 		.ascii	"BME280_SetTemperatureMode\000"
+ 1979      38305F53 
+ 1979      65745465 
+ 1979      6D706572 
+ 1979      61747572 
+ 1980              	.LASF57:
+ 1981 0146 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ 1981      79707265 
+ 1981      73735C50 
+ 1981      726F6A65 
+ 1981      6374735C 
+ 1982              	.LASF52:
+ 1983 0173 424D4532 		.ascii	"BME280_SetI2CController\000"
+ 1983      38305F53 
+ 1983      65744932 
+ 1983      43436F6E 
+ 1983      74726F6C 
+ 1984              	.LASF51:
+ 1985 018b 72686561 		.ascii	"rhea_sensor_AddAttribute\000"
+ 1985      5F73656E 
+ 1985      736F725F 
+ 1985      41646441 
+ 1985      74747269 
+ 1986              	.LASF28:
+ 1987 01a4 626D6532 		.ascii	"bme280_SetTemperatureMode\000"
+ 1987      38305F53 
+ 1987      65745465 
+ 1987      6D706572 
+ 1987      61747572 
+ 1988              	.LASF5:
+ 1989 01be 6C6F6E67 		.ascii	"long int\000"
+ 1989      20696E74 
+ 1989      00
+ 1990              	.LASF8:
+ 1991 01c7 5F5F696E 		.ascii	"__int64_t\000"
+ 1991      7436345F 
+ 1991      7400
+ 1992              	.LASF21:
+ 1993 01d1 626D6532 		.ascii	"bme280_GetPressure\000"
+ 1993      38305F47 
+ 1993      65745072 
+ 1993      65737375 
+ 1993      726500
+ 1994              	.LASF25:
+ 1995 01e4 626D6532 		.ascii	"bme280_SetFilterMode\000"
+ 1995      38305F53 
+ 1995      65744669 
+ 1995      6C746572 
+ 1995      4D6F6465 
+ 1996              	.LASF7:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 41
+
+
+ 1997 01f9 5F5F7569 		.ascii	"__uint8_t\000"
+ 1997      6E74385F 
+ 1997      7400
+ 1998              	.LASF53:
+ 1999 0203 424D4532 		.ascii	"BME280_Init\000"
+ 1999      38305F49 
+ 1999      6E697400 
+ 2000              	.LASF13:
+ 2001 020f 4D617374 		.ascii	"MasterSendStart\000"
+ 2001      65725365 
+ 2001      6E645374 
+ 2001      61727400 
+ 2002              	.LASF2:
+ 2003 021f 756E7369 		.ascii	"unsigned char\000"
+ 2003      676E6564 
+ 2003      20636861 
+ 2003      7200
+ 2004              	.LASF16:
+ 2005 022d 4D617374 		.ascii	"MasterReadByte\000"
+ 2005      65725265 
+ 2005      61644279 
+ 2005      746500
+ 2006              	.LASF1:
+ 2007 023c 7369676E 		.ascii	"signed char\000"
+ 2007      65642063 
+ 2007      68617200 
+ 2008              	.LASF0:
+ 2009 0248 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2009      206C6F6E 
+ 2009      6720756E 
+ 2009      7369676E 
+ 2009      65642069 
+ 2010              	.LASF10:
+ 2011 025f 756E7369 		.ascii	"unsigned int\000"
+ 2011      676E6564 
+ 2011      20696E74 
+ 2011      00
+ 2012              	.LASF56:
+ 2013 026c 72686561 		.ascii	"rhea\\sensor\\interfaces\\BME280\\BME280_INTF.c\000"
+ 2013      5C73656E 
+ 2013      736F725C 
+ 2013      696E7465 
+ 2013      72666163 
+ 2014              	.LASF44:
+ 2015 0298 424D4532 		.ascii	"BME280_GetTemperatureMode\000"
+ 2015      38305F47 
+ 2015      65745465 
+ 2015      6D706572 
+ 2015      61747572 
+ 2016              	.LASF4:
+ 2017 02b2 73686F72 		.ascii	"short unsigned int\000"
+ 2017      7420756E 
+ 2017      7369676E 
+ 2017      65642069 
+ 2017      6E7400
+ 2018              	.LASF19:
+ 2019 02c5 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 42
+
+
+ 2019      00
+ 2020              	.LASF42:
+ 2021 02ca 424D4532 		.ascii	"BME280_GetFilterMode\000"
+ 2021      38305F47 
+ 2021      65744669 
+ 2021      6C746572 
+ 2021      4D6F6465 
+ 2022              	.LASF46:
+ 2023 02df 424D4532 		.ascii	"BME280_GetPressureMode\000"
+ 2023      38305F47 
+ 2023      65745072 
+ 2023      65737375 
+ 2023      72654D6F 
+ 2024              	.LASF20:
+ 2025 02f6 626D6532 		.ascii	"bme280_GetTemperatureCelsius\000"
+ 2025      38305F47 
+ 2025      65745465 
+ 2025      6D706572 
+ 2025      61747572 
+ 2026              	.LASF32:
+ 2027 0313 626D6532 		.ascii	"bme280_SetHumidityMode\000"
+ 2027      38305F53 
+ 2027      65744875 
+ 2027      6D696469 
+ 2027      74794D6F 
+ 2028              	.LASF27:
+ 2029 032a 626D6532 		.ascii	"bme280_GetFilterMode\000"
+ 2029      38305F47 
+ 2029      65744669 
+ 2029      6C746572 
+ 2029      4D6F6465 
+ 2030              	.LASF6:
+ 2031 033f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2031      20756E73 
+ 2031      69676E65 
+ 2031      6420696E 
+ 2031      7400
+ 2032              	.LASF18:
+ 2033 0351 646F7562 		.ascii	"double\000"
+ 2033      6C6500
+ 2034              	.LASF54:
+ 2035 0358 72686561 		.ascii	"rhea_sensor_SetAttribute\000"
+ 2035      5F73656E 
+ 2035      736F725F 
+ 2035      53657441 
+ 2035      74747269 
+ 2036              	.LASF23:
+ 2037 0371 626D6532 		.ascii	"bme280_GetHumidity\000"
+ 2037      38305F47 
+ 2037      65744875 
+ 2037      6D696469 
+ 2037      747900
+ 2038              	.LASF15:
+ 2039 0384 4D617374 		.ascii	"MasterWriteByte\000"
+ 2039      65725772 
+ 2039      69746542 
+ 2039      79746500 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 43
+
+
+ 2040              	.LASF30:
+ 2041 0394 626D6532 		.ascii	"bme280_SetPressureMode\000"
+ 2041      38305F53 
+ 2041      65745072 
+ 2041      65737375 
+ 2041      72654D6F 
+ 2042              	.LASF41:
+ 2043 03ab 424D4532 		.ascii	"BME280_SetFilterMode\000"
+ 2043      38305F53 
+ 2043      65744669 
+ 2043      6C746572 
+ 2043      4D6F6465 
+ 2044              	.LASF47:
+ 2045 03c0 424D4532 		.ascii	"BME280_SetHumidityMode\000"
+ 2045      38305F53 
+ 2045      65744875 
+ 2045      6D696469 
+ 2045      74794D6F 
+ 2046              	.LASF34:
+ 2047 03d7 626D6532 		.ascii	"bme280_GetMeasurementMode\000"
+ 2047      38305F47 
+ 2047      65744D65 
+ 2047      61737572 
+ 2047      656D656E 
+ 2048              	.LASF33:
+ 2049 03f1 626D6532 		.ascii	"bme280_GetHumidityMode\000"
+ 2049      38305F47 
+ 2049      65744875 
+ 2049      6D696469 
+ 2049      74794D6F 
+ 2050              	.LASF55:
+ 2051 0408 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2051      43313120 
+ 2051      352E342E 
+ 2051      31203230 
+ 2051      31363036 
+ 2052 043b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2052      20726576 
+ 2052      6973696F 
+ 2052      6E203233 
+ 2052      37373135 
+ 2053 046e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2053      66756E63 
+ 2053      74696F6E 
+ 2053      2D736563 
+ 2053      74696F6E 
+ 2054              	.LASF39:
+ 2055 0496 424D4532 		.ascii	"BME280_GetPressure\000"
+ 2055      38305F47 
+ 2055      65745072 
+ 2055      65737375 
+ 2055      726500
+ 2056              	.LASF14:
+ 2057 04a9 4D617374 		.ascii	"MasterSendStop\000"
+ 2057      65725365 
+ 2057      6E645374 
+ 2057      6F7000
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccC8s7xE.s 			page 44
+
+
+ 2058              	.LASF29:
+ 2059 04b8 626D6532 		.ascii	"bme280_GetTemperatureMode\000"
+ 2059      38305F47 
+ 2059      65745465 
+ 2059      6D706572 
+ 2059      61747572 
+ 2060              	.LASF50:
+ 2061 04d2 72686561 		.ascii	"rhea_sensor_AddMeasurement\000"
+ 2061      5F73656E 
+ 2061      736F725F 
+ 2061      4164644D 
+ 2061      65617375 
+ 2062              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

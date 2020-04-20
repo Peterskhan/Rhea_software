@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="RheaWorkspace\Rhea\rhea\gfx">
+<ExpandedNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\TopDesign</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\Pins</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\Analog</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\Clocks</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\Interrupts</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\DMA</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\System</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\Directives</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\Flash Security</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr\EEPROM</v>
+<v>RheaWorkspace\Rhea\application</v>
+<v>RheaWorkspace\Rhea\rhea</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\BME280\BME280.c</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\BME280\BME280.h</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\BME280\BME280_Defs.h</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\MCP7940N\MCP7940N.c</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\MCP7940N\MCP7940N.h</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\MCP7940N\MCP7940N_Defs.h</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\SSD1306\SSD1306.c</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\SSD1306\SSD1306.h</v>
+<v>RheaWorkspace\Rhea\rhea\drivers\SSD1306\SSD1306_Defs.h</v>
+<v>RheaWorkspace\Rhea\rhea\gfx\fonts\codefont_8x8.h</v>
+<v>RheaWorkspace\Rhea\rhea\gfx\gfx.c</v>
+<v>RheaWorkspace\Rhea\rhea\gfx\gfx.h</v>
+<v>RheaWorkspace\Rhea\rhea\gfx\gfx_config.h</v>
+<v>RheaWorkspace\Rhea\rhea\gfx\gfx_impl.c</v>
+<v>RheaWorkspace\Rhea\rhea\gfx\gfx_impl.h</v>
+<v>RheaWorkspace\Rhea\rhea\i2c\i2c.h</v>
+<v>RheaWorkspace\Rhea\rhea\i2c\i2c_impl.c</v>
+<v>RheaWorkspace\Rhea\rhea\i2c\i2c_impl.h</v>
+<v>RheaWorkspace\Rhea\rhea\i2c\i2c_rhea.c</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\alarm\alarm.c</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\alarm\alarm.h</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\datetime\datetime.c</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\datetime\datetime.h</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\rtc.c</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\rtc.h</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\rtc_config.h</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\rtc_impl.c</v>
+<v>RheaWorkspace\Rhea\rhea\rtc\rtc_impl.h</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\interfaces\BME280</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\interfaces\BME280\BME280_INTF.c</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\interfaces\BME280\BME280_INTF.h</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\sensor.c</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\sensor.h</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\sensor_config.h</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\sensor_impl.c</v>
+<v>RheaWorkspace\Rhea\rhea\sensor\sensor_impl.h</v>
+<v>RheaWorkspace\Rhea\rhea\uart\uart.h</v>
+<v>RheaWorkspace\Rhea\rhea\uart\uart_impl.c</v>
+<v>RheaWorkspace\Rhea\rhea\uart\uart_impl.h</v>
+<v>RheaWorkspace\Rhea\rhea\uart\uart_rhea.c</v>
+<v>RheaWorkspace\Rhea\rhea\rhea_config.h</v>
+<v>RheaWorkspace\Rhea\cyapicallbacks.h</v>
+<v>RheaWorkspace\Rhea\main.c</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\TopDesign</v>
+<v>RheaWorkspace\Rhea\Rhea.cydwr</v>
+<v>RheaWorkspace\Rhea\application</v>
+<v>RheaWorkspace\Rhea\rhea</v>
+<v>RheaWorkspace\Rhea\rhea\drivers</v>
+<v>RheaWorkspace\Rhea\rhea\gfx</v>
+<v>RheaWorkspace\Rhea\rhea\i2c</v>
+<v>RheaWorkspace\Rhea\rhea\rtc</v>
+<v>RheaWorkspace\Rhea\rhea\sensor</v>
+<v>RheaWorkspace\Rhea\rhea\uart</v>
+<v>RheaWorkspace\Rhea\rhea\rhea_config.h</v>
+<v>RheaWorkspace\Rhea\cyapicallbacks.h</v>
+<v>RheaWorkspace\Rhea\Generated_Source</v>
+<v>RheaWorkspace\Rhea\main.c</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\TopDesign</v>
+<v>RheaWorkspace\Rhea\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\TopDesign</v>
+<v>RheaWorkspace\Rhea\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\CortexM3</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\alarm.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BME280.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BME280_INTF.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_ENTER_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_INPUT.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_LEFT_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_RIGHT_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\datetime.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\DEBOUNCE_CLK.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\gfx.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\gfx_impl.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\i2c_impl.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\i2c_rhea.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SCL.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SDA.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\MCP7940N.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\rtc.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\rtc_impl.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\RTC_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\RTC_INTR_PIN.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\sensor.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\SENSOR_1MS.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\sensor_impl.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\SENSOR_TIMER.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\SENSOR_TIMER_PM.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\SSD1306.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\uart_impl.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\uart_rhea.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_RX.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_TX_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Rhea.elf</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Rhea.hex</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Rhea.map</v>
+<v>RheaWorkspace\Rhea\Rhea.gpdsc</v>
+<v>RheaWorkspace\Rhea\Rhea.rpt</v>
+<v>RheaWorkspace\Rhea\Rhea_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\CortexM3</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\alarm.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BME280.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BME280_INTF.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_ENTER_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_INPUT.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_LEFT_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\BTN_RIGHT_INTR.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\datetime.lst</v>
+<v>RheaWorkspace\Rhea\CortexM3\ARM_GCC_541\Debug\Listing Files\DEBOUNCE_CLK.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\PSoC 5LP Architecture TRM</v>
+<v>RheaWorkspace\Rhea\CY8C58LP Family Datasheet</v>
+<v>RheaWorkspace\Rhea\System Reference Guides</v>
+<v>RheaWorkspace\Rhea\System Reference Guides\cy_boot_v5_70</v>
+<v>RheaWorkspace\Rhea\cy_clock_v2_20</v>
+<v>RheaWorkspace\Rhea\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>RheaWorkspace\Rhea\cy_constant_v1_0.pdf</v>
+<v>RheaWorkspace\Rhea\cy_isr_v1_70</v>
+<v>RheaWorkspace\Rhea\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>RheaWorkspace\Rhea\cy_pins_v2_20</v>
+<v>RheaWorkspace\Rhea\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>RheaWorkspace\Rhea\Debouncer_v1_0.pdf</v>
+<v>RheaWorkspace\Rhea\I2C_v3_50.pdf</v>
+<v>RheaWorkspace\Rhea\Timer_v2_80.pdf</v>
+<v>RheaWorkspace\Rhea\UART_v2_50.pdf</v>
+<v>RheaWorkspace\Rhea\ZeroTerminal.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>RheaWorkspace</v>
+<v>RheaWorkspace\Rhea</v>
+<v>RheaWorkspace\Rhea\PSoC 5LP Architecture TRM</v>
+<v>RheaWorkspace\Rhea\CY8C58LP Family Datasheet</v>
+<v>RheaWorkspace\Rhea\System Reference Guides</v>
+<v>RheaWorkspace\Rhea\System Reference Guides\cy_boot_v5_70</v>
+<v>RheaWorkspace\Rhea\cy_clock_v2_20</v>
+<v>RheaWorkspace\Rhea\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>RheaWorkspace\Rhea\cy_constant_v1_0.pdf</v>
+<v>RheaWorkspace\Rhea\cy_isr_v1_70</v>
+<v>RheaWorkspace\Rhea\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>RheaWorkspace\Rhea\cy_pins_v2_20</v>
+<v>RheaWorkspace\Rhea\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>RheaWorkspace\Rhea\Debouncer_v1_0.pdf</v>
+<v>RheaWorkspace\Rhea\I2C_v3_50.pdf</v>
+<v>RheaWorkspace\Rhea\Timer_v2_80.pdf</v>
+<v>RheaWorkspace\Rhea\UART_v2_50.pdf</v>
+<v>RheaWorkspace\Rhea\ZeroTerminal.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Rhea.cydsn\rhea\sensor\sensor.c" />
+<name v=".\Rhea.cydsn\rhea\sensor\sensor_config.h" />
+<name v=".\Rhea.cydsn\rhea\sensor\sensor.h" />
+<name v=".\Rhea.cydsn\main.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1045, 531" SelectedTabbedMdiWindow="c8b795e5-3646-4c49-8bf7-6f77b3d0f724"><DocumentWindow Key="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\rhea\sensor\sensor.c" Guid="bc0d6dc1-0f6f-49b6-94f3-ca1042252190" /><DocumentWindow Key="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\rhea\sensor\sensor_config.h" Guid="d7131a6e-340a-4cb8-aaa2-19419b4151a1" /><DocumentWindow Key="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\rhea\sensor\sensor.h" Guid="c8b795e5-3646-4c49-8bf7-6f77b3d0f724" /><DocumentWindow Key="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\main.c" Guid="0d578370-6e06-4f0a-a951-ca11e029b22f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>
