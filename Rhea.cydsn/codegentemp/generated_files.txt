@@ -56,8 +56,8 @@
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_LEFT_INTR.h" value="HEADER;;;;;BTN_LEFT_INTR" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_ENTER_INTR.c" value="SOURCE_C;CortexM3;;;;BTN_ENTER_INTR" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_ENTER_INTR.h" value="HEADER;;;;;BTN_ENTER_INTR" />
-  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_TX_INTR.c" value="SOURCE_C;CortexM3;;;;UART_TX_INTR" />
-  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_TX_INTR.h" value="HEADER;;;;;UART_TX_INTR" />
+  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_RX_INTR.c" value="SOURCE_C;CortexM3;;;;UART_RX_INTR" />
+  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_RX_INTR.h" value="HEADER;;;;;UART_RX_INTR" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\SENSOR_TIMER.c" value="SOURCE_C;CortexM3;;;;SENSOR_TIMER" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\SENSOR_TIMER.h" value="HEADER;;;;;SENSOR_TIMER" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\SENSOR_TIMER_PM.c" value="SOURCE_C;CortexM3;;;;SENSOR_TIMER" />

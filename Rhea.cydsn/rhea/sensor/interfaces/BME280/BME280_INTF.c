@@ -43,11 +43,11 @@ void bme280_addInterface(void) {
     rhea_sensor_AddMeasurement("BME280", "humidity",    0, bme280_GetHumidity);
     
     // Setting up BME280 attribute getter & setter callbacks
-    rhea_sensor_AddAttribute("BME280", "filter",      bme280_GetFilterMode,      bme280_SetFilterMode);
-    rhea_sensor_AddAttribute("BME280", "temperature", bme280_GetTemperatureMode, bme280_SetTemperatureMode);
-    rhea_sensor_AddAttribute("BME280", "pressure",    bme280_GetPressureMode,    bme280_SetPressureMode);
-    rhea_sensor_AddAttribute("BME280", "humidity",    bme280_GetHumidityMode,    bme280_SetHumidityMode);
-    rhea_sensor_AddAttribute("BME280", "mode",        bme280_GetMeasurementMode, bme280_SetMeasurementMode);
+    rhea_sensor_AddAttribute("BME280", "filter",            bme280_GetFilterMode,      bme280_SetFilterMode);
+    rhea_sensor_AddAttribute("BME280", "temperatureOVRS",   bme280_GetTemperatureMode, bme280_SetTemperatureMode);
+    rhea_sensor_AddAttribute("BME280", "pressureOVRS",      bme280_GetPressureMode,    bme280_SetPressureMode);
+    rhea_sensor_AddAttribute("BME280", "humidityOVRS",      bme280_GetHumidityMode,    bme280_SetHumidityMode);
+    rhea_sensor_AddAttribute("BME280", "mode",              bme280_GetMeasurementMode, bme280_SetMeasurementMode);
         
     // Function pointers for I2C driver
     BME280_I2CControllerStruct cntr = {
@@ -62,11 +62,11 @@ void bme280_addInterface(void) {
     BME280_Init();
     
     // Setting measurement parameters for the BME280
-    rhea_sensor_SetAttribute("BME280", "filter",      BME280_FILTER_OFF);
-    rhea_sensor_SetAttribute("BME280", "temperature", BME280_TEMPERATURE_OVERSAMPLING_1X);
-    rhea_sensor_SetAttribute("BME280", "pressure",    BME280_PRESSURE_OVERSAMPLING_1X);
-    rhea_sensor_SetAttribute("BME280", "humidity",    BME280_HUMIDITY_OVERSAMPLING_1X);
-    rhea_sensor_SetAttribute("BME280", "mode",        BME280_MODE_FORCED);
+    rhea_sensor_SetAttribute("BME280", "filter",          BME280_FILTER_OFF);
+    rhea_sensor_SetAttribute("BME280", "temperatureOVRS", BME280_TEMPERATURE_OVERSAMPLING_1X);
+    rhea_sensor_SetAttribute("BME280", "pressureOVRS",    BME280_PRESSURE_OVERSAMPLING_1X);
+    rhea_sensor_SetAttribute("BME280", "humidityOVRS",    BME280_HUMIDITY_OVERSAMPLING_1X);
+    rhea_sensor_SetAttribute("BME280", "mode",            BME280_MODE_FORCED);
 }
 
 RHEA_SENSOR_MEASUREMENT_TYPE bme280_GetTemperatureCelsius(void) {

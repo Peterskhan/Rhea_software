@@ -28,7 +28,7 @@
  * @file    codefont_8x8.h
  * @author  Peter Gyulai
  * @version 1.0.0
- * @date    2020.04.16
+ * @date    2020.04.26
  * @brief   Codefont symbol data.
  * @details
  * This file contains the descriptor data for the 8x8 pixel Codefont type symbols.
@@ -40,6 +40,12 @@
     
 // Doxygen documentation duplication suppression
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
+    
+#define CODEFONT_8X8_CELSIUS        (95)
+#define CODEFONT_8X8_FAHRENHEIT     (96)
+#define CODEFONT_8x8_MSG            (97)
+#define CODEFONT_8X8_PASCAL         (98)
+#define CODEFONT_8X8_UNPRINTABLE    (99)
 
 // Symbol raw binary data
 uint8_t codefont_8x8_data[] = {

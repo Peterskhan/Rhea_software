@@ -37,7 +37,7 @@
 #include "BTN_RIGHT_INTR.h"
 #include "BTN_LEFT_INTR.h"
 #include "BTN_ENTER_INTR.h"
-#include "UART_TX_INTR.h"
+#include "UART_RX_INTR.h"
 #include "SENSOR_TIMER.h"
 #include "SENSOR_1MS.h"
 #include "UART_IntClock.h"

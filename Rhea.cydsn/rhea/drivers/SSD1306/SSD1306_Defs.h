@@ -46,7 +46,7 @@
 /** @brief Defines default value for display start line. */
 #define SSD1306_DISPLAY_START_LINE_DEFAULT  (uint8_t)(0x00)
 /** @brief Defines default value for COM pins settings. */
-#define SSD1306_COM_PINS_DEFAULT            (uint8_t)(0x12)
+#define SSD1306_COM_PINS_DEFAULT            (uint8_t)(0x02)
 /** @brief Defines default value for contrast. */
 #define SSD1306_CONTRAST_DEFAULT            (uint8_t)(0xCF)
 /** @brief Defines default value for precharge period. */
@@ -105,7 +105,7 @@
 
 	  /** @{ @name I2C parameters */
 	  /** @brief Defines the default I2C address. */
-#define SSD1306_I2C_ADDR                    (uint8_t)(0x3D)
+#define SSD1306_I2C_ADDR                    (uint8_t)(0x3C)
 /** @brief Defines the control byte for commands. */
 #define SSD1306_COMMAND                     (uint8_t)(0x00)
 /** @brief Defines the control byte for data. */
@@ -119,10 +119,10 @@
 /** @{ @name Fundamental commands */
 /** @brief Defines the command byte for contrast settings. */
 #define SSD1306_CONTRAST                    (uint8_t)(0x81)
-/** @brief Defines the command byte for entire display mode ON. */
-#define SSD1306_ENTIRE_DISPLAY_ON           (uint8_t)(0xA4)
 /** @brief Defines the command byte for entire display mode OFF. */
-#define SSD1306_ENTIRE_DISPLAY_RESUME       (uint8_t)(0xA5)
+#define SSD1306_ENTIRE_DISPLAY_RESUME       (uint8_t)(0xA4)
+/** @brief Defines the command byte for entire display mode ON. */
+#define SSD1306_ENTIRE_DISPLAY_ON           (uint8_t)(0xA5)
 /** @brief Defines the command byte for normal display mode. */
 #define SSD1306_DISPLAY_NORMAL              (uint8_t)(0xA6)
 /** @brief Defines the command byte for inverted display mode. */

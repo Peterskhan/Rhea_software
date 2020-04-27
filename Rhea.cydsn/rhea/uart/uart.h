@@ -44,6 +44,12 @@
 void rhea_uart_Initialize(void);
     
 /**
+ * @brief Returns the number of bytes available for read.
+ * @returns The number of bytes available in the RX buffer.
+ */
+uint64_t rhea_uart_BytesAvailable(void);
+
+/**
  * @brief Reads one byte of data from the UART.
  * @returns The byte read from the UART.
  */

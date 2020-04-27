@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: UART_TX_INTR.c  
+* File Name: UART_RX_INTR.c  
 * Version 1.70
 *
 *  Description:
@@ -18,15 +18,15 @@
 
 #include <cydevice_trm.h>
 #include <CyLib.h>
-#include <UART_TX_INTR.h>
+#include <UART_RX_INTR.h>
 #include "cyapicallbacks.h"
 
-#if !defined(UART_TX_INTR__REMOVED) /* Check for removal by optimization */
+#if !defined(UART_RX_INTR__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
 *  Place your includes, defines and code here 
 ********************************************************************************/
-/* `#START UART_TX_INTR_intc` */
+/* `#START UART_RX_INTR_intc` */
 
 /* `#END` */
 
@@ -42,7 +42,7 @@ CY_ISR_PROTO(IntDefaultHandler);
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_Start
+* Function Name: UART_RX_INTR_Start
 ********************************************************************************
 *
 * Summary:
@@ -58,24 +58,24 @@ CY_ISR_PROTO(IntDefaultHandler);
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_Start(void)
+void UART_RX_INTR_Start(void)
 {
     /* For all we know the interrupt is active. */
-    UART_TX_INTR_Disable();
+    UART_RX_INTR_Disable();
 
-    /* Set the ISR to point to the UART_TX_INTR Interrupt. */
-    UART_TX_INTR_SetVector(&UART_TX_INTR_Interrupt);
+    /* Set the ISR to point to the UART_RX_INTR Interrupt. */
+    UART_RX_INTR_SetVector(&UART_RX_INTR_Interrupt);
 
     /* Set the priority. */
-    UART_TX_INTR_SetPriority((uint8)UART_TX_INTR_INTC_PRIOR_NUMBER);
+    UART_RX_INTR_SetPriority((uint8)UART_RX_INTR_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    UART_TX_INTR_Enable();
+    UART_RX_INTR_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_StartEx
+* Function Name: UART_RX_INTR_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -101,24 +101,24 @@ void UART_TX_INTR_Start(void)
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_StartEx(cyisraddress address)
+void UART_RX_INTR_StartEx(cyisraddress address)
 {
     /* For all we know the interrupt is active. */
-    UART_TX_INTR_Disable();
+    UART_RX_INTR_Disable();
 
-    /* Set the ISR to point to the UART_TX_INTR Interrupt. */
-    UART_TX_INTR_SetVector(address);
+    /* Set the ISR to point to the UART_RX_INTR Interrupt. */
+    UART_RX_INTR_SetVector(address);
 
     /* Set the priority. */
-    UART_TX_INTR_SetPriority((uint8)UART_TX_INTR_INTC_PRIOR_NUMBER);
+    UART_RX_INTR_SetPriority((uint8)UART_RX_INTR_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    UART_TX_INTR_Enable();
+    UART_RX_INTR_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_Stop
+* Function Name: UART_RX_INTR_Stop
 ********************************************************************************
 *
 * Summary:
@@ -131,22 +131,22 @@ void UART_TX_INTR_StartEx(cyisraddress address)
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_Stop(void)
+void UART_RX_INTR_Stop(void)
 {
     /* Disable this interrupt. */
-    UART_TX_INTR_Disable();
+    UART_RX_INTR_Disable();
 
     /* Set the ISR to point to the passive one. */
-    UART_TX_INTR_SetVector(&IntDefaultHandler);
+    UART_RX_INTR_SetVector(&IntDefaultHandler);
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_Interrupt
+* Function Name: UART_RX_INTR_Interrupt
 ********************************************************************************
 *
 * Summary:
-*   The default Interrupt Service Routine for UART_TX_INTR.
+*   The default Interrupt Service Routine for UART_RX_INTR.
 *
 *   Add custom code between the coments to keep the next version of this file
 *   from over writting your code.
@@ -157,27 +157,27 @@ void UART_TX_INTR_Stop(void)
 *   None
 *
 *******************************************************************************/
-CY_ISR(UART_TX_INTR_Interrupt)
+CY_ISR(UART_RX_INTR_Interrupt)
 {
-    #ifdef UART_TX_INTR_INTERRUPT_INTERRUPT_CALLBACK
-        UART_TX_INTR_Interrupt_InterruptCallback();
-    #endif /* UART_TX_INTR_INTERRUPT_INTERRUPT_CALLBACK */ 
+    #ifdef UART_RX_INTR_INTERRUPT_INTERRUPT_CALLBACK
+        UART_RX_INTR_Interrupt_InterruptCallback();
+    #endif /* UART_RX_INTR_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
-    /* `#START UART_TX_INTR_Interrupt` */
+    /* `#START UART_RX_INTR_Interrupt` */
 
     /* `#END` */
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_SetVector
+* Function Name: UART_RX_INTR_SetVector
 ********************************************************************************
 *
 * Summary:
-*   Change the ISR vector for the Interrupt. Note calling UART_TX_INTR_Start
+*   Change the ISR vector for the Interrupt. Note calling UART_RX_INTR_Start
 *   will override any effect this method would have had. To set the vector 
-*   before the component has been started use UART_TX_INTR_StartEx instead.
+*   before the component has been started use UART_RX_INTR_StartEx instead.
 * 
 *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
 *   used to provide consistent definition across compilers:
@@ -197,18 +197,18 @@ CY_ISR(UART_TX_INTR_Interrupt)
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_SetVector(cyisraddress address)
+void UART_RX_INTR_SetVector(cyisraddress address)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_TX_INTR__INTC_NUMBER] = address;
+    ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_RX_INTR__INTC_NUMBER] = address;
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_GetVector
+* Function Name: UART_RX_INTR_GetVector
 ********************************************************************************
 *
 * Summary:
@@ -221,26 +221,26 @@ void UART_TX_INTR_SetVector(cyisraddress address)
 *   Address of the ISR in the interrupt vector table.
 *
 *******************************************************************************/
-cyisraddress UART_TX_INTR_GetVector(void)
+cyisraddress UART_RX_INTR_GetVector(void)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    return ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_TX_INTR__INTC_NUMBER];
+    return ramVectorTable[CYINT_IRQ_BASE + (uint32)UART_RX_INTR__INTC_NUMBER];
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_SetPriority
+* Function Name: UART_RX_INTR_SetPriority
 ********************************************************************************
 *
 * Summary:
 *   Sets the Priority of the Interrupt. 
 *
-*   Note calling UART_TX_INTR_Start or UART_TX_INTR_StartEx will 
+*   Note calling UART_RX_INTR_Start or UART_RX_INTR_StartEx will 
 *   override any effect this API would have had. This API should only be called
-*   after UART_TX_INTR_Start or UART_TX_INTR_StartEx has been called. 
+*   after UART_RX_INTR_Start or UART_RX_INTR_StartEx has been called. 
 *   To set the initial priority for the component, use the Design-Wide Resources
 *   Interrupt Editor.
 *
@@ -255,14 +255,14 @@ cyisraddress UART_TX_INTR_GetVector(void)
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_SetPriority(uint8 priority)
+void UART_RX_INTR_SetPriority(uint8 priority)
 {
-    *UART_TX_INTR_INTC_PRIOR = priority << 5;
+    *UART_RX_INTR_INTC_PRIOR = priority << 5;
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_GetPriority
+* Function Name: UART_RX_INTR_GetPriority
 ********************************************************************************
 *
 * Summary:
@@ -277,19 +277,19 @@ void UART_TX_INTR_SetPriority(uint8 priority)
 *    PSoC 4: Priority is from 0 to 3.
 *
 *******************************************************************************/
-uint8 UART_TX_INTR_GetPriority(void)
+uint8 UART_RX_INTR_GetPriority(void)
 {
     uint8 priority;
 
 
-    priority = *UART_TX_INTR_INTC_PRIOR >> 5;
+    priority = *UART_RX_INTR_INTC_PRIOR >> 5;
 
     return priority;
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_Enable
+* Function Name: UART_RX_INTR_Enable
 ********************************************************************************
 *
 * Summary:
@@ -304,15 +304,15 @@ uint8 UART_TX_INTR_GetPriority(void)
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_Enable(void)
+void UART_RX_INTR_Enable(void)
 {
     /* Enable the general interrupt. */
-    *UART_TX_INTR_INTC_SET_EN = UART_TX_INTR__INTC_MASK;
+    *UART_RX_INTR_INTC_SET_EN = UART_RX_INTR__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_GetState
+* Function Name: UART_RX_INTR_GetState
 ********************************************************************************
 *
 * Summary:
@@ -325,15 +325,15 @@ void UART_TX_INTR_Enable(void)
 *   1 if enabled, 0 if disabled.
 *
 *******************************************************************************/
-uint8 UART_TX_INTR_GetState(void)
+uint8 UART_RX_INTR_GetState(void)
 {
     /* Get the state of the general interrupt. */
-    return ((*UART_TX_INTR_INTC_SET_EN & (uint32)UART_TX_INTR__INTC_MASK) != 0u) ? 1u:0u;
+    return ((*UART_RX_INTR_INTC_SET_EN & (uint32)UART_RX_INTR__INTC_MASK) != 0u) ? 1u:0u;
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_Disable
+* Function Name: UART_RX_INTR_Disable
 ********************************************************************************
 *
 * Summary:
@@ -346,15 +346,15 @@ uint8 UART_TX_INTR_GetState(void)
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_Disable(void)
+void UART_RX_INTR_Disable(void)
 {
     /* Disable the general interrupt. */
-    *UART_TX_INTR_INTC_CLR_EN = UART_TX_INTR__INTC_MASK;
+    *UART_RX_INTR_INTC_CLR_EN = UART_RX_INTR__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_SetPending
+* Function Name: UART_RX_INTR_SetPending
 ********************************************************************************
 *
 * Summary:
@@ -373,14 +373,14 @@ void UART_TX_INTR_Disable(void)
 *   interrupts).
 *
 *******************************************************************************/
-void UART_TX_INTR_SetPending(void)
+void UART_RX_INTR_SetPending(void)
 {
-    *UART_TX_INTR_INTC_SET_PD = UART_TX_INTR__INTC_MASK;
+    *UART_RX_INTR_INTC_SET_PD = UART_RX_INTR__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: UART_TX_INTR_ClearPending
+* Function Name: UART_RX_INTR_ClearPending
 ********************************************************************************
 *
 * Summary:
@@ -398,9 +398,9 @@ void UART_TX_INTR_SetPending(void)
 *   None
 *
 *******************************************************************************/
-void UART_TX_INTR_ClearPending(void)
+void UART_RX_INTR_ClearPending(void)
 {
-    *UART_TX_INTR_INTC_CLR_PD = UART_TX_INTR__INTC_MASK;
+    *UART_RX_INTR_INTC_CLR_PD = UART_RX_INTR__INTC_MASK;
 }
 
 #endif /* End check for removal by optimization */

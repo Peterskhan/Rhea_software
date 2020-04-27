@@ -64,7 +64,7 @@ void SSD1306_Init() {
 		SSD1306_CHARGEPUMP_ON,
 		SSD1306_MEMORY_MODE,
 		SSD1306_MEMORY_MODE_HORIZONTAL,
-		SSD1306_SEGMENT_REMAP_ON,
+		SSD1306_SEGMENT_REMAP_OFF,
 		SSD1306_COM_SCAN_INC,
 		SSD1306_COM_PINS,
 		SSD1306_COM_PINS_DEFAULT,
@@ -160,8 +160,8 @@ void SSD1306_WritePixel(uint8_t x, uint8_t y, uint8_t color) {
 	uint8_t bitIndex = y % 8;
 
 	// Setting or clearing the selected bit
-	if (color) SSD1306_PixelData[byteIndex] |= (1 << (7 - bitIndex));
-	else       SSD1306_PixelData[byteIndex] &= ~(1 << (7 - bitIndex));
+    if (color) SSD1306_PixelData[byteIndex] |= (1 << bitIndex);
+	else       SSD1306_PixelData[byteIndex] &= ~(1 << bitIndex);
 }
 
 void SSD1306_ClearDisplay(void) {

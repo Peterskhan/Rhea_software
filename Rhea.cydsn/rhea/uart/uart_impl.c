@@ -47,6 +47,10 @@
     void rhea_uart_initialize_impl(void) {
         UART_Start();
     }
+    
+    uint64_t rhea_uart_bytesAvailable_impl(void) {
+        return UART_GetRxBufferSize();   
+    }
 
     uint8_t rhea_uart_readByte_impl(void) {
         return UART_GetChar();

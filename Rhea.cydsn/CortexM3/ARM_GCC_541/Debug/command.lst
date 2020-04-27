@@ -1,0 +1,1263 @@
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"command.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.SERIAL_DATA_ARRIVED,"ax",%progbits
+  20              		.align	2
+  21              		.global	SERIAL_DATA_ARRIVED
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	SERIAL_DATA_ARRIVED, %function
+  25              	SERIAL_DATA_ARRIVED:
+  26              	.LFB66:
+  27              		.file 1 "application\\command\\command.c"
+   1:application\command/command.c **** /*********************************************************************************
+   2:application\command/command.c ****  * Copyright (c) 2020 Peter Gyulai
+   3:application\command/command.c ****  *
+   4:application\command/command.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy
+   5:application\command/command.c ****  * of this software and associated documentation files (the "Software"), to deal
+   6:application\command/command.c ****  * in the Software without restriction, including without limitation the rights
+   7:application\command/command.c ****  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   8:application\command/command.c ****  * copies of the Software, and to permit persons to whom the Software is
+   9:application\command/command.c ****  * furnished to do so, subject to the following conditions:
+  10:application\command/command.c ****  *
+  11:application\command/command.c ****  * The above copyright notice and this permission notice shall be included in all
+  12:application\command/command.c ****  * copies or substantial portions of the Software.
+  13:application\command/command.c ****  *
+  14:application\command/command.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  15:application\command/command.c ****  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  16:application\command/command.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  17:application\command/command.c ****  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  18:application\command/command.c ****  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  19:application\command/command.c ****  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+  20:application\command/command.c ****  * OR OTHER DEALINGS IN THE SOFTWARE.
+  21:application\command/command.c **** **********************************************************************************/
+  22:application\command/command.c **** 
+  23:application\command/command.c **** /**
+  24:application\command/command.c ****  * @file    command.c
+  25:application\command/command.c ****  * @author  Peter Gyulai
+  26:application\command/command.c ****  * @version 1.0.0
+  27:application\command/command.c ****  * @date    2020.04.21
+  28:application\command/command.c ****  * @brief   Serial command line parser implementations.
+  29:application\command/command.c ****  * @details
+  30:application\command/command.c ****  * This file contains the implementation for the serial command line parser.
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 2
+
+
+  31:application\command/command.c ****  */
+  32:application\command/command.c **** 
+  33:application\command/command.c **** // Project includes
+  34:application\command/command.c **** #include "../../rhea/uart/uart.h"
+  35:application\command/command.c **** #include "command.h"
+  36:application\command/command.c **** 
+  37:application\command/command.c **** 
+  38:application\command/command.c **** // Defines the size of the receive buffer
+  39:application\command/command.c **** #define SERIAL_RX_BUFFER_SIZE (256)
+  40:application\command/command.c **** 
+  41:application\command/command.c **** // External serial status indicator flag 
+  42:application\command/command.c **** volatile uint8_t serial_data_ready = 0;
+  43:application\command/command.c **** 
+  44:application\command/command.c **** // Serial RX buffer
+  45:application\command/command.c **** uint8_t serialBuffer[SERIAL_RX_BUFFER_SIZE];
+  46:application\command/command.c ****     
+  47:application\command/command.c **** void InitializeSerialCommandLine(void) {
+  48:application\command/command.c ****     
+  49:application\command/command.c ****     // Initializing and enabling the serial interrupt
+  50:application\command/command.c ****     UART_RX_INTR_StartEx(SERIAL_DATA_ARRIVED);
+  51:application\command/command.c **** }
+  52:application\command/command.c **** 
+  53:application\command/command.c **** void processCommand(const char *buffer, uint64_t length) {
+  54:application\command/command.c ****     
+  55:application\command/command.c **** }
+  56:application\command/command.c **** 
+  57:application\command/command.c **** void ProcessCommandLine(void) {
+  58:application\command/command.c ****     
+  59:application\command/command.c ****     // Checking serial status flag
+  60:application\command/command.c ****     if(!serial_data_ready) return;
+  61:application\command/command.c ****     
+  62:application\command/command.c ****     // Clearing serial status flag
+  63:application\command/command.c ****     serial_data_ready = 0;
+  64:application\command/command.c ****     
+  65:application\command/command.c ****     // Reading the number of bytes available
+  66:application\command/command.c ****     uint64_t bytesAvailable = rhea_uart_BytesAvailable();
+  67:application\command/command.c ****     
+  68:application\command/command.c ****     // Serial RX buffer current write index
+  69:application\command/command.c ****     static uint64_t currentIndex = 0;
+  70:application\command/command.c ****     
+  71:application\command/command.c ****     // Serial RX buffer current read index
+  72:application\command/command.c ****     static uint64_t currentReadIndex = 0;
+  73:application\command/command.c ****     
+  74:application\command/command.c ****     // Reading bytes
+  75:application\command/command.c ****     for(uint64_t i = 0; i < bytesAvailable; i++) {
+  76:application\command/command.c ****         
+  77:application\command/command.c ****         // Reading next character
+  78:application\command/command.c ****         uint8_t nextChar = rhea_uart_ReadByte();
+  79:application\command/command.c ****         
+  80:application\command/command.c ****         // Checking command termination
+  81:application\command/command.c ****         if(nextChar == '\n') {
+  82:application\command/command.c ****             
+  83:application\command/command.c ****             // Processing command
+  84:application\command/command.c ****             processCommand(serialBuffer, currentIndex);
+  85:application\command/command.c ****             
+  86:application\command/command.c ****             // Resetting buffer index
+  87:application\command/command.c ****             currentIndex = 0;
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 3
+
+
+  88:application\command/command.c ****         } 
+  89:application\command/command.c ****         else {
+  90:application\command/command.c ****             
+  91:application\command/command.c ****             // Storing next character
+  92:application\command/command.c ****             serialBuffer[currentIndex = (currentIndex + 1) % SERIAL_RX_BUFFER_SIZE] = nextChar;
+  93:application\command/command.c ****         }
+  94:application\command/command.c ****     }
+  95:application\command/command.c **** }
+  96:application\command/command.c **** 
+  97:application\command/command.c **** CY_ISR_PROTO(SERIAL_DATA_ARRIVED) {
+  28              		.loc 1 97 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  98:application\command/command.c ****     serial_data_ready = 1;   
+  33              		.loc 1 98 0
+  34 0000 0122     		movs	r2, #1
+  35 0002 014B     		ldr	r3, .L2
+  36 0004 1A70     		strb	r2, [r3]
+  37 0006 7047     		bx	lr
+  38              	.L3:
+  39              		.align	2
+  40              	.L2:
+  41 0008 00000000 		.word	.LANCHOR0
+  42              		.cfi_endproc
+  43              	.LFE66:
+  44              		.size	SERIAL_DATA_ARRIVED, .-SERIAL_DATA_ARRIVED
+  45              		.section	.text.InitializeSerialCommandLine,"ax",%progbits
+  46              		.align	2
+  47              		.global	InitializeSerialCommandLine
+  48              		.thumb
+  49              		.thumb_func
+  50              		.type	InitializeSerialCommandLine, %function
+  51              	InitializeSerialCommandLine:
+  52              	.LFB63:
+  47:application\command/command.c ****     
+  53              		.loc 1 47 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57 0000 08B5     		push	{r3, lr}
+  58              		.cfi_def_cfa_offset 8
+  59              		.cfi_offset 3, -8
+  60              		.cfi_offset 14, -4
+  50:application\command/command.c **** }
+  61              		.loc 1 50 0
+  62 0002 0248     		ldr	r0, .L6
+  63 0004 FFF7FEFF 		bl	UART_RX_INTR_StartEx
+  64              	.LVL0:
+  65 0008 08BD     		pop	{r3, pc}
+  66              	.L7:
+  67 000a 00BF     		.align	2
+  68              	.L6:
+  69 000c 00000000 		.word	SERIAL_DATA_ARRIVED
+  70              		.cfi_endproc
+  71              	.LFE63:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 4
+
+
+  72              		.size	InitializeSerialCommandLine, .-InitializeSerialCommandLine
+  73              		.section	.text.processCommand,"ax",%progbits
+  74              		.align	2
+  75              		.global	processCommand
+  76              		.thumb
+  77              		.thumb_func
+  78              		.type	processCommand, %function
+  79              	processCommand:
+  80              	.LFB64:
+  53:application\command/command.c ****     
+  81              		.loc 1 53 0
+  82              		.cfi_startproc
+  83              		@ args = 0, pretend = 0, frame = 0
+  84              		@ frame_needed = 0, uses_anonymous_args = 0
+  85              		@ link register save eliminated.
+  86              	.LVL1:
+  87 0000 7047     		bx	lr
+  88              		.cfi_endproc
+  89              	.LFE64:
+  90              		.size	processCommand, .-processCommand
+  91 0002 00BF     		.section	.text.ProcessCommandLine,"ax",%progbits
+  92              		.align	2
+  93              		.global	ProcessCommandLine
+  94              		.thumb
+  95              		.thumb_func
+  96              		.type	ProcessCommandLine, %function
+  97              	ProcessCommandLine:
+  98              	.LFB65:
+  57:application\command/command.c ****     
+  99              		.loc 1 57 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+  57:application\command/command.c ****     
+ 103              		.loc 1 57 0
+ 104 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 105              		.cfi_def_cfa_offset 24
+ 106              		.cfi_offset 3, -24
+ 107              		.cfi_offset 4, -20
+ 108              		.cfi_offset 5, -16
+ 109              		.cfi_offset 6, -12
+ 110              		.cfi_offset 7, -8
+ 111              		.cfi_offset 14, -4
+  60:application\command/command.c ****     
+ 112              		.loc 1 60 0
+ 113 0002 164B     		ldr	r3, .L16
+ 114 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 115 0006 13F0FF0F 		tst	r3, #255
+ 116 000a 26D0     		beq	.L9
+  63:application\command/command.c ****     
+ 117              		.loc 1 63 0
+ 118 000c 0022     		movs	r2, #0
+ 119 000e 134B     		ldr	r3, .L16
+ 120 0010 1A70     		strb	r2, [r3]
+  66:application\command/command.c ****     
+ 121              		.loc 1 66 0
+ 122 0012 FFF7FEFF 		bl	rhea_uart_BytesAvailable
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 5
+
+
+ 123              	.LVL2:
+ 124 0016 0646     		mov	r6, r0
+ 125 0018 0F46     		mov	r7, r1
+ 126              	.LVL3:
+ 127              	.LBB2:
+  75:application\command/command.c ****         
+ 128              		.loc 1 75 0
+ 129 001a 0024     		movs	r4, #0
+ 130 001c 0025     		movs	r5, #0
+ 131 001e 18E0     		b	.L11
+ 132              	.LVL4:
+ 133              	.L14:
+ 134              	.LBB3:
+  78:application\command/command.c ****         
+ 135              		.loc 1 78 0
+ 136 0020 FFF7FEFF 		bl	rhea_uart_ReadByte
+ 137              	.LVL5:
+  81:application\command/command.c ****             
+ 138              		.loc 1 81 0
+ 139 0024 0A28     		cmp	r0, #10
+ 140 0026 05D1     		bne	.L12
+  87:application\command/command.c ****         } 
+ 141              		.loc 1 87 0
+ 142 0028 0020     		movs	r0, #0
+ 143              	.LVL6:
+ 144 002a 0021     		movs	r1, #0
+ 145 002c 0B4B     		ldr	r3, .L16
+ 146 002e C3E90201 		strd	r0, [r3, #8]
+ 147 0032 0BE0     		b	.L13
+ 148              	.LVL7:
+ 149              	.L12:
+  92:application\command/command.c ****         }
+ 150              		.loc 1 92 0
+ 151 0034 0949     		ldr	r1, .L16
+ 152 0036 D1E90223 		ldrd	r2, [r1, #8]
+ 153 003a 0132     		adds	r2, r2, #1
+ 154 003c 02F0FF02 		and	r2, r2, #255
+ 155 0040 0023     		movs	r3, #0
+ 156 0042 C1E90223 		strd	r2, [r1, #8]
+ 157 0046 064B     		ldr	r3, .L16+4
+ 158 0048 1A44     		add	r2, r2, r3
+ 159 004a 1070     		strb	r0, [r2]
+ 160              	.LVL8:
+ 161              	.L13:
+ 162              	.LBE3:
+  75:application\command/command.c ****         
+ 163              		.loc 1 75 0 discriminator 2
+ 164 004c 0134     		adds	r4, r4, #1
+ 165              	.LVL9:
+ 166 004e 45F10005 		adc	r5, r5, #0
+ 167              	.LVL10:
+ 168              	.L11:
+  75:application\command/command.c ****         
+ 169              		.loc 1 75 0 is_stmt 0 discriminator 1
+ 170 0052 BD42     		cmp	r5, r7
+ 171 0054 08BF     		it	eq
+ 172 0056 B442     		cmpeq	r4, r6
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 6
+
+
+ 173 0058 E2D3     		bcc	.L14
+ 174              	.LVL11:
+ 175              	.L9:
+ 176 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 177              	.L17:
+ 178              		.align	2
+ 179              	.L16:
+ 180 005c 00000000 		.word	.LANCHOR0
+ 181 0060 00000000 		.word	serialBuffer
+ 182              	.LBE2:
+ 183              		.cfi_endproc
+ 184              	.LFE65:
+ 185              		.size	ProcessCommandLine, .-ProcessCommandLine
+ 186              		.comm	serialBuffer,256,4
+ 187              		.global	serial_data_ready
+ 188              		.bss
+ 189              		.align	3
+ 190              		.set	.LANCHOR0,. + 0
+ 191              		.type	serial_data_ready, %object
+ 192              		.size	serial_data_ready, 1
+ 193              	serial_data_ready:
+ 194 0000 00       		.space	1
+ 195 0001 00000000 		.space	7
+ 195      000000
+ 196              		.type	currentIndex.6006, %object
+ 197              		.size	currentIndex.6006, 8
+ 198              	currentIndex.6006:
+ 199 0008 00000000 		.space	8
+ 199      00000000 
+ 200              		.text
+ 201              	.Letext0:
+ 202              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 203              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 204              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 205              		.file 5 "Generated_Source\\PSoC5/UART_RX_INTR.h"
+ 206              		.file 6 "application\\command\\../../rhea/uart/uart.h"
+ 207              		.section	.debug_info,"",%progbits
+ 208              	.Ldebug_info0:
+ 209 0000 38020000 		.4byte	0x238
+ 210 0004 0400     		.2byte	0x4
+ 211 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 212 000a 04       		.byte	0x4
+ 213 000b 01       		.uleb128 0x1
+ 214 000c BA000000 		.4byte	.LASF35
+ 215 0010 0C       		.byte	0xc
+ 216 0011 4C000000 		.4byte	.LASF36
+ 217 0015 6A000000 		.4byte	.LASF37
+ 218 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 219 001d 00000000 		.4byte	0
+ 220 0021 00000000 		.4byte	.Ldebug_line0
+ 221 0025 02       		.uleb128 0x2
+ 222 0026 01       		.byte	0x1
+ 223 0027 06       		.byte	0x6
+ 224 0028 79020000 		.4byte	.LASF0
+ 225 002c 03       		.uleb128 0x3
+ 226 002d 00000000 		.4byte	.LASF4
+ 227 0031 02       		.byte	0x2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 7
+
+
+ 228 0032 1D       		.byte	0x1d
+ 229 0033 37000000 		.4byte	0x37
+ 230 0037 02       		.uleb128 0x2
+ 231 0038 01       		.byte	0x1
+ 232 0039 08       		.byte	0x8
+ 233 003a AC000000 		.4byte	.LASF1
+ 234 003e 02       		.uleb128 0x2
+ 235 003f 02       		.byte	0x2
+ 236 0040 05       		.byte	0x5
+ 237 0041 48020000 		.4byte	.LASF2
+ 238 0045 02       		.uleb128 0x2
+ 239 0046 02       		.byte	0x2
+ 240 0047 07       		.byte	0x7
+ 241 0048 8B010000 		.4byte	.LASF3
+ 242 004c 03       		.uleb128 0x3
+ 243 004d 1C000000 		.4byte	.LASF5
+ 244 0051 02       		.byte	0x2
+ 245 0052 3F       		.byte	0x3f
+ 246 0053 57000000 		.4byte	0x57
+ 247 0057 02       		.uleb128 0x2
+ 248 0058 04       		.byte	0x4
+ 249 0059 05       		.byte	0x5
+ 250 005a 59020000 		.4byte	.LASF6
+ 251 005e 02       		.uleb128 0x2
+ 252 005f 04       		.byte	0x4
+ 253 0060 07       		.byte	0x7
+ 254 0061 79010000 		.4byte	.LASF7
+ 255 0065 02       		.uleb128 0x2
+ 256 0066 08       		.byte	0x8
+ 257 0067 05       		.byte	0x5
+ 258 0068 15020000 		.4byte	.LASF8
+ 259 006c 03       		.uleb128 0x3
+ 260 006d 62020000 		.4byte	.LASF9
+ 261 0071 02       		.byte	0x2
+ 262 0072 5B       		.byte	0x5b
+ 263 0073 77000000 		.4byte	0x77
+ 264 0077 02       		.uleb128 0x2
+ 265 0078 08       		.byte	0x8
+ 266 0079 07       		.byte	0x7
+ 267 007a BF010000 		.4byte	.LASF10
+ 268 007e 04       		.uleb128 0x4
+ 269 007f 04       		.byte	0x4
+ 270 0080 05       		.byte	0x5
+ 271 0081 696E7400 		.ascii	"int\000"
+ 272 0085 02       		.uleb128 0x2
+ 273 0086 04       		.byte	0x4
+ 274 0087 07       		.byte	0x7
+ 275 0088 B2010000 		.4byte	.LASF11
+ 276 008c 03       		.uleb128 0x3
+ 277 008d D6010000 		.4byte	.LASF12
+ 278 0091 03       		.byte	0x3
+ 279 0092 18       		.byte	0x18
+ 280 0093 2C000000 		.4byte	0x2c
+ 281 0097 03       		.uleb128 0x3
+ 282 0098 EB010000 		.4byte	.LASF13
+ 283 009c 03       		.byte	0x3
+ 284 009d 2C       		.byte	0x2c
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 8
+
+
+ 285 009e 4C000000 		.4byte	0x4c
+ 286 00a2 03       		.uleb128 0x3
+ 287 00a3 43000000 		.4byte	.LASF14
+ 288 00a7 03       		.byte	0x3
+ 289 00a8 3C       		.byte	0x3c
+ 290 00a9 6C000000 		.4byte	0x6c
+ 291 00ad 02       		.uleb128 0x2
+ 292 00ae 04       		.byte	0x4
+ 293 00af 04       		.byte	0x4
+ 294 00b0 A6000000 		.4byte	.LASF15
+ 295 00b4 02       		.uleb128 0x2
+ 296 00b5 08       		.byte	0x8
+ 297 00b6 04       		.byte	0x4
+ 298 00b7 AB010000 		.4byte	.LASF16
+ 299 00bb 02       		.uleb128 0x2
+ 300 00bc 01       		.byte	0x1
+ 301 00bd 08       		.byte	0x8
+ 302 00be 30020000 		.4byte	.LASF17
+ 303 00c2 02       		.uleb128 0x2
+ 304 00c3 08       		.byte	0x8
+ 305 00c4 04       		.byte	0x4
+ 306 00c5 6D020000 		.4byte	.LASF18
+ 307 00c9 02       		.uleb128 0x2
+ 308 00ca 04       		.byte	0x4
+ 309 00cb 07       		.byte	0x7
+ 310 00cc F3010000 		.4byte	.LASF19
+ 311 00d0 05       		.uleb128 0x5
+ 312 00d1 04       		.byte	0x4
+ 313 00d2 D6000000 		.4byte	0xd6
+ 314 00d6 06       		.uleb128 0x6
+ 315 00d7 BB000000 		.4byte	0xbb
+ 316 00db 07       		.uleb128 0x7
+ 317 00dc 8C000000 		.4byte	0x8c
+ 318 00e0 08       		.uleb128 0x8
+ 319 00e1 2F000000 		.4byte	.LASF38
+ 320 00e5 01       		.byte	0x1
+ 321 00e6 61       		.byte	0x61
+ 322 00e7 00000000 		.4byte	.LFB66
+ 323 00eb 0C000000 		.4byte	.LFE66-.LFB66
+ 324 00ef 01       		.uleb128 0x1
+ 325 00f0 9C       		.byte	0x9c
+ 326 00f1 09       		.uleb128 0x9
+ 327 00f2 5D010000 		.4byte	.LASF20
+ 328 00f6 01       		.byte	0x1
+ 329 00f7 2F       		.byte	0x2f
+ 330 00f8 00000000 		.4byte	.LFB63
+ 331 00fc 10000000 		.4byte	.LFE63-.LFB63
+ 332 0100 01       		.uleb128 0x1
+ 333 0101 9C       		.byte	0x9c
+ 334 0102 1A010000 		.4byte	0x11a
+ 335 0106 0A       		.uleb128 0xa
+ 336 0107 08000000 		.4byte	.LVL0
+ 337 010b 1A020000 		.4byte	0x21a
+ 338 010f 0B       		.uleb128 0xb
+ 339 0110 01       		.uleb128 0x1
+ 340 0111 50       		.byte	0x50
+ 341 0112 05       		.uleb128 0x5
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 9
+
+
+ 342 0113 03       		.byte	0x3
+ 343 0114 00000000 		.4byte	SERIAL_DATA_ARRIVED
+ 344 0118 00       		.byte	0
+ 345 0119 00       		.byte	0
+ 346 011a 09       		.uleb128 0x9
+ 347 011b B0020000 		.4byte	.LASF21
+ 348 011f 01       		.byte	0x1
+ 349 0120 35       		.byte	0x35
+ 350 0121 00000000 		.4byte	.LFB64
+ 351 0125 02000000 		.4byte	.LFE64-.LFB64
+ 352 0129 01       		.uleb128 0x1
+ 353 012a 9C       		.byte	0x9c
+ 354 012b 4F010000 		.4byte	0x14f
+ 355 012f 0C       		.uleb128 0xc
+ 356 0130 52020000 		.4byte	.LASF22
+ 357 0134 01       		.byte	0x1
+ 358 0135 35       		.byte	0x35
+ 359 0136 D0000000 		.4byte	0xd0
+ 360 013a 01       		.uleb128 0x1
+ 361 013b 50       		.byte	0x50
+ 362 013c 0C       		.uleb128 0xc
+ 363 013d 96020000 		.4byte	.LASF23
+ 364 0141 01       		.byte	0x1
+ 365 0142 35       		.byte	0x35
+ 366 0143 A2000000 		.4byte	0xa2
+ 367 0147 06       		.uleb128 0x6
+ 368 0148 52       		.byte	0x52
+ 369 0149 93       		.byte	0x93
+ 370 014a 04       		.uleb128 0x4
+ 371 014b 53       		.byte	0x53
+ 372 014c 93       		.byte	0x93
+ 373 014d 04       		.uleb128 0x4
+ 374 014e 00       		.byte	0
+ 375 014f 09       		.uleb128 0x9
+ 376 0150 9D020000 		.4byte	.LASF24
+ 377 0154 01       		.byte	0x1
+ 378 0155 39       		.byte	0x39
+ 379 0156 00000000 		.4byte	.LFB65
+ 380 015a 64000000 		.4byte	.LFE65-.LFB65
+ 381 015e 01       		.uleb128 0x1
+ 382 015f 9C       		.byte	0x9c
+ 383 0160 D7010000 		.4byte	0x1d7
+ 384 0164 0D       		.uleb128 0xd
+ 385 0165 97000000 		.4byte	.LASF25
+ 386 0169 01       		.byte	0x1
+ 387 016a 42       		.byte	0x42
+ 388 016b A2000000 		.4byte	0xa2
+ 389 016f 00000000 		.4byte	.LLST0
+ 390 0173 0E       		.uleb128 0xe
+ 391 0174 DE010000 		.4byte	.LASF26
+ 392 0178 01       		.byte	0x1
+ 393 0179 45       		.byte	0x45
+ 394 017a A2000000 		.4byte	0xa2
+ 395 017e 05       		.uleb128 0x5
+ 396 017f 03       		.byte	0x3
+ 397 0180 08000000 		.4byte	currentIndex.6006
+ 398 0184 0F       		.uleb128 0xf
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 10
+
+
+ 399 0185 85020000 		.4byte	.LASF27
+ 400 0189 01       		.byte	0x1
+ 401 018a 48       		.byte	0x48
+ 402 018b A2000000 		.4byte	0xa2
+ 403 018f 00       		.byte	0
+ 404 0190 10       		.uleb128 0x10
+ 405 0191 1A000000 		.4byte	.LBB2
+ 406 0195 4A000000 		.4byte	.LBE2-.LBB2
+ 407 0199 CD010000 		.4byte	0x1cd
+ 408 019d 11       		.uleb128 0x11
+ 409 019e 6900     		.ascii	"i\000"
+ 410 01a0 01       		.byte	0x1
+ 411 01a1 4B       		.byte	0x4b
+ 412 01a2 A2000000 		.4byte	0xa2
+ 413 01a6 18000000 		.4byte	.LLST1
+ 414 01aa 12       		.uleb128 0x12
+ 415 01ab 20000000 		.4byte	.LBB3
+ 416 01af 2C000000 		.4byte	.LBE3-.LBB3
+ 417 01b3 0D       		.uleb128 0xd
+ 418 01b4 26000000 		.4byte	.LASF28
+ 419 01b8 01       		.byte	0x1
+ 420 01b9 4E       		.byte	0x4e
+ 421 01ba 8C000000 		.4byte	0x8c
+ 422 01be 54000000 		.4byte	.LLST2
+ 423 01c2 13       		.uleb128 0x13
+ 424 01c3 24000000 		.4byte	.LVL5
+ 425 01c7 25020000 		.4byte	0x225
+ 426 01cb 00       		.byte	0
+ 427 01cc 00       		.byte	0
+ 428 01cd 13       		.uleb128 0x13
+ 429 01ce 16000000 		.4byte	.LVL2
+ 430 01d2 30020000 		.4byte	0x230
+ 431 01d6 00       		.byte	0
+ 432 01d7 14       		.uleb128 0x14
+ 433 01d8 9E010000 		.4byte	.LASF29
+ 434 01dc 04       		.byte	0x4
+ 435 01dd 1207     		.2byte	0x712
+ 436 01df E3010000 		.4byte	0x1e3
+ 437 01e3 07       		.uleb128 0x7
+ 438 01e4 97000000 		.4byte	0x97
+ 439 01e8 15       		.uleb128 0x15
+ 440 01e9 0A000000 		.4byte	.LASF30
+ 441 01ed 01       		.byte	0x1
+ 442 01ee 2A       		.byte	0x2a
+ 443 01ef DB000000 		.4byte	0xdb
+ 444 01f3 05       		.uleb128 0x5
+ 445 01f4 03       		.byte	0x3
+ 446 01f5 00000000 		.4byte	serial_data_ready
+ 447 01f9 16       		.uleb128 0x16
+ 448 01fa 8C000000 		.4byte	0x8c
+ 449 01fe 09020000 		.4byte	0x209
+ 450 0202 17       		.uleb128 0x17
+ 451 0203 C9000000 		.4byte	0xc9
+ 452 0207 FF       		.byte	0xff
+ 453 0208 00       		.byte	0
+ 454 0209 15       		.uleb128 0x15
+ 455 020a 23020000 		.4byte	.LASF31
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 11
+
+
+ 456 020e 01       		.byte	0x1
+ 457 020f 2D       		.byte	0x2d
+ 458 0210 F9010000 		.4byte	0x1f9
+ 459 0214 05       		.uleb128 0x5
+ 460 0215 03       		.byte	0x3
+ 461 0216 00000000 		.4byte	serialBuffer
+ 462 021a 18       		.uleb128 0x18
+ 463 021b 48010000 		.4byte	.LASF32
+ 464 021f 48010000 		.4byte	.LASF32
+ 465 0223 05       		.byte	0x5
+ 466 0224 18       		.byte	0x18
+ 467 0225 18       		.uleb128 0x18
+ 468 0226 35020000 		.4byte	.LASF33
+ 469 022a 35020000 		.4byte	.LASF33
+ 470 022e 06       		.byte	0x6
+ 471 022f 38       		.byte	0x38
+ 472 0230 18       		.uleb128 0x18
+ 473 0231 FC010000 		.4byte	.LASF34
+ 474 0235 FC010000 		.4byte	.LASF34
+ 475 0239 06       		.byte	0x6
+ 476 023a 32       		.byte	0x32
+ 477 023b 00       		.byte	0
+ 478              		.section	.debug_abbrev,"",%progbits
+ 479              	.Ldebug_abbrev0:
+ 480 0000 01       		.uleb128 0x1
+ 481 0001 11       		.uleb128 0x11
+ 482 0002 01       		.byte	0x1
+ 483 0003 25       		.uleb128 0x25
+ 484 0004 0E       		.uleb128 0xe
+ 485 0005 13       		.uleb128 0x13
+ 486 0006 0B       		.uleb128 0xb
+ 487 0007 03       		.uleb128 0x3
+ 488 0008 0E       		.uleb128 0xe
+ 489 0009 1B       		.uleb128 0x1b
+ 490 000a 0E       		.uleb128 0xe
+ 491 000b 55       		.uleb128 0x55
+ 492 000c 17       		.uleb128 0x17
+ 493 000d 11       		.uleb128 0x11
+ 494 000e 01       		.uleb128 0x1
+ 495 000f 10       		.uleb128 0x10
+ 496 0010 17       		.uleb128 0x17
+ 497 0011 00       		.byte	0
+ 498 0012 00       		.byte	0
+ 499 0013 02       		.uleb128 0x2
+ 500 0014 24       		.uleb128 0x24
+ 501 0015 00       		.byte	0
+ 502 0016 0B       		.uleb128 0xb
+ 503 0017 0B       		.uleb128 0xb
+ 504 0018 3E       		.uleb128 0x3e
+ 505 0019 0B       		.uleb128 0xb
+ 506 001a 03       		.uleb128 0x3
+ 507 001b 0E       		.uleb128 0xe
+ 508 001c 00       		.byte	0
+ 509 001d 00       		.byte	0
+ 510 001e 03       		.uleb128 0x3
+ 511 001f 16       		.uleb128 0x16
+ 512 0020 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 12
+
+
+ 513 0021 03       		.uleb128 0x3
+ 514 0022 0E       		.uleb128 0xe
+ 515 0023 3A       		.uleb128 0x3a
+ 516 0024 0B       		.uleb128 0xb
+ 517 0025 3B       		.uleb128 0x3b
+ 518 0026 0B       		.uleb128 0xb
+ 519 0027 49       		.uleb128 0x49
+ 520 0028 13       		.uleb128 0x13
+ 521 0029 00       		.byte	0
+ 522 002a 00       		.byte	0
+ 523 002b 04       		.uleb128 0x4
+ 524 002c 24       		.uleb128 0x24
+ 525 002d 00       		.byte	0
+ 526 002e 0B       		.uleb128 0xb
+ 527 002f 0B       		.uleb128 0xb
+ 528 0030 3E       		.uleb128 0x3e
+ 529 0031 0B       		.uleb128 0xb
+ 530 0032 03       		.uleb128 0x3
+ 531 0033 08       		.uleb128 0x8
+ 532 0034 00       		.byte	0
+ 533 0035 00       		.byte	0
+ 534 0036 05       		.uleb128 0x5
+ 535 0037 0F       		.uleb128 0xf
+ 536 0038 00       		.byte	0
+ 537 0039 0B       		.uleb128 0xb
+ 538 003a 0B       		.uleb128 0xb
+ 539 003b 49       		.uleb128 0x49
+ 540 003c 13       		.uleb128 0x13
+ 541 003d 00       		.byte	0
+ 542 003e 00       		.byte	0
+ 543 003f 06       		.uleb128 0x6
+ 544 0040 26       		.uleb128 0x26
+ 545 0041 00       		.byte	0
+ 546 0042 49       		.uleb128 0x49
+ 547 0043 13       		.uleb128 0x13
+ 548 0044 00       		.byte	0
+ 549 0045 00       		.byte	0
+ 550 0046 07       		.uleb128 0x7
+ 551 0047 35       		.uleb128 0x35
+ 552 0048 00       		.byte	0
+ 553 0049 49       		.uleb128 0x49
+ 554 004a 13       		.uleb128 0x13
+ 555 004b 00       		.byte	0
+ 556 004c 00       		.byte	0
+ 557 004d 08       		.uleb128 0x8
+ 558 004e 2E       		.uleb128 0x2e
+ 559 004f 00       		.byte	0
+ 560 0050 3F       		.uleb128 0x3f
+ 561 0051 19       		.uleb128 0x19
+ 562 0052 03       		.uleb128 0x3
+ 563 0053 0E       		.uleb128 0xe
+ 564 0054 3A       		.uleb128 0x3a
+ 565 0055 0B       		.uleb128 0xb
+ 566 0056 3B       		.uleb128 0x3b
+ 567 0057 0B       		.uleb128 0xb
+ 568 0058 27       		.uleb128 0x27
+ 569 0059 19       		.uleb128 0x19
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 13
+
+
+ 570 005a 11       		.uleb128 0x11
+ 571 005b 01       		.uleb128 0x1
+ 572 005c 12       		.uleb128 0x12
+ 573 005d 06       		.uleb128 0x6
+ 574 005e 40       		.uleb128 0x40
+ 575 005f 18       		.uleb128 0x18
+ 576 0060 9742     		.uleb128 0x2117
+ 577 0062 19       		.uleb128 0x19
+ 578 0063 00       		.byte	0
+ 579 0064 00       		.byte	0
+ 580 0065 09       		.uleb128 0x9
+ 581 0066 2E       		.uleb128 0x2e
+ 582 0067 01       		.byte	0x1
+ 583 0068 3F       		.uleb128 0x3f
+ 584 0069 19       		.uleb128 0x19
+ 585 006a 03       		.uleb128 0x3
+ 586 006b 0E       		.uleb128 0xe
+ 587 006c 3A       		.uleb128 0x3a
+ 588 006d 0B       		.uleb128 0xb
+ 589 006e 3B       		.uleb128 0x3b
+ 590 006f 0B       		.uleb128 0xb
+ 591 0070 27       		.uleb128 0x27
+ 592 0071 19       		.uleb128 0x19
+ 593 0072 11       		.uleb128 0x11
+ 594 0073 01       		.uleb128 0x1
+ 595 0074 12       		.uleb128 0x12
+ 596 0075 06       		.uleb128 0x6
+ 597 0076 40       		.uleb128 0x40
+ 598 0077 18       		.uleb128 0x18
+ 599 0078 9742     		.uleb128 0x2117
+ 600 007a 19       		.uleb128 0x19
+ 601 007b 01       		.uleb128 0x1
+ 602 007c 13       		.uleb128 0x13
+ 603 007d 00       		.byte	0
+ 604 007e 00       		.byte	0
+ 605 007f 0A       		.uleb128 0xa
+ 606 0080 898201   		.uleb128 0x4109
+ 607 0083 01       		.byte	0x1
+ 608 0084 11       		.uleb128 0x11
+ 609 0085 01       		.uleb128 0x1
+ 610 0086 31       		.uleb128 0x31
+ 611 0087 13       		.uleb128 0x13
+ 612 0088 00       		.byte	0
+ 613 0089 00       		.byte	0
+ 614 008a 0B       		.uleb128 0xb
+ 615 008b 8A8201   		.uleb128 0x410a
+ 616 008e 00       		.byte	0
+ 617 008f 02       		.uleb128 0x2
+ 618 0090 18       		.uleb128 0x18
+ 619 0091 9142     		.uleb128 0x2111
+ 620 0093 18       		.uleb128 0x18
+ 621 0094 00       		.byte	0
+ 622 0095 00       		.byte	0
+ 623 0096 0C       		.uleb128 0xc
+ 624 0097 05       		.uleb128 0x5
+ 625 0098 00       		.byte	0
+ 626 0099 03       		.uleb128 0x3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 14
+
+
+ 627 009a 0E       		.uleb128 0xe
+ 628 009b 3A       		.uleb128 0x3a
+ 629 009c 0B       		.uleb128 0xb
+ 630 009d 3B       		.uleb128 0x3b
+ 631 009e 0B       		.uleb128 0xb
+ 632 009f 49       		.uleb128 0x49
+ 633 00a0 13       		.uleb128 0x13
+ 634 00a1 02       		.uleb128 0x2
+ 635 00a2 18       		.uleb128 0x18
+ 636 00a3 00       		.byte	0
+ 637 00a4 00       		.byte	0
+ 638 00a5 0D       		.uleb128 0xd
+ 639 00a6 34       		.uleb128 0x34
+ 640 00a7 00       		.byte	0
+ 641 00a8 03       		.uleb128 0x3
+ 642 00a9 0E       		.uleb128 0xe
+ 643 00aa 3A       		.uleb128 0x3a
+ 644 00ab 0B       		.uleb128 0xb
+ 645 00ac 3B       		.uleb128 0x3b
+ 646 00ad 0B       		.uleb128 0xb
+ 647 00ae 49       		.uleb128 0x49
+ 648 00af 13       		.uleb128 0x13
+ 649 00b0 02       		.uleb128 0x2
+ 650 00b1 17       		.uleb128 0x17
+ 651 00b2 00       		.byte	0
+ 652 00b3 00       		.byte	0
+ 653 00b4 0E       		.uleb128 0xe
+ 654 00b5 34       		.uleb128 0x34
+ 655 00b6 00       		.byte	0
+ 656 00b7 03       		.uleb128 0x3
+ 657 00b8 0E       		.uleb128 0xe
+ 658 00b9 3A       		.uleb128 0x3a
+ 659 00ba 0B       		.uleb128 0xb
+ 660 00bb 3B       		.uleb128 0x3b
+ 661 00bc 0B       		.uleb128 0xb
+ 662 00bd 49       		.uleb128 0x49
+ 663 00be 13       		.uleb128 0x13
+ 664 00bf 02       		.uleb128 0x2
+ 665 00c0 18       		.uleb128 0x18
+ 666 00c1 00       		.byte	0
+ 667 00c2 00       		.byte	0
+ 668 00c3 0F       		.uleb128 0xf
+ 669 00c4 34       		.uleb128 0x34
+ 670 00c5 00       		.byte	0
+ 671 00c6 03       		.uleb128 0x3
+ 672 00c7 0E       		.uleb128 0xe
+ 673 00c8 3A       		.uleb128 0x3a
+ 674 00c9 0B       		.uleb128 0xb
+ 675 00ca 3B       		.uleb128 0x3b
+ 676 00cb 0B       		.uleb128 0xb
+ 677 00cc 49       		.uleb128 0x49
+ 678 00cd 13       		.uleb128 0x13
+ 679 00ce 1C       		.uleb128 0x1c
+ 680 00cf 0B       		.uleb128 0xb
+ 681 00d0 00       		.byte	0
+ 682 00d1 00       		.byte	0
+ 683 00d2 10       		.uleb128 0x10
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 15
+
+
+ 684 00d3 0B       		.uleb128 0xb
+ 685 00d4 01       		.byte	0x1
+ 686 00d5 11       		.uleb128 0x11
+ 687 00d6 01       		.uleb128 0x1
+ 688 00d7 12       		.uleb128 0x12
+ 689 00d8 06       		.uleb128 0x6
+ 690 00d9 01       		.uleb128 0x1
+ 691 00da 13       		.uleb128 0x13
+ 692 00db 00       		.byte	0
+ 693 00dc 00       		.byte	0
+ 694 00dd 11       		.uleb128 0x11
+ 695 00de 34       		.uleb128 0x34
+ 696 00df 00       		.byte	0
+ 697 00e0 03       		.uleb128 0x3
+ 698 00e1 08       		.uleb128 0x8
+ 699 00e2 3A       		.uleb128 0x3a
+ 700 00e3 0B       		.uleb128 0xb
+ 701 00e4 3B       		.uleb128 0x3b
+ 702 00e5 0B       		.uleb128 0xb
+ 703 00e6 49       		.uleb128 0x49
+ 704 00e7 13       		.uleb128 0x13
+ 705 00e8 02       		.uleb128 0x2
+ 706 00e9 17       		.uleb128 0x17
+ 707 00ea 00       		.byte	0
+ 708 00eb 00       		.byte	0
+ 709 00ec 12       		.uleb128 0x12
+ 710 00ed 0B       		.uleb128 0xb
+ 711 00ee 01       		.byte	0x1
+ 712 00ef 11       		.uleb128 0x11
+ 713 00f0 01       		.uleb128 0x1
+ 714 00f1 12       		.uleb128 0x12
+ 715 00f2 06       		.uleb128 0x6
+ 716 00f3 00       		.byte	0
+ 717 00f4 00       		.byte	0
+ 718 00f5 13       		.uleb128 0x13
+ 719 00f6 898201   		.uleb128 0x4109
+ 720 00f9 00       		.byte	0
+ 721 00fa 11       		.uleb128 0x11
+ 722 00fb 01       		.uleb128 0x1
+ 723 00fc 31       		.uleb128 0x31
+ 724 00fd 13       		.uleb128 0x13
+ 725 00fe 00       		.byte	0
+ 726 00ff 00       		.byte	0
+ 727 0100 14       		.uleb128 0x14
+ 728 0101 34       		.uleb128 0x34
+ 729 0102 00       		.byte	0
+ 730 0103 03       		.uleb128 0x3
+ 731 0104 0E       		.uleb128 0xe
+ 732 0105 3A       		.uleb128 0x3a
+ 733 0106 0B       		.uleb128 0xb
+ 734 0107 3B       		.uleb128 0x3b
+ 735 0108 05       		.uleb128 0x5
+ 736 0109 49       		.uleb128 0x49
+ 737 010a 13       		.uleb128 0x13
+ 738 010b 3F       		.uleb128 0x3f
+ 739 010c 19       		.uleb128 0x19
+ 740 010d 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 16
+
+
+ 741 010e 19       		.uleb128 0x19
+ 742 010f 00       		.byte	0
+ 743 0110 00       		.byte	0
+ 744 0111 15       		.uleb128 0x15
+ 745 0112 34       		.uleb128 0x34
+ 746 0113 00       		.byte	0
+ 747 0114 03       		.uleb128 0x3
+ 748 0115 0E       		.uleb128 0xe
+ 749 0116 3A       		.uleb128 0x3a
+ 750 0117 0B       		.uleb128 0xb
+ 751 0118 3B       		.uleb128 0x3b
+ 752 0119 0B       		.uleb128 0xb
+ 753 011a 49       		.uleb128 0x49
+ 754 011b 13       		.uleb128 0x13
+ 755 011c 3F       		.uleb128 0x3f
+ 756 011d 19       		.uleb128 0x19
+ 757 011e 02       		.uleb128 0x2
+ 758 011f 18       		.uleb128 0x18
+ 759 0120 00       		.byte	0
+ 760 0121 00       		.byte	0
+ 761 0122 16       		.uleb128 0x16
+ 762 0123 01       		.uleb128 0x1
+ 763 0124 01       		.byte	0x1
+ 764 0125 49       		.uleb128 0x49
+ 765 0126 13       		.uleb128 0x13
+ 766 0127 01       		.uleb128 0x1
+ 767 0128 13       		.uleb128 0x13
+ 768 0129 00       		.byte	0
+ 769 012a 00       		.byte	0
+ 770 012b 17       		.uleb128 0x17
+ 771 012c 21       		.uleb128 0x21
+ 772 012d 00       		.byte	0
+ 773 012e 49       		.uleb128 0x49
+ 774 012f 13       		.uleb128 0x13
+ 775 0130 2F       		.uleb128 0x2f
+ 776 0131 0B       		.uleb128 0xb
+ 777 0132 00       		.byte	0
+ 778 0133 00       		.byte	0
+ 779 0134 18       		.uleb128 0x18
+ 780 0135 2E       		.uleb128 0x2e
+ 781 0136 00       		.byte	0
+ 782 0137 3F       		.uleb128 0x3f
+ 783 0138 19       		.uleb128 0x19
+ 784 0139 3C       		.uleb128 0x3c
+ 785 013a 19       		.uleb128 0x19
+ 786 013b 6E       		.uleb128 0x6e
+ 787 013c 0E       		.uleb128 0xe
+ 788 013d 03       		.uleb128 0x3
+ 789 013e 0E       		.uleb128 0xe
+ 790 013f 3A       		.uleb128 0x3a
+ 791 0140 0B       		.uleb128 0xb
+ 792 0141 3B       		.uleb128 0x3b
+ 793 0142 0B       		.uleb128 0xb
+ 794 0143 00       		.byte	0
+ 795 0144 00       		.byte	0
+ 796 0145 00       		.byte	0
+ 797              		.section	.debug_loc,"",%progbits
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 17
+
+
+ 798              	.Ldebug_loc0:
+ 799              	.LLST0:
+ 800 0000 1A000000 		.4byte	.LVL3
+ 801 0004 5A000000 		.4byte	.LVL11
+ 802 0008 0600     		.2byte	0x6
+ 803 000a 56       		.byte	0x56
+ 804 000b 93       		.byte	0x93
+ 805 000c 04       		.uleb128 0x4
+ 806 000d 57       		.byte	0x57
+ 807 000e 93       		.byte	0x93
+ 808 000f 04       		.uleb128 0x4
+ 809 0010 00000000 		.4byte	0
+ 810 0014 00000000 		.4byte	0
+ 811              	.LLST1:
+ 812 0018 1A000000 		.4byte	.LVL3
+ 813 001c 20000000 		.4byte	.LVL4
+ 814 0020 0A00     		.2byte	0xa
+ 815 0022 9E       		.byte	0x9e
+ 816 0023 08       		.uleb128 0x8
+ 817 0024 00000000 		.8byte	0
+ 817      00000000 
+ 818 002c 20000000 		.4byte	.LVL4
+ 819 0030 4E000000 		.4byte	.LVL9
+ 820 0034 0600     		.2byte	0x6
+ 821 0036 54       		.byte	0x54
+ 822 0037 93       		.byte	0x93
+ 823 0038 04       		.uleb128 0x4
+ 824 0039 55       		.byte	0x55
+ 825 003a 93       		.byte	0x93
+ 826 003b 04       		.uleb128 0x4
+ 827 003c 52000000 		.4byte	.LVL10
+ 828 0040 5A000000 		.4byte	.LVL11
+ 829 0044 0600     		.2byte	0x6
+ 830 0046 54       		.byte	0x54
+ 831 0047 93       		.byte	0x93
+ 832 0048 04       		.uleb128 0x4
+ 833 0049 55       		.byte	0x55
+ 834 004a 93       		.byte	0x93
+ 835 004b 04       		.uleb128 0x4
+ 836 004c 00000000 		.4byte	0
+ 837 0050 00000000 		.4byte	0
+ 838              	.LLST2:
+ 839 0054 24000000 		.4byte	.LVL5
+ 840 0058 2A000000 		.4byte	.LVL6
+ 841 005c 0100     		.2byte	0x1
+ 842 005e 50       		.byte	0x50
+ 843 005f 34000000 		.4byte	.LVL7
+ 844 0063 4C000000 		.4byte	.LVL8
+ 845 0067 0100     		.2byte	0x1
+ 846 0069 50       		.byte	0x50
+ 847 006a 00000000 		.4byte	0
+ 848 006e 00000000 		.4byte	0
+ 849              		.section	.debug_aranges,"",%progbits
+ 850 0000 34000000 		.4byte	0x34
+ 851 0004 0200     		.2byte	0x2
+ 852 0006 00000000 		.4byte	.Ldebug_info0
+ 853 000a 04       		.byte	0x4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 18
+
+
+ 854 000b 00       		.byte	0
+ 855 000c 0000     		.2byte	0
+ 856 000e 0000     		.2byte	0
+ 857 0010 00000000 		.4byte	.LFB66
+ 858 0014 0C000000 		.4byte	.LFE66-.LFB66
+ 859 0018 00000000 		.4byte	.LFB63
+ 860 001c 10000000 		.4byte	.LFE63-.LFB63
+ 861 0020 00000000 		.4byte	.LFB64
+ 862 0024 02000000 		.4byte	.LFE64-.LFB64
+ 863 0028 00000000 		.4byte	.LFB65
+ 864 002c 64000000 		.4byte	.LFE65-.LFB65
+ 865 0030 00000000 		.4byte	0
+ 866 0034 00000000 		.4byte	0
+ 867              		.section	.debug_ranges,"",%progbits
+ 868              	.Ldebug_ranges0:
+ 869 0000 00000000 		.4byte	.LFB66
+ 870 0004 0C000000 		.4byte	.LFE66
+ 871 0008 00000000 		.4byte	.LFB63
+ 872 000c 10000000 		.4byte	.LFE63
+ 873 0010 00000000 		.4byte	.LFB64
+ 874 0014 02000000 		.4byte	.LFE64
+ 875 0018 00000000 		.4byte	.LFB65
+ 876 001c 64000000 		.4byte	.LFE65
+ 877 0020 00000000 		.4byte	0
+ 878 0024 00000000 		.4byte	0
+ 879              		.section	.debug_line,"",%progbits
+ 880              	.Ldebug_line0:
+ 881 0000 CB010000 		.section	.debug_str,"MS",%progbits,1
+ 881      02006E01 
+ 881      00000201 
+ 881      FB0E0D00 
+ 881      01010101 
+ 882              	.LASF4:
+ 883 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 883      6E74385F 
+ 883      7400
+ 884              	.LASF30:
+ 885 000a 73657269 		.ascii	"serial_data_ready\000"
+ 885      616C5F64 
+ 885      6174615F 
+ 885      72656164 
+ 885      7900
+ 886              	.LASF5:
+ 887 001c 5F5F696E 		.ascii	"__int32_t\000"
+ 887      7433325F 
+ 887      7400
+ 888              	.LASF28:
+ 889 0026 6E657874 		.ascii	"nextChar\000"
+ 889      43686172 
+ 889      00
+ 890              	.LASF38:
+ 891 002f 53455249 		.ascii	"SERIAL_DATA_ARRIVED\000"
+ 891      414C5F44 
+ 891      4154415F 
+ 891      41525249 
+ 891      56454400 
+ 892              	.LASF14:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 19
+
+
+ 893 0043 75696E74 		.ascii	"uint64_t\000"
+ 893      36345F74 
+ 893      00
+ 894              	.LASF36:
+ 895 004c 6170706C 		.ascii	"application\\command\\command.c\000"
+ 895      69636174 
+ 895      696F6E5C 
+ 895      636F6D6D 
+ 895      616E645C 
+ 896              	.LASF37:
+ 897 006a 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ 897      79707265 
+ 897      73735C50 
+ 897      726F6A65 
+ 897      6374735C 
+ 898              	.LASF25:
+ 899 0097 62797465 		.ascii	"bytesAvailable\000"
+ 899      73417661 
+ 899      696C6162 
+ 899      6C6500
+ 900              	.LASF15:
+ 901 00a6 666C6F61 		.ascii	"float\000"
+ 901      7400
+ 902              	.LASF1:
+ 903 00ac 756E7369 		.ascii	"unsigned char\000"
+ 903      676E6564 
+ 903      20636861 
+ 903      7200
+ 904              	.LASF35:
+ 905 00ba 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 905      43313120 
+ 905      352E342E 
+ 905      31203230 
+ 905      31363036 
+ 906 00ed 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 906      20726576 
+ 906      6973696F 
+ 906      6E203233 
+ 906      37373135 
+ 907 0120 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 907      66756E63 
+ 907      74696F6E 
+ 907      2D736563 
+ 907      74696F6E 
+ 908              	.LASF32:
+ 909 0148 55415254 		.ascii	"UART_RX_INTR_StartEx\000"
+ 909      5F52585F 
+ 909      494E5452 
+ 909      5F537461 
+ 909      72744578 
+ 910              	.LASF20:
+ 911 015d 496E6974 		.ascii	"InitializeSerialCommandLine\000"
+ 911      69616C69 
+ 911      7A655365 
+ 911      7269616C 
+ 911      436F6D6D 
+ 912              	.LASF7:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 20
+
+
+ 913 0179 6C6F6E67 		.ascii	"long unsigned int\000"
+ 913      20756E73 
+ 913      69676E65 
+ 913      6420696E 
+ 913      7400
+ 914              	.LASF3:
+ 915 018b 73686F72 		.ascii	"short unsigned int\000"
+ 915      7420756E 
+ 915      7369676E 
+ 915      65642069 
+ 915      6E7400
+ 916              	.LASF29:
+ 917 019e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 917      52784275 
+ 917      66666572 
+ 917      00
+ 918              	.LASF16:
+ 919 01ab 646F7562 		.ascii	"double\000"
+ 919      6C6500
+ 920              	.LASF11:
+ 921 01b2 756E7369 		.ascii	"unsigned int\000"
+ 921      676E6564 
+ 921      20696E74 
+ 921      00
+ 922              	.LASF10:
+ 923 01bf 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 923      206C6F6E 
+ 923      6720756E 
+ 923      7369676E 
+ 923      65642069 
+ 924              	.LASF12:
+ 925 01d6 75696E74 		.ascii	"uint8_t\000"
+ 925      385F7400 
+ 926              	.LASF26:
+ 927 01de 63757272 		.ascii	"currentIndex\000"
+ 927      656E7449 
+ 927      6E646578 
+ 927      00
+ 928              	.LASF13:
+ 929 01eb 696E7433 		.ascii	"int32_t\000"
+ 929      325F7400 
+ 930              	.LASF19:
+ 931 01f3 73697A65 		.ascii	"sizetype\000"
+ 931      74797065 
+ 931      00
+ 932              	.LASF34:
+ 933 01fc 72686561 		.ascii	"rhea_uart_BytesAvailable\000"
+ 933      5F756172 
+ 933      745F4279 
+ 933      74657341 
+ 933      7661696C 
+ 934              	.LASF8:
+ 935 0215 6C6F6E67 		.ascii	"long long int\000"
+ 935      206C6F6E 
+ 935      6720696E 
+ 935      7400
+ 936              	.LASF31:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 21
+
+
+ 937 0223 73657269 		.ascii	"serialBuffer\000"
+ 937      616C4275 
+ 937      66666572 
+ 937      00
+ 938              	.LASF17:
+ 939 0230 63686172 		.ascii	"char\000"
+ 939      00
+ 940              	.LASF33:
+ 941 0235 72686561 		.ascii	"rhea_uart_ReadByte\000"
+ 941      5F756172 
+ 941      745F5265 
+ 941      61644279 
+ 941      746500
+ 942              	.LASF2:
+ 943 0248 73686F72 		.ascii	"short int\000"
+ 943      7420696E 
+ 943      7400
+ 944              	.LASF22:
+ 945 0252 62756666 		.ascii	"buffer\000"
+ 945      657200
+ 946              	.LASF6:
+ 947 0259 6C6F6E67 		.ascii	"long int\000"
+ 947      20696E74 
+ 947      00
+ 948              	.LASF9:
+ 949 0262 5F5F7569 		.ascii	"__uint64_t\000"
+ 949      6E743634 
+ 949      5F7400
+ 950              	.LASF18:
+ 951 026d 6C6F6E67 		.ascii	"long double\000"
+ 951      20646F75 
+ 951      626C6500 
+ 952              	.LASF0:
+ 953 0279 7369676E 		.ascii	"signed char\000"
+ 953      65642063 
+ 953      68617200 
+ 954              	.LASF27:
+ 955 0285 63757272 		.ascii	"currentReadIndex\000"
+ 955      656E7452 
+ 955      65616449 
+ 955      6E646578 
+ 955      00
+ 956              	.LASF23:
+ 957 0296 6C656E67 		.ascii	"length\000"
+ 957      746800
+ 958              	.LASF24:
+ 959 029d 50726F63 		.ascii	"ProcessCommandLine\000"
+ 959      65737343 
+ 959      6F6D6D61 
+ 959      6E644C69 
+ 959      6E6500
+ 960              	.LASF21:
+ 961 02b0 70726F63 		.ascii	"processCommand\000"
+ 961      65737343 
+ 961      6F6D6D61 
+ 961      6E6400
+ 962              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccSXR1oR.s 			page 22
+
+

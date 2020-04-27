@@ -46,6 +46,12 @@
 void rhea_uart_initialize_impl(void);
 
 /**
+ * @brief Returns the number of bytes available for read.
+ * @todo  Implement this function to query the number of bytes available.
+ */
+uint64_t rhea_uart_bytesAvailable_impl(void);
+
+/**
  * @brief Reads one byte from the UART.
  * @returns The byte read from the UART.
  * @todo Implement this function to read one byte from the UART.

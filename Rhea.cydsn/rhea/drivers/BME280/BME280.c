@@ -55,6 +55,9 @@ void BME280_I2CReader(uint8_t address, uint8_t deviceAddress, unsigned char * bu
     
     // Writing first device address to read
     BME280_I2CController.MasterWriteByte(deviceAddress);
+
+    // Sending STOP 
+    BME280_I2CController.MasterSendStop();
     
     // Selecting the device for read
     BME280_I2CController.MasterSendStart(address, 1);
@@ -148,6 +151,10 @@ void BME280_WriteRegisters(void) {
 
     // Writing configuration registers [F2-F5]
     BME280_I2CWriter(BME280_I2C_ADDR, BME280_CTRL_HUM, (const uint8_t*) &BME280_RegistersLocal.CTRL_HUM, 1 + BME280_CONFIG - BME280_CTRL_HUM);
+}
+
+BME280_RegisterStruct* BME280_GetLocalRegisters(void) {
+    return &BME280_RegistersLocal;   
 }
 
 int8_t BME280_GetTemperatureCelsius(uint8_t readNow) {
@@ -333,7 +340,7 @@ uint8_t BME280_GetTemperatureMode(void) {
 void BME280_SetTemperatureMode(uint8_t mode) {
 
     // Writing OSRS_T bits of CTRL_MEAS register
-    BME280_RegistersLocal.CTRL_MEAS &= BME280_CTRL_MEAS_OSRS_T;
+    BME280_RegistersLocal.CTRL_MEAS &= ~BME280_CTRL_MEAS_OSRS_T;
     BME280_RegistersLocal.CTRL_MEAS |= mode;
     
     // Writing changes to the device
@@ -349,7 +356,7 @@ uint8_t BME280_GetPressureMode(void) {
 void BME280_SetPressureMode(uint8_t mode) {
 
     // Writing OSRS_P bits of CTRL_MEAS register
-    BME280_RegistersLocal.CTRL_MEAS &= BME280_CTRL_MEAS_OSRS_P;
+    BME280_RegistersLocal.CTRL_MEAS &= ~BME280_CTRL_MEAS_OSRS_P;
     BME280_RegistersLocal.CTRL_MEAS |= mode;
     
     // Writing changes to the device

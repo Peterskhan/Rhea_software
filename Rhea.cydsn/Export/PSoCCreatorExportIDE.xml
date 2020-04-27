@@ -6,8 +6,8 @@
     <Toolchain Name="ARM GCC Generic" Selected="True">
       <Tool Name="prebuild" Command="" Options="" />
       <Tool Name="assembler" Command="arm-none-eabi-as.exe" Options="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=${OutputDir}/${CompileFile}.lst -g -W" />
-      <Tool Name="compiler" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -D RHEA_TARGET_PSOC5LP -Wall -ffunction-sections -ffat-lto-objects -Og" />
-      <Tool Name="linker" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
+      <Tool Name="compiler" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og" />
+      <Tool Name="linker" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m3 -mthumb -l m -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects" />
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
     <Toolchain Name="ARM MDK Generic" Selected="False">
@@ -123,7 +123,17 @@
       </Folder>
       <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
         <Files Root="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
-          <File BuildType="BUILD" Toolchain="">main.c</File>
+          <File BuildType="BUILD" Toolchain="">rhea\rhea_config.h</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+        <Files Root="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+          <File BuildType="BUILD" Toolchain="">rhea\state\state.c</File>
+          <File BuildType="BUILD" Toolchain="">rhea\state\state.h</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+        <Files Root="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
           <File BuildType="BUILD" Toolchain="">cyapicallbacks.h</File>
         </Files>
       </Folder>
@@ -183,8 +193,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\BTN_LEFT_INTR.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\BTN_ENTER_INTR.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\BTN_ENTER_INTR.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_TX_INTR.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_TX_INTR.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SENSOR_TIMER.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SENSOR_TIMER.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SENSOR_TIMER_PM.c</File>
@@ -225,6 +233,31 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_RX_INTR.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_RX_INTR.h</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+        <Files Root="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+          <File BuildType="BUILD" Toolchain="">application\main.c</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+        <Files Root="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+          <File BuildType="BUILD" Toolchain="">application\command\command.c</File>
+          <File BuildType="BUILD" Toolchain="">application\command\command.h</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+        <Files Root="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+          <File BuildType="BUILD" Toolchain="">application\input\input.c</File>
+          <File BuildType="BUILD" Toolchain="">application\input\input.h</File>
+        </Files>
+      </Folder>
+      <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+        <Files Root="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn">
+          <File BuildType="BUILD" Toolchain="">application\menu\menu.c</File>
+          <File BuildType="BUILD" Toolchain="">application\menu\menu.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\Export\ARM_GCC_Generic">

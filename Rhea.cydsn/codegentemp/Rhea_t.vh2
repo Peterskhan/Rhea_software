@@ -1,5 +1,5 @@
 -- Project:   E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\Rhea.cyprj
--- Generated: 04/20/2020 21:26:43
+-- Generated: 04/21/2020 12:45:55
 -- PSoC Creator  4.2
 
 ENTITY Rhea IS
@@ -203,7 +203,7 @@ ARCHITECTURE __DEFAULT__ OF Rhea IS
     ATTRIBUTE Location OF BTN_RIGHT_INTR : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
     ATTRIBUTE Location OF BTN_LEFT_INTR : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE Location OF BTN_ENTER_INTR : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
-    ATTRIBUTE Location OF UART_TX_INTR : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
+    ATTRIBUTE Location OF UART_RX_INTR : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
     ATTRIBUTE Location OF \SENSOR_TIMER:TimerHW\ : LABEL IS "F(Timer,0)";
     ATTRIBUTE Location OF SENSOR_1MS : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
     ATTRIBUTE lib_model OF \UART:BUART:HalfDuplexSend_last\ : LABEL IS "macrocell12";
@@ -1472,7 +1472,7 @@ BEGIN
             interrupt => Net_59_2,
             clock => ClockBlock_BUS_CLK);
 
-    UART_TX_INTR:interrupt
+    UART_RX_INTR:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)

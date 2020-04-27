@@ -1,5 +1,5 @@
 -- Project:   Rhea
--- Generated: 04/20/2020 21:26:37
+-- Generated: 04/21/2020 12:45:48
 -- PSoC Creator  4.2
 
 ENTITY Rhea IS
@@ -1423,7 +1423,7 @@ BEGIN
             interrupt => Net_59_2,
             clock => ClockBlock_BUS_CLK);
 
-    UART_TX_INTR:interrupt
+    UART_RX_INTR:interrupt
         GENERIC MAP(
             int_type => "10",
             is_nmi => 0)

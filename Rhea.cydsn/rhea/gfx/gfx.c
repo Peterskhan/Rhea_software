@@ -24,7 +24,7 @@
  * @file    gfx.c
  * @author  Peter Gyulai
  * @version 1.0.0
- * @date    2020.04.19
+ * @date    2020.04.26
  * @brief   Library implementation.
  * @details
  * This file contains the function definitions used by the Rhea graphics library.
@@ -185,7 +185,7 @@ void rhea_gfx_DrawVerticalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhe
 	rhea_gfx_Refresh();
 }
 
-void rhea_gfx_drawHorizontalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t length, rhea_gfx_color color) {
+void rhea_gfx_DrawHorizontalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t length, rhea_gfx_color color) {
 
 	// Drawing horizontal line
 	for (rhea_gfx_size_t i = 0; i < length; i++) rhea_gfx_writePixel_impl(x + i, y, color);
@@ -194,7 +194,7 @@ void rhea_gfx_drawHorizontalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, r
 	rhea_gfx_Refresh();
 }
 
-void rhea_gfx_drawCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t radius, rhea_gfx_color color) {
+void rhea_gfx_DrawCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t radius, rhea_gfx_color color) {
 
 	// Drawing circle
 	for (rhea_gfx_coordinate i = 0; i < RHEA_GFX_WIDTH; i++) {
@@ -208,7 +208,7 @@ void rhea_gfx_drawCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_
 	rhea_gfx_Refresh();
 }
 
-void rhea_gfx_drawFilledCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t radius, rhea_gfx_color color) {
+void rhea_gfx_DrawFilledCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t radius, rhea_gfx_color color) {
 
 	// Drawing filled circle
 	for (rhea_gfx_coordinate i = 0; i < RHEA_GFX_WIDTH; i++) {
@@ -222,7 +222,7 @@ void rhea_gfx_drawFilledCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhe
 	rhea_gfx_Refresh();
 }
 
-void rhea_gfx_drawRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t width, rhea_gfx_size_t height, rhea_gfx_color color) {
+void rhea_gfx_DrawRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t width, rhea_gfx_size_t height, rhea_gfx_color color) {
 
 	// Drawing rectangle
 	for (rhea_gfx_size_t i = 0; i < width; i++) {
@@ -237,7 +237,7 @@ void rhea_gfx_drawRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_g
 	rhea_gfx_Refresh();
 }
 
-void rhea_gfx_drawFilledRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t width, rhea_gfx_size_t height, rhea_gfx_color color) {
+void rhea_gfx_DrawFilledRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t width, rhea_gfx_size_t height, rhea_gfx_color color) {
 
 	// Drawing filled rectangle
 	for (rhea_gfx_size_t i = 0; i < width; i++) {
@@ -250,7 +250,7 @@ void rhea_gfx_drawFilledRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, 
 	rhea_gfx_Refresh();
 }
 
-void rhea_gfx_drawSymbol(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_symbol_id symbolID) {
+void rhea_gfx_DrawSymbolHelper(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_symbol_id symbolID) {
 
 	// Extracting symbol descriptor
 	rhea_gfx_symbol symbol = rhea_gfx_localFont.fontDescriptors[symbolID];
@@ -278,17 +278,23 @@ void rhea_gfx_drawSymbol(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_
 			symbol.offset++;
 		}
 	}
+}
 
-	// Refreshing display
+void rhea_gfx_DrawSymbol(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_symbol_id symbolID) {
+    
+    // Drawing symbol to display buffer
+    rhea_gfx_DrawSymbolHelper(x,y,symbolID);
+    
+    // Refreshing display
 	rhea_gfx_Refresh();
 }
 
-void rhea_gfx_setCursor(rhea_gfx_coordinate x, rhea_gfx_coordinate y) {
+void rhea_gfx_SetCursor(rhea_gfx_coordinate x, rhea_gfx_coordinate y) {
 	rhea_gfx_cursorX = x;
 	rhea_gfx_cursorY = y;
 }
 
-void rhea_gfx_printSymbol(rhea_gfx_symbol_id id) {
+void rhea_gfx_PrintSymbolHelper(rhea_gfx_symbol_id id) {
 
 	// Getting symbol to print
 	rhea_gfx_symbol symbol = rhea_gfx_localFont.fontDescriptors[id];
@@ -300,13 +306,22 @@ void rhea_gfx_printSymbol(rhea_gfx_symbol_id id) {
 	}
 
 	// Printing symbol
-	rhea_gfx_DrawSymbol(rhea_gfx_cursorX, rhea_gfx_cursorY, id);
+	rhea_gfx_DrawSymbolHelper(rhea_gfx_cursorX, rhea_gfx_cursorY, id);
 
 	// Moving cursor
 	rhea_gfx_cursorX += symbol.width + symbol.paddingHorizontal;
 }
 
-void rhea_gfx_print(const char* str) {
+void rhea_gfx_PrintSymbol(rhea_gfx_symbol_id id) {
+ 
+    // Printing symbol to display buffer
+    rhea_gfx_PrintSymbolHelper(id);
+    
+    // Refreshing display
+    rhea_gfx_Refresh();
+}
+
+void rhea_gfx_Print(const char* str) {
 
 	while (*str != '\0') {
 
@@ -324,8 +339,11 @@ void rhea_gfx_print(const char* str) {
 		}
 
 		// Printing next character
-		rhea_gfx_PrintSymbol(*str++ - 32);
+		rhea_gfx_PrintSymbolHelper(*str++ - 32);
 	}
+    
+    // Refreshing display
+    rhea_gfx_Refresh();
 }
 
 #endif // DOXYGEN_SHOULD_SKIP_THIS

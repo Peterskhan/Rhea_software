@@ -1,6 +1,6 @@
 // ======================================================================
 // Rhea.v generated from TopDesign.cysch
-// 04/20/2020 at 21:26
+// 04/21/2020 at 12:45
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1116,7 +1116,7 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		UART_TX_INTR
+		UART_RX_INTR
 		 (.int_signal(Net_31));
 
 

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 1
 
 
    1              		.syntax unified
@@ -58,36 +58,39 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
   28:rhea\sensor/sensor_impl.c ****  * @brief   Sensor interface implementation.
   29:rhea\sensor/sensor_impl.c ****  * @details
   30:rhea\sensor/sensor_impl.c ****  * This file contains the sensor interface implementation. Implement the 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 2
 
 
   31:rhea\sensor/sensor_impl.c ****  * interface functionality here when porting to a new target microcontroller.
   32:rhea\sensor/sensor_impl.c ****  */
   33:rhea\sensor/sensor_impl.c **** 
-  34:rhea\sensor/sensor_impl.c **** // Including necessary headers
-  35:rhea\sensor/sensor_impl.c **** #include "sensor_config.h"
-  36:rhea\sensor/sensor_impl.c **** #include "sensor_impl.h"
-  37:rhea\sensor/sensor_impl.c **** 
-  38:rhea\sensor/sensor_impl.c **** // Target specific includes
-  39:rhea\sensor/sensor_impl.c **** #if defined(RHEA_TARGET_PSOC5LP)
-  40:rhea\sensor/sensor_impl.c ****     
-  41:rhea\sensor/sensor_impl.c ****     // Including generated source
-  42:rhea\sensor/sensor_impl.c ****     #include "project.h"
+  34:rhea\sensor/sensor_impl.c **** // Including global configuration
+  35:rhea\sensor/sensor_impl.c **** #include "../rhea_config.h"
+  36:rhea\sensor/sensor_impl.c **** 
+  37:rhea\sensor/sensor_impl.c **** // Including necessary headers
+  38:rhea\sensor/sensor_impl.c **** #include "sensor_config.h"
+  39:rhea\sensor/sensor_impl.c **** #include "sensor_impl.h"
+  40:rhea\sensor/sensor_impl.c **** 
+  41:rhea\sensor/sensor_impl.c **** // Target specific includes
+  42:rhea\sensor/sensor_impl.c **** #if defined(RHEA_TARGET_PSOC5LP)
   43:rhea\sensor/sensor_impl.c ****     
-  44:rhea\sensor/sensor_impl.c **** #elif defined(RHEA_TARGET_ESP32)
-  45:rhea\sensor/sensor_impl.c ****     
-  46:rhea\sensor/sensor_impl.c **** #endif
-  47:rhea\sensor/sensor_impl.c **** 
-  48:rhea\sensor/sensor_impl.c **** // Optional sensor interface includes
-  49:rhea\sensor/sensor_impl.c **** #if RHEA_SENSOR_ADD_BME280
-  50:rhea\sensor/sensor_impl.c ****     
-  51:rhea\sensor/sensor_impl.c ****     // Include BME280 driver interface
-  52:rhea\sensor/sensor_impl.c ****     #include "interfaces/BME280/BME280_INTF.h"
+  44:rhea\sensor/sensor_impl.c ****     // Including generated source
+  45:rhea\sensor/sensor_impl.c ****     #include "project.h"
+  46:rhea\sensor/sensor_impl.c ****     
+  47:rhea\sensor/sensor_impl.c **** #elif defined(RHEA_TARGET_ESP32)
+  48:rhea\sensor/sensor_impl.c ****     
+  49:rhea\sensor/sensor_impl.c **** #endif
+  50:rhea\sensor/sensor_impl.c **** 
+  51:rhea\sensor/sensor_impl.c **** // Optional sensor interface includes
+  52:rhea\sensor/sensor_impl.c **** #if RHEA_SENSOR_ADD_BME280
   53:rhea\sensor/sensor_impl.c ****     
-  54:rhea\sensor/sensor_impl.c **** #endif
-  55:rhea\sensor/sensor_impl.c **** 
-  56:rhea\sensor/sensor_impl.c **** void rhea_sensor_initialize_impl(void) {
-  28              		.loc 1 56 0
+  54:rhea\sensor/sensor_impl.c ****     // Include BME280 driver interface
+  55:rhea\sensor/sensor_impl.c ****     #include "interfaces/BME280/BME280_INTF.h"
+  56:rhea\sensor/sensor_impl.c ****     
+  57:rhea\sensor/sensor_impl.c **** #endif
+  58:rhea\sensor/sensor_impl.c **** 
+  59:rhea\sensor/sensor_impl.c **** void rhea_sensor_initialize_impl(void) {
+  28              		.loc 1 59 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -95,39 +98,39 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
   33              		.cfi_def_cfa_offset 8
   34              		.cfi_offset 3, -8
   35              		.cfi_offset 14, -4
-  57:rhea\sensor/sensor_impl.c ****     
-  58:rhea\sensor/sensor_impl.c ****     // Implementation for PSoC5LP target
-  59:rhea\sensor/sensor_impl.c ****     #if defined(RHEA_TARGET_PSOC5LP)
-  60:rhea\sensor/sensor_impl.c ****         
-  61:rhea\sensor/sensor_impl.c ****         // Enabling sensor timer
-  62:rhea\sensor/sensor_impl.c ****         SENSOR_TIMER_Start();
-  36              		.loc 1 62 0
+  60:rhea\sensor/sensor_impl.c ****     
+  61:rhea\sensor/sensor_impl.c ****     // Implementation for PSoC5LP target
+  62:rhea\sensor/sensor_impl.c ****     #if defined(RHEA_TARGET_PSOC5LP)
+  63:rhea\sensor/sensor_impl.c ****         
+  64:rhea\sensor/sensor_impl.c ****         // Enabling sensor timer
+  65:rhea\sensor/sensor_impl.c ****         SENSOR_TIMER_Start();
+  36              		.loc 1 65 0
   37 0002 FFF7FEFF 		bl	SENSOR_TIMER_Start
   38              	.LVL0:
-  63:rhea\sensor/sensor_impl.c ****         
-  64:rhea\sensor/sensor_impl.c ****         // Enabling periodic sensor interrupt
-  65:rhea\sensor/sensor_impl.c ****         SENSOR_1MS_StartEx(rhea_sensor_periodicMeasure);
-  39              		.loc 1 65 0
+  66:rhea\sensor/sensor_impl.c ****         
+  67:rhea\sensor/sensor_impl.c ****         // Enabling periodic sensor interrupt
+  68:rhea\sensor/sensor_impl.c ****         SENSOR_1MS_StartEx(rhea_sensor_periodicMeasure);
+  39              		.loc 1 68 0
   40 0006 0348     		ldr	r0, .L3
   41 0008 FFF7FEFF 		bl	SENSOR_1MS_StartEx
   42              	.LVL1:
-  66:rhea\sensor/sensor_impl.c ****         
-  67:rhea\sensor/sensor_impl.c ****     // Implementation for ESP32 target
-  68:rhea\sensor/sensor_impl.c ****     #elif defined(RHEA_TARGET_ESP32) 
   69:rhea\sensor/sensor_impl.c ****         
-  70:rhea\sensor/sensor_impl.c ****         #error ESP32 sensor library not initialized!
-  71:rhea\sensor/sensor_impl.c ****         
-  72:rhea\sensor/sensor_impl.c ****     #endif
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 3
+  70:rhea\sensor/sensor_impl.c ****     // Implementation for ESP32 target
+  71:rhea\sensor/sensor_impl.c ****     #elif defined(RHEA_TARGET_ESP32) 
+  72:rhea\sensor/sensor_impl.c ****         
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 3
 
 
-  73:rhea\sensor/sensor_impl.c ****     
-  74:rhea\sensor/sensor_impl.c ****     // Optionally add BME280 to the defult configuration
-  75:rhea\sensor/sensor_impl.c ****     #if RHEA_SENSOR_ADD_BME280
-  76:rhea\sensor/sensor_impl.c ****         
-  77:rhea\sensor/sensor_impl.c ****         // Adding sensor interface
-  78:rhea\sensor/sensor_impl.c ****         bme280_addInterface();
-  43              		.loc 1 78 0
+  73:rhea\sensor/sensor_impl.c ****         #error ESP32 sensor library not initialized!
+  74:rhea\sensor/sensor_impl.c ****         
+  75:rhea\sensor/sensor_impl.c ****     #endif
+  76:rhea\sensor/sensor_impl.c ****     
+  77:rhea\sensor/sensor_impl.c ****     // Optionally add BME280 to the defult configuration
+  78:rhea\sensor/sensor_impl.c ****     #if RHEA_SENSOR_ADD_BME280
+  79:rhea\sensor/sensor_impl.c ****         
+  80:rhea\sensor/sensor_impl.c ****         // Adding sensor interface
+  81:rhea\sensor/sensor_impl.c ****         bme280_addInterface();
+  43              		.loc 1 81 0
   44 000c FFF7FEFF 		bl	bme280_addInterface
   45              	.LVL2:
   46 0010 08BD     		pop	{r3, pc}
@@ -175,12 +178,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
   88 003a 02       		.uleb128 0x2
   89 003b 02       		.byte	0x2
   90 003c 07       		.byte	0x7
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 4
+
+
   91 003d 0E000000 		.4byte	.LASF3
   92 0041 03       		.uleb128 0x3
   93 0042 83010000 		.4byte	.LASF9
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 4
-
-
   94 0046 02       		.byte	0x2
   95 0047 3F       		.byte	0x3f
   96 0048 4C000000 		.4byte	0x4c
@@ -235,12 +238,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
  145 00a0 55010000 		.4byte	.LASF15
  146 00a4 05       		.uleb128 0x5
  147 00a5 C6010000 		.4byte	.LASF22
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 5
+
+
  148 00a9 01       		.byte	0x1
- 149 00aa 38       		.byte	0x38
+ 149 00aa 3B       		.byte	0x3b
  150 00ab 00000000 		.4byte	.LFB63
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 5
-
-
  151 00af 18000000 		.4byte	.LFE63-.LFB63
  152 00b3 01       		.uleb128 0x1
  153 00b4 9C       		.byte	0x9c
@@ -295,12 +298,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
  202 000c 17       		.uleb128 0x17
  203 000d 11       		.uleb128 0x11
  204 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 6
+
+
  205 000f 10       		.uleb128 0x10
  206 0010 17       		.uleb128 0x17
  207 0011 00       		.byte	0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 6
-
-
  208 0012 00       		.byte	0
  209 0013 02       		.uleb128 0x2
  210 0014 24       		.uleb128 0x24
@@ -355,12 +358,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
  259 0045 12       		.uleb128 0x12
  260 0046 06       		.uleb128 0x6
  261 0047 40       		.uleb128 0x40
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 7
+
+
  262 0048 18       		.uleb128 0x18
  263 0049 9742     		.uleb128 0x2117
  264 004b 19       		.uleb128 0x19
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 7
-
-
  265 004c 01       		.uleb128 0x1
  266 004d 13       		.uleb128 0x13
  267 004e 00       		.byte	0
@@ -415,12 +418,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
  316 0081 0B       		.uleb128 0xb
  317 0082 00       		.byte	0
  318 0083 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 8
+
+
  319 0084 00       		.byte	0
  320              		.section	.debug_aranges,"",%progbits
  321 0000 1C000000 		.4byte	0x1c
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 8
-
-
  322 0004 0200     		.2byte	0x2
  323 0006 00000000 		.4byte	.Ldebug_info0
  324 000a 04       		.byte	0x4
@@ -475,12 +478,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
  351              	.LASF19:
  352 0075 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  352      43313120 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 9
+
+
  352      352E342E 
  352      31203230 
  352      31363036 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 9
-
-
  353 00a8 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
  353      20726576 
  353      6973696F 
@@ -535,12 +538,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 1
  374      65642063 
  374      68617200 
  375              	.LASF14:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccNWnRBE.s 			page 10
+
+
  376 0177 6C6F6E67 		.ascii	"long double\000"
  376      20646F75 
  376      626C6500 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc2R9Gxd.s 			page 10
-
-
  377              	.LASF9:
  378 0183 5F5F696E 		.ascii	"__int32_t\000"
  378      7433325F 

@@ -40,6 +40,12 @@ void rhea_uart_Initialize(void) {
     // Invoking driver implementation
     rhea_uart_initialize_impl();
 }
+
+uint64_t rhea_uart_BytesAvailable(void) {
+    
+    // Invoking driver implementation
+    return rhea_uart_bytesAvailable_impl();
+}
     
 uint8_t rhea_uart_ReadByte(void) {
     
