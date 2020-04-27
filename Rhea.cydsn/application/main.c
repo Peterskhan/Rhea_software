@@ -28,9 +28,9 @@ void test_graphics(void) {
 }
 
 void test_sensor(void) {
-        rhea_sensor_TakeMeasurement("BME280", "temperature");
-        rhea_sensor_TakeMeasurement("BME280", "pressure");
-        rhea_sensor_TakeMeasurement("BME280", "humidity");
+        rhea_sensor_SetMeasurementPeriod("BME280", "temperature", 250);
+        rhea_sensor_SetMeasurementPeriod("BME280", "pressure", 250);
+        rhea_sensor_SetMeasurementPeriod("BME280", "humidity", 250);
         
         CyDelay(250);
 
@@ -40,7 +40,7 @@ void test_sensor(void) {
         
         char buffer[50];
         sprintf(buffer, "T: %d ", temperatureInt);
-        rhea_gfx_Clear(); rhea_gfx_SetCursor(0,0);
+        rhea_gfx_SetCursor(0,0);
         rhea_gfx_Print(buffer); rhea_gfx_PrintSymbol(95); rhea_gfx_Print("\n");
         
         sprintf(buffer, "P: %d ", pressureInt); 
@@ -48,6 +48,8 @@ void test_sensor(void) {
         
         sprintf(buffer, "H: %d %%\n", humidityInt);
         rhea_gfx_Print(buffer);
+        
+        rhea_gfx_Refresh();
 }
 
 int main(void)
@@ -63,14 +65,21 @@ int main(void)
     rhea_sensor_Initialize();
 
     // Initializing application
-    //InitializeInputButtonInterrupts();
+    InitializeInputButtonInterrupts();
     //InitializeSerialCommandLine();
-    //InitializeMainMenu();
+    InitializeMainMenu();
         
     // Executing application logic
     for(;;)
     {     
-        test_sensor();
+        //test_sensor();
+        
+        //rhea_gfx_Clear();
+        //rhea_gfx_SetCursor(0,0);
+        //rhea_gfx_Print("RIGHT:"); rhea_gfx_Print(BTN_RIGHT_Read() ? "ON\n" : "OFF\n");
+        //rhea_gfx_Print("LEFT:"); rhea_gfx_Print(BTN_LEFT_Read() ? "ON\n" : "OFF\n");
+        //rhea_gfx_Print("ENTER:"); rhea_gfx_Print(BTN_ENTER_Read() ? "ON\n" : "OFF\n");
+        //rhea_gfx_Refresh();
         
         // Handling UART command line 
         //ProcessCommandLine();
@@ -79,10 +88,8 @@ int main(void)
         // rhea_rtc_HandleAlarms();
         
         // Processing user input 
-        /*StepMainMenuStateMachine(&button_enter_pressed, 
+        StepMainMenuStateMachine(&button_enter_pressed, 
                                  &button_right_pressed, 
-                                 &button_left_pressed);*/
-        
-
+                                 &button_left_pressed);
     }
 }

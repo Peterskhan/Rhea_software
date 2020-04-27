@@ -70,28 +70,32 @@
         SSD1306_SetI2CController(controller);
 
         // Initializing driver
-        SSD1306_Init();
+        uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+            SSD1306_Init();
+        RHEA_EXIT_CRITICAL_SECTION(status);
     }
 
     void rhea_gfx_reset_impl(void) {
 
         // Resetting driver
-        SSD1306_Reset();
+        uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+            SSD1306_Reset();
+        RHEA_EXIT_CRITICAL_SECTION(status);
     }
 
     void rhea_gfx_clear_impl(void) {
 
         // Clearing driver
         SSD1306_ClearDisplay();
-
-        // Refreshing display
-        SSD1306_RefreshDisplay();
     }
 
     void rhea_gfx_refresh_impl(void) {
 
         // Refreshing display
-        SSD1306_RefreshDisplay();
+        uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+            SSD1306_RefreshDisplay();
+        RHEA_EXIT_CRITICAL_SECTION(status);
+        
     }
 
     void rhea_gfx_writePixel_impl(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_color color) {

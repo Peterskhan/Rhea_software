@@ -85,6 +85,9 @@ void rhea_gfx_Reset(void);
 /** @brief Clears the graphics display. */
 void rhea_gfx_Clear(void);
 
+/** @brief Refreshes the graphics display. */
+void rhea_gfx_Refresh(void);
+
 /** 
  * @brief Sets the text & symbol font used by the graphics. 
  * @param font The font description structure.

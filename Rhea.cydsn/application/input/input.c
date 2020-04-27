@@ -42,10 +42,19 @@ volatile uint8_t button_left_pressed = 0;
 void InitializeInputButtonInterrupts(void) {
     
     // Initializing and starting handlers
+    DEBOUNCE_CLK_Start();
     BTN_ENTER_INTR_StartEx(BTN_ENTER_ISR);
     BTN_RIGHT_INTR_StartEx(BTN_RIGHT_ISR);
     BTN_LEFT_INTR_StartEx(BTN_LEFT_ISR);
+    
+    //CyDelay(500);
+    
+    button_enter_pressed = 0;
+    button_right_pressed = 0;
+    button_left_pressed = 0;
 }
+
+#include "../../rhea/gfx/gfx.h"
 
 CY_ISR(BTN_ENTER_ISR) {
     button_enter_pressed = 1;

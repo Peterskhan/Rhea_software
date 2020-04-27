@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: BTN_INPUT.c  
+* File Name: BTN_LEFT.c  
 * Version 2.20
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "BTN_INPUT.h"
+#include "BTN_LEFT.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 BTN_INPUT__PORT == 15 && ((BTN_INPUT__MASK & 0xC0) != 0))
+	 BTN_LEFT__PORT == 15 && ((BTN_LEFT__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: BTN_INPUT_Write
+* Function Name: BTN_LEFT_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -52,17 +52,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet BTN_INPUT_SUT.c usage_BTN_INPUT_Write
+*  \snippet BTN_LEFT_SUT.c usage_BTN_LEFT_Write
 *******************************************************************************/
-void BTN_INPUT_Write(uint8 value)
+void BTN_LEFT_Write(uint8 value)
 {
-    uint8 staticBits = (BTN_INPUT_DR & (uint8)(~BTN_INPUT_MASK));
-    BTN_INPUT_DR = staticBits | ((uint8)(value << BTN_INPUT_SHIFT) & BTN_INPUT_MASK);
+    uint8 staticBits = (BTN_LEFT_DR & (uint8)(~BTN_LEFT_MASK));
+    BTN_LEFT_DR = staticBits | ((uint8)(value << BTN_LEFT_SHIFT) & BTN_LEFT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: BTN_INPUT_SetDriveMode
+* Function Name: BTN_LEFT_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -85,18 +85,16 @@ void BTN_INPUT_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet BTN_INPUT_SUT.c usage_BTN_INPUT_SetDriveMode
+*  \snippet BTN_LEFT_SUT.c usage_BTN_LEFT_SetDriveMode
 *******************************************************************************/
-void BTN_INPUT_SetDriveMode(uint8 mode)
+void BTN_LEFT_SetDriveMode(uint8 mode)
 {
-	CyPins_SetPinDriveMode(BTN_INPUT_0, mode);
-	CyPins_SetPinDriveMode(BTN_INPUT_1, mode);
-	CyPins_SetPinDriveMode(BTN_INPUT_2, mode);
+	CyPins_SetPinDriveMode(BTN_LEFT_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: BTN_INPUT_Read
+* Function Name: BTN_LEFT_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -110,16 +108,16 @@ void BTN_INPUT_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet BTN_INPUT_SUT.c usage_BTN_INPUT_Read  
+*  \snippet BTN_LEFT_SUT.c usage_BTN_LEFT_Read  
 *******************************************************************************/
-uint8 BTN_INPUT_Read(void)
+uint8 BTN_LEFT_Read(void)
 {
-    return (BTN_INPUT_PS & BTN_INPUT_MASK) >> BTN_INPUT_SHIFT;
+    return (BTN_LEFT_PS & BTN_LEFT_MASK) >> BTN_LEFT_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: BTN_INPUT_ReadDataReg
+* Function Name: BTN_LEFT_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -128,8 +126,8 @@ uint8 BTN_INPUT_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred BTN_INPUT_Read() API because the 
-* BTN_INPUT_ReadDataReg() reads the data register instead of the status 
+* preferred BTN_LEFT_Read() API because the 
+* BTN_LEFT_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -138,19 +136,19 @@ uint8 BTN_INPUT_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet BTN_INPUT_SUT.c usage_BTN_INPUT_ReadDataReg 
+*  \snippet BTN_LEFT_SUT.c usage_BTN_LEFT_ReadDataReg 
 *******************************************************************************/
-uint8 BTN_INPUT_ReadDataReg(void)
+uint8 BTN_LEFT_ReadDataReg(void)
 {
-    return (BTN_INPUT_DR & BTN_INPUT_MASK) >> BTN_INPUT_SHIFT;
+    return (BTN_LEFT_DR & BTN_LEFT_MASK) >> BTN_LEFT_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(BTN_INPUT_INTSTAT) 
+#if defined(BTN_LEFT_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: BTN_INPUT_SetInterruptMode
+    * Function Name: BTN_LEFT_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -163,12 +161,12 @@ uint8 BTN_INPUT_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use BTN_INPUT_INTR_ALL to configure the
+    *  component. Or you may use BTN_LEFT_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - BTN_INPUT_0_INTR       (First pin in the list)
-    *  - BTN_INPUT_1_INTR       (Second pin in the list)
+    *  - BTN_LEFT_0_INTR       (First pin in the list)
+    *  - BTN_LEFT_1_INTR       (Second pin in the list)
     *  - ...
-    *  - BTN_INPUT_INTR_ALL     (All pins in Pins component)
+    *  - BTN_LEFT_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -184,27 +182,19 @@ uint8 BTN_INPUT_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet BTN_INPUT_SUT.c usage_BTN_INPUT_SetInterruptMode
+    *  \snippet BTN_LEFT_SUT.c usage_BTN_LEFT_SetInterruptMode
     *******************************************************************************/
-    void BTN_INPUT_SetInterruptMode(uint16 position, uint16 mode)
+    void BTN_LEFT_SetInterruptMode(uint16 position, uint16 mode)
     {
-		if((position & BTN_INPUT_0_INTR) != 0u) 
+		if((position & BTN_LEFT_0_INTR) != 0u) 
 		{ 
-			 BTN_INPUT_0_INTTYPE_REG = (uint8)mode; 
-		} 
-		if((position & BTN_INPUT_1_INTR) != 0u) 
-		{ 
-			 BTN_INPUT_1_INTTYPE_REG = (uint8)mode; 
-		} 
-		if((position & BTN_INPUT_2_INTR) != 0u) 
-		{ 
-			 BTN_INPUT_2_INTTYPE_REG = (uint8)mode; 
+			 BTN_LEFT_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: BTN_INPUT_ClearInterrupt
+    * Function Name: BTN_LEFT_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -221,11 +211,11 @@ uint8 BTN_INPUT_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet BTN_INPUT_SUT.c usage_BTN_INPUT_ClearInterrupt
+    *  \snippet BTN_LEFT_SUT.c usage_BTN_LEFT_ClearInterrupt
     *******************************************************************************/
-    uint8 BTN_INPUT_ClearInterrupt(void)
+    uint8 BTN_LEFT_ClearInterrupt(void)
     {
-        return (BTN_INPUT_INTSTAT & BTN_INPUT_MASK) >> BTN_INPUT_SHIFT;
+        return (BTN_LEFT_INTSTAT & BTN_LEFT_MASK) >> BTN_LEFT_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

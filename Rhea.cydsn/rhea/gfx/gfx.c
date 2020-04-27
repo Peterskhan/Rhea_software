@@ -173,7 +173,7 @@ void rhea_gfx_DrawLine(rhea_gfx_coordinate x0, rhea_gfx_coordinate y0, rhea_gfx_
 	}
 
 	// Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_DrawVerticalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t height, rhea_gfx_color color) {
@@ -182,7 +182,7 @@ void rhea_gfx_DrawVerticalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhe
 	for (rhea_gfx_size_t i = 0; i < height; i++) rhea_gfx_writePixel_impl(x, y + i, color);
 
 	// Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_DrawHorizontalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t length, rhea_gfx_color color) {
@@ -191,7 +191,7 @@ void rhea_gfx_DrawHorizontalLine(rhea_gfx_coordinate x, rhea_gfx_coordinate y, r
 	for (rhea_gfx_size_t i = 0; i < length; i++) rhea_gfx_writePixel_impl(x + i, y, color);
 
 	// Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_DrawCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t radius, rhea_gfx_color color) {
@@ -205,7 +205,7 @@ void rhea_gfx_DrawCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_
 	}
 
 	// Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_DrawFilledCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t radius, rhea_gfx_color color) {
@@ -219,7 +219,7 @@ void rhea_gfx_DrawFilledCircle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhe
 	}
 
 	// Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_DrawRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t width, rhea_gfx_size_t height, rhea_gfx_color color) {
@@ -234,7 +234,7 @@ void rhea_gfx_DrawRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_g
 	}
 
 	// Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_DrawFilledRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_size_t width, rhea_gfx_size_t height, rhea_gfx_color color) {
@@ -247,7 +247,7 @@ void rhea_gfx_DrawFilledRectangle(rhea_gfx_coordinate x, rhea_gfx_coordinate y, 
 	}
 
 	// Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_DrawSymbolHelper(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_symbol_id symbolID) {
@@ -286,7 +286,7 @@ void rhea_gfx_DrawSymbol(rhea_gfx_coordinate x, rhea_gfx_coordinate y, rhea_gfx_
     rhea_gfx_DrawSymbolHelper(x,y,symbolID);
     
     // Refreshing display
-	rhea_gfx_Refresh();
+	// rhea_gfx_Refresh();
 }
 
 void rhea_gfx_SetCursor(rhea_gfx_coordinate x, rhea_gfx_coordinate y) {
@@ -318,7 +318,7 @@ void rhea_gfx_PrintSymbol(rhea_gfx_symbol_id id) {
     rhea_gfx_PrintSymbolHelper(id);
     
     // Refreshing display
-    rhea_gfx_Refresh();
+    // rhea_gfx_Refresh();
 }
 
 void rhea_gfx_Print(const char* str) {
@@ -343,7 +343,7 @@ void rhea_gfx_Print(const char* str) {
 	}
     
     // Refreshing display
-    rhea_gfx_Refresh();
+    // rhea_gfx_Refresh();
 }
 
 #endif // DOXYGEN_SHOULD_SKIP_THIS

@@ -33,6 +33,7 @@
 // Project includes
 #include "uart.h"
 #include "uart_impl.h"
+#include "../rhea_config.h"
 
 
 void rhea_uart_Initialize(void) {
@@ -54,9 +55,11 @@ uint8_t rhea_uart_ReadByte(void) {
 }
 
 void rhea_uart_ReadBytes(uint8_t *bytes, uint64_t count) {
-    for(uint64_t i = 0; i < count; i++) {
-        bytes[i] = rhea_uart_ReadByte();   
-    }
+    uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+        for(uint64_t i = 0; i < count; i++) {
+            bytes[i] = rhea_uart_ReadByte();   
+        }
+    RHEA_EXIT_CRITICAL_SECTION(status);
 }
 
 void rhea_uart_ReadBuffer(uint8_t *buffer, uint64_t size) {
@@ -68,12 +71,14 @@ char rhea_uart_ReadChar(void) {
 }
 
 void rhea_uart_ReadString(char *string) {
-    char c = rhea_uart_ReadChar();
-    while(c != '\0') {
-        *(string++) = c;
-        c = rhea_uart_ReadChar();
-    }
-    *string = '\0';
+    uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+        char c = rhea_uart_ReadChar();
+        while(c != '\0') {
+            *(string++) = c;
+            c = rhea_uart_ReadChar();
+        }
+        *string = '\0';
+    RHEA_EXIT_CRITICAL_SECTION(status);
 }
 
 void rhea_uart_WriteByte(uint8_t byte) {
@@ -83,9 +88,11 @@ void rhea_uart_WriteByte(uint8_t byte) {
 }
 
 void rhea_uart_WriteBytes(const uint8_t *bytes, uint64_t count) {
-    for(uint64_t i = 0; i < count; i++) {
-        rhea_uart_WriteByte(bytes[i]);
-    }
+    uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+        for(uint64_t i = 0; i < count; i++) {
+            rhea_uart_WriteByte(bytes[i]);
+        }
+    RHEA_EXIT_CRITICAL_SECTION(status);
 }
 
 void rhea_uart_WriteBuffer(const uint8_t *buffer, uint64_t size) {
@@ -97,8 +104,10 @@ void rhea_uart_WriteChar(char c) {
 }
 
 void rhea_uart_WriteString(const char *string) {
-    while(*string != '\0') {
-        rhea_uart_WriteChar(*string++);   
-    }
-    rhea_uart_WriteChar('\0');
+    uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+        while(*string != '\0') {
+            rhea_uart_WriteChar(*string++);   
+        }
+        rhea_uart_WriteChar('\0');
+    RHEA_EXIT_CRITICAL_SECTION(status);
 }

@@ -32,6 +32,7 @@
 
 // Standard includes
 #include <stdio.h>
+#include <math.h>
 
 // Project includes
 #include "../../rhea/sensor/sensor.h"
@@ -81,13 +82,16 @@ rhea_state_StateMachine mainStateMachine;
 
 // Forward declarations for on-transition actions
 void showTemperatureMain(void);
+void updateTemperatureMain(void);
 void showTemperaturePeriod(void);
 void increaseTemperaturePeriod(void);
 void decreaseTemperaturePeriod(void);
+void updatePressureMain(void);
 void showPressureMain(void);
 void showPressurePeriod(void);
 void increasePressurePeriod(void);
 void decreasePressurePeriod(void);
+void updateHumidityMain(void);
 void showHumidityMain(void);
 void showHumidityPeriod(void);
 void increaseHumidityPeriod(void);
@@ -104,7 +108,7 @@ void InitializeMainMenu(void) {
     mainStateMachine.currentState = TEMPERATURE_MAIN;
     
     // Creating main menu transition table
-    rhea_state_Transition mainTransitions[STATE_COUNT][INPUT_COUNT];
+    static rhea_state_Transition mainTransitions[STATE_COUNT][INPUT_COUNT];
     
     // Setting state transitions
     mainStateMachine.transitions = (rhea_state_Transition*) mainTransitions;
@@ -124,7 +128,7 @@ void InitializeMainMenu(void) {
     };
     mainTransitions[TEMPERATURE_MAIN][NONE] = (rhea_state_Transition) {
         .nextState = TEMPERATURE_MAIN,
-        .action = showTemperatureMain
+        .action = updateTemperatureMain
     };
     
     // Temperature setup transitions
@@ -160,7 +164,7 @@ void InitializeMainMenu(void) {
     };
     mainTransitions[PRESSURE_MAIN][NONE] = (rhea_state_Transition) {
         .nextState = PRESSURE_MAIN,
-        .action = showPressureMain
+        .action = updatePressureMain
     };
     
     // Pressure setup transitions
@@ -196,7 +200,7 @@ void InitializeMainMenu(void) {
     };
     mainTransitions[HUMIDITY_MAIN][NONE] = (rhea_state_Transition) {
         .nextState = HUMIDITY_MAIN,
-        .action = showHumidityMain
+        .action = updateHumidityMain
     };
     
     // Humidity setup transitions
@@ -216,6 +220,11 @@ void InitializeMainMenu(void) {
         .nextState = HUMIDITY_SETUP,
         .action = showHumidityPeriod
     };
+    
+    // Initialize sensors
+    rhea_sensor_SetMeasurementPeriod("BME280", "temperature", 500);
+    rhea_sensor_SetMeasurementPeriod("BME280", "pressure", 500);
+    rhea_sensor_SetMeasurementPeriod("BME280", "humidity", 500);
 }
 
 void StepMainMenuStateMachine(volatile uint8_t *button_enter_pressed,
@@ -249,12 +258,32 @@ void showTemperatureMain(void) {
     char buffer[32] = {0};
     
     // Populating buffer
-    sprintf(buffer, "Temperature: %lf ", rhea_sensor_GetMeasurement("BME280", "temperature"));
+    sprintf(buffer, "Temperature:\n%u ", (unsigned) rhea_sensor_GetMeasurement("BME280", "temperature"));
     
     // Printing to display
     rhea_gfx_Clear();
+    rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
     rhea_gfx_PrintSymbol(95); // Codefont_8x8_Celsius symbol
+    rhea_gfx_Refresh();
+}
+
+void updateTemperatureMain(void) {
+    
+    // Last displayed value
+    static double temperature = 0.0f;
+    
+    // Reading temperature
+    double temperatureNew = rhea_sensor_GetMeasurement("BME280", "temperature");
+    
+    // Checking for changes
+    if(fabs(temperature - temperatureNew) < 0.001) return;
+    
+    // Updating last displayed value
+    temperature = temperatureNew;
+    
+    // Updating display
+    showTemperatureMain();
 }
 
 void showTemperaturePeriod(void) {
@@ -262,12 +291,18 @@ void showTemperaturePeriod(void) {
     // Creating output buffer
     char buffer[32] = {0};
     
-    // Populating buffer
-    sprintf(buffer, "T_period: %u ms", (unsigned) rhea_sensor_GetMeasurementPeriod("BME280", "temperature"));
+    // Reading period
+    uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "temperature");
     
+    // Populating buffer
+    if(period == 0) sprintf(buffer, "T_period: DISABLED");
+    else            sprintf(buffer, "T_period: %u ms", (unsigned) period);
+
     // Printing to display
     rhea_gfx_Clear();
+    rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_Refresh();
 }
 
 void increaseTemperaturePeriod(void) {
@@ -276,7 +311,7 @@ void increaseTemperaturePeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "temperature");
     
     // Increasing period
-    rhea_sensor_SetMeasurementPeriod("BME280", "temperature", ++period);
+    rhea_sensor_SetMeasurementPeriod("BME280", "temperature", period + 100);
 }
 
 void decreaseTemperaturePeriod(void) {
@@ -285,7 +320,8 @@ void decreaseTemperaturePeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "temperature");
     
     // Decreasing period
-    rhea_sensor_SetMeasurementPeriod("BME280", "temperature", --period);
+    if(period > 100) rhea_sensor_SetMeasurementPeriod("BME280", "temperature", period - 100);
+    else             rhea_sensor_SetMeasurementPeriod("BME280", "temperature", 0);
 }
 
 void showPressureMain(void) {
@@ -294,12 +330,32 @@ void showPressureMain(void) {
     char buffer[32] = {0};
     
     // Populating buffer
-    sprintf(buffer, "Pressure: %lf ", rhea_sensor_GetMeasurement("BME280", "pressure"));
+    sprintf(buffer, "Pressure:\n%u ", (unsigned) rhea_sensor_GetMeasurement("BME280", "pressure"));
     
     // Printing to display
     rhea_gfx_Clear();
+    rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
     rhea_gfx_PrintSymbol(98); // Codefont_8x8_Pascal symbol
+    rhea_gfx_Refresh();
+}
+
+void updatePressureMain(void) {
+    
+    // Last displayed value
+    static double pressure = 0.0f;
+    
+    // Reading pressure
+    double pressureNew = rhea_sensor_GetMeasurement("BME280", "pressure");
+    
+    // Checking for changes
+    if(fabs(pressure - pressureNew) < 0.001) return;
+    
+    // Updating last displayed value
+    pressure = pressureNew;
+    
+    // Updating display
+    showPressureMain();
 }
 
 void showPressurePeriod(void) {
@@ -307,12 +363,18 @@ void showPressurePeriod(void) {
     // Creating output buffer
     char buffer[32] = {0};
     
+    // Reading period
+    uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "pressure");
+    
     // Populating buffer
-    sprintf(buffer, "P_period: %u ms", (unsigned) rhea_sensor_GetMeasurementPeriod("BME280", "pressure"));
+    if(period == 0) sprintf(buffer, "P_period: DISABLED");
+    else            sprintf(buffer, "P_period: %u ms", (unsigned) period);
     
     // Printing to display
     rhea_gfx_Clear();
+    rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_Refresh();
 }
 
 void increasePressurePeriod(void) {
@@ -321,7 +383,7 @@ void increasePressurePeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "pressure");
     
     // Increasing period
-    rhea_sensor_SetMeasurementPeriod("BME280", "pressure", ++period);
+    rhea_sensor_SetMeasurementPeriod("BME280", "pressure", period + 100);
 }
 
 void decreasePressurePeriod(void) {
@@ -330,7 +392,8 @@ void decreasePressurePeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "pressure");
     
     // Increasing period
-    rhea_sensor_SetMeasurementPeriod("BME280", "pressure", --period);
+    if(period > 100) rhea_sensor_SetMeasurementPeriod("BME280", "pressure", period - 100);
+    else             rhea_sensor_SetMeasurementPeriod("BME280", "pressure", 0);
 }
 
 void showHumidityMain(void) {
@@ -339,11 +402,31 @@ void showHumidityMain(void) {
     char buffer[32] = {0};
     
     // Populating buffer
-    sprintf(buffer, "Humidity: %lf %%", rhea_sensor_GetMeasurement("BME280", "humidity"));
+    sprintf(buffer, "Humidity:\n%u %%", (unsigned) rhea_sensor_GetMeasurement("BME280", "humidity"));
     
     // Printing to display
     rhea_gfx_Clear();
+    rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_Refresh();
+}
+
+void updateHumidityMain(void) {
+    
+    // Last displayed value
+    static double humidity = 0.0f;
+    
+    // Reading humidity
+    double humidityNew = rhea_sensor_GetMeasurement("BME280", "humidity");
+    
+    // Checking for changes
+    if(fabs(humidity - humidityNew) < 0.001) return;
+    
+    // Updating last displayed value
+    humidity = humidityNew;
+    
+    // Updating display
+    showHumidityMain();
 }
 
 void showHumidityPeriod(void) {
@@ -351,12 +434,18 @@ void showHumidityPeriod(void) {
     // Creating output buffer
     char buffer[32] = {0};
     
+    // Reading period
+    uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "humidity");
+    
     // Populating buffer
-    sprintf(buffer, "H_period: %u ms", (unsigned) rhea_sensor_GetMeasurementPeriod("BME280", "humidity"));
+    if(period == 0) sprintf(buffer, "H_period: DISABLED");
+    else            sprintf(buffer, "H_period: %u ms", (unsigned) period);
     
     // Printing to display
     rhea_gfx_Clear();
+    rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_Refresh();
 }
 
 void increaseHumidityPeriod(void) {
@@ -365,7 +454,7 @@ void increaseHumidityPeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "humidity");
     
     // Increasing period
-    rhea_sensor_SetMeasurementPeriod("BME280", "humidity", ++period);
+    rhea_sensor_SetMeasurementPeriod("BME280", "humidity", period + 100);
 }
 
 void decreaseHumidityPeriod(void) {
@@ -374,5 +463,6 @@ void decreaseHumidityPeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "humidity");
     
     // Increasing period
-    rhea_sensor_SetMeasurementPeriod("BME280", "humidity", --period);
+    if(period > 100) rhea_sensor_SetMeasurementPeriod("BME280", "humidity", period - 100);
+    else             rhea_sensor_SetMeasurementPeriod("BME280", "humidity", 0);
 }

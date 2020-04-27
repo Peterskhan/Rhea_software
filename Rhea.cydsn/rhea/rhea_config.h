@@ -48,4 +48,10 @@
     
 /** @} */
     
+#ifdef RHEA_TARGET_PSOC5LP 
+    #include "project.h"
+    #define RHEA_ENTER_CRITICAL_SECTION CyEnterCriticalSection
+    #define RHEA_EXIT_CRITICAL_SECTION CyExitCriticalSection
+#endif
+    
 #endif // RHEA_CONFIG_H_INCLUDED

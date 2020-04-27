@@ -228,7 +228,7 @@
 		// Array to store persistent alarms to SRAM
 		rhea_rtc_alarmRegisterStruct persistentAlarms[RHEA_RTC_HARDWARE_ALARM_COUNT];
 
-		// 
+		// Reading alarm registry
 		for(uint8_t i = 0; i < RHEA_RTC_HARDWARE_ALARM_COUNT; i++) {
 			persistentAlarms[i] = rhea_rtc_toAlarmRegisterStruct(rhea_rtc_alarmRegistry[i]);
 		}

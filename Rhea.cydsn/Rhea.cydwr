@@ -252,10 +252,16 @@
   <Group key="DWRInstGuidMapping">
     <Group key="Pin">
       <Data key="02f2cf2c-2c7a-49df-9246-7a3435c21be3" value="I2C_SCL" />
+      <Data key="4f2ad36f-bb57-48b8-9df6-2bab6ea29267" value="ENTER_TEST" />
       <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="RTC_INTR_PIN" />
+      <Data key="49c02af4-c8a8-4c85-af1b-0613c1332725" value="BTN_LEFT" />
       <Data key="65be0b93-195e-424a-89bf-901811675de1" value="UART_RX" />
       <Data key="22863ebe-a37b-476f-b252-6e49a8c00b12" value="I2C_SDA" />
+      <Data key="b4f501d7-a4d2-46b6-b7f7-af55c68fb3fa" value="LEFT_TEST" />
       <Data key="cbe03fbc-bce4-4a01-a0a3-7dc5ad9150c3" value="BTN_INPUT" />
+      <Data key="d6c5779c-9024-476a-ba4a-8bd8ac9fd3bb" value="BTN_ENTER" />
+      <Data key="d8feeac0-beb7-4496-82aa-af5265ec81b9" value="BTN_RIGHT" />
+      <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="RIGHT_TEST" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="UART_TX" />
     </Group>
   </Group>
@@ -3348,9 +3354,19 @@
         <Data key="Port Format" value="12,0" />
       </Group>
     </Group>
+    <Group key="4f2ad36f-bb57-48b8-9df6-2bab6ea29267">
+      <Group key="0">
+        <Data key="Port Format" value="0,2" />
+      </Group>
+    </Group>
     <Group key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba">
       <Group key="0">
         <Data key="Port Format" value="12,2" />
+      </Group>
+    </Group>
+    <Group key="49c02af4-c8a8-4c85-af1b-0613c1332725">
+      <Group key="0">
+        <Data key="Port Format" value="1,6" />
       </Group>
     </Group>
     <Group key="65be0b93-195e-424a-89bf-901811675de1">
@@ -3363,6 +3379,11 @@
         <Data key="Port Format" value="12,1" />
       </Group>
     </Group>
+    <Group key="b4f501d7-a4d2-46b6-b7f7-af55c68fb3fa">
+      <Group key="0">
+        <Data key="Port Format" value="0,1" />
+      </Group>
+    </Group>
     <Group key="cbe03fbc-bce4-4a01-a0a3-7dc5ad9150c3">
       <Group key="0">
         <Data key="Port Format" value="1,5" />
@@ -3372,6 +3393,21 @@
       </Group>
       <Group key="2">
         <Data key="Port Format" value="1,7" />
+      </Group>
+    </Group>
+    <Group key="d6c5779c-9024-476a-ba4a-8bd8ac9fd3bb">
+      <Group key="0">
+        <Data key="Port Format" value="1,5" />
+      </Group>
+    </Group>
+    <Group key="d8feeac0-beb7-4496-82aa-af5265ec81b9">
+      <Group key="0">
+        <Data key="Port Format" value="1,7" />
+      </Group>
+    </Group>
+    <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
+      <Group key="0">
+        <Data key="Port Format" value="0,0" />
       </Group>
     </Group>
     <Group key="ed092b9b-d398-4703-be89-cebf998501f6">

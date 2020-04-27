@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwvkvCJ.s 			page 1
 
 
    1              		.syntax unified
@@ -10,7 +10,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
    7              		.eabi_attribute 24, 1
    8              		.eabi_attribute 25, 1
    9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 30, 6
   11              		.eabi_attribute 34, 1
   12              		.eabi_attribute 18, 4
   13              		.thumb
@@ -27,7 +27,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
   24 0006 00000000 		.4byte	.Ldebug_abbrev0
   25 000a 04       		.byte	0x4
   26 000b 01       		.uleb128 0x1
-  27 000c 6B000000 		.4byte	.LASF14
+  27 000c 9A000000 		.4byte	.LASF14
   28 0010 0C       		.byte	0xc
   29 0011 48000000 		.4byte	.LASF15
   30 0015 1B000000 		.4byte	.LASF16
@@ -55,10 +55,10 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
   52 0040 02       		.uleb128 0x2
   53 0041 04       		.byte	0x4
   54 0042 07       		.byte	0x7
-  55 0043 F9000000 		.4byte	.LASF5
+  55 0043 6B000000 		.4byte	.LASF5
   56 0047 02       		.uleb128 0x2
   57 0048 08       		.byte	0x8
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwvkvCJ.s 			page 2
 
 
   58 0049 05       		.byte	0x5
@@ -66,7 +66,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
   60 004e 02       		.uleb128 0x2
   61 004f 08       		.byte	0x8
   62 0050 07       		.byte	0x7
-  63 0051 0B010000 		.4byte	.LASF7
+  63 0051 7D000000 		.4byte	.LASF7
   64 0055 03       		.uleb128 0x3
   65 0056 04       		.byte	0x4
   66 0057 05       		.byte	0x5
@@ -78,7 +78,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
   72 0063 02       		.uleb128 0x2
   73 0064 04       		.byte	0x4
   74 0065 04       		.byte	0x4
-  75 0066 22010000 		.4byte	.LASF9
+  75 0066 94000000 		.4byte	.LASF9
   76 006a 02       		.uleb128 0x2
   77 006b 08       		.byte	0x8
   78 006c 04       		.byte	0x4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
  112 0011 00       		.byte	0
  113 0012 0B       		.uleb128 0xb
  114 0013 0B       		.uleb128 0xb
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwvkvCJ.s 			page 3
 
 
  115 0014 3E       		.uleb128 0x3e
@@ -178,40 +178,40 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
  153      645F536F 
  153      75726365 
  153      5C50536F 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwvkvCJ.s 			page 4
 
 
- 154              	.LASF14:
- 155 006b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 155      43313120 
- 155      352E342E 
- 155      31203230 
- 155      31363036 
- 156 009e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 156      20726576 
- 156      6973696F 
- 156      6E203233 
- 156      37373135 
- 157 00d1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 157      66756E63 
- 157      74696F6E 
- 157      2D736563 
- 157      74696F6E 
- 158              	.LASF5:
- 159 00f9 6C6F6E67 		.ascii	"long unsigned int\000"
- 159      20756E73 
- 159      69676E65 
- 159      6420696E 
+ 154              	.LASF5:
+ 155 006b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 155      20756E73 
+ 155      69676E65 
+ 155      6420696E 
+ 155      7400
+ 156              	.LASF7:
+ 157 007d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 157      206C6F6E 
+ 157      6720756E 
+ 157      7369676E 
+ 157      65642069 
+ 158              	.LASF9:
+ 159 0094 666C6F61 		.ascii	"float\000"
  159      7400
- 160              	.LASF7:
- 161 010b 6C6F6E67 		.ascii	"long long unsigned int\000"
- 161      206C6F6E 
- 161      6720756E 
- 161      7369676E 
- 161      65642069 
- 162              	.LASF9:
- 163 0122 666C6F61 		.ascii	"float\000"
- 163      7400
+ 160              	.LASF14:
+ 161 009a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 161      43313120 
+ 161      352E342E 
+ 161      31203230 
+ 161      31363036 
+ 162 00cd 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 162      20726576 
+ 162      6973696F 
+ 162      6E203233 
+ 162      37373135 
+ 163 0100 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 163      66756E63 
+ 163      74696F6E 
+ 163      2D736563 
+ 163      74696F6E 
  164              	.LASF1:
  165 0128 756E7369 		.ascii	"unsigned char\000"
  165      676E6564 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 1
  175      65642063 
  175      68617200 
  176              	.LASF12:
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc0YH1uK.s 			page 5
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccwvkvCJ.s 			page 5
 
 
  177 016a 6C6F6E67 		.ascii	"long double\000"

@@ -51,16 +51,16 @@ static uint64_t measurementCount;
 static struct rhea_sensor_attributeDescriptor attributeRegistry[RHEA_SENSOR_ATTRIBUTE_LIMIT];
 
 // Static counter for counting the number of attributes
-static uint64_t attributeCount = 0;
+static uint64_t attributeCount;
     
 void rhea_sensor_Initialize(void) {
     
-    // Invoking implementation
-    rhea_sensor_initialize_impl();
-    
     // Initializing attribute and measurement counters
-    attributeCount = 5;
-    measurementCount = 3;
+    attributeCount = 0;
+    measurementCount = 0;
+    
+    // Invoking implementation
+    rhea_sensor_initialize_impl(); 
 }
 
 void rhea_sensor_AddMeasurement(const char *device, 
@@ -129,6 +129,7 @@ void rhea_sensor_SetMeasurementPeriod(const char *device,
            strcmp(measurementRegistry[i].parameter, parameter) == 0)
         {
             measurementRegistry[i].period = period;
+            measurementRegistry[i].currentPeriod = 0;
             return;
         }
     }

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 1
 
 
    1              		.syntax unified
@@ -10,7 +10,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 1
    7              		.eabi_attribute 24, 1
    8              		.eabi_attribute 25, 1
    9              		.eabi_attribute 26, 1
-  10              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 30, 6
   11              		.eabi_attribute 34, 1
   12              		.eabi_attribute 18, 4
   13              		.thumb
@@ -26,7 +26,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 1
   23              		.thumb_func
   24              		.type	rhea_uart_Initialize, %function
   25              	rhea_uart_Initialize:
-  26              	.LFB0:
+  26              	.LFB63:
   27              		.file 1 "rhea\\uart\\uart_rhea.c"
    1:rhea\uart/uart_rhea.c **** /*********************************************************************************
    2:rhea\uart/uart_rhea.c ****  * Copyright (c) 2020 Peter Gyulai
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 1
   28:rhea\uart/uart_rhea.c ****  * @brief   UART library implementation.
   29:rhea\uart/uart_rhea.c ****  * @details
   30:rhea\uart/uart_rhea.c ****  * This file contains the function definitions used by the Rhea UART library.
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 2
 
 
   31:rhea\uart/uart_rhea.c ****  */
@@ -66,1727 +66,1608 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 1
   33:rhea\uart/uart_rhea.c **** // Project includes
   34:rhea\uart/uart_rhea.c **** #include "uart.h"
   35:rhea\uart/uart_rhea.c **** #include "uart_impl.h"
-  36:rhea\uart/uart_rhea.c **** 
+  36:rhea\uart/uart_rhea.c **** #include "../rhea_config.h"
   37:rhea\uart/uart_rhea.c **** 
-  38:rhea\uart/uart_rhea.c **** void rhea_uart_Initialize(void) {
-  28              		.loc 1 38 0
+  38:rhea\uart/uart_rhea.c **** 
+  39:rhea\uart/uart_rhea.c **** void rhea_uart_Initialize(void) {
+  28              		.loc 1 39 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
-  31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32 0000 08B5     		push	{r3, lr}
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
   33              		.cfi_def_cfa_offset 8
-  34              		.cfi_offset 3, -8
+  34              		.cfi_offset 7, -8
   35              		.cfi_offset 14, -4
-  39:rhea\uart/uart_rhea.c ****     
-  40:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
-  41:rhea\uart/uart_rhea.c ****     rhea_uart_initialize_impl();
-  36              		.loc 1 41 0
-  37 0002 FFF7FEFF 		bl	rhea_uart_initialize_impl
-  38              	.LVL0:
-  39 0006 08BD     		pop	{r3, pc}
-  40              		.cfi_endproc
-  41              	.LFE0:
-  42              		.size	rhea_uart_Initialize, .-rhea_uart_Initialize
-  43              		.section	.text.rhea_uart_BytesAvailable,"ax",%progbits
-  44              		.align	2
-  45              		.global	rhea_uart_BytesAvailable
-  46              		.thumb
-  47              		.thumb_func
-  48              		.type	rhea_uart_BytesAvailable, %function
-  49              	rhea_uart_BytesAvailable:
-  50              	.LFB1:
-  42:rhea\uart/uart_rhea.c **** }
-  43:rhea\uart/uart_rhea.c **** 
-  44:rhea\uart/uart_rhea.c **** uint64_t rhea_uart_BytesAvailable(void) {
-  51              		.loc 1 44 0
-  52              		.cfi_startproc
-  53              		@ args = 0, pretend = 0, frame = 0
-  54              		@ frame_needed = 0, uses_anonymous_args = 0
-  55 0000 08B5     		push	{r3, lr}
-  56              		.cfi_def_cfa_offset 8
-  57              		.cfi_offset 3, -8
-  58              		.cfi_offset 14, -4
-  45:rhea\uart/uart_rhea.c ****     
-  46:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
-  47:rhea\uart/uart_rhea.c ****     return rhea_uart_bytesAvailable_impl();
-  59              		.loc 1 47 0
-  60 0002 FFF7FEFF 		bl	rhea_uart_bytesAvailable_impl
-  61              	.LVL1:
-  48:rhea\uart/uart_rhea.c **** }
-  62              		.loc 1 48 0
-  63 0006 08BD     		pop	{r3, pc}
-  64              		.cfi_endproc
-  65              	.LFE1:
-  66              		.size	rhea_uart_BytesAvailable, .-rhea_uart_BytesAvailable
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 3
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  40:rhea\uart/uart_rhea.c ****     
+  41:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
+  42:rhea\uart/uart_rhea.c ****     rhea_uart_initialize_impl();
+  38              		.loc 1 42 0
+  39 0004 FFF7FEFF 		bl	rhea_uart_initialize_impl
+  43:rhea\uart/uart_rhea.c **** }
+  40              		.loc 1 43 0
+  41 0008 00BF     		nop
+  42 000a 80BD     		pop	{r7, pc}
+  43              		.cfi_endproc
+  44              	.LFE63:
+  45              		.size	rhea_uart_Initialize, .-rhea_uart_Initialize
+  46              		.section	.text.rhea_uart_BytesAvailable,"ax",%progbits
+  47              		.align	2
+  48              		.global	rhea_uart_BytesAvailable
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	rhea_uart_BytesAvailable, %function
+  52              	rhea_uart_BytesAvailable:
+  53              	.LFB64:
+  44:rhea\uart/uart_rhea.c **** 
+  45:rhea\uart/uart_rhea.c **** uint64_t rhea_uart_BytesAvailable(void) {
+  54              		.loc 1 45 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 1, uses_anonymous_args = 0
+  58 0000 98B5     		push	{r3, r4, r7, lr}
+  59              		.cfi_def_cfa_offset 16
+  60              		.cfi_offset 3, -16
+  61              		.cfi_offset 4, -12
+  62              		.cfi_offset 7, -8
+  63              		.cfi_offset 14, -4
+  64 0002 00AF     		add	r7, sp, #0
+  65              		.cfi_def_cfa_register 7
+  46:rhea\uart/uart_rhea.c ****     
+  47:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
+  48:rhea\uart/uart_rhea.c ****     return rhea_uart_bytesAvailable_impl();
+  66              		.loc 1 48 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 3
 
 
-  67              		.section	.text.rhea_uart_ReadByte,"ax",%progbits
-  68              		.align	2
-  69              		.global	rhea_uart_ReadByte
-  70              		.thumb
-  71              		.thumb_func
-  72              		.type	rhea_uart_ReadByte, %function
-  73              	rhea_uart_ReadByte:
-  74              	.LFB2:
-  49:rhea\uart/uart_rhea.c ****     
-  50:rhea\uart/uart_rhea.c **** uint8_t rhea_uart_ReadByte(void) {
-  75              		.loc 1 50 0
-  76              		.cfi_startproc
-  77              		@ args = 0, pretend = 0, frame = 0
-  78              		@ frame_needed = 0, uses_anonymous_args = 0
-  79 0000 08B5     		push	{r3, lr}
-  80              		.cfi_def_cfa_offset 8
-  81              		.cfi_offset 3, -8
-  82              		.cfi_offset 14, -4
-  51:rhea\uart/uart_rhea.c ****     
-  52:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
-  53:rhea\uart/uart_rhea.c ****     return rhea_uart_readByte_impl();
-  83              		.loc 1 53 0
-  84 0002 FFF7FEFF 		bl	rhea_uart_readByte_impl
-  85              	.LVL2:
-  54:rhea\uart/uart_rhea.c **** }
-  86              		.loc 1 54 0
-  87 0006 08BD     		pop	{r3, pc}
-  88              		.cfi_endproc
-  89              	.LFE2:
-  90              		.size	rhea_uart_ReadByte, .-rhea_uart_ReadByte
-  91              		.section	.text.rhea_uart_ReadBytes,"ax",%progbits
-  92              		.align	2
-  93              		.global	rhea_uart_ReadBytes
-  94              		.thumb
-  95              		.thumb_func
-  96              		.type	rhea_uart_ReadBytes, %function
-  97              	rhea_uart_ReadBytes:
-  98              	.LFB3:
-  55:rhea\uart/uart_rhea.c **** 
-  56:rhea\uart/uart_rhea.c **** void rhea_uart_ReadBytes(uint8_t *bytes, uint64_t count) {
-  99              		.loc 1 56 0
- 100              		.cfi_startproc
- 101              		@ args = 0, pretend = 0, frame = 0
- 102              		@ frame_needed = 0, uses_anonymous_args = 0
- 103              	.LVL3:
- 104 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
- 105              		.cfi_def_cfa_offset 32
- 106              		.cfi_offset 3, -32
- 107              		.cfi_offset 4, -28
- 108              		.cfi_offset 5, -24
- 109              		.cfi_offset 6, -20
- 110              		.cfi_offset 7, -16
- 111              		.cfi_offset 8, -12
- 112              		.cfi_offset 9, -8
- 113              		.cfi_offset 14, -4
- 114 0004 0746     		mov	r7, r0
- 115 0006 9046     		mov	r8, r2
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 4
+  67 0004 FFF7FEFF 		bl	rhea_uart_bytesAvailable_impl
+  68 0008 0346     		mov	r3, r0
+  69 000a 0C46     		mov	r4, r1
+  49:rhea\uart/uart_rhea.c **** }
+  70              		.loc 1 49 0
+  71 000c 1846     		mov	r0, r3
+  72 000e 2146     		mov	r1, r4
+  73 0010 98BD     		pop	{r3, r4, r7, pc}
+  74              		.cfi_endproc
+  75              	.LFE64:
+  76              		.size	rhea_uart_BytesAvailable, .-rhea_uart_BytesAvailable
+  77 0012 00BF     		.section	.text.rhea_uart_ReadByte,"ax",%progbits
+  78              		.align	2
+  79              		.global	rhea_uart_ReadByte
+  80              		.thumb
+  81              		.thumb_func
+  82              		.type	rhea_uart_ReadByte, %function
+  83              	rhea_uart_ReadByte:
+  84              	.LFB65:
+  50:rhea\uart/uart_rhea.c ****     
+  51:rhea\uart/uart_rhea.c **** uint8_t rhea_uart_ReadByte(void) {
+  85              		.loc 1 51 0
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 1, uses_anonymous_args = 0
+  89 0000 80B5     		push	{r7, lr}
+  90              		.cfi_def_cfa_offset 8
+  91              		.cfi_offset 7, -8
+  92              		.cfi_offset 14, -4
+  93 0002 00AF     		add	r7, sp, #0
+  94              		.cfi_def_cfa_register 7
+  52:rhea\uart/uart_rhea.c ****     
+  53:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
+  54:rhea\uart/uart_rhea.c ****     return rhea_uart_readByte_impl();
+  95              		.loc 1 54 0
+  96 0004 FFF7FEFF 		bl	rhea_uart_readByte_impl
+  97 0008 0346     		mov	r3, r0
+  55:rhea\uart/uart_rhea.c **** }
+  98              		.loc 1 55 0
+  99 000a 1846     		mov	r0, r3
+ 100 000c 80BD     		pop	{r7, pc}
+ 101              		.cfi_endproc
+ 102              	.LFE65:
+ 103              		.size	rhea_uart_ReadByte, .-rhea_uart_ReadByte
+ 104 000e 00BF     		.section	.text.rhea_uart_ReadBytes,"ax",%progbits
+ 105              		.align	2
+ 106              		.global	rhea_uart_ReadBytes
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.type	rhea_uart_ReadBytes, %function
+ 110              	rhea_uart_ReadBytes:
+ 111              	.LFB66:
+  56:rhea\uart/uart_rhea.c **** 
+  57:rhea\uart/uart_rhea.c **** void rhea_uart_ReadBytes(uint8_t *bytes, uint64_t count) {
+ 112              		.loc 1 57 0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 32
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 4
 
 
- 116 0008 9946     		mov	r9, r3
- 117              	.LVL4:
- 118              	.LBB2:
-  57:rhea\uart/uart_rhea.c ****     for(uint64_t i = 0; i < count; i++) {
- 119              		.loc 1 57 0
- 120 000a 0024     		movs	r4, #0
- 121 000c 0025     		movs	r5, #0
- 122 000e 06E0     		b	.L8
- 123              	.LVL5:
- 124              	.L9:
-  58:rhea\uart/uart_rhea.c ****         bytes[i] = rhea_uart_ReadByte();   
- 125              		.loc 1 58 0 discriminator 3
- 126 0010 3E19     		adds	r6, r7, r4
- 127 0012 FFF7FEFF 		bl	rhea_uart_ReadByte
- 128              	.LVL6:
- 129 0016 3070     		strb	r0, [r6]
-  57:rhea\uart/uart_rhea.c ****     for(uint64_t i = 0; i < count; i++) {
- 130              		.loc 1 57 0 discriminator 3
- 131 0018 0134     		adds	r4, r4, #1
- 132              	.LVL7:
- 133 001a 45F10005 		adc	r5, r5, #0
- 134              	.LVL8:
- 135              	.L8:
-  57:rhea\uart/uart_rhea.c ****     for(uint64_t i = 0; i < count; i++) {
- 136              		.loc 1 57 0 is_stmt 0 discriminator 1
- 137 001e 4D45     		cmp	r5, r9
- 138 0020 08BF     		it	eq
- 139 0022 4445     		cmpeq	r4, r8
- 140 0024 F4D3     		bcc	.L9
- 141              	.LBE2:
-  59:rhea\uart/uart_rhea.c ****     }
-  60:rhea\uart/uart_rhea.c **** }
- 142              		.loc 1 60 0 is_stmt 1
- 143 0026 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
- 144              		.cfi_endproc
- 145              	.LFE3:
- 146              		.size	rhea_uart_ReadBytes, .-rhea_uart_ReadBytes
- 147 002a 00BF     		.section	.text.rhea_uart_ReadBuffer,"ax",%progbits
- 148              		.align	2
- 149              		.global	rhea_uart_ReadBuffer
- 150              		.thumb
- 151              		.thumb_func
- 152              		.type	rhea_uart_ReadBuffer, %function
- 153              	rhea_uart_ReadBuffer:
- 154              	.LFB4:
-  61:rhea\uart/uart_rhea.c **** 
-  62:rhea\uart/uart_rhea.c **** void rhea_uart_ReadBuffer(uint8_t *buffer, uint64_t size) {
- 155              		.loc 1 62 0
- 156              		.cfi_startproc
- 157              		@ args = 0, pretend = 0, frame = 0
- 158              		@ frame_needed = 0, uses_anonymous_args = 0
- 159              	.LVL9:
- 160 0000 08B5     		push	{r3, lr}
- 161              		.cfi_def_cfa_offset 8
- 162              		.cfi_offset 3, -8
- 163              		.cfi_offset 14, -4
-  63:rhea\uart/uart_rhea.c ****     rhea_uart_ReadBytes(buffer, size);
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 5
+ 115              		@ frame_needed = 1, uses_anonymous_args = 0
+ 116 0000 90B5     		push	{r4, r7, lr}
+ 117              		.cfi_def_cfa_offset 12
+ 118              		.cfi_offset 4, -12
+ 119              		.cfi_offset 7, -8
+ 120              		.cfi_offset 14, -4
+ 121 0002 89B0     		sub	sp, sp, #36
+ 122              		.cfi_def_cfa_offset 48
+ 123 0004 00AF     		add	r7, sp, #0
+ 124              		.cfi_def_cfa_register 7
+ 125 0006 F860     		str	r0, [r7, #12]
+ 126 0008 C7E90023 		strd	r2, [r7]
+  58:rhea\uart/uart_rhea.c ****     uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+ 127              		.loc 1 58 0
+ 128 000c FFF7FEFF 		bl	CyEnterCriticalSection
+ 129 0010 0346     		mov	r3, r0
+ 130 0012 FB75     		strb	r3, [r7, #23]
+ 131              	.LBB2:
+  59:rhea\uart/uart_rhea.c ****         for(uint64_t i = 0; i < count; i++) {
+ 132              		.loc 1 59 0
+ 133 0014 4FF00003 		mov	r3, #0
+ 134 0018 4FF00004 		mov	r4, #0
+ 135 001c C7E90634 		strd	r3, [r7, #24]
+ 136 0020 0DE0     		b	.L7
+ 137              	.L8:
+  60:rhea\uart/uart_rhea.c ****             bytes[i] = rhea_uart_ReadByte();   
+ 138              		.loc 1 60 0 discriminator 3
+ 139 0022 BB69     		ldr	r3, [r7, #24]
+ 140 0024 FA68     		ldr	r2, [r7, #12]
+ 141 0026 D418     		adds	r4, r2, r3
+ 142 0028 FFF7FEFF 		bl	rhea_uart_ReadByte
+ 143 002c 0346     		mov	r3, r0
+ 144 002e 2370     		strb	r3, [r4]
+  59:rhea\uart/uart_rhea.c ****         for(uint64_t i = 0; i < count; i++) {
+ 145              		.loc 1 59 0 discriminator 3
+ 146 0030 D7E90634 		ldrd	r3, [r7, #24]
+ 147 0034 0133     		adds	r3, r3, #1
+ 148 0036 44F10004 		adc	r4, r4, #0
+ 149 003a C7E90634 		strd	r3, [r7, #24]
+ 150              	.L7:
+  59:rhea\uart/uart_rhea.c ****         for(uint64_t i = 0; i < count; i++) {
+ 151              		.loc 1 59 0 is_stmt 0 discriminator 1
+ 152 003e D7E90612 		ldrd	r1, [r7, #24]
+ 153 0042 D7E90034 		ldrd	r3, [r7]
+ 154 0046 A242     		cmp	r2, r4
+ 155 0048 08BF     		it	eq
+ 156 004a 9942     		cmpeq	r1, r3
+ 157 004c E9D3     		bcc	.L8
+ 158              	.LBE2:
+  61:rhea\uart/uart_rhea.c ****         }
+  62:rhea\uart/uart_rhea.c ****     RHEA_EXIT_CRITICAL_SECTION(status);
+ 159              		.loc 1 62 0 is_stmt 1
+ 160 004e FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 161 0050 1846     		mov	r0, r3
+ 162 0052 FFF7FEFF 		bl	CyExitCriticalSection
+  63:rhea\uart/uart_rhea.c **** }
+ 163              		.loc 1 63 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 5
 
 
- 164              		.loc 1 63 0
- 165 0002 FFF7FEFF 		bl	rhea_uart_ReadBytes
- 166              	.LVL10:
- 167 0006 08BD     		pop	{r3, pc}
- 168              		.cfi_endproc
- 169              	.LFE4:
- 170              		.size	rhea_uart_ReadBuffer, .-rhea_uart_ReadBuffer
- 171              		.section	.text.rhea_uart_ReadChar,"ax",%progbits
- 172              		.align	2
- 173              		.global	rhea_uart_ReadChar
- 174              		.thumb
- 175              		.thumb_func
- 176              		.type	rhea_uart_ReadChar, %function
- 177              	rhea_uart_ReadChar:
- 178              	.LFB5:
-  64:rhea\uart/uart_rhea.c **** }
-  65:rhea\uart/uart_rhea.c **** 
-  66:rhea\uart/uart_rhea.c **** char rhea_uart_ReadChar(void) {
- 179              		.loc 1 66 0
- 180              		.cfi_startproc
- 181              		@ args = 0, pretend = 0, frame = 0
- 182              		@ frame_needed = 0, uses_anonymous_args = 0
- 183 0000 08B5     		push	{r3, lr}
- 184              		.cfi_def_cfa_offset 8
- 185              		.cfi_offset 3, -8
- 186              		.cfi_offset 14, -4
-  67:rhea\uart/uart_rhea.c ****     return rhea_uart_ReadByte();
- 187              		.loc 1 67 0
- 188 0002 FFF7FEFF 		bl	rhea_uart_ReadByte
- 189              	.LVL11:
-  68:rhea\uart/uart_rhea.c **** }
- 190              		.loc 1 68 0
- 191 0006 08BD     		pop	{r3, pc}
- 192              		.cfi_endproc
- 193              	.LFE5:
- 194              		.size	rhea_uart_ReadChar, .-rhea_uart_ReadChar
- 195              		.section	.text.rhea_uart_ReadString,"ax",%progbits
- 196              		.align	2
- 197              		.global	rhea_uart_ReadString
- 198              		.thumb
- 199              		.thumb_func
- 200              		.type	rhea_uart_ReadString, %function
- 201              	rhea_uart_ReadString:
- 202              	.LFB6:
-  69:rhea\uart/uart_rhea.c **** 
-  70:rhea\uart/uart_rhea.c **** void rhea_uart_ReadString(char *string) {
- 203              		.loc 1 70 0
- 204              		.cfi_startproc
- 205              		@ args = 0, pretend = 0, frame = 0
- 206              		@ frame_needed = 0, uses_anonymous_args = 0
- 207              	.LVL12:
- 208 0000 38B5     		push	{r3, r4, r5, lr}
- 209              		.cfi_def_cfa_offset 16
- 210              		.cfi_offset 3, -16
- 211              		.cfi_offset 4, -12
- 212              		.cfi_offset 5, -8
- 213              		.cfi_offset 14, -4
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 6
+ 164 0056 00BF     		nop
+ 165 0058 2437     		adds	r7, r7, #36
+ 166              		.cfi_def_cfa_offset 12
+ 167 005a BD46     		mov	sp, r7
+ 168              		.cfi_def_cfa_register 13
+ 169              		@ sp needed
+ 170 005c 90BD     		pop	{r4, r7, pc}
+ 171              		.cfi_endproc
+ 172              	.LFE66:
+ 173              		.size	rhea_uart_ReadBytes, .-rhea_uart_ReadBytes
+ 174 005e 00BF     		.section	.text.rhea_uart_ReadBuffer,"ax",%progbits
+ 175              		.align	2
+ 176              		.global	rhea_uart_ReadBuffer
+ 177              		.thumb
+ 178              		.thumb_func
+ 179              		.type	rhea_uart_ReadBuffer, %function
+ 180              	rhea_uart_ReadBuffer:
+ 181              	.LFB67:
+  64:rhea\uart/uart_rhea.c **** 
+  65:rhea\uart/uart_rhea.c **** void rhea_uart_ReadBuffer(uint8_t *buffer, uint64_t size) {
+ 182              		.loc 1 65 0
+ 183              		.cfi_startproc
+ 184              		@ args = 0, pretend = 0, frame = 16
+ 185              		@ frame_needed = 1, uses_anonymous_args = 0
+ 186 0000 80B5     		push	{r7, lr}
+ 187              		.cfi_def_cfa_offset 8
+ 188              		.cfi_offset 7, -8
+ 189              		.cfi_offset 14, -4
+ 190 0002 84B0     		sub	sp, sp, #16
+ 191              		.cfi_def_cfa_offset 24
+ 192 0004 00AF     		add	r7, sp, #0
+ 193              		.cfi_def_cfa_register 7
+ 194 0006 F860     		str	r0, [r7, #12]
+ 195 0008 C7E90023 		strd	r2, [r7]
+  66:rhea\uart/uart_rhea.c ****     rhea_uart_ReadBytes(buffer, size);
+ 196              		.loc 1 66 0
+ 197 000c D7E90023 		ldrd	r2, [r7]
+ 198 0010 F868     		ldr	r0, [r7, #12]
+ 199 0012 FFF7FEFF 		bl	rhea_uart_ReadBytes
+  67:rhea\uart/uart_rhea.c **** }
+ 200              		.loc 1 67 0
+ 201 0016 00BF     		nop
+ 202 0018 1037     		adds	r7, r7, #16
+ 203              		.cfi_def_cfa_offset 8
+ 204 001a BD46     		mov	sp, r7
+ 205              		.cfi_def_cfa_register 13
+ 206              		@ sp needed
+ 207 001c 80BD     		pop	{r7, pc}
+ 208              		.cfi_endproc
+ 209              	.LFE67:
+ 210              		.size	rhea_uart_ReadBuffer, .-rhea_uart_ReadBuffer
+ 211 001e 00BF     		.section	.text.rhea_uart_ReadChar,"ax",%progbits
+ 212              		.align	2
+ 213              		.global	rhea_uart_ReadChar
+ 214              		.thumb
+ 215              		.thumb_func
+ 216              		.type	rhea_uart_ReadChar, %function
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 6
 
 
- 214 0002 0446     		mov	r4, r0
-  71:rhea\uart/uart_rhea.c ****     char c = rhea_uart_ReadChar();
- 215              		.loc 1 71 0
- 216 0004 FFF7FEFF 		bl	rhea_uart_ReadChar
- 217              	.LVL13:
-  72:rhea\uart/uart_rhea.c ****     while(c != '\0') {
- 218              		.loc 1 72 0
- 219 0008 04E0     		b	.L16
- 220              	.L17:
-  73:rhea\uart/uart_rhea.c ****         *(string++) = c;
- 221              		.loc 1 73 0
- 222 000a 651C     		adds	r5, r4, #1
- 223              	.LVL14:
- 224 000c 2070     		strb	r0, [r4]
-  74:rhea\uart/uart_rhea.c ****         c = rhea_uart_ReadChar();
- 225              		.loc 1 74 0
- 226 000e FFF7FEFF 		bl	rhea_uart_ReadChar
- 227              	.LVL15:
-  73:rhea\uart/uart_rhea.c ****         *(string++) = c;
- 228              		.loc 1 73 0
- 229 0012 2C46     		mov	r4, r5
- 230              	.LVL16:
- 231              	.L16:
-  72:rhea\uart/uart_rhea.c ****     while(c != '\0') {
- 232              		.loc 1 72 0
- 233 0014 0028     		cmp	r0, #0
- 234 0016 F8D1     		bne	.L17
-  75:rhea\uart/uart_rhea.c ****     }
-  76:rhea\uart/uart_rhea.c ****     *string = '\0';
- 235              		.loc 1 76 0
- 236 0018 0023     		movs	r3, #0
- 237 001a 2370     		strb	r3, [r4]
- 238 001c 38BD     		pop	{r3, r4, r5, pc}
- 239              		.cfi_endproc
- 240              	.LFE6:
- 241              		.size	rhea_uart_ReadString, .-rhea_uart_ReadString
- 242 001e 00BF     		.section	.text.rhea_uart_WriteByte,"ax",%progbits
- 243              		.align	2
- 244              		.global	rhea_uart_WriteByte
- 245              		.thumb
- 246              		.thumb_func
- 247              		.type	rhea_uart_WriteByte, %function
- 248              	rhea_uart_WriteByte:
- 249              	.LFB7:
-  77:rhea\uart/uart_rhea.c **** }
-  78:rhea\uart/uart_rhea.c **** 
-  79:rhea\uart/uart_rhea.c **** void rhea_uart_WriteByte(uint8_t byte) {
- 250              		.loc 1 79 0
- 251              		.cfi_startproc
- 252              		@ args = 0, pretend = 0, frame = 0
- 253              		@ frame_needed = 0, uses_anonymous_args = 0
- 254              	.LVL17:
- 255 0000 08B5     		push	{r3, lr}
- 256              		.cfi_def_cfa_offset 8
- 257              		.cfi_offset 3, -8
- 258              		.cfi_offset 14, -4
-  80:rhea\uart/uart_rhea.c ****     
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 7
+ 217              	rhea_uart_ReadChar:
+ 218              	.LFB68:
+  68:rhea\uart/uart_rhea.c **** 
+  69:rhea\uart/uart_rhea.c **** char rhea_uart_ReadChar(void) {
+ 219              		.loc 1 69 0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 1, uses_anonymous_args = 0
+ 223 0000 80B5     		push	{r7, lr}
+ 224              		.cfi_def_cfa_offset 8
+ 225              		.cfi_offset 7, -8
+ 226              		.cfi_offset 14, -4
+ 227 0002 00AF     		add	r7, sp, #0
+ 228              		.cfi_def_cfa_register 7
+  70:rhea\uart/uart_rhea.c ****     return rhea_uart_ReadByte();
+ 229              		.loc 1 70 0
+ 230 0004 FFF7FEFF 		bl	rhea_uart_ReadByte
+ 231 0008 0346     		mov	r3, r0
+  71:rhea\uart/uart_rhea.c **** }
+ 232              		.loc 1 71 0
+ 233 000a 1846     		mov	r0, r3
+ 234 000c 80BD     		pop	{r7, pc}
+ 235              		.cfi_endproc
+ 236              	.LFE68:
+ 237              		.size	rhea_uart_ReadChar, .-rhea_uart_ReadChar
+ 238 000e 00BF     		.section	.text.rhea_uart_ReadString,"ax",%progbits
+ 239              		.align	2
+ 240              		.global	rhea_uart_ReadString
+ 241              		.thumb
+ 242              		.thumb_func
+ 243              		.type	rhea_uart_ReadString, %function
+ 244              	rhea_uart_ReadString:
+ 245              	.LFB69:
+  72:rhea\uart/uart_rhea.c **** 
+  73:rhea\uart/uart_rhea.c **** void rhea_uart_ReadString(char *string) {
+ 246              		.loc 1 73 0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 16
+ 249              		@ frame_needed = 1, uses_anonymous_args = 0
+ 250 0000 80B5     		push	{r7, lr}
+ 251              		.cfi_def_cfa_offset 8
+ 252              		.cfi_offset 7, -8
+ 253              		.cfi_offset 14, -4
+ 254 0002 84B0     		sub	sp, sp, #16
+ 255              		.cfi_def_cfa_offset 24
+ 256 0004 00AF     		add	r7, sp, #0
+ 257              		.cfi_def_cfa_register 7
+ 258 0006 7860     		str	r0, [r7, #4]
+  74:rhea\uart/uart_rhea.c ****     uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+ 259              		.loc 1 74 0
+ 260 0008 FFF7FEFF 		bl	CyEnterCriticalSection
+ 261 000c 0346     		mov	r3, r0
+ 262 000e BB73     		strb	r3, [r7, #14]
+  75:rhea\uart/uart_rhea.c ****         char c = rhea_uart_ReadChar();
+ 263              		.loc 1 75 0
+ 264 0010 FFF7FEFF 		bl	rhea_uart_ReadChar
+ 265 0014 0346     		mov	r3, r0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 7
 
 
-  81:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
-  82:rhea\uart/uart_rhea.c ****     rhea_uart_writeByte_impl(byte);
- 259              		.loc 1 82 0
- 260 0002 FFF7FEFF 		bl	rhea_uart_writeByte_impl
- 261              	.LVL18:
- 262 0006 08BD     		pop	{r3, pc}
- 263              		.cfi_endproc
- 264              	.LFE7:
- 265              		.size	rhea_uart_WriteByte, .-rhea_uart_WriteByte
- 266              		.section	.text.rhea_uart_WriteBytes,"ax",%progbits
- 267              		.align	2
- 268              		.global	rhea_uart_WriteBytes
- 269              		.thumb
- 270              		.thumb_func
- 271              		.type	rhea_uart_WriteBytes, %function
- 272              	rhea_uart_WriteBytes:
- 273              	.LFB8:
-  83:rhea\uart/uart_rhea.c **** }
-  84:rhea\uart/uart_rhea.c **** 
-  85:rhea\uart/uart_rhea.c **** void rhea_uart_WriteBytes(const uint8_t *bytes, uint64_t count) {
- 274              		.loc 1 85 0
- 275              		.cfi_startproc
- 276              		@ args = 0, pretend = 0, frame = 0
- 277              		@ frame_needed = 0, uses_anonymous_args = 0
- 278              	.LVL19:
- 279 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
- 280              		.cfi_def_cfa_offset 24
- 281              		.cfi_offset 4, -24
- 282              		.cfi_offset 5, -20
- 283              		.cfi_offset 6, -16
- 284              		.cfi_offset 7, -12
- 285              		.cfi_offset 8, -8
- 286              		.cfi_offset 14, -4
- 287 0004 8046     		mov	r8, r0
- 288 0006 1646     		mov	r6, r2
- 289 0008 1F46     		mov	r7, r3
- 290              	.LVL20:
- 291              	.LBB3:
-  86:rhea\uart/uart_rhea.c ****     for(uint64_t i = 0; i < count; i++) {
- 292              		.loc 1 86 0
- 293 000a 0024     		movs	r4, #0
- 294 000c 0025     		movs	r5, #0
- 295 000e 07E0     		b	.L22
- 296              	.LVL21:
- 297              	.L23:
-  87:rhea\uart/uart_rhea.c ****         rhea_uart_WriteByte(bytes[i]);
- 298              		.loc 1 87 0 discriminator 3
- 299 0010 08EB0403 		add	r3, r8, r4
- 300 0014 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 301 0016 FFF7FEFF 		bl	rhea_uart_WriteByte
- 302              	.LVL22:
-  86:rhea\uart/uart_rhea.c ****     for(uint64_t i = 0; i < count; i++) {
- 303              		.loc 1 86 0 discriminator 3
- 304 001a 0134     		adds	r4, r4, #1
- 305              	.LVL23:
- 306 001c 45F10005 		adc	r5, r5, #0
- 307              	.LVL24:
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 8
+ 266 0016 FB73     		strb	r3, [r7, #15]
+  76:rhea\uart/uart_rhea.c ****         while(c != '\0') {
+ 267              		.loc 1 76 0
+ 268 0018 08E0     		b	.L13
+ 269              	.L14:
+  77:rhea\uart/uart_rhea.c ****             *(string++) = c;
+ 270              		.loc 1 77 0
+ 271 001a 7B68     		ldr	r3, [r7, #4]
+ 272 001c 5A1C     		adds	r2, r3, #1
+ 273 001e 7A60     		str	r2, [r7, #4]
+ 274 0020 FA7B     		ldrb	r2, [r7, #15]
+ 275 0022 1A70     		strb	r2, [r3]
+  78:rhea\uart/uart_rhea.c ****             c = rhea_uart_ReadChar();
+ 276              		.loc 1 78 0
+ 277 0024 FFF7FEFF 		bl	rhea_uart_ReadChar
+ 278 0028 0346     		mov	r3, r0
+ 279 002a FB73     		strb	r3, [r7, #15]
+ 280              	.L13:
+  76:rhea\uart/uart_rhea.c ****         while(c != '\0') {
+ 281              		.loc 1 76 0
+ 282 002c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 283 002e 002B     		cmp	r3, #0
+ 284 0030 F3D1     		bne	.L14
+  79:rhea\uart/uart_rhea.c ****         }
+  80:rhea\uart/uart_rhea.c ****         *string = '\0';
+ 285              		.loc 1 80 0
+ 286 0032 7B68     		ldr	r3, [r7, #4]
+ 287 0034 0022     		movs	r2, #0
+ 288 0036 1A70     		strb	r2, [r3]
+  81:rhea\uart/uart_rhea.c ****     RHEA_EXIT_CRITICAL_SECTION(status);
+ 289              		.loc 1 81 0
+ 290 0038 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 291 003a 1846     		mov	r0, r3
+ 292 003c FFF7FEFF 		bl	CyExitCriticalSection
+  82:rhea\uart/uart_rhea.c **** }
+ 293              		.loc 1 82 0
+ 294 0040 00BF     		nop
+ 295 0042 1037     		adds	r7, r7, #16
+ 296              		.cfi_def_cfa_offset 8
+ 297 0044 BD46     		mov	sp, r7
+ 298              		.cfi_def_cfa_register 13
+ 299              		@ sp needed
+ 300 0046 80BD     		pop	{r7, pc}
+ 301              		.cfi_endproc
+ 302              	.LFE69:
+ 303              		.size	rhea_uart_ReadString, .-rhea_uart_ReadString
+ 304              		.section	.text.rhea_uart_WriteByte,"ax",%progbits
+ 305              		.align	2
+ 306              		.global	rhea_uart_WriteByte
+ 307              		.thumb
+ 308              		.thumb_func
+ 309              		.type	rhea_uart_WriteByte, %function
+ 310              	rhea_uart_WriteByte:
+ 311              	.LFB70:
+  83:rhea\uart/uart_rhea.c **** 
+  84:rhea\uart/uart_rhea.c **** void rhea_uart_WriteByte(uint8_t byte) {
+ 312              		.loc 1 84 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 8
 
 
- 308              	.L22:
-  86:rhea\uart/uart_rhea.c ****     for(uint64_t i = 0; i < count; i++) {
- 309              		.loc 1 86 0 is_stmt 0 discriminator 1
- 310 0020 BD42     		cmp	r5, r7
- 311 0022 08BF     		it	eq
- 312 0024 B442     		cmpeq	r4, r6
- 313 0026 F3D3     		bcc	.L23
- 314              	.LBE3:
-  88:rhea\uart/uart_rhea.c ****     }
-  89:rhea\uart/uart_rhea.c **** }
- 315              		.loc 1 89 0 is_stmt 1
- 316 0028 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
- 317              		.cfi_endproc
- 318              	.LFE8:
- 319              		.size	rhea_uart_WriteBytes, .-rhea_uart_WriteBytes
- 320              		.section	.text.rhea_uart_WriteBuffer,"ax",%progbits
- 321              		.align	2
- 322              		.global	rhea_uart_WriteBuffer
- 323              		.thumb
- 324              		.thumb_func
- 325              		.type	rhea_uart_WriteBuffer, %function
- 326              	rhea_uart_WriteBuffer:
- 327              	.LFB9:
-  90:rhea\uart/uart_rhea.c **** 
-  91:rhea\uart/uart_rhea.c **** void rhea_uart_WriteBuffer(const uint8_t *buffer, uint64_t size) {
- 328              		.loc 1 91 0
- 329              		.cfi_startproc
- 330              		@ args = 0, pretend = 0, frame = 0
- 331              		@ frame_needed = 0, uses_anonymous_args = 0
- 332              	.LVL25:
- 333 0000 08B5     		push	{r3, lr}
- 334              		.cfi_def_cfa_offset 8
- 335              		.cfi_offset 3, -8
- 336              		.cfi_offset 14, -4
-  92:rhea\uart/uart_rhea.c ****     rhea_uart_WriteBytes(buffer, size);
- 337              		.loc 1 92 0
- 338 0002 FFF7FEFF 		bl	rhea_uart_WriteBytes
- 339              	.LVL26:
- 340 0006 08BD     		pop	{r3, pc}
- 341              		.cfi_endproc
- 342              	.LFE9:
- 343              		.size	rhea_uart_WriteBuffer, .-rhea_uart_WriteBuffer
- 344              		.section	.text.rhea_uart_WriteChar,"ax",%progbits
- 345              		.align	2
- 346              		.global	rhea_uart_WriteChar
- 347              		.thumb
- 348              		.thumb_func
- 349              		.type	rhea_uart_WriteChar, %function
- 350              	rhea_uart_WriteChar:
- 351              	.LFB10:
-  93:rhea\uart/uart_rhea.c **** }
-  94:rhea\uart/uart_rhea.c **** 
-  95:rhea\uart/uart_rhea.c **** void rhea_uart_WriteChar(char c) {
- 352              		.loc 1 95 0
- 353              		.cfi_startproc
- 354              		@ args = 0, pretend = 0, frame = 0
- 355              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 9
+ 313              		.cfi_startproc
+ 314              		@ args = 0, pretend = 0, frame = 8
+ 315              		@ frame_needed = 1, uses_anonymous_args = 0
+ 316 0000 80B5     		push	{r7, lr}
+ 317              		.cfi_def_cfa_offset 8
+ 318              		.cfi_offset 7, -8
+ 319              		.cfi_offset 14, -4
+ 320 0002 82B0     		sub	sp, sp, #8
+ 321              		.cfi_def_cfa_offset 16
+ 322 0004 00AF     		add	r7, sp, #0
+ 323              		.cfi_def_cfa_register 7
+ 324 0006 0346     		mov	r3, r0
+ 325 0008 FB71     		strb	r3, [r7, #7]
+  85:rhea\uart/uart_rhea.c ****     
+  86:rhea\uart/uart_rhea.c ****     // Invoking driver implementation
+  87:rhea\uart/uart_rhea.c ****     rhea_uart_writeByte_impl(byte);
+ 326              		.loc 1 87 0
+ 327 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 328 000c 1846     		mov	r0, r3
+ 329 000e FFF7FEFF 		bl	rhea_uart_writeByte_impl
+  88:rhea\uart/uart_rhea.c **** }
+ 330              		.loc 1 88 0
+ 331 0012 00BF     		nop
+ 332 0014 0837     		adds	r7, r7, #8
+ 333              		.cfi_def_cfa_offset 8
+ 334 0016 BD46     		mov	sp, r7
+ 335              		.cfi_def_cfa_register 13
+ 336              		@ sp needed
+ 337 0018 80BD     		pop	{r7, pc}
+ 338              		.cfi_endproc
+ 339              	.LFE70:
+ 340              		.size	rhea_uart_WriteByte, .-rhea_uart_WriteByte
+ 341 001a 00BF     		.section	.text.rhea_uart_WriteBytes,"ax",%progbits
+ 342              		.align	2
+ 343              		.global	rhea_uart_WriteBytes
+ 344              		.thumb
+ 345              		.thumb_func
+ 346              		.type	rhea_uart_WriteBytes, %function
+ 347              	rhea_uart_WriteBytes:
+ 348              	.LFB71:
+  89:rhea\uart/uart_rhea.c **** 
+  90:rhea\uart/uart_rhea.c **** void rhea_uart_WriteBytes(const uint8_t *bytes, uint64_t count) {
+ 349              		.loc 1 90 0
+ 350              		.cfi_startproc
+ 351              		@ args = 0, pretend = 0, frame = 32
+ 352              		@ frame_needed = 1, uses_anonymous_args = 0
+ 353 0000 90B5     		push	{r4, r7, lr}
+ 354              		.cfi_def_cfa_offset 12
+ 355              		.cfi_offset 4, -12
+ 356              		.cfi_offset 7, -8
+ 357              		.cfi_offset 14, -4
+ 358 0002 89B0     		sub	sp, sp, #36
+ 359              		.cfi_def_cfa_offset 48
+ 360 0004 00AF     		add	r7, sp, #0
+ 361              		.cfi_def_cfa_register 7
+ 362 0006 F860     		str	r0, [r7, #12]
+ 363 0008 C7E90023 		strd	r2, [r7]
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 9
 
 
- 356              	.LVL27:
- 357 0000 08B5     		push	{r3, lr}
- 358              		.cfi_def_cfa_offset 8
- 359              		.cfi_offset 3, -8
- 360              		.cfi_offset 14, -4
-  96:rhea\uart/uart_rhea.c ****     rhea_uart_WriteByte(c);
- 361              		.loc 1 96 0
- 362 0002 FFF7FEFF 		bl	rhea_uart_WriteByte
- 363              	.LVL28:
- 364 0006 08BD     		pop	{r3, pc}
- 365              		.cfi_endproc
- 366              	.LFE10:
- 367              		.size	rhea_uart_WriteChar, .-rhea_uart_WriteChar
- 368              		.section	.text.rhea_uart_WriteString,"ax",%progbits
- 369              		.align	2
- 370              		.global	rhea_uart_WriteString
- 371              		.thumb
- 372              		.thumb_func
- 373              		.type	rhea_uart_WriteString, %function
- 374              	rhea_uart_WriteString:
- 375              	.LFB11:
-  97:rhea\uart/uart_rhea.c **** }
-  98:rhea\uart/uart_rhea.c **** 
-  99:rhea\uart/uart_rhea.c **** void rhea_uart_WriteString(const char *string) {
- 376              		.loc 1 99 0
- 377              		.cfi_startproc
- 378              		@ args = 0, pretend = 0, frame = 0
- 379              		@ frame_needed = 0, uses_anonymous_args = 0
- 380              	.LVL29:
- 381 0000 10B5     		push	{r4, lr}
- 382              		.cfi_def_cfa_offset 8
- 383              		.cfi_offset 4, -8
- 384              		.cfi_offset 14, -4
- 385 0002 0446     		mov	r4, r0
- 100:rhea\uart/uart_rhea.c ****     while(*string != '\0') {
- 386              		.loc 1 100 0
- 387 0004 02E0     		b	.L30
- 388              	.LVL30:
- 389              	.L31:
- 101:rhea\uart/uart_rhea.c ****         rhea_uart_WriteChar(*string++);   
- 390              		.loc 1 101 0
- 391 0006 0134     		adds	r4, r4, #1
- 392              	.LVL31:
- 393 0008 FFF7FEFF 		bl	rhea_uart_WriteChar
- 394              	.LVL32:
- 395              	.L30:
- 100:rhea\uart/uart_rhea.c ****     while(*string != '\0') {
- 396              		.loc 1 100 0
- 397 000c 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
- 398 000e 0028     		cmp	r0, #0
- 399 0010 F9D1     		bne	.L31
- 102:rhea\uart/uart_rhea.c ****     }
- 103:rhea\uart/uart_rhea.c ****     rhea_uart_WriteChar('\0');
- 400              		.loc 1 103 0
- 401 0012 FFF7FEFF 		bl	rhea_uart_WriteChar
- 402              	.LVL33:
- 403 0016 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 10
+  91:rhea\uart/uart_rhea.c ****     uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+ 364              		.loc 1 91 0
+ 365 000c FFF7FEFF 		bl	CyEnterCriticalSection
+ 366 0010 0346     		mov	r3, r0
+ 367 0012 FB75     		strb	r3, [r7, #23]
+ 368              	.LBB3:
+  92:rhea\uart/uart_rhea.c ****         for(uint64_t i = 0; i < count; i++) {
+ 369              		.loc 1 92 0
+ 370 0014 4FF00003 		mov	r3, #0
+ 371 0018 4FF00004 		mov	r4, #0
+ 372 001c C7E90634 		strd	r3, [r7, #24]
+ 373 0020 0DE0     		b	.L17
+ 374              	.L18:
+  93:rhea\uart/uart_rhea.c ****             rhea_uart_WriteByte(bytes[i]);
+ 375              		.loc 1 93 0 discriminator 3
+ 376 0022 BB69     		ldr	r3, [r7, #24]
+ 377 0024 FA68     		ldr	r2, [r7, #12]
+ 378 0026 1344     		add	r3, r3, r2
+ 379 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 380 002a 1846     		mov	r0, r3
+ 381 002c FFF7FEFF 		bl	rhea_uart_WriteByte
+  92:rhea\uart/uart_rhea.c ****         for(uint64_t i = 0; i < count; i++) {
+ 382              		.loc 1 92 0 discriminator 3
+ 383 0030 D7E90634 		ldrd	r3, [r7, #24]
+ 384 0034 0133     		adds	r3, r3, #1
+ 385 0036 44F10004 		adc	r4, r4, #0
+ 386 003a C7E90634 		strd	r3, [r7, #24]
+ 387              	.L17:
+  92:rhea\uart/uart_rhea.c ****         for(uint64_t i = 0; i < count; i++) {
+ 388              		.loc 1 92 0 is_stmt 0 discriminator 1
+ 389 003e D7E90612 		ldrd	r1, [r7, #24]
+ 390 0042 D7E90034 		ldrd	r3, [r7]
+ 391 0046 A242     		cmp	r2, r4
+ 392 0048 08BF     		it	eq
+ 393 004a 9942     		cmpeq	r1, r3
+ 394 004c E9D3     		bcc	.L18
+ 395              	.LBE3:
+  94:rhea\uart/uart_rhea.c ****         }
+  95:rhea\uart/uart_rhea.c ****     RHEA_EXIT_CRITICAL_SECTION(status);
+ 396              		.loc 1 95 0 is_stmt 1
+ 397 004e FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 398 0050 1846     		mov	r0, r3
+ 399 0052 FFF7FEFF 		bl	CyExitCriticalSection
+  96:rhea\uart/uart_rhea.c **** }
+ 400              		.loc 1 96 0
+ 401 0056 00BF     		nop
+ 402 0058 2437     		adds	r7, r7, #36
+ 403              		.cfi_def_cfa_offset 12
+ 404 005a BD46     		mov	sp, r7
+ 405              		.cfi_def_cfa_register 13
+ 406              		@ sp needed
+ 407 005c 90BD     		pop	{r4, r7, pc}
+ 408              		.cfi_endproc
+ 409              	.LFE71:
+ 410              		.size	rhea_uart_WriteBytes, .-rhea_uart_WriteBytes
+ 411 005e 00BF     		.section	.text.rhea_uart_WriteBuffer,"ax",%progbits
+ 412              		.align	2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 10
 
 
- 404              		.cfi_endproc
- 405              	.LFE11:
- 406              		.size	rhea_uart_WriteString, .-rhea_uart_WriteString
- 407              		.text
- 408              	.Letext0:
- 409              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
- 410              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
- 411              		.file 4 "rhea\\uart\\uart_impl.h"
- 412              		.section	.debug_info,"",%progbits
- 413              	.Ldebug_info0:
- 414 0000 94030000 		.4byte	0x394
- 415 0004 0400     		.2byte	0x4
- 416 0006 00000000 		.4byte	.Ldebug_abbrev0
- 417 000a 04       		.byte	0x4
- 418 000b 01       		.uleb128 0x1
- 419 000c F0000000 		.4byte	.LASF36
- 420 0010 0C       		.byte	0xc
- 421 0011 A3010000 		.4byte	.LASF37
- 422 0015 8A000000 		.4byte	.LASF38
- 423 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 424 001d 00000000 		.4byte	0
- 425 0021 00000000 		.4byte	.Ldebug_line0
- 426 0025 02       		.uleb128 0x2
- 427 0026 08       		.byte	0x8
- 428 0027 07       		.byte	0x7
- 429 0028 DB010000 		.4byte	.LASF0
- 430 002c 02       		.uleb128 0x2
- 431 002d 01       		.byte	0x1
- 432 002e 06       		.byte	0x6
- 433 002f F0020000 		.4byte	.LASF1
- 434 0033 03       		.uleb128 0x3
- 435 0034 15000000 		.4byte	.LASF8
- 436 0038 02       		.byte	0x2
- 437 0039 1D       		.byte	0x1d
- 438 003a 3E000000 		.4byte	0x3e
- 439 003e 02       		.uleb128 0x2
- 440 003f 01       		.byte	0x1
- 441 0040 08       		.byte	0x8
- 442 0041 E2000000 		.4byte	.LASF2
- 443 0045 02       		.uleb128 0x2
- 444 0046 02       		.byte	0x2
- 445 0047 05       		.byte	0x5
- 446 0048 7F020000 		.4byte	.LASF3
- 447 004c 02       		.uleb128 0x2
- 448 004d 02       		.byte	0x2
- 449 004e 07       		.byte	0x7
- 450 004f 90010000 		.4byte	.LASF4
- 451 0053 02       		.uleb128 0x2
- 452 0054 04       		.byte	0x4
- 453 0055 05       		.byte	0x5
- 454 0056 C3020000 		.4byte	.LASF5
- 455 005a 02       		.uleb128 0x2
- 456 005b 04       		.byte	0x4
- 457 005c 07       		.byte	0x7
- 458 005d 7E010000 		.4byte	.LASF6
- 459 0061 02       		.uleb128 0x2
- 460 0062 08       		.byte	0x8
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 11
+ 413              		.global	rhea_uart_WriteBuffer
+ 414              		.thumb
+ 415              		.thumb_func
+ 416              		.type	rhea_uart_WriteBuffer, %function
+ 417              	rhea_uart_WriteBuffer:
+ 418              	.LFB72:
+  97:rhea\uart/uart_rhea.c **** 
+  98:rhea\uart/uart_rhea.c **** void rhea_uart_WriteBuffer(const uint8_t *buffer, uint64_t size) {
+ 419              		.loc 1 98 0
+ 420              		.cfi_startproc
+ 421              		@ args = 0, pretend = 0, frame = 16
+ 422              		@ frame_needed = 1, uses_anonymous_args = 0
+ 423 0000 80B5     		push	{r7, lr}
+ 424              		.cfi_def_cfa_offset 8
+ 425              		.cfi_offset 7, -8
+ 426              		.cfi_offset 14, -4
+ 427 0002 84B0     		sub	sp, sp, #16
+ 428              		.cfi_def_cfa_offset 24
+ 429 0004 00AF     		add	r7, sp, #0
+ 430              		.cfi_def_cfa_register 7
+ 431 0006 F860     		str	r0, [r7, #12]
+ 432 0008 C7E90023 		strd	r2, [r7]
+  99:rhea\uart/uart_rhea.c ****     rhea_uart_WriteBytes(buffer, size);
+ 433              		.loc 1 99 0
+ 434 000c D7E90023 		ldrd	r2, [r7]
+ 435 0010 F868     		ldr	r0, [r7, #12]
+ 436 0012 FFF7FEFF 		bl	rhea_uart_WriteBytes
+ 100:rhea\uart/uart_rhea.c **** }
+ 437              		.loc 1 100 0
+ 438 0016 00BF     		nop
+ 439 0018 1037     		adds	r7, r7, #16
+ 440              		.cfi_def_cfa_offset 8
+ 441 001a BD46     		mov	sp, r7
+ 442              		.cfi_def_cfa_register 13
+ 443              		@ sp needed
+ 444 001c 80BD     		pop	{r7, pc}
+ 445              		.cfi_endproc
+ 446              	.LFE72:
+ 447              		.size	rhea_uart_WriteBuffer, .-rhea_uart_WriteBuffer
+ 448 001e 00BF     		.section	.text.rhea_uart_WriteChar,"ax",%progbits
+ 449              		.align	2
+ 450              		.global	rhea_uart_WriteChar
+ 451              		.thumb
+ 452              		.thumb_func
+ 453              		.type	rhea_uart_WriteChar, %function
+ 454              	rhea_uart_WriteChar:
+ 455              	.LFB73:
+ 101:rhea\uart/uart_rhea.c **** 
+ 102:rhea\uart/uart_rhea.c **** void rhea_uart_WriteChar(char c) {
+ 456              		.loc 1 102 0
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 8
+ 459              		@ frame_needed = 1, uses_anonymous_args = 0
+ 460 0000 80B5     		push	{r7, lr}
+ 461              		.cfi_def_cfa_offset 8
+ 462              		.cfi_offset 7, -8
+ 463              		.cfi_offset 14, -4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 11
 
 
- 461 0063 05       		.byte	0x5
- 462 0064 59020000 		.4byte	.LASF7
- 463 0068 03       		.uleb128 0x3
- 464 0069 8E020000 		.4byte	.LASF9
- 465 006d 02       		.byte	0x2
- 466 006e 5B       		.byte	0x5b
- 467 006f 25000000 		.4byte	0x25
- 468 0073 04       		.uleb128 0x4
- 469 0074 04       		.byte	0x4
- 470 0075 05       		.byte	0x5
- 471 0076 696E7400 		.ascii	"int\000"
- 472 007a 02       		.uleb128 0x2
- 473 007b 04       		.byte	0x4
- 474 007c 07       		.byte	0x7
- 475 007d CE010000 		.4byte	.LASF10
- 476 0081 03       		.uleb128 0x3
- 477 0082 F2010000 		.4byte	.LASF11
- 478 0086 03       		.byte	0x3
- 479 0087 18       		.byte	0x18
- 480 0088 33000000 		.4byte	0x33
- 481 008c 03       		.uleb128 0x3
- 482 008d 59000000 		.4byte	.LASF12
- 483 0091 03       		.byte	0x3
- 484 0092 3C       		.byte	0x3c
- 485 0093 68000000 		.4byte	0x68
- 486 0097 05       		.uleb128 0x5
- 487 0098 B9010000 		.4byte	.LASF15
- 488 009c 01       		.byte	0x1
- 489 009d 26       		.byte	0x26
- 490 009e 00000000 		.4byte	.LFB0
- 491 00a2 08000000 		.4byte	.LFE0-.LFB0
- 492 00a6 01       		.uleb128 0x1
- 493 00a7 9C       		.byte	0x9c
- 494 00a8 B6000000 		.4byte	0xb6
- 495 00ac 06       		.uleb128 0x6
- 496 00ad 06000000 		.4byte	.LVL0
- 497 00b1 6B030000 		.4byte	0x36b
- 498 00b5 00       		.byte	0
- 499 00b6 07       		.uleb128 0x7
- 500 00b7 40020000 		.4byte	.LASF13
- 501 00bb 01       		.byte	0x1
- 502 00bc 2C       		.byte	0x2c
- 503 00bd 8C000000 		.4byte	0x8c
- 504 00c1 00000000 		.4byte	.LFB1
- 505 00c5 08000000 		.4byte	.LFE1-.LFB1
- 506 00c9 01       		.uleb128 0x1
- 507 00ca 9C       		.byte	0x9c
- 508 00cb D9000000 		.4byte	0xd9
- 509 00cf 06       		.uleb128 0x6
- 510 00d0 06000000 		.4byte	.LVL1
- 511 00d4 76030000 		.4byte	0x376
- 512 00d8 00       		.byte	0
- 513 00d9 07       		.uleb128 0x7
- 514 00da 6C020000 		.4byte	.LASF14
- 515 00de 01       		.byte	0x1
- 516 00df 32       		.byte	0x32
- 517 00e0 81000000 		.4byte	0x81
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 12
+ 464 0002 82B0     		sub	sp, sp, #8
+ 465              		.cfi_def_cfa_offset 16
+ 466 0004 00AF     		add	r7, sp, #0
+ 467              		.cfi_def_cfa_register 7
+ 468 0006 0346     		mov	r3, r0
+ 469 0008 FB71     		strb	r3, [r7, #7]
+ 103:rhea\uart/uart_rhea.c ****     rhea_uart_WriteByte(c);
+ 470              		.loc 1 103 0
+ 471 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 472 000c 1846     		mov	r0, r3
+ 473 000e FFF7FEFF 		bl	rhea_uart_WriteByte
+ 104:rhea\uart/uart_rhea.c **** }
+ 474              		.loc 1 104 0
+ 475 0012 00BF     		nop
+ 476 0014 0837     		adds	r7, r7, #8
+ 477              		.cfi_def_cfa_offset 8
+ 478 0016 BD46     		mov	sp, r7
+ 479              		.cfi_def_cfa_register 13
+ 480              		@ sp needed
+ 481 0018 80BD     		pop	{r7, pc}
+ 482              		.cfi_endproc
+ 483              	.LFE73:
+ 484              		.size	rhea_uart_WriteChar, .-rhea_uart_WriteChar
+ 485 001a 00BF     		.section	.text.rhea_uart_WriteString,"ax",%progbits
+ 486              		.align	2
+ 487              		.global	rhea_uart_WriteString
+ 488              		.thumb
+ 489              		.thumb_func
+ 490              		.type	rhea_uart_WriteString, %function
+ 491              	rhea_uart_WriteString:
+ 492              	.LFB74:
+ 105:rhea\uart/uart_rhea.c **** 
+ 106:rhea\uart/uart_rhea.c **** void rhea_uart_WriteString(const char *string) {
+ 493              		.loc 1 106 0
+ 494              		.cfi_startproc
+ 495              		@ args = 0, pretend = 0, frame = 16
+ 496              		@ frame_needed = 1, uses_anonymous_args = 0
+ 497 0000 80B5     		push	{r7, lr}
+ 498              		.cfi_def_cfa_offset 8
+ 499              		.cfi_offset 7, -8
+ 500              		.cfi_offset 14, -4
+ 501 0002 84B0     		sub	sp, sp, #16
+ 502              		.cfi_def_cfa_offset 24
+ 503 0004 00AF     		add	r7, sp, #0
+ 504              		.cfi_def_cfa_register 7
+ 505 0006 7860     		str	r0, [r7, #4]
+ 107:rhea\uart/uart_rhea.c ****     uint8_t status = RHEA_ENTER_CRITICAL_SECTION();
+ 506              		.loc 1 107 0
+ 507 0008 FFF7FEFF 		bl	CyEnterCriticalSection
+ 508 000c 0346     		mov	r3, r0
+ 509 000e FB73     		strb	r3, [r7, #15]
+ 108:rhea\uart/uart_rhea.c ****         while(*string != '\0') {
+ 510              		.loc 1 108 0
+ 511 0010 06E0     		b	.L22
+ 512              	.L23:
+ 109:rhea\uart/uart_rhea.c ****             rhea_uart_WriteChar(*string++);   
+ 513              		.loc 1 109 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 12
 
 
- 518 00e4 00000000 		.4byte	.LFB2
- 519 00e8 08000000 		.4byte	.LFE2-.LFB2
- 520 00ec 01       		.uleb128 0x1
- 521 00ed 9C       		.byte	0x9c
- 522 00ee FC000000 		.4byte	0xfc
- 523 00f2 06       		.uleb128 0x6
- 524 00f3 06000000 		.4byte	.LVL2
- 525 00f7 81030000 		.4byte	0x381
- 526 00fb 00       		.byte	0
- 527 00fc 05       		.uleb128 0x5
- 528 00fd 62000000 		.4byte	.LASF16
- 529 0101 01       		.byte	0x1
- 530 0102 38       		.byte	0x38
- 531 0103 00000000 		.4byte	.LFB3
- 532 0107 2A000000 		.4byte	.LFE3-.LFB3
- 533 010b 01       		.uleb128 0x1
- 534 010c 9C       		.byte	0x9c
- 535 010d 50010000 		.4byte	0x150
- 536 0111 08       		.uleb128 0x8
- 537 0112 CC020000 		.4byte	.LASF17
- 538 0116 01       		.byte	0x1
- 539 0117 38       		.byte	0x38
- 540 0118 50010000 		.4byte	0x150
- 541 011c 00000000 		.4byte	.LLST0
- 542 0120 08       		.uleb128 0x8
- 543 0121 40000000 		.4byte	.LASF18
- 544 0125 01       		.byte	0x1
- 545 0126 38       		.byte	0x38
- 546 0127 8C000000 		.4byte	0x8c
- 547 012b 1E000000 		.4byte	.LLST1
- 548 012f 09       		.uleb128 0x9
- 549 0130 0A000000 		.4byte	.LBB2
- 550 0134 1C000000 		.4byte	.LBE2-.LBB2
- 551 0138 0A       		.uleb128 0xa
- 552 0139 6900     		.ascii	"i\000"
- 553 013b 01       		.byte	0x1
- 554 013c 39       		.byte	0x39
- 555 013d 8C000000 		.4byte	0x8c
- 556 0141 46000000 		.4byte	.LLST2
- 557 0145 06       		.uleb128 0x6
- 558 0146 16000000 		.4byte	.LVL6
- 559 014a D9000000 		.4byte	0xd9
- 560 014e 00       		.byte	0
- 561 014f 00       		.byte	0
- 562 0150 0B       		.uleb128 0xb
- 563 0151 04       		.byte	0x4
- 564 0152 81000000 		.4byte	0x81
- 565 0156 05       		.uleb128 0x5
- 566 0157 CD000000 		.4byte	.LASF19
- 567 015b 01       		.byte	0x1
- 568 015c 3E       		.byte	0x3e
- 569 015d 00000000 		.4byte	.LFB4
- 570 0161 08000000 		.4byte	.LFE4-.LFB4
- 571 0165 01       		.uleb128 0x1
- 572 0166 9C       		.byte	0x9c
- 573 0167 A9010000 		.4byte	0x1a9
- 574 016b 08       		.uleb128 0x8
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 13
+ 514 0012 7B68     		ldr	r3, [r7, #4]
+ 515 0014 5A1C     		adds	r2, r3, #1
+ 516 0016 7A60     		str	r2, [r7, #4]
+ 517 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 518 001a 1846     		mov	r0, r3
+ 519 001c FFF7FEFF 		bl	rhea_uart_WriteChar
+ 520              	.L22:
+ 108:rhea\uart/uart_rhea.c ****         while(*string != '\0') {
+ 521              		.loc 1 108 0
+ 522 0020 7B68     		ldr	r3, [r7, #4]
+ 523 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 524 0024 002B     		cmp	r3, #0
+ 525 0026 F4D1     		bne	.L23
+ 110:rhea\uart/uart_rhea.c ****         }
+ 111:rhea\uart/uart_rhea.c ****         rhea_uart_WriteChar('\0');
+ 526              		.loc 1 111 0
+ 527 0028 0020     		movs	r0, #0
+ 528 002a FFF7FEFF 		bl	rhea_uart_WriteChar
+ 112:rhea\uart/uart_rhea.c ****     RHEA_EXIT_CRITICAL_SECTION(status);
+ 529              		.loc 1 112 0
+ 530 002e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 531 0030 1846     		mov	r0, r3
+ 532 0032 FFF7FEFF 		bl	CyExitCriticalSection
+ 113:rhea\uart/uart_rhea.c **** }
+ 533              		.loc 1 113 0
+ 534 0036 00BF     		nop
+ 535 0038 1037     		adds	r7, r7, #16
+ 536              		.cfi_def_cfa_offset 8
+ 537 003a BD46     		mov	sp, r7
+ 538              		.cfi_def_cfa_register 13
+ 539              		@ sp needed
+ 540 003c 80BD     		pop	{r7, pc}
+ 541              		.cfi_endproc
+ 542              	.LFE74:
+ 543              		.size	rhea_uart_WriteString, .-rhea_uart_WriteString
+ 544 003e 00BF     		.text
+ 545              	.Letext0:
+ 546              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 547              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 548              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 549              		.section	.debug_info,"",%progbits
+ 550              	.Ldebug_info0:
+ 551 0000 16030000 		.4byte	0x316
+ 552 0004 0400     		.2byte	0x4
+ 553 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 554 000a 04       		.byte	0x4
+ 555 000b 01       		.uleb128 0x1
+ 556 000c 1F000000 		.4byte	.LASF38
+ 557 0010 0C       		.byte	0xc
+ 558 0011 B3010000 		.4byte	.LASF39
+ 559 0015 F5000000 		.4byte	.LASF40
+ 560 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 561 001d 00000000 		.4byte	0
+ 562 0021 00000000 		.4byte	.Ldebug_line0
+ 563 0025 02       		.uleb128 0x2
+ 564 0026 01       		.byte	0x1
+ 565 0027 06       		.byte	0x6
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 13
 
 
- 575 016c 1F000000 		.4byte	.LASF20
- 576 0170 01       		.byte	0x1
- 577 0171 3E       		.byte	0x3e
- 578 0172 50010000 		.4byte	0x150
- 579 0176 82000000 		.4byte	.LLST3
- 580 017a 08       		.uleb128 0x8
- 581 017b FC020000 		.4byte	.LASF21
- 582 017f 01       		.byte	0x1
- 583 0180 3E       		.byte	0x3e
- 584 0181 8C000000 		.4byte	0x8c
- 585 0185 A3000000 		.4byte	.LLST4
- 586 0189 0C       		.uleb128 0xc
- 587 018a 06000000 		.4byte	.LVL10
- 588 018e FC000000 		.4byte	0xfc
- 589 0192 0D       		.uleb128 0xd
- 590 0193 01       		.uleb128 0x1
- 591 0194 50       		.byte	0x50
- 592 0195 03       		.uleb128 0x3
- 593 0196 F3       		.byte	0xf3
- 594 0197 01       		.uleb128 0x1
- 595 0198 50       		.byte	0x50
- 596 0199 0D       		.uleb128 0xd
- 597 019a 06       		.uleb128 0x6
- 598 019b 52       		.byte	0x52
- 599 019c 93       		.byte	0x93
- 600 019d 04       		.uleb128 0x4
- 601 019e 53       		.byte	0x53
- 602 019f 93       		.byte	0x93
- 603 01a0 04       		.uleb128 0x4
- 604 01a1 05       		.uleb128 0x5
- 605 01a2 F3       		.byte	0xf3
- 606 01a3 03       		.uleb128 0x3
- 607 01a4 F5       		.byte	0xf5
- 608 01a5 02       		.uleb128 0x2
- 609 01a6 25       		.uleb128 0x25
- 610 01a7 00       		.byte	0
- 611 01a8 00       		.byte	0
- 612 01a9 07       		.uleb128 0x7
- 613 01aa 46000000 		.4byte	.LASF22
- 614 01ae 01       		.byte	0x1
- 615 01af 42       		.byte	0x42
- 616 01b0 CC010000 		.4byte	0x1cc
- 617 01b4 00000000 		.4byte	.LFB5
- 618 01b8 08000000 		.4byte	.LFE5-.LFB5
- 619 01bc 01       		.uleb128 0x1
- 620 01bd 9C       		.byte	0x9c
- 621 01be CC010000 		.4byte	0x1cc
- 622 01c2 06       		.uleb128 0x6
- 623 01c3 06000000 		.4byte	.LVL11
- 624 01c7 D9000000 		.4byte	0xd9
- 625 01cb 00       		.byte	0
- 626 01cc 02       		.uleb128 0x2
- 627 01cd 01       		.byte	0x1
- 628 01ce 08       		.byte	0x8
- 629 01cf 67020000 		.4byte	.LASF23
- 630 01d3 05       		.uleb128 0x5
- 631 01d4 2B020000 		.4byte	.LASF24
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 14
+ 566 0028 D0020000 		.4byte	.LASF0
+ 567 002c 03       		.uleb128 0x3
+ 568 002d 15000000 		.4byte	.LASF4
+ 569 0031 02       		.byte	0x2
+ 570 0032 1D       		.byte	0x1d
+ 571 0033 37000000 		.4byte	0x37
+ 572 0037 02       		.uleb128 0x2
+ 573 0038 01       		.byte	0x1
+ 574 0039 08       		.byte	0x8
+ 575 003a 8A010000 		.4byte	.LASF1
+ 576 003e 02       		.uleb128 0x2
+ 577 003f 02       		.byte	0x2
+ 578 0040 05       		.byte	0x5
+ 579 0041 75020000 		.4byte	.LASF2
+ 580 0045 02       		.uleb128 0x2
+ 581 0046 02       		.byte	0x2
+ 582 0047 07       		.byte	0x7
+ 583 0048 6A010000 		.4byte	.LASF3
+ 584 004c 03       		.uleb128 0x3
+ 585 004d AD000000 		.4byte	.LASF5
+ 586 0051 02       		.byte	0x2
+ 587 0052 3F       		.byte	0x3f
+ 588 0053 57000000 		.4byte	0x57
+ 589 0057 02       		.uleb128 0x2
+ 590 0058 04       		.byte	0x4
+ 591 0059 05       		.byte	0x5
+ 592 005a B5020000 		.4byte	.LASF6
+ 593 005e 02       		.uleb128 0x2
+ 594 005f 04       		.byte	0x4
+ 595 0060 07       		.byte	0x7
+ 596 0061 58010000 		.4byte	.LASF7
+ 597 0065 02       		.uleb128 0x2
+ 598 0066 08       		.byte	0x8
+ 599 0067 05       		.byte	0x5
+ 600 0068 49020000 		.4byte	.LASF8
+ 601 006c 03       		.uleb128 0x3
+ 602 006d DC020000 		.4byte	.LASF9
+ 603 0071 02       		.byte	0x2
+ 604 0072 5B       		.byte	0x5b
+ 605 0073 77000000 		.4byte	0x77
+ 606 0077 02       		.uleb128 0x2
+ 607 0078 08       		.byte	0x8
+ 608 0079 07       		.byte	0x7
+ 609 007a EB010000 		.4byte	.LASF10
+ 610 007e 04       		.uleb128 0x4
+ 611 007f 04       		.byte	0x4
+ 612 0080 05       		.byte	0x5
+ 613 0081 696E7400 		.ascii	"int\000"
+ 614 0085 02       		.uleb128 0x2
+ 615 0086 04       		.byte	0x4
+ 616 0087 07       		.byte	0x7
+ 617 0088 DE010000 		.4byte	.LASF11
+ 618 008c 03       		.uleb128 0x3
+ 619 008d 02020000 		.4byte	.LASF12
+ 620 0091 03       		.byte	0x3
+ 621 0092 18       		.byte	0x18
+ 622 0093 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 14
 
 
- 632 01d8 01       		.byte	0x1
- 633 01d9 46       		.byte	0x46
- 634 01da 00000000 		.4byte	.LFB6
- 635 01de 1E000000 		.4byte	.LFE6-.LFB6
- 636 01e2 01       		.uleb128 0x1
- 637 01e3 9C       		.byte	0x9c
- 638 01e4 17020000 		.4byte	0x217
- 639 01e8 08       		.uleb128 0x8
- 640 01e9 01030000 		.4byte	.LASF25
- 641 01ed 01       		.byte	0x1
- 642 01ee 46       		.byte	0x46
- 643 01ef 17020000 		.4byte	0x217
- 644 01f3 CB000000 		.4byte	.LLST5
- 645 01f7 0A       		.uleb128 0xa
- 646 01f8 6300     		.ascii	"c\000"
- 647 01fa 01       		.byte	0x1
- 648 01fb 47       		.byte	0x47
- 649 01fc CC010000 		.4byte	0x1cc
- 650 0200 FF000000 		.4byte	.LLST6
- 651 0204 06       		.uleb128 0x6
- 652 0205 08000000 		.4byte	.LVL13
- 653 0209 A9010000 		.4byte	0x1a9
- 654 020d 06       		.uleb128 0x6
- 655 020e 12000000 		.4byte	.LVL15
- 656 0212 A9010000 		.4byte	0x1a9
- 657 0216 00       		.byte	0
- 658 0217 0B       		.uleb128 0xb
- 659 0218 04       		.byte	0x4
- 660 0219 CC010000 		.4byte	0x1cc
- 661 021d 05       		.uleb128 0x5
- 662 021e 99020000 		.4byte	.LASF26
- 663 0222 01       		.byte	0x1
- 664 0223 4F       		.byte	0x4f
- 665 0224 00000000 		.4byte	.LFB7
- 666 0228 08000000 		.4byte	.LFE7-.LFB7
- 667 022c 01       		.uleb128 0x1
- 668 022d 9C       		.byte	0x9c
- 669 022e 4B020000 		.4byte	0x24b
- 670 0232 08       		.uleb128 0x8
- 671 0233 89020000 		.4byte	.LASF27
- 672 0237 01       		.byte	0x1
- 673 0238 4F       		.byte	0x4f
- 674 0239 81000000 		.4byte	0x81
- 675 023d 1D010000 		.4byte	.LLST7
- 676 0241 06       		.uleb128 0x6
- 677 0242 06000000 		.4byte	.LVL18
- 678 0246 8C030000 		.4byte	0x38c
- 679 024a 00       		.byte	0
- 680 024b 05       		.uleb128 0x5
- 681 024c 00000000 		.4byte	.LASF28
- 682 0250 01       		.byte	0x1
- 683 0251 55       		.byte	0x55
- 684 0252 00000000 		.4byte	.LFB8
- 685 0256 2C000000 		.4byte	.LFE8-.LFB8
- 686 025a 01       		.uleb128 0x1
- 687 025b 9C       		.byte	0x9c
- 688 025c 9F020000 		.4byte	0x29f
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 15
+ 623 0097 03       		.uleb128 0x3
+ 624 0098 1F020000 		.4byte	.LASF13
+ 625 009c 03       		.byte	0x3
+ 626 009d 2C       		.byte	0x2c
+ 627 009e 4C000000 		.4byte	0x4c
+ 628 00a2 03       		.uleb128 0x3
+ 629 00a3 CA000000 		.4byte	.LASF14
+ 630 00a7 03       		.byte	0x3
+ 631 00a8 3C       		.byte	0x3c
+ 632 00a9 6C000000 		.4byte	0x6c
+ 633 00ad 02       		.uleb128 0x2
+ 634 00ae 04       		.byte	0x4
+ 635 00af 04       		.byte	0x4
+ 636 00b0 22010000 		.4byte	.LASF15
+ 637 00b4 02       		.uleb128 0x2
+ 638 00b5 08       		.byte	0x8
+ 639 00b6 04       		.byte	0x4
+ 640 00b7 98010000 		.4byte	.LASF16
+ 641 00bb 02       		.uleb128 0x2
+ 642 00bc 01       		.byte	0x1
+ 643 00bd 08       		.byte	0x8
+ 644 00be 57020000 		.4byte	.LASF17
+ 645 00c2 02       		.uleb128 0x2
+ 646 00c3 08       		.byte	0x8
+ 647 00c4 04       		.byte	0x4
+ 648 00c5 C4020000 		.4byte	.LASF18
+ 649 00c9 02       		.uleb128 0x2
+ 650 00ca 04       		.byte	0x4
+ 651 00cb 07       		.byte	0x7
+ 652 00cc 27020000 		.4byte	.LASF19
+ 653 00d0 05       		.uleb128 0x5
+ 654 00d1 04       		.byte	0x4
+ 655 00d2 BB000000 		.4byte	0xbb
+ 656 00d6 05       		.uleb128 0x5
+ 657 00d7 04       		.byte	0x4
+ 658 00d8 DC000000 		.4byte	0xdc
+ 659 00dc 06       		.uleb128 0x6
+ 660 00dd BB000000 		.4byte	0xbb
+ 661 00e1 07       		.uleb128 0x7
+ 662 00e2 C9010000 		.4byte	.LASF41
+ 663 00e6 01       		.byte	0x1
+ 664 00e7 27       		.byte	0x27
+ 665 00e8 00000000 		.4byte	.LFB63
+ 666 00ec 0C000000 		.4byte	.LFE63-.LFB63
+ 667 00f0 01       		.uleb128 0x1
+ 668 00f1 9C       		.byte	0x9c
+ 669 00f2 08       		.uleb128 0x8
+ 670 00f3 30020000 		.4byte	.LASF20
+ 671 00f7 01       		.byte	0x1
+ 672 00f8 2D       		.byte	0x2d
+ 673 00f9 A2000000 		.4byte	0xa2
+ 674 00fd 00000000 		.4byte	.LFB64
+ 675 0101 12000000 		.4byte	.LFE64-.LFB64
+ 676 0105 01       		.uleb128 0x1
+ 677 0106 9C       		.byte	0x9c
+ 678 0107 08       		.uleb128 0x8
+ 679 0108 62020000 		.4byte	.LASF21
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 15
 
 
- 689 0260 08       		.uleb128 0x8
- 690 0261 CC020000 		.4byte	.LASF17
- 691 0265 01       		.byte	0x1
- 692 0266 55       		.byte	0x55
- 693 0267 9F020000 		.4byte	0x29f
- 694 026b 3E010000 		.4byte	.LLST8
- 695 026f 08       		.uleb128 0x8
- 696 0270 40000000 		.4byte	.LASF18
- 697 0274 01       		.byte	0x1
- 698 0275 55       		.byte	0x55
- 699 0276 8C000000 		.4byte	0x8c
- 700 027a 5C010000 		.4byte	.LLST9
- 701 027e 09       		.uleb128 0x9
- 702 027f 0A000000 		.4byte	.LBB3
- 703 0283 1E000000 		.4byte	.LBE3-.LBB3
- 704 0287 0A       		.uleb128 0xa
- 705 0288 6900     		.ascii	"i\000"
- 706 028a 01       		.byte	0x1
- 707 028b 56       		.byte	0x56
- 708 028c 8C000000 		.4byte	0x8c
- 709 0290 84010000 		.4byte	.LLST10
- 710 0294 06       		.uleb128 0x6
- 711 0295 1A000000 		.4byte	.LVL22
- 712 0299 1D020000 		.4byte	0x21d
- 713 029d 00       		.byte	0
- 714 029e 00       		.byte	0
- 715 029f 0B       		.uleb128 0xb
- 716 02a0 04       		.byte	0x4
- 717 02a1 A5020000 		.4byte	0x2a5
- 718 02a5 0E       		.uleb128 0xe
- 719 02a6 81000000 		.4byte	0x81
- 720 02aa 05       		.uleb128 0x5
- 721 02ab AD020000 		.4byte	.LASF29
- 722 02af 01       		.byte	0x1
- 723 02b0 5B       		.byte	0x5b
- 724 02b1 00000000 		.4byte	.LFB9
- 725 02b5 08000000 		.4byte	.LFE9-.LFB9
- 726 02b9 01       		.uleb128 0x1
- 727 02ba 9C       		.byte	0x9c
- 728 02bb FD020000 		.4byte	0x2fd
- 729 02bf 08       		.uleb128 0x8
- 730 02c0 1F000000 		.4byte	.LASF20
- 731 02c4 01       		.byte	0x1
- 732 02c5 5B       		.byte	0x5b
- 733 02c6 9F020000 		.4byte	0x29f
- 734 02ca C0010000 		.4byte	.LLST11
- 735 02ce 08       		.uleb128 0x8
- 736 02cf FC020000 		.4byte	.LASF21
- 737 02d3 01       		.byte	0x1
- 738 02d4 5B       		.byte	0x5b
- 739 02d5 8C000000 		.4byte	0x8c
- 740 02d9 E1010000 		.4byte	.LLST12
- 741 02dd 0C       		.uleb128 0xc
- 742 02de 06000000 		.4byte	.LVL26
- 743 02e2 4B020000 		.4byte	0x24b
- 744 02e6 0D       		.uleb128 0xd
- 745 02e7 01       		.uleb128 0x1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 16
+ 680 010c 01       		.byte	0x1
+ 681 010d 33       		.byte	0x33
+ 682 010e 8C000000 		.4byte	0x8c
+ 683 0112 00000000 		.4byte	.LFB65
+ 684 0116 0E000000 		.4byte	.LFE65-.LFB65
+ 685 011a 01       		.uleb128 0x1
+ 686 011b 9C       		.byte	0x9c
+ 687 011c 09       		.uleb128 0x9
+ 688 011d 9F010000 		.4byte	.LASF25
+ 689 0121 01       		.byte	0x1
+ 690 0122 39       		.byte	0x39
+ 691 0123 00000000 		.4byte	.LFB66
+ 692 0127 5E000000 		.4byte	.LFE66-.LFB66
+ 693 012b 01       		.uleb128 0x1
+ 694 012c 9C       		.byte	0x9c
+ 695 012d 72010000 		.4byte	0x172
+ 696 0131 0A       		.uleb128 0xa
+ 697 0132 BE020000 		.4byte	.LASF22
+ 698 0136 01       		.byte	0x1
+ 699 0137 39       		.byte	0x39
+ 700 0138 72010000 		.4byte	0x172
+ 701 013c 02       		.uleb128 0x2
+ 702 013d 91       		.byte	0x91
+ 703 013e 5C       		.sleb128 -36
+ 704 013f 0A       		.uleb128 0xa
+ 705 0140 5C020000 		.4byte	.LASF23
+ 706 0144 01       		.byte	0x1
+ 707 0145 39       		.byte	0x39
+ 708 0146 A2000000 		.4byte	0xa2
+ 709 014a 02       		.uleb128 0x2
+ 710 014b 91       		.byte	0x91
+ 711 014c 50       		.sleb128 -48
+ 712 014d 0B       		.uleb128 0xb
+ 713 014e D3000000 		.4byte	.LASF24
+ 714 0152 01       		.byte	0x1
+ 715 0153 3A       		.byte	0x3a
+ 716 0154 8C000000 		.4byte	0x8c
+ 717 0158 02       		.uleb128 0x2
+ 718 0159 91       		.byte	0x91
+ 719 015a 67       		.sleb128 -25
+ 720 015b 0C       		.uleb128 0xc
+ 721 015c 14000000 		.4byte	.LBB2
+ 722 0160 3A000000 		.4byte	.LBE2-.LBB2
+ 723 0164 0D       		.uleb128 0xd
+ 724 0165 6900     		.ascii	"i\000"
+ 725 0167 01       		.byte	0x1
+ 726 0168 3B       		.byte	0x3b
+ 727 0169 A2000000 		.4byte	0xa2
+ 728 016d 02       		.uleb128 0x2
+ 729 016e 91       		.byte	0x91
+ 730 016f 68       		.sleb128 -24
+ 731 0170 00       		.byte	0
+ 732 0171 00       		.byte	0
+ 733 0172 05       		.uleb128 0x5
+ 734 0173 04       		.byte	0x4
+ 735 0174 8C000000 		.4byte	0x8c
+ 736 0178 09       		.uleb128 0x9
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 16
 
 
- 746 02e8 50       		.byte	0x50
- 747 02e9 03       		.uleb128 0x3
- 748 02ea F3       		.byte	0xf3
- 749 02eb 01       		.uleb128 0x1
- 750 02ec 50       		.byte	0x50
- 751 02ed 0D       		.uleb128 0xd
- 752 02ee 06       		.uleb128 0x6
- 753 02ef 52       		.byte	0x52
- 754 02f0 93       		.byte	0x93
- 755 02f1 04       		.uleb128 0x4
- 756 02f2 53       		.byte	0x53
- 757 02f3 93       		.byte	0x93
- 758 02f4 04       		.uleb128 0x4
- 759 02f5 05       		.uleb128 0x5
- 760 02f6 F3       		.byte	0xf3
- 761 02f7 03       		.uleb128 0x3
- 762 02f8 F5       		.byte	0xf5
- 763 02f9 02       		.uleb128 0x2
- 764 02fa 25       		.uleb128 0x25
- 765 02fb 00       		.byte	0
- 766 02fc 00       		.byte	0
- 767 02fd 05       		.uleb128 0x5
- 768 02fe 76000000 		.4byte	.LASF30
- 769 0302 01       		.byte	0x1
- 770 0303 5F       		.byte	0x5f
- 771 0304 00000000 		.4byte	.LFB10
- 772 0308 08000000 		.4byte	.LFE10-.LFB10
- 773 030c 01       		.uleb128 0x1
- 774 030d 9C       		.byte	0x9c
- 775 030e 29030000 		.4byte	0x329
- 776 0312 0F       		.uleb128 0xf
- 777 0313 6300     		.ascii	"c\000"
- 778 0315 01       		.byte	0x1
- 779 0316 5F       		.byte	0x5f
- 780 0317 CC010000 		.4byte	0x1cc
- 781 031b 09020000 		.4byte	.LLST13
- 782 031f 06       		.uleb128 0x6
- 783 0320 06000000 		.4byte	.LVL28
- 784 0324 1D020000 		.4byte	0x21d
- 785 0328 00       		.byte	0
- 786 0329 05       		.uleb128 0x5
- 787 032a B7000000 		.4byte	.LASF31
- 788 032e 01       		.byte	0x1
- 789 032f 63       		.byte	0x63
- 790 0330 00000000 		.4byte	.LFB11
- 791 0334 18000000 		.4byte	.LFE11-.LFB11
- 792 0338 01       		.uleb128 0x1
- 793 0339 9C       		.byte	0x9c
- 794 033a 60030000 		.4byte	0x360
- 795 033e 08       		.uleb128 0x8
- 796 033f 01030000 		.4byte	.LASF25
- 797 0343 01       		.byte	0x1
- 798 0344 63       		.byte	0x63
- 799 0345 60030000 		.4byte	0x360
- 800 0349 2A020000 		.4byte	.LLST14
- 801 034d 06       		.uleb128 0x6
- 802 034e 0C000000 		.4byte	.LVL32
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 17
+ 737 0179 28010000 		.4byte	.LASF26
+ 738 017d 01       		.byte	0x1
+ 739 017e 41       		.byte	0x41
+ 740 017f 00000000 		.4byte	.LFB67
+ 741 0183 1E000000 		.4byte	.LFE67-.LFB67
+ 742 0187 01       		.uleb128 0x1
+ 743 0188 9C       		.byte	0x9c
+ 744 0189 AA010000 		.4byte	0x1aa
+ 745 018d 0A       		.uleb128 0xa
+ 746 018e 84020000 		.4byte	.LASF27
+ 747 0192 01       		.byte	0x1
+ 748 0193 41       		.byte	0x41
+ 749 0194 72010000 		.4byte	0x172
+ 750 0198 02       		.uleb128 0x2
+ 751 0199 91       		.byte	0x91
+ 752 019a 74       		.sleb128 -12
+ 753 019b 0A       		.uleb128 0xa
+ 754 019c 3D010000 		.4byte	.LASF28
+ 755 01a0 01       		.byte	0x1
+ 756 01a1 41       		.byte	0x41
+ 757 01a2 A2000000 		.4byte	0xa2
+ 758 01a6 02       		.uleb128 0x2
+ 759 01a7 91       		.byte	0x91
+ 760 01a8 68       		.sleb128 -24
+ 761 01a9 00       		.byte	0
+ 762 01aa 08       		.uleb128 0x8
+ 763 01ab B7000000 		.4byte	.LASF29
+ 764 01af 01       		.byte	0x1
+ 765 01b0 45       		.byte	0x45
+ 766 01b1 BB000000 		.4byte	0xbb
+ 767 01b5 00000000 		.4byte	.LFB68
+ 768 01b9 0E000000 		.4byte	.LFE68-.LFB68
+ 769 01bd 01       		.uleb128 0x1
+ 770 01be 9C       		.byte	0x9c
+ 771 01bf 09       		.uleb128 0x9
+ 772 01c0 0A020000 		.4byte	.LASF30
+ 773 01c4 01       		.byte	0x1
+ 774 01c5 49       		.byte	0x49
+ 775 01c6 00000000 		.4byte	.LFB69
+ 776 01ca 48000000 		.4byte	.LFE69-.LFB69
+ 777 01ce 01       		.uleb128 0x1
+ 778 01cf 9C       		.byte	0x9c
+ 779 01d0 FD010000 		.4byte	0x1fd
+ 780 01d4 0A       		.uleb128 0xa
+ 781 01d5 DA000000 		.4byte	.LASF31
+ 782 01d9 01       		.byte	0x1
+ 783 01da 49       		.byte	0x49
+ 784 01db D0000000 		.4byte	0xd0
+ 785 01df 02       		.uleb128 0x2
+ 786 01e0 91       		.byte	0x91
+ 787 01e1 6C       		.sleb128 -20
+ 788 01e2 0B       		.uleb128 0xb
+ 789 01e3 D3000000 		.4byte	.LASF24
+ 790 01e7 01       		.byte	0x1
+ 791 01e8 4A       		.byte	0x4a
+ 792 01e9 8C000000 		.4byte	0x8c
+ 793 01ed 02       		.uleb128 0x2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 17
 
 
- 803 0352 FD020000 		.4byte	0x2fd
- 804 0356 06       		.uleb128 0x6
- 805 0357 16000000 		.4byte	.LVL33
- 806 035b FD020000 		.4byte	0x2fd
- 807 035f 00       		.byte	0
- 808 0360 0B       		.uleb128 0xb
- 809 0361 04       		.byte	0x4
- 810 0362 66030000 		.4byte	0x366
- 811 0366 0E       		.uleb128 0xe
- 812 0367 CC010000 		.4byte	0x1cc
- 813 036b 10       		.uleb128 0x10
- 814 036c 26000000 		.4byte	.LASF32
- 815 0370 26000000 		.4byte	.LASF32
- 816 0374 04       		.byte	0x4
- 817 0375 2E       		.byte	0x2e
- 818 0376 10       		.uleb128 0x10
- 819 0377 D2020000 		.4byte	.LASF33
- 820 037b D2020000 		.4byte	.LASF33
- 821 037f 04       		.byte	0x4
- 822 0380 34       		.byte	0x34
- 823 0381 10       		.uleb128 0x10
- 824 0382 13020000 		.4byte	.LASF34
- 825 0386 13020000 		.4byte	.LASF34
- 826 038a 04       		.byte	0x4
- 827 038b 3B       		.byte	0x3b
- 828 038c 10       		.uleb128 0x10
- 829 038d FA010000 		.4byte	.LASF35
- 830 0391 FA010000 		.4byte	.LASF35
- 831 0395 04       		.byte	0x4
- 832 0396 42       		.byte	0x42
- 833 0397 00       		.byte	0
- 834              		.section	.debug_abbrev,"",%progbits
- 835              	.Ldebug_abbrev0:
- 836 0000 01       		.uleb128 0x1
- 837 0001 11       		.uleb128 0x11
- 838 0002 01       		.byte	0x1
- 839 0003 25       		.uleb128 0x25
- 840 0004 0E       		.uleb128 0xe
- 841 0005 13       		.uleb128 0x13
- 842 0006 0B       		.uleb128 0xb
- 843 0007 03       		.uleb128 0x3
- 844 0008 0E       		.uleb128 0xe
- 845 0009 1B       		.uleb128 0x1b
- 846 000a 0E       		.uleb128 0xe
- 847 000b 55       		.uleb128 0x55
- 848 000c 17       		.uleb128 0x17
- 849 000d 11       		.uleb128 0x11
- 850 000e 01       		.uleb128 0x1
- 851 000f 10       		.uleb128 0x10
- 852 0010 17       		.uleb128 0x17
- 853 0011 00       		.byte	0
- 854 0012 00       		.byte	0
- 855 0013 02       		.uleb128 0x2
- 856 0014 24       		.uleb128 0x24
- 857 0015 00       		.byte	0
- 858 0016 0B       		.uleb128 0xb
- 859 0017 0B       		.uleb128 0xb
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 18
+ 794 01ee 91       		.byte	0x91
+ 795 01ef 76       		.sleb128 -10
+ 796 01f0 0D       		.uleb128 0xd
+ 797 01f1 6300     		.ascii	"c\000"
+ 798 01f3 01       		.byte	0x1
+ 799 01f4 4B       		.byte	0x4b
+ 800 01f5 BB000000 		.4byte	0xbb
+ 801 01f9 02       		.uleb128 0x2
+ 802 01fa 91       		.byte	0x91
+ 803 01fb 77       		.sleb128 -9
+ 804 01fc 00       		.byte	0
+ 805 01fd 09       		.uleb128 0x9
+ 806 01fe 8B020000 		.4byte	.LASF32
+ 807 0202 01       		.byte	0x1
+ 808 0203 54       		.byte	0x54
+ 809 0204 00000000 		.4byte	.LFB70
+ 810 0208 1A000000 		.4byte	.LFE70-.LFB70
+ 811 020c 01       		.uleb128 0x1
+ 812 020d 9C       		.byte	0x9c
+ 813 020e 21020000 		.4byte	0x221
+ 814 0212 0A       		.uleb128 0xa
+ 815 0213 7F020000 		.4byte	.LASF33
+ 816 0217 01       		.byte	0x1
+ 817 0218 54       		.byte	0x54
+ 818 0219 8C000000 		.4byte	0x8c
+ 819 021d 02       		.uleb128 0x2
+ 820 021e 91       		.byte	0x91
+ 821 021f 77       		.sleb128 -9
+ 822 0220 00       		.byte	0
+ 823 0221 09       		.uleb128 0x9
+ 824 0222 00000000 		.4byte	.LASF34
+ 825 0226 01       		.byte	0x1
+ 826 0227 5A       		.byte	0x5a
+ 827 0228 00000000 		.4byte	.LFB71
+ 828 022c 5E000000 		.4byte	.LFE71-.LFB71
+ 829 0230 01       		.uleb128 0x1
+ 830 0231 9C       		.byte	0x9c
+ 831 0232 77020000 		.4byte	0x277
+ 832 0236 0A       		.uleb128 0xa
+ 833 0237 BE020000 		.4byte	.LASF22
+ 834 023b 01       		.byte	0x1
+ 835 023c 5A       		.byte	0x5a
+ 836 023d 77020000 		.4byte	0x277
+ 837 0241 02       		.uleb128 0x2
+ 838 0242 91       		.byte	0x91
+ 839 0243 5C       		.sleb128 -36
+ 840 0244 0A       		.uleb128 0xa
+ 841 0245 5C020000 		.4byte	.LASF23
+ 842 0249 01       		.byte	0x1
+ 843 024a 5A       		.byte	0x5a
+ 844 024b A2000000 		.4byte	0xa2
+ 845 024f 02       		.uleb128 0x2
+ 846 0250 91       		.byte	0x91
+ 847 0251 50       		.sleb128 -48
+ 848 0252 0B       		.uleb128 0xb
+ 849 0253 D3000000 		.4byte	.LASF24
+ 850 0257 01       		.byte	0x1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 18
 
 
- 860 0018 3E       		.uleb128 0x3e
- 861 0019 0B       		.uleb128 0xb
- 862 001a 03       		.uleb128 0x3
- 863 001b 0E       		.uleb128 0xe
- 864 001c 00       		.byte	0
- 865 001d 00       		.byte	0
- 866 001e 03       		.uleb128 0x3
- 867 001f 16       		.uleb128 0x16
- 868 0020 00       		.byte	0
- 869 0021 03       		.uleb128 0x3
- 870 0022 0E       		.uleb128 0xe
- 871 0023 3A       		.uleb128 0x3a
- 872 0024 0B       		.uleb128 0xb
- 873 0025 3B       		.uleb128 0x3b
- 874 0026 0B       		.uleb128 0xb
- 875 0027 49       		.uleb128 0x49
- 876 0028 13       		.uleb128 0x13
- 877 0029 00       		.byte	0
- 878 002a 00       		.byte	0
- 879 002b 04       		.uleb128 0x4
- 880 002c 24       		.uleb128 0x24
- 881 002d 00       		.byte	0
- 882 002e 0B       		.uleb128 0xb
- 883 002f 0B       		.uleb128 0xb
- 884 0030 3E       		.uleb128 0x3e
- 885 0031 0B       		.uleb128 0xb
- 886 0032 03       		.uleb128 0x3
- 887 0033 08       		.uleb128 0x8
- 888 0034 00       		.byte	0
- 889 0035 00       		.byte	0
- 890 0036 05       		.uleb128 0x5
- 891 0037 2E       		.uleb128 0x2e
- 892 0038 01       		.byte	0x1
- 893 0039 3F       		.uleb128 0x3f
- 894 003a 19       		.uleb128 0x19
- 895 003b 03       		.uleb128 0x3
- 896 003c 0E       		.uleb128 0xe
- 897 003d 3A       		.uleb128 0x3a
- 898 003e 0B       		.uleb128 0xb
- 899 003f 3B       		.uleb128 0x3b
- 900 0040 0B       		.uleb128 0xb
- 901 0041 27       		.uleb128 0x27
- 902 0042 19       		.uleb128 0x19
- 903 0043 11       		.uleb128 0x11
- 904 0044 01       		.uleb128 0x1
- 905 0045 12       		.uleb128 0x12
- 906 0046 06       		.uleb128 0x6
- 907 0047 40       		.uleb128 0x40
- 908 0048 18       		.uleb128 0x18
- 909 0049 9742     		.uleb128 0x2117
- 910 004b 19       		.uleb128 0x19
- 911 004c 01       		.uleb128 0x1
- 912 004d 13       		.uleb128 0x13
- 913 004e 00       		.byte	0
- 914 004f 00       		.byte	0
- 915 0050 06       		.uleb128 0x6
- 916 0051 898201   		.uleb128 0x4109
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 19
+ 851 0258 5B       		.byte	0x5b
+ 852 0259 8C000000 		.4byte	0x8c
+ 853 025d 02       		.uleb128 0x2
+ 854 025e 91       		.byte	0x91
+ 855 025f 67       		.sleb128 -25
+ 856 0260 0C       		.uleb128 0xc
+ 857 0261 14000000 		.4byte	.LBB3
+ 858 0265 3A000000 		.4byte	.LBE3-.LBB3
+ 859 0269 0D       		.uleb128 0xd
+ 860 026a 6900     		.ascii	"i\000"
+ 861 026c 01       		.byte	0x1
+ 862 026d 5C       		.byte	0x5c
+ 863 026e A2000000 		.4byte	0xa2
+ 864 0272 02       		.uleb128 0x2
+ 865 0273 91       		.byte	0x91
+ 866 0274 68       		.sleb128 -24
+ 867 0275 00       		.byte	0
+ 868 0276 00       		.byte	0
+ 869 0277 05       		.uleb128 0x5
+ 870 0278 04       		.byte	0x4
+ 871 0279 7D020000 		.4byte	0x27d
+ 872 027d 06       		.uleb128 0x6
+ 873 027e 8C000000 		.4byte	0x8c
+ 874 0282 09       		.uleb128 0x9
+ 875 0283 9F020000 		.4byte	.LASF35
+ 876 0287 01       		.byte	0x1
+ 877 0288 62       		.byte	0x62
+ 878 0289 00000000 		.4byte	.LFB72
+ 879 028d 1E000000 		.4byte	.LFE72-.LFB72
+ 880 0291 01       		.uleb128 0x1
+ 881 0292 9C       		.byte	0x9c
+ 882 0293 B4020000 		.4byte	0x2b4
+ 883 0297 0A       		.uleb128 0xa
+ 884 0298 84020000 		.4byte	.LASF27
+ 885 029c 01       		.byte	0x1
+ 886 029d 62       		.byte	0x62
+ 887 029e 77020000 		.4byte	0x277
+ 888 02a2 02       		.uleb128 0x2
+ 889 02a3 91       		.byte	0x91
+ 890 02a4 74       		.sleb128 -12
+ 891 02a5 0A       		.uleb128 0xa
+ 892 02a6 3D010000 		.4byte	.LASF28
+ 893 02aa 01       		.byte	0x1
+ 894 02ab 62       		.byte	0x62
+ 895 02ac A2000000 		.4byte	0xa2
+ 896 02b0 02       		.uleb128 0x2
+ 897 02b1 91       		.byte	0x91
+ 898 02b2 68       		.sleb128 -24
+ 899 02b3 00       		.byte	0
+ 900 02b4 09       		.uleb128 0x9
+ 901 02b5 E1000000 		.4byte	.LASF36
+ 902 02b9 01       		.byte	0x1
+ 903 02ba 66       		.byte	0x66
+ 904 02bb 00000000 		.4byte	.LFB73
+ 905 02bf 1A000000 		.4byte	.LFE73-.LFB73
+ 906 02c3 01       		.uleb128 0x1
+ 907 02c4 9C       		.byte	0x9c
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 19
 
 
- 917 0054 00       		.byte	0
- 918 0055 11       		.uleb128 0x11
- 919 0056 01       		.uleb128 0x1
- 920 0057 31       		.uleb128 0x31
- 921 0058 13       		.uleb128 0x13
- 922 0059 00       		.byte	0
- 923 005a 00       		.byte	0
- 924 005b 07       		.uleb128 0x7
- 925 005c 2E       		.uleb128 0x2e
- 926 005d 01       		.byte	0x1
- 927 005e 3F       		.uleb128 0x3f
- 928 005f 19       		.uleb128 0x19
- 929 0060 03       		.uleb128 0x3
- 930 0061 0E       		.uleb128 0xe
- 931 0062 3A       		.uleb128 0x3a
- 932 0063 0B       		.uleb128 0xb
- 933 0064 3B       		.uleb128 0x3b
- 934 0065 0B       		.uleb128 0xb
- 935 0066 27       		.uleb128 0x27
- 936 0067 19       		.uleb128 0x19
- 937 0068 49       		.uleb128 0x49
- 938 0069 13       		.uleb128 0x13
- 939 006a 11       		.uleb128 0x11
- 940 006b 01       		.uleb128 0x1
- 941 006c 12       		.uleb128 0x12
- 942 006d 06       		.uleb128 0x6
- 943 006e 40       		.uleb128 0x40
- 944 006f 18       		.uleb128 0x18
- 945 0070 9742     		.uleb128 0x2117
- 946 0072 19       		.uleb128 0x19
- 947 0073 01       		.uleb128 0x1
- 948 0074 13       		.uleb128 0x13
- 949 0075 00       		.byte	0
- 950 0076 00       		.byte	0
- 951 0077 08       		.uleb128 0x8
- 952 0078 05       		.uleb128 0x5
- 953 0079 00       		.byte	0
- 954 007a 03       		.uleb128 0x3
- 955 007b 0E       		.uleb128 0xe
- 956 007c 3A       		.uleb128 0x3a
- 957 007d 0B       		.uleb128 0xb
- 958 007e 3B       		.uleb128 0x3b
- 959 007f 0B       		.uleb128 0xb
- 960 0080 49       		.uleb128 0x49
- 961 0081 13       		.uleb128 0x13
- 962 0082 02       		.uleb128 0x2
- 963 0083 17       		.uleb128 0x17
- 964 0084 00       		.byte	0
- 965 0085 00       		.byte	0
- 966 0086 09       		.uleb128 0x9
- 967 0087 0B       		.uleb128 0xb
- 968 0088 01       		.byte	0x1
- 969 0089 11       		.uleb128 0x11
- 970 008a 01       		.uleb128 0x1
- 971 008b 12       		.uleb128 0x12
- 972 008c 06       		.uleb128 0x6
- 973 008d 00       		.byte	0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 20
+ 908 02c5 D6020000 		.4byte	0x2d6
+ 909 02c9 0E       		.uleb128 0xe
+ 910 02ca 6300     		.ascii	"c\000"
+ 911 02cc 01       		.byte	0x1
+ 912 02cd 66       		.byte	0x66
+ 913 02ce BB000000 		.4byte	0xbb
+ 914 02d2 02       		.uleb128 0x2
+ 915 02d3 91       		.byte	0x91
+ 916 02d4 77       		.sleb128 -9
+ 917 02d5 00       		.byte	0
+ 918 02d6 09       		.uleb128 0x9
+ 919 02d7 42010000 		.4byte	.LASF37
+ 920 02db 01       		.byte	0x1
+ 921 02dc 6A       		.byte	0x6a
+ 922 02dd 00000000 		.4byte	.LFB74
+ 923 02e1 3E000000 		.4byte	.LFE74-.LFB74
+ 924 02e5 01       		.uleb128 0x1
+ 925 02e6 9C       		.byte	0x9c
+ 926 02e7 08030000 		.4byte	0x308
+ 927 02eb 0A       		.uleb128 0xa
+ 928 02ec DA000000 		.4byte	.LASF31
+ 929 02f0 01       		.byte	0x1
+ 930 02f1 6A       		.byte	0x6a
+ 931 02f2 D6000000 		.4byte	0xd6
+ 932 02f6 02       		.uleb128 0x2
+ 933 02f7 91       		.byte	0x91
+ 934 02f8 6C       		.sleb128 -20
+ 935 02f9 0B       		.uleb128 0xb
+ 936 02fa D3000000 		.4byte	.LASF24
+ 937 02fe 01       		.byte	0x1
+ 938 02ff 6B       		.byte	0x6b
+ 939 0300 8C000000 		.4byte	0x8c
+ 940 0304 02       		.uleb128 0x2
+ 941 0305 91       		.byte	0x91
+ 942 0306 77       		.sleb128 -9
+ 943 0307 00       		.byte	0
+ 944 0308 0F       		.uleb128 0xf
+ 945 0309 7D010000 		.4byte	.LASF42
+ 946 030d 04       		.byte	0x4
+ 947 030e 1207     		.2byte	0x712
+ 948 0310 14030000 		.4byte	0x314
+ 949 0314 10       		.uleb128 0x10
+ 950 0315 97000000 		.4byte	0x97
+ 951 0319 00       		.byte	0
+ 952              		.section	.debug_abbrev,"",%progbits
+ 953              	.Ldebug_abbrev0:
+ 954 0000 01       		.uleb128 0x1
+ 955 0001 11       		.uleb128 0x11
+ 956 0002 01       		.byte	0x1
+ 957 0003 25       		.uleb128 0x25
+ 958 0004 0E       		.uleb128 0xe
+ 959 0005 13       		.uleb128 0x13
+ 960 0006 0B       		.uleb128 0xb
+ 961 0007 03       		.uleb128 0x3
+ 962 0008 0E       		.uleb128 0xe
+ 963 0009 1B       		.uleb128 0x1b
+ 964 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 20
 
 
- 974 008e 00       		.byte	0
- 975 008f 0A       		.uleb128 0xa
- 976 0090 34       		.uleb128 0x34
- 977 0091 00       		.byte	0
- 978 0092 03       		.uleb128 0x3
- 979 0093 08       		.uleb128 0x8
- 980 0094 3A       		.uleb128 0x3a
- 981 0095 0B       		.uleb128 0xb
- 982 0096 3B       		.uleb128 0x3b
- 983 0097 0B       		.uleb128 0xb
- 984 0098 49       		.uleb128 0x49
- 985 0099 13       		.uleb128 0x13
- 986 009a 02       		.uleb128 0x2
- 987 009b 17       		.uleb128 0x17
- 988 009c 00       		.byte	0
- 989 009d 00       		.byte	0
- 990 009e 0B       		.uleb128 0xb
- 991 009f 0F       		.uleb128 0xf
- 992 00a0 00       		.byte	0
- 993 00a1 0B       		.uleb128 0xb
- 994 00a2 0B       		.uleb128 0xb
- 995 00a3 49       		.uleb128 0x49
- 996 00a4 13       		.uleb128 0x13
- 997 00a5 00       		.byte	0
- 998 00a6 00       		.byte	0
- 999 00a7 0C       		.uleb128 0xc
- 1000 00a8 898201   		.uleb128 0x4109
- 1001 00ab 01       		.byte	0x1
- 1002 00ac 11       		.uleb128 0x11
- 1003 00ad 01       		.uleb128 0x1
- 1004 00ae 31       		.uleb128 0x31
- 1005 00af 13       		.uleb128 0x13
- 1006 00b0 00       		.byte	0
- 1007 00b1 00       		.byte	0
- 1008 00b2 0D       		.uleb128 0xd
- 1009 00b3 8A8201   		.uleb128 0x410a
- 1010 00b6 00       		.byte	0
- 1011 00b7 02       		.uleb128 0x2
- 1012 00b8 18       		.uleb128 0x18
- 1013 00b9 9142     		.uleb128 0x2111
- 1014 00bb 18       		.uleb128 0x18
- 1015 00bc 00       		.byte	0
- 1016 00bd 00       		.byte	0
- 1017 00be 0E       		.uleb128 0xe
- 1018 00bf 26       		.uleb128 0x26
- 1019 00c0 00       		.byte	0
- 1020 00c1 49       		.uleb128 0x49
- 1021 00c2 13       		.uleb128 0x13
- 1022 00c3 00       		.byte	0
- 1023 00c4 00       		.byte	0
- 1024 00c5 0F       		.uleb128 0xf
- 1025 00c6 05       		.uleb128 0x5
- 1026 00c7 00       		.byte	0
- 1027 00c8 03       		.uleb128 0x3
- 1028 00c9 08       		.uleb128 0x8
- 1029 00ca 3A       		.uleb128 0x3a
- 1030 00cb 0B       		.uleb128 0xb
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 21
+ 965 000b 55       		.uleb128 0x55
+ 966 000c 17       		.uleb128 0x17
+ 967 000d 11       		.uleb128 0x11
+ 968 000e 01       		.uleb128 0x1
+ 969 000f 10       		.uleb128 0x10
+ 970 0010 17       		.uleb128 0x17
+ 971 0011 00       		.byte	0
+ 972 0012 00       		.byte	0
+ 973 0013 02       		.uleb128 0x2
+ 974 0014 24       		.uleb128 0x24
+ 975 0015 00       		.byte	0
+ 976 0016 0B       		.uleb128 0xb
+ 977 0017 0B       		.uleb128 0xb
+ 978 0018 3E       		.uleb128 0x3e
+ 979 0019 0B       		.uleb128 0xb
+ 980 001a 03       		.uleb128 0x3
+ 981 001b 0E       		.uleb128 0xe
+ 982 001c 00       		.byte	0
+ 983 001d 00       		.byte	0
+ 984 001e 03       		.uleb128 0x3
+ 985 001f 16       		.uleb128 0x16
+ 986 0020 00       		.byte	0
+ 987 0021 03       		.uleb128 0x3
+ 988 0022 0E       		.uleb128 0xe
+ 989 0023 3A       		.uleb128 0x3a
+ 990 0024 0B       		.uleb128 0xb
+ 991 0025 3B       		.uleb128 0x3b
+ 992 0026 0B       		.uleb128 0xb
+ 993 0027 49       		.uleb128 0x49
+ 994 0028 13       		.uleb128 0x13
+ 995 0029 00       		.byte	0
+ 996 002a 00       		.byte	0
+ 997 002b 04       		.uleb128 0x4
+ 998 002c 24       		.uleb128 0x24
+ 999 002d 00       		.byte	0
+ 1000 002e 0B       		.uleb128 0xb
+ 1001 002f 0B       		.uleb128 0xb
+ 1002 0030 3E       		.uleb128 0x3e
+ 1003 0031 0B       		.uleb128 0xb
+ 1004 0032 03       		.uleb128 0x3
+ 1005 0033 08       		.uleb128 0x8
+ 1006 0034 00       		.byte	0
+ 1007 0035 00       		.byte	0
+ 1008 0036 05       		.uleb128 0x5
+ 1009 0037 0F       		.uleb128 0xf
+ 1010 0038 00       		.byte	0
+ 1011 0039 0B       		.uleb128 0xb
+ 1012 003a 0B       		.uleb128 0xb
+ 1013 003b 49       		.uleb128 0x49
+ 1014 003c 13       		.uleb128 0x13
+ 1015 003d 00       		.byte	0
+ 1016 003e 00       		.byte	0
+ 1017 003f 06       		.uleb128 0x6
+ 1018 0040 26       		.uleb128 0x26
+ 1019 0041 00       		.byte	0
+ 1020 0042 49       		.uleb128 0x49
+ 1021 0043 13       		.uleb128 0x13
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 21
 
 
- 1031 00cc 3B       		.uleb128 0x3b
- 1032 00cd 0B       		.uleb128 0xb
- 1033 00ce 49       		.uleb128 0x49
- 1034 00cf 13       		.uleb128 0x13
- 1035 00d0 02       		.uleb128 0x2
- 1036 00d1 17       		.uleb128 0x17
- 1037 00d2 00       		.byte	0
- 1038 00d3 00       		.byte	0
- 1039 00d4 10       		.uleb128 0x10
- 1040 00d5 2E       		.uleb128 0x2e
- 1041 00d6 00       		.byte	0
- 1042 00d7 3F       		.uleb128 0x3f
- 1043 00d8 19       		.uleb128 0x19
- 1044 00d9 3C       		.uleb128 0x3c
- 1045 00da 19       		.uleb128 0x19
- 1046 00db 6E       		.uleb128 0x6e
- 1047 00dc 0E       		.uleb128 0xe
- 1048 00dd 03       		.uleb128 0x3
- 1049 00de 0E       		.uleb128 0xe
- 1050 00df 3A       		.uleb128 0x3a
- 1051 00e0 0B       		.uleb128 0xb
- 1052 00e1 3B       		.uleb128 0x3b
- 1053 00e2 0B       		.uleb128 0xb
- 1054 00e3 00       		.byte	0
- 1055 00e4 00       		.byte	0
- 1056 00e5 00       		.byte	0
- 1057              		.section	.debug_loc,"",%progbits
- 1058              	.Ldebug_loc0:
- 1059              	.LLST0:
- 1060 0000 00000000 		.4byte	.LVL3
- 1061 0004 10000000 		.4byte	.LVL5
- 1062 0008 0100     		.2byte	0x1
- 1063 000a 50       		.byte	0x50
- 1064 000b 10000000 		.4byte	.LVL5
- 1065 000f 2A000000 		.4byte	.LFE3
- 1066 0013 0100     		.2byte	0x1
- 1067 0015 57       		.byte	0x57
- 1068 0016 00000000 		.4byte	0
- 1069 001a 00000000 		.4byte	0
- 1070              	.LLST1:
- 1071 001e 00000000 		.4byte	.LVL3
- 1072 0022 10000000 		.4byte	.LVL5
- 1073 0026 0600     		.2byte	0x6
- 1074 0028 52       		.byte	0x52
- 1075 0029 93       		.byte	0x93
- 1076 002a 04       		.uleb128 0x4
- 1077 002b 53       		.byte	0x53
- 1078 002c 93       		.byte	0x93
- 1079 002d 04       		.uleb128 0x4
- 1080 002e 10000000 		.4byte	.LVL5
- 1081 0032 2A000000 		.4byte	.LFE3
- 1082 0036 0600     		.2byte	0x6
- 1083 0038 F3       		.byte	0xf3
- 1084 0039 03       		.uleb128 0x3
- 1085 003a F5       		.byte	0xf5
- 1086 003b 02       		.uleb128 0x2
- 1087 003c 25       		.uleb128 0x25
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 22
+ 1022 0044 00       		.byte	0
+ 1023 0045 00       		.byte	0
+ 1024 0046 07       		.uleb128 0x7
+ 1025 0047 2E       		.uleb128 0x2e
+ 1026 0048 00       		.byte	0
+ 1027 0049 3F       		.uleb128 0x3f
+ 1028 004a 19       		.uleb128 0x19
+ 1029 004b 03       		.uleb128 0x3
+ 1030 004c 0E       		.uleb128 0xe
+ 1031 004d 3A       		.uleb128 0x3a
+ 1032 004e 0B       		.uleb128 0xb
+ 1033 004f 3B       		.uleb128 0x3b
+ 1034 0050 0B       		.uleb128 0xb
+ 1035 0051 27       		.uleb128 0x27
+ 1036 0052 19       		.uleb128 0x19
+ 1037 0053 11       		.uleb128 0x11
+ 1038 0054 01       		.uleb128 0x1
+ 1039 0055 12       		.uleb128 0x12
+ 1040 0056 06       		.uleb128 0x6
+ 1041 0057 40       		.uleb128 0x40
+ 1042 0058 18       		.uleb128 0x18
+ 1043 0059 9642     		.uleb128 0x2116
+ 1044 005b 19       		.uleb128 0x19
+ 1045 005c 00       		.byte	0
+ 1046 005d 00       		.byte	0
+ 1047 005e 08       		.uleb128 0x8
+ 1048 005f 2E       		.uleb128 0x2e
+ 1049 0060 00       		.byte	0
+ 1050 0061 3F       		.uleb128 0x3f
+ 1051 0062 19       		.uleb128 0x19
+ 1052 0063 03       		.uleb128 0x3
+ 1053 0064 0E       		.uleb128 0xe
+ 1054 0065 3A       		.uleb128 0x3a
+ 1055 0066 0B       		.uleb128 0xb
+ 1056 0067 3B       		.uleb128 0x3b
+ 1057 0068 0B       		.uleb128 0xb
+ 1058 0069 27       		.uleb128 0x27
+ 1059 006a 19       		.uleb128 0x19
+ 1060 006b 49       		.uleb128 0x49
+ 1061 006c 13       		.uleb128 0x13
+ 1062 006d 11       		.uleb128 0x11
+ 1063 006e 01       		.uleb128 0x1
+ 1064 006f 12       		.uleb128 0x12
+ 1065 0070 06       		.uleb128 0x6
+ 1066 0071 40       		.uleb128 0x40
+ 1067 0072 18       		.uleb128 0x18
+ 1068 0073 9642     		.uleb128 0x2116
+ 1069 0075 19       		.uleb128 0x19
+ 1070 0076 00       		.byte	0
+ 1071 0077 00       		.byte	0
+ 1072 0078 09       		.uleb128 0x9
+ 1073 0079 2E       		.uleb128 0x2e
+ 1074 007a 01       		.byte	0x1
+ 1075 007b 3F       		.uleb128 0x3f
+ 1076 007c 19       		.uleb128 0x19
+ 1077 007d 03       		.uleb128 0x3
+ 1078 007e 0E       		.uleb128 0xe
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 22
 
 
- 1088 003d 9F       		.byte	0x9f
- 1089 003e 00000000 		.4byte	0
- 1090 0042 00000000 		.4byte	0
- 1091              	.LLST2:
- 1092 0046 0A000000 		.4byte	.LVL4
- 1093 004a 10000000 		.4byte	.LVL5
- 1094 004e 0A00     		.2byte	0xa
- 1095 0050 9E       		.byte	0x9e
- 1096 0051 08       		.uleb128 0x8
- 1097 0052 00000000 		.8byte	0
- 1097      00000000 
- 1098 005a 10000000 		.4byte	.LVL5
- 1099 005e 1A000000 		.4byte	.LVL7
- 1100 0062 0600     		.2byte	0x6
- 1101 0064 54       		.byte	0x54
- 1102 0065 93       		.byte	0x93
- 1103 0066 04       		.uleb128 0x4
- 1104 0067 55       		.byte	0x55
- 1105 0068 93       		.byte	0x93
- 1106 0069 04       		.uleb128 0x4
- 1107 006a 1E000000 		.4byte	.LVL8
- 1108 006e 2A000000 		.4byte	.LFE3
- 1109 0072 0600     		.2byte	0x6
- 1110 0074 54       		.byte	0x54
- 1111 0075 93       		.byte	0x93
- 1112 0076 04       		.uleb128 0x4
- 1113 0077 55       		.byte	0x55
- 1114 0078 93       		.byte	0x93
- 1115 0079 04       		.uleb128 0x4
- 1116 007a 00000000 		.4byte	0
- 1117 007e 00000000 		.4byte	0
- 1118              	.LLST3:
- 1119 0082 00000000 		.4byte	.LVL9
- 1120 0086 05000000 		.4byte	.LVL10-1
- 1121 008a 0100     		.2byte	0x1
- 1122 008c 50       		.byte	0x50
- 1123 008d 05000000 		.4byte	.LVL10-1
- 1124 0091 08000000 		.4byte	.LFE4
- 1125 0095 0400     		.2byte	0x4
- 1126 0097 F3       		.byte	0xf3
- 1127 0098 01       		.uleb128 0x1
- 1128 0099 50       		.byte	0x50
- 1129 009a 9F       		.byte	0x9f
- 1130 009b 00000000 		.4byte	0
- 1131 009f 00000000 		.4byte	0
- 1132              	.LLST4:
- 1133 00a3 00000000 		.4byte	.LVL9
- 1134 00a7 05000000 		.4byte	.LVL10-1
- 1135 00ab 0600     		.2byte	0x6
- 1136 00ad 52       		.byte	0x52
- 1137 00ae 93       		.byte	0x93
- 1138 00af 04       		.uleb128 0x4
- 1139 00b0 53       		.byte	0x53
- 1140 00b1 93       		.byte	0x93
- 1141 00b2 04       		.uleb128 0x4
- 1142 00b3 05000000 		.4byte	.LVL10-1
- 1143 00b7 08000000 		.4byte	.LFE4
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 23
+ 1079 007f 3A       		.uleb128 0x3a
+ 1080 0080 0B       		.uleb128 0xb
+ 1081 0081 3B       		.uleb128 0x3b
+ 1082 0082 0B       		.uleb128 0xb
+ 1083 0083 27       		.uleb128 0x27
+ 1084 0084 19       		.uleb128 0x19
+ 1085 0085 11       		.uleb128 0x11
+ 1086 0086 01       		.uleb128 0x1
+ 1087 0087 12       		.uleb128 0x12
+ 1088 0088 06       		.uleb128 0x6
+ 1089 0089 40       		.uleb128 0x40
+ 1090 008a 18       		.uleb128 0x18
+ 1091 008b 9642     		.uleb128 0x2116
+ 1092 008d 19       		.uleb128 0x19
+ 1093 008e 01       		.uleb128 0x1
+ 1094 008f 13       		.uleb128 0x13
+ 1095 0090 00       		.byte	0
+ 1096 0091 00       		.byte	0
+ 1097 0092 0A       		.uleb128 0xa
+ 1098 0093 05       		.uleb128 0x5
+ 1099 0094 00       		.byte	0
+ 1100 0095 03       		.uleb128 0x3
+ 1101 0096 0E       		.uleb128 0xe
+ 1102 0097 3A       		.uleb128 0x3a
+ 1103 0098 0B       		.uleb128 0xb
+ 1104 0099 3B       		.uleb128 0x3b
+ 1105 009a 0B       		.uleb128 0xb
+ 1106 009b 49       		.uleb128 0x49
+ 1107 009c 13       		.uleb128 0x13
+ 1108 009d 02       		.uleb128 0x2
+ 1109 009e 18       		.uleb128 0x18
+ 1110 009f 00       		.byte	0
+ 1111 00a0 00       		.byte	0
+ 1112 00a1 0B       		.uleb128 0xb
+ 1113 00a2 34       		.uleb128 0x34
+ 1114 00a3 00       		.byte	0
+ 1115 00a4 03       		.uleb128 0x3
+ 1116 00a5 0E       		.uleb128 0xe
+ 1117 00a6 3A       		.uleb128 0x3a
+ 1118 00a7 0B       		.uleb128 0xb
+ 1119 00a8 3B       		.uleb128 0x3b
+ 1120 00a9 0B       		.uleb128 0xb
+ 1121 00aa 49       		.uleb128 0x49
+ 1122 00ab 13       		.uleb128 0x13
+ 1123 00ac 02       		.uleb128 0x2
+ 1124 00ad 18       		.uleb128 0x18
+ 1125 00ae 00       		.byte	0
+ 1126 00af 00       		.byte	0
+ 1127 00b0 0C       		.uleb128 0xc
+ 1128 00b1 0B       		.uleb128 0xb
+ 1129 00b2 01       		.byte	0x1
+ 1130 00b3 11       		.uleb128 0x11
+ 1131 00b4 01       		.uleb128 0x1
+ 1132 00b5 12       		.uleb128 0x12
+ 1133 00b6 06       		.uleb128 0x6
+ 1134 00b7 00       		.byte	0
+ 1135 00b8 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 23
 
 
- 1144 00bb 0600     		.2byte	0x6
- 1145 00bd F3       		.byte	0xf3
- 1146 00be 03       		.uleb128 0x3
- 1147 00bf F5       		.byte	0xf5
- 1148 00c0 02       		.uleb128 0x2
- 1149 00c1 25       		.uleb128 0x25
- 1150 00c2 9F       		.byte	0x9f
- 1151 00c3 00000000 		.4byte	0
- 1152 00c7 00000000 		.4byte	0
- 1153              	.LLST5:
- 1154 00cb 00000000 		.4byte	.LVL12
- 1155 00cf 07000000 		.4byte	.LVL13-1
- 1156 00d3 0100     		.2byte	0x1
- 1157 00d5 50       		.byte	0x50
- 1158 00d6 07000000 		.4byte	.LVL13-1
- 1159 00da 0C000000 		.4byte	.LVL14
- 1160 00de 0100     		.2byte	0x1
- 1161 00e0 54       		.byte	0x54
- 1162 00e1 0C000000 		.4byte	.LVL14
- 1163 00e5 14000000 		.4byte	.LVL16
- 1164 00e9 0100     		.2byte	0x1
- 1165 00eb 55       		.byte	0x55
- 1166 00ec 14000000 		.4byte	.LVL16
- 1167 00f0 1E000000 		.4byte	.LFE6
- 1168 00f4 0100     		.2byte	0x1
- 1169 00f6 54       		.byte	0x54
- 1170 00f7 00000000 		.4byte	0
- 1171 00fb 00000000 		.4byte	0
- 1172              	.LLST6:
- 1173 00ff 08000000 		.4byte	.LVL13
- 1174 0103 11000000 		.4byte	.LVL15-1
- 1175 0107 0100     		.2byte	0x1
- 1176 0109 50       		.byte	0x50
- 1177 010a 12000000 		.4byte	.LVL15
- 1178 010e 1E000000 		.4byte	.LFE6
- 1179 0112 0100     		.2byte	0x1
- 1180 0114 50       		.byte	0x50
- 1181 0115 00000000 		.4byte	0
- 1182 0119 00000000 		.4byte	0
- 1183              	.LLST7:
- 1184 011d 00000000 		.4byte	.LVL17
- 1185 0121 05000000 		.4byte	.LVL18-1
- 1186 0125 0100     		.2byte	0x1
- 1187 0127 50       		.byte	0x50
- 1188 0128 05000000 		.4byte	.LVL18-1
- 1189 012c 08000000 		.4byte	.LFE7
- 1190 0130 0400     		.2byte	0x4
- 1191 0132 F3       		.byte	0xf3
- 1192 0133 01       		.uleb128 0x1
- 1193 0134 50       		.byte	0x50
- 1194 0135 9F       		.byte	0x9f
- 1195 0136 00000000 		.4byte	0
- 1196 013a 00000000 		.4byte	0
- 1197              	.LLST8:
- 1198 013e 00000000 		.4byte	.LVL19
- 1199 0142 10000000 		.4byte	.LVL21
- 1200 0146 0100     		.2byte	0x1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 24
+ 1136 00b9 0D       		.uleb128 0xd
+ 1137 00ba 34       		.uleb128 0x34
+ 1138 00bb 00       		.byte	0
+ 1139 00bc 03       		.uleb128 0x3
+ 1140 00bd 08       		.uleb128 0x8
+ 1141 00be 3A       		.uleb128 0x3a
+ 1142 00bf 0B       		.uleb128 0xb
+ 1143 00c0 3B       		.uleb128 0x3b
+ 1144 00c1 0B       		.uleb128 0xb
+ 1145 00c2 49       		.uleb128 0x49
+ 1146 00c3 13       		.uleb128 0x13
+ 1147 00c4 02       		.uleb128 0x2
+ 1148 00c5 18       		.uleb128 0x18
+ 1149 00c6 00       		.byte	0
+ 1150 00c7 00       		.byte	0
+ 1151 00c8 0E       		.uleb128 0xe
+ 1152 00c9 05       		.uleb128 0x5
+ 1153 00ca 00       		.byte	0
+ 1154 00cb 03       		.uleb128 0x3
+ 1155 00cc 08       		.uleb128 0x8
+ 1156 00cd 3A       		.uleb128 0x3a
+ 1157 00ce 0B       		.uleb128 0xb
+ 1158 00cf 3B       		.uleb128 0x3b
+ 1159 00d0 0B       		.uleb128 0xb
+ 1160 00d1 49       		.uleb128 0x49
+ 1161 00d2 13       		.uleb128 0x13
+ 1162 00d3 02       		.uleb128 0x2
+ 1163 00d4 18       		.uleb128 0x18
+ 1164 00d5 00       		.byte	0
+ 1165 00d6 00       		.byte	0
+ 1166 00d7 0F       		.uleb128 0xf
+ 1167 00d8 34       		.uleb128 0x34
+ 1168 00d9 00       		.byte	0
+ 1169 00da 03       		.uleb128 0x3
+ 1170 00db 0E       		.uleb128 0xe
+ 1171 00dc 3A       		.uleb128 0x3a
+ 1172 00dd 0B       		.uleb128 0xb
+ 1173 00de 3B       		.uleb128 0x3b
+ 1174 00df 05       		.uleb128 0x5
+ 1175 00e0 49       		.uleb128 0x49
+ 1176 00e1 13       		.uleb128 0x13
+ 1177 00e2 3F       		.uleb128 0x3f
+ 1178 00e3 19       		.uleb128 0x19
+ 1179 00e4 3C       		.uleb128 0x3c
+ 1180 00e5 19       		.uleb128 0x19
+ 1181 00e6 00       		.byte	0
+ 1182 00e7 00       		.byte	0
+ 1183 00e8 10       		.uleb128 0x10
+ 1184 00e9 35       		.uleb128 0x35
+ 1185 00ea 00       		.byte	0
+ 1186 00eb 49       		.uleb128 0x49
+ 1187 00ec 13       		.uleb128 0x13
+ 1188 00ed 00       		.byte	0
+ 1189 00ee 00       		.byte	0
+ 1190 00ef 00       		.byte	0
+ 1191              		.section	.debug_aranges,"",%progbits
+ 1192 0000 74000000 		.4byte	0x74
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 24
 
 
- 1201 0148 50       		.byte	0x50
- 1202 0149 10000000 		.4byte	.LVL21
- 1203 014d 2C000000 		.4byte	.LFE8
- 1204 0151 0100     		.2byte	0x1
- 1205 0153 58       		.byte	0x58
- 1206 0154 00000000 		.4byte	0
- 1207 0158 00000000 		.4byte	0
- 1208              	.LLST9:
- 1209 015c 00000000 		.4byte	.LVL19
- 1210 0160 10000000 		.4byte	.LVL21
- 1211 0164 0600     		.2byte	0x6
- 1212 0166 52       		.byte	0x52
- 1213 0167 93       		.byte	0x93
- 1214 0168 04       		.uleb128 0x4
- 1215 0169 53       		.byte	0x53
- 1216 016a 93       		.byte	0x93
- 1217 016b 04       		.uleb128 0x4
- 1218 016c 10000000 		.4byte	.LVL21
- 1219 0170 2C000000 		.4byte	.LFE8
- 1220 0174 0600     		.2byte	0x6
- 1221 0176 F3       		.byte	0xf3
- 1222 0177 03       		.uleb128 0x3
- 1223 0178 F5       		.byte	0xf5
- 1224 0179 02       		.uleb128 0x2
- 1225 017a 25       		.uleb128 0x25
- 1226 017b 9F       		.byte	0x9f
- 1227 017c 00000000 		.4byte	0
- 1228 0180 00000000 		.4byte	0
- 1229              	.LLST10:
- 1230 0184 0A000000 		.4byte	.LVL20
- 1231 0188 10000000 		.4byte	.LVL21
- 1232 018c 0A00     		.2byte	0xa
- 1233 018e 9E       		.byte	0x9e
- 1234 018f 08       		.uleb128 0x8
- 1235 0190 00000000 		.8byte	0
- 1235      00000000 
- 1236 0198 10000000 		.4byte	.LVL21
- 1237 019c 1C000000 		.4byte	.LVL23
- 1238 01a0 0600     		.2byte	0x6
- 1239 01a2 54       		.byte	0x54
- 1240 01a3 93       		.byte	0x93
- 1241 01a4 04       		.uleb128 0x4
- 1242 01a5 55       		.byte	0x55
- 1243 01a6 93       		.byte	0x93
- 1244 01a7 04       		.uleb128 0x4
- 1245 01a8 20000000 		.4byte	.LVL24
- 1246 01ac 2C000000 		.4byte	.LFE8
- 1247 01b0 0600     		.2byte	0x6
- 1248 01b2 54       		.byte	0x54
- 1249 01b3 93       		.byte	0x93
- 1250 01b4 04       		.uleb128 0x4
- 1251 01b5 55       		.byte	0x55
- 1252 01b6 93       		.byte	0x93
- 1253 01b7 04       		.uleb128 0x4
- 1254 01b8 00000000 		.4byte	0
- 1255 01bc 00000000 		.4byte	0
- 1256              	.LLST11:
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 25
+ 1193 0004 0200     		.2byte	0x2
+ 1194 0006 00000000 		.4byte	.Ldebug_info0
+ 1195 000a 04       		.byte	0x4
+ 1196 000b 00       		.byte	0
+ 1197 000c 0000     		.2byte	0
+ 1198 000e 0000     		.2byte	0
+ 1199 0010 00000000 		.4byte	.LFB63
+ 1200 0014 0C000000 		.4byte	.LFE63-.LFB63
+ 1201 0018 00000000 		.4byte	.LFB64
+ 1202 001c 12000000 		.4byte	.LFE64-.LFB64
+ 1203 0020 00000000 		.4byte	.LFB65
+ 1204 0024 0E000000 		.4byte	.LFE65-.LFB65
+ 1205 0028 00000000 		.4byte	.LFB66
+ 1206 002c 5E000000 		.4byte	.LFE66-.LFB66
+ 1207 0030 00000000 		.4byte	.LFB67
+ 1208 0034 1E000000 		.4byte	.LFE67-.LFB67
+ 1209 0038 00000000 		.4byte	.LFB68
+ 1210 003c 0E000000 		.4byte	.LFE68-.LFB68
+ 1211 0040 00000000 		.4byte	.LFB69
+ 1212 0044 48000000 		.4byte	.LFE69-.LFB69
+ 1213 0048 00000000 		.4byte	.LFB70
+ 1214 004c 1A000000 		.4byte	.LFE70-.LFB70
+ 1215 0050 00000000 		.4byte	.LFB71
+ 1216 0054 5E000000 		.4byte	.LFE71-.LFB71
+ 1217 0058 00000000 		.4byte	.LFB72
+ 1218 005c 1E000000 		.4byte	.LFE72-.LFB72
+ 1219 0060 00000000 		.4byte	.LFB73
+ 1220 0064 1A000000 		.4byte	.LFE73-.LFB73
+ 1221 0068 00000000 		.4byte	.LFB74
+ 1222 006c 3E000000 		.4byte	.LFE74-.LFB74
+ 1223 0070 00000000 		.4byte	0
+ 1224 0074 00000000 		.4byte	0
+ 1225              		.section	.debug_ranges,"",%progbits
+ 1226              	.Ldebug_ranges0:
+ 1227 0000 00000000 		.4byte	.LFB63
+ 1228 0004 0C000000 		.4byte	.LFE63
+ 1229 0008 00000000 		.4byte	.LFB64
+ 1230 000c 12000000 		.4byte	.LFE64
+ 1231 0010 00000000 		.4byte	.LFB65
+ 1232 0014 0E000000 		.4byte	.LFE65
+ 1233 0018 00000000 		.4byte	.LFB66
+ 1234 001c 5E000000 		.4byte	.LFE66
+ 1235 0020 00000000 		.4byte	.LFB67
+ 1236 0024 1E000000 		.4byte	.LFE67
+ 1237 0028 00000000 		.4byte	.LFB68
+ 1238 002c 0E000000 		.4byte	.LFE68
+ 1239 0030 00000000 		.4byte	.LFB69
+ 1240 0034 48000000 		.4byte	.LFE69
+ 1241 0038 00000000 		.4byte	.LFB70
+ 1242 003c 1A000000 		.4byte	.LFE70
+ 1243 0040 00000000 		.4byte	.LFB71
+ 1244 0044 5E000000 		.4byte	.LFE71
+ 1245 0048 00000000 		.4byte	.LFB72
+ 1246 004c 1E000000 		.4byte	.LFE72
+ 1247 0050 00000000 		.4byte	.LFB73
+ 1248 0054 1A000000 		.4byte	.LFE73
+ 1249 0058 00000000 		.4byte	.LFB74
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 25
 
 
- 1257 01c0 00000000 		.4byte	.LVL25
- 1258 01c4 05000000 		.4byte	.LVL26-1
- 1259 01c8 0100     		.2byte	0x1
- 1260 01ca 50       		.byte	0x50
- 1261 01cb 05000000 		.4byte	.LVL26-1
- 1262 01cf 08000000 		.4byte	.LFE9
- 1263 01d3 0400     		.2byte	0x4
- 1264 01d5 F3       		.byte	0xf3
- 1265 01d6 01       		.uleb128 0x1
- 1266 01d7 50       		.byte	0x50
- 1267 01d8 9F       		.byte	0x9f
- 1268 01d9 00000000 		.4byte	0
- 1269 01dd 00000000 		.4byte	0
- 1270              	.LLST12:
- 1271 01e1 00000000 		.4byte	.LVL25
- 1272 01e5 05000000 		.4byte	.LVL26-1
- 1273 01e9 0600     		.2byte	0x6
- 1274 01eb 52       		.byte	0x52
- 1275 01ec 93       		.byte	0x93
- 1276 01ed 04       		.uleb128 0x4
- 1277 01ee 53       		.byte	0x53
- 1278 01ef 93       		.byte	0x93
- 1279 01f0 04       		.uleb128 0x4
- 1280 01f1 05000000 		.4byte	.LVL26-1
- 1281 01f5 08000000 		.4byte	.LFE9
- 1282 01f9 0600     		.2byte	0x6
- 1283 01fb F3       		.byte	0xf3
- 1284 01fc 03       		.uleb128 0x3
- 1285 01fd F5       		.byte	0xf5
- 1286 01fe 02       		.uleb128 0x2
- 1287 01ff 25       		.uleb128 0x25
- 1288 0200 9F       		.byte	0x9f
- 1289 0201 00000000 		.4byte	0
- 1290 0205 00000000 		.4byte	0
- 1291              	.LLST13:
- 1292 0209 00000000 		.4byte	.LVL27
- 1293 020d 05000000 		.4byte	.LVL28-1
- 1294 0211 0100     		.2byte	0x1
- 1295 0213 50       		.byte	0x50
- 1296 0214 05000000 		.4byte	.LVL28-1
- 1297 0218 08000000 		.4byte	.LFE10
- 1298 021c 0400     		.2byte	0x4
- 1299 021e F3       		.byte	0xf3
- 1300 021f 01       		.uleb128 0x1
- 1301 0220 50       		.byte	0x50
- 1302 0221 9F       		.byte	0x9f
- 1303 0222 00000000 		.4byte	0
- 1304 0226 00000000 		.4byte	0
- 1305              	.LLST14:
- 1306 022a 00000000 		.4byte	.LVL29
- 1307 022e 06000000 		.4byte	.LVL30
- 1308 0232 0100     		.2byte	0x1
- 1309 0234 50       		.byte	0x50
- 1310 0235 06000000 		.4byte	.LVL30
- 1311 0239 18000000 		.4byte	.LFE11
- 1312 023d 0100     		.2byte	0x1
- 1313 023f 54       		.byte	0x54
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 26
+ 1250 005c 3E000000 		.4byte	.LFE74
+ 1251 0060 00000000 		.4byte	0
+ 1252 0064 00000000 		.4byte	0
+ 1253              		.section	.debug_line,"",%progbits
+ 1254              	.Ldebug_line0:
+ 1255 0000 32020000 		.section	.debug_str,"MS",%progbits,1
+ 1255      02002601 
+ 1255      00000201 
+ 1255      FB0E0D00 
+ 1255      01010101 
+ 1256              	.LASF34:
+ 1257 0000 72686561 		.ascii	"rhea_uart_WriteBytes\000"
+ 1257      5F756172 
+ 1257      745F5772 
+ 1257      69746542 
+ 1257      79746573 
+ 1258              	.LASF4:
+ 1259 0015 5F5F7569 		.ascii	"__uint8_t\000"
+ 1259      6E74385F 
+ 1259      7400
+ 1260              	.LASF38:
+ 1261 001f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1261      43313120 
+ 1261      352E342E 
+ 1261      31203230 
+ 1261      31363036 
+ 1262 0052 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1262      20726576 
+ 1262      6973696F 
+ 1262      6E203233 
+ 1262      37373135 
+ 1263 0085 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1263      66756E63 
+ 1263      74696F6E 
+ 1263      2D736563 
+ 1263      74696F6E 
+ 1264              	.LASF5:
+ 1265 00ad 5F5F696E 		.ascii	"__int32_t\000"
+ 1265      7433325F 
+ 1265      7400
+ 1266              	.LASF29:
+ 1267 00b7 72686561 		.ascii	"rhea_uart_ReadChar\000"
+ 1267      5F756172 
+ 1267      745F5265 
+ 1267      61644368 
+ 1267      617200
+ 1268              	.LASF14:
+ 1269 00ca 75696E74 		.ascii	"uint64_t\000"
+ 1269      36345F74 
+ 1269      00
+ 1270              	.LASF24:
+ 1271 00d3 73746174 		.ascii	"status\000"
+ 1271      757300
+ 1272              	.LASF31:
+ 1273 00da 73747269 		.ascii	"string\000"
+ 1273      6E6700
+ 1274              	.LASF36:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 26
 
 
- 1314 0240 00000000 		.4byte	0
- 1315 0244 00000000 		.4byte	0
- 1316              		.section	.debug_aranges,"",%progbits
- 1317 0000 74000000 		.4byte	0x74
- 1318 0004 0200     		.2byte	0x2
- 1319 0006 00000000 		.4byte	.Ldebug_info0
- 1320 000a 04       		.byte	0x4
- 1321 000b 00       		.byte	0
- 1322 000c 0000     		.2byte	0
- 1323 000e 0000     		.2byte	0
- 1324 0010 00000000 		.4byte	.LFB0
- 1325 0014 08000000 		.4byte	.LFE0-.LFB0
- 1326 0018 00000000 		.4byte	.LFB1
- 1327 001c 08000000 		.4byte	.LFE1-.LFB1
- 1328 0020 00000000 		.4byte	.LFB2
- 1329 0024 08000000 		.4byte	.LFE2-.LFB2
- 1330 0028 00000000 		.4byte	.LFB3
- 1331 002c 2A000000 		.4byte	.LFE3-.LFB3
- 1332 0030 00000000 		.4byte	.LFB4
- 1333 0034 08000000 		.4byte	.LFE4-.LFB4
- 1334 0038 00000000 		.4byte	.LFB5
- 1335 003c 08000000 		.4byte	.LFE5-.LFB5
- 1336 0040 00000000 		.4byte	.LFB6
- 1337 0044 1E000000 		.4byte	.LFE6-.LFB6
- 1338 0048 00000000 		.4byte	.LFB7
- 1339 004c 08000000 		.4byte	.LFE7-.LFB7
- 1340 0050 00000000 		.4byte	.LFB8
- 1341 0054 2C000000 		.4byte	.LFE8-.LFB8
- 1342 0058 00000000 		.4byte	.LFB9
- 1343 005c 08000000 		.4byte	.LFE9-.LFB9
- 1344 0060 00000000 		.4byte	.LFB10
- 1345 0064 08000000 		.4byte	.LFE10-.LFB10
- 1346 0068 00000000 		.4byte	.LFB11
- 1347 006c 18000000 		.4byte	.LFE11-.LFB11
- 1348 0070 00000000 		.4byte	0
- 1349 0074 00000000 		.4byte	0
- 1350              		.section	.debug_ranges,"",%progbits
- 1351              	.Ldebug_ranges0:
- 1352 0000 00000000 		.4byte	.LFB0
- 1353 0004 08000000 		.4byte	.LFE0
- 1354 0008 00000000 		.4byte	.LFB1
- 1355 000c 08000000 		.4byte	.LFE1
- 1356 0010 00000000 		.4byte	.LFB2
- 1357 0014 08000000 		.4byte	.LFE2
- 1358 0018 00000000 		.4byte	.LFB3
- 1359 001c 2A000000 		.4byte	.LFE3
- 1360 0020 00000000 		.4byte	.LFB4
- 1361 0024 08000000 		.4byte	.LFE4
- 1362 0028 00000000 		.4byte	.LFB5
- 1363 002c 08000000 		.4byte	.LFE5
- 1364 0030 00000000 		.4byte	.LFB6
- 1365 0034 1E000000 		.4byte	.LFE6
- 1366 0038 00000000 		.4byte	.LFB7
- 1367 003c 08000000 		.4byte	.LFE7
- 1368 0040 00000000 		.4byte	.LFB8
- 1369 0044 2C000000 		.4byte	.LFE8
- 1370 0048 00000000 		.4byte	.LFB9
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 27
+ 1275 00e1 72686561 		.ascii	"rhea_uart_WriteChar\000"
+ 1275      5F756172 
+ 1275      745F5772 
+ 1275      69746543 
+ 1275      68617200 
+ 1276              	.LASF40:
+ 1277 00f5 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ 1277      79707265 
+ 1277      73735C50 
+ 1277      726F6A65 
+ 1277      6374735C 
+ 1278              	.LASF15:
+ 1279 0122 666C6F61 		.ascii	"float\000"
+ 1279      7400
+ 1280              	.LASF26:
+ 1281 0128 72686561 		.ascii	"rhea_uart_ReadBuffer\000"
+ 1281      5F756172 
+ 1281      745F5265 
+ 1281      61644275 
+ 1281      66666572 
+ 1282              	.LASF28:
+ 1283 013d 73697A65 		.ascii	"size\000"
+ 1283      00
+ 1284              	.LASF37:
+ 1285 0142 72686561 		.ascii	"rhea_uart_WriteString\000"
+ 1285      5F756172 
+ 1285      745F5772 
+ 1285      69746553 
+ 1285      7472696E 
+ 1286              	.LASF7:
+ 1287 0158 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1287      20756E73 
+ 1287      69676E65 
+ 1287      6420696E 
+ 1287      7400
+ 1288              	.LASF3:
+ 1289 016a 73686F72 		.ascii	"short unsigned int\000"
+ 1289      7420756E 
+ 1289      7369676E 
+ 1289      65642069 
+ 1289      6E7400
+ 1290              	.LASF42:
+ 1291 017d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1291      52784275 
+ 1291      66666572 
+ 1291      00
+ 1292              	.LASF1:
+ 1293 018a 756E7369 		.ascii	"unsigned char\000"
+ 1293      676E6564 
+ 1293      20636861 
+ 1293      7200
+ 1294              	.LASF16:
+ 1295 0198 646F7562 		.ascii	"double\000"
+ 1295      6C6500
+ 1296              	.LASF25:
+ 1297 019f 72686561 		.ascii	"rhea_uart_ReadBytes\000"
+ 1297      5F756172 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 27
 
 
- 1371 004c 08000000 		.4byte	.LFE9
- 1372 0050 00000000 		.4byte	.LFB10
- 1373 0054 08000000 		.4byte	.LFE10
- 1374 0058 00000000 		.4byte	.LFB11
- 1375 005c 18000000 		.4byte	.LFE11
- 1376 0060 00000000 		.4byte	0
- 1377 0064 00000000 		.4byte	0
- 1378              		.section	.debug_line,"",%progbits
- 1379              	.Ldebug_line0:
- 1380 0000 0D020000 		.section	.debug_str,"MS",%progbits,1
- 1380      02001001 
- 1380      00000201 
- 1380      FB0E0D00 
- 1380      01010101 
- 1381              	.LASF28:
- 1382 0000 72686561 		.ascii	"rhea_uart_WriteBytes\000"
- 1382      5F756172 
- 1382      745F5772 
- 1382      69746542 
- 1382      79746573 
- 1383              	.LASF8:
- 1384 0015 5F5F7569 		.ascii	"__uint8_t\000"
- 1384      6E74385F 
- 1384      7400
- 1385              	.LASF20:
- 1386 001f 62756666 		.ascii	"buffer\000"
- 1386      657200
- 1387              	.LASF32:
- 1388 0026 72686561 		.ascii	"rhea_uart_initialize_impl\000"
- 1388      5F756172 
- 1388      745F696E 
- 1388      69746961 
- 1388      6C697A65 
- 1389              	.LASF18:
- 1390 0040 636F756E 		.ascii	"count\000"
- 1390      7400
- 1391              	.LASF22:
- 1392 0046 72686561 		.ascii	"rhea_uart_ReadChar\000"
- 1392      5F756172 
- 1392      745F5265 
- 1392      61644368 
- 1392      617200
- 1393              	.LASF12:
- 1394 0059 75696E74 		.ascii	"uint64_t\000"
- 1394      36345F74 
- 1394      00
- 1395              	.LASF16:
- 1396 0062 72686561 		.ascii	"rhea_uart_ReadBytes\000"
- 1396      5F756172 
- 1396      745F5265 
- 1396      61644279 
- 1396      74657300 
- 1397              	.LASF30:
- 1398 0076 72686561 		.ascii	"rhea_uart_WriteChar\000"
- 1398      5F756172 
- 1398      745F5772 
- 1398      69746543 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 28
+ 1297      745F5265 
+ 1297      61644279 
+ 1297      74657300 
+ 1298              	.LASF39:
+ 1299 01b3 72686561 		.ascii	"rhea\\uart\\uart_rhea.c\000"
+ 1299      5C756172 
+ 1299      745C7561 
+ 1299      72745F72 
+ 1299      6865612E 
+ 1300              	.LASF41:
+ 1301 01c9 72686561 		.ascii	"rhea_uart_Initialize\000"
+ 1301      5F756172 
+ 1301      745F496E 
+ 1301      69746961 
+ 1301      6C697A65 
+ 1302              	.LASF11:
+ 1303 01de 756E7369 		.ascii	"unsigned int\000"
+ 1303      676E6564 
+ 1303      20696E74 
+ 1303      00
+ 1304              	.LASF10:
+ 1305 01eb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1305      206C6F6E 
+ 1305      6720756E 
+ 1305      7369676E 
+ 1305      65642069 
+ 1306              	.LASF12:
+ 1307 0202 75696E74 		.ascii	"uint8_t\000"
+ 1307      385F7400 
+ 1308              	.LASF30:
+ 1309 020a 72686561 		.ascii	"rhea_uart_ReadString\000"
+ 1309      5F756172 
+ 1309      745F5265 
+ 1309      61645374 
+ 1309      72696E67 
+ 1310              	.LASF13:
+ 1311 021f 696E7433 		.ascii	"int32_t\000"
+ 1311      325F7400 
+ 1312              	.LASF19:
+ 1313 0227 73697A65 		.ascii	"sizetype\000"
+ 1313      74797065 
+ 1313      00
+ 1314              	.LASF20:
+ 1315 0230 72686561 		.ascii	"rhea_uart_BytesAvailable\000"
+ 1315      5F756172 
+ 1315      745F4279 
+ 1315      74657341 
+ 1315      7661696C 
+ 1316              	.LASF8:
+ 1317 0249 6C6F6E67 		.ascii	"long long int\000"
+ 1317      206C6F6E 
+ 1317      6720696E 
+ 1317      7400
+ 1318              	.LASF17:
+ 1319 0257 63686172 		.ascii	"char\000"
+ 1319      00
+ 1320              	.LASF23:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccPcu97Q.s 			page 28
 
 
- 1398      68617200 
- 1399              	.LASF38:
- 1400 008a 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
- 1400      79707265 
- 1400      73735C50 
- 1400      726F6A65 
- 1400      6374735C 
- 1401              	.LASF31:
- 1402 00b7 72686561 		.ascii	"rhea_uart_WriteString\000"
- 1402      5F756172 
- 1402      745F5772 
- 1402      69746553 
- 1402      7472696E 
- 1403              	.LASF19:
- 1404 00cd 72686561 		.ascii	"rhea_uart_ReadBuffer\000"
- 1404      5F756172 
- 1404      745F5265 
- 1404      61644275 
- 1404      66666572 
- 1405              	.LASF2:
- 1406 00e2 756E7369 		.ascii	"unsigned char\000"
- 1406      676E6564 
- 1406      20636861 
- 1406      7200
- 1407              	.LASF36:
- 1408 00f0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1408      43313120 
- 1408      352E342E 
- 1408      31203230 
- 1408      31363036 
- 1409 0123 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1409      20726576 
- 1409      6973696F 
- 1409      6E203233 
- 1409      37373135 
- 1410 0156 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1410      66756E63 
- 1410      74696F6E 
- 1410      2D736563 
- 1410      74696F6E 
- 1411              	.LASF6:
- 1412 017e 6C6F6E67 		.ascii	"long unsigned int\000"
- 1412      20756E73 
- 1412      69676E65 
- 1412      6420696E 
- 1412      7400
- 1413              	.LASF4:
- 1414 0190 73686F72 		.ascii	"short unsigned int\000"
- 1414      7420756E 
- 1414      7369676E 
- 1414      65642069 
- 1414      6E7400
- 1415              	.LASF37:
- 1416 01a3 72686561 		.ascii	"rhea\\uart\\uart_rhea.c\000"
- 1416      5C756172 
- 1416      745C7561 
- 1416      72745F72 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 29
-
-
- 1416      6865612E 
- 1417              	.LASF15:
- 1418 01b9 72686561 		.ascii	"rhea_uart_Initialize\000"
- 1418      5F756172 
- 1418      745F496E 
- 1418      69746961 
- 1418      6C697A65 
- 1419              	.LASF10:
- 1420 01ce 756E7369 		.ascii	"unsigned int\000"
- 1420      676E6564 
- 1420      20696E74 
- 1420      00
- 1421              	.LASF0:
- 1422 01db 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1422      206C6F6E 
- 1422      6720756E 
- 1422      7369676E 
- 1422      65642069 
- 1423              	.LASF11:
- 1424 01f2 75696E74 		.ascii	"uint8_t\000"
- 1424      385F7400 
- 1425              	.LASF35:
- 1426 01fa 72686561 		.ascii	"rhea_uart_writeByte_impl\000"
- 1426      5F756172 
- 1426      745F7772 
- 1426      69746542 
- 1426      7974655F 
- 1427              	.LASF34:
- 1428 0213 72686561 		.ascii	"rhea_uart_readByte_impl\000"
- 1428      5F756172 
- 1428      745F7265 
- 1428      61644279 
- 1428      74655F69 
- 1429              	.LASF24:
- 1430 022b 72686561 		.ascii	"rhea_uart_ReadString\000"
- 1430      5F756172 
- 1430      745F5265 
- 1430      61645374 
- 1430      72696E67 
- 1431              	.LASF13:
- 1432 0240 72686561 		.ascii	"rhea_uart_BytesAvailable\000"
- 1432      5F756172 
- 1432      745F4279 
- 1432      74657341 
- 1432      7661696C 
- 1433              	.LASF7:
- 1434 0259 6C6F6E67 		.ascii	"long long int\000"
- 1434      206C6F6E 
- 1434      6720696E 
- 1434      7400
- 1435              	.LASF23:
- 1436 0267 63686172 		.ascii	"char\000"
- 1436      00
- 1437              	.LASF14:
- 1438 026c 72686561 		.ascii	"rhea_uart_ReadByte\000"
- 1438      5F756172 
- 1438      745F5265 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccw6JW2o.s 			page 30
-
-
- 1438      61644279 
- 1438      746500
- 1439              	.LASF3:
- 1440 027f 73686F72 		.ascii	"short int\000"
- 1440      7420696E 
- 1440      7400
- 1441              	.LASF27:
- 1442 0289 62797465 		.ascii	"byte\000"
- 1442      00
- 1443              	.LASF9:
- 1444 028e 5F5F7569 		.ascii	"__uint64_t\000"
- 1444      6E743634 
- 1444      5F7400
- 1445              	.LASF26:
- 1446 0299 72686561 		.ascii	"rhea_uart_WriteByte\000"
- 1446      5F756172 
- 1446      745F5772 
- 1446      69746542 
- 1446      79746500 
- 1447              	.LASF29:
- 1448 02ad 72686561 		.ascii	"rhea_uart_WriteBuffer\000"
- 1448      5F756172 
- 1448      745F5772 
- 1448      69746542 
- 1448      75666665 
- 1449              	.LASF5:
- 1450 02c3 6C6F6E67 		.ascii	"long int\000"
- 1450      20696E74 
- 1450      00
- 1451              	.LASF17:
- 1452 02cc 62797465 		.ascii	"bytes\000"
- 1452      7300
- 1453              	.LASF33:
- 1454 02d2 72686561 		.ascii	"rhea_uart_bytesAvailable_impl\000"
- 1454      5F756172 
- 1454      745F6279 
- 1454      74657341 
- 1454      7661696C 
- 1455              	.LASF1:
- 1456 02f0 7369676E 		.ascii	"signed char\000"
- 1456      65642063 
- 1456      68617200 
- 1457              	.LASF21:
- 1458 02fc 73697A65 		.ascii	"size\000"
- 1458      00
- 1459              	.LASF25:
- 1460 0301 73747269 		.ascii	"string\000"
- 1460      6E6700
- 1461              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1321 025c 636F756E 		.ascii	"count\000"
+ 1321      7400
+ 1322              	.LASF21:
+ 1323 0262 72686561 		.ascii	"rhea_uart_ReadByte\000"
+ 1323      5F756172 
+ 1323      745F5265 
+ 1323      61644279 
+ 1323      746500
+ 1324              	.LASF2:
+ 1325 0275 73686F72 		.ascii	"short int\000"
+ 1325      7420696E 
+ 1325      7400
+ 1326              	.LASF33:
+ 1327 027f 62797465 		.ascii	"byte\000"
+ 1327      00
+ 1328              	.LASF27:
+ 1329 0284 62756666 		.ascii	"buffer\000"
+ 1329      657200
+ 1330              	.LASF32:
+ 1331 028b 72686561 		.ascii	"rhea_uart_WriteByte\000"
+ 1331      5F756172 
+ 1331      745F5772 
+ 1331      69746542 
+ 1331      79746500 
+ 1332              	.LASF35:
+ 1333 029f 72686561 		.ascii	"rhea_uart_WriteBuffer\000"
+ 1333      5F756172 
+ 1333      745F5772 
+ 1333      69746542 
+ 1333      75666665 
+ 1334              	.LASF6:
+ 1335 02b5 6C6F6E67 		.ascii	"long int\000"
+ 1335      20696E74 
+ 1335      00
+ 1336              	.LASF22:
+ 1337 02be 62797465 		.ascii	"bytes\000"
+ 1337      7300
+ 1338              	.LASF18:
+ 1339 02c4 6C6F6E67 		.ascii	"long double\000"
+ 1339      20646F75 
+ 1339      626C6500 
+ 1340              	.LASF0:
+ 1341 02d0 7369676E 		.ascii	"signed char\000"
+ 1341      65642063 
+ 1341      68617200 
+ 1342              	.LASF9:
+ 1343 02dc 5F5F7569 		.ascii	"__uint64_t\000"
+ 1343      6E743634 
+ 1343      5F7400
+ 1344              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
