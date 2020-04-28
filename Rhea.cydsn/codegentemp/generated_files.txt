@@ -45,8 +45,6 @@
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_RX_aliases.h" value="HEADER;;;;;UART_RX" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_RX.c" value="SOURCE_C;CortexM3;;;;UART_RX" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_RX.h" value="HEADER;;;;;UART_RX" />
-  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\DEBOUNCE_CLK.c" value="SOURCE_C;CortexM3;;;;DEBOUNCE_CLK" />
-  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\DEBOUNCE_CLK.h" value="HEADER;;;;;DEBOUNCE_CLK" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_RIGHT_INTR.c" value="SOURCE_C;CortexM3;;;;BTN_RIGHT_INTR" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_RIGHT_INTR.h" value="HEADER;;;;;BTN_RIGHT_INTR" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_LEFT_INTR.c" value="SOURCE_C;CortexM3;;;;BTN_LEFT_INTR" />
@@ -69,6 +67,8 @@
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_ENTER_aliases.h" value="HEADER;;;;;BTN_ENTER" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_ENTER.c" value="SOURCE_C;CortexM3;;;;BTN_ENTER" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\BTN_ENTER.h" value="HEADER;;;;;BTN_ENTER" />
+  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\DEBOUNCE_CLK.c" value="SOURCE_C;CortexM3;;;;DEBOUNCE_CLK" />
+  <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\DEBOUNCE_CLK.h" value="HEADER;;;;;DEBOUNCE_CLK" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_IntClock.c" value="SOURCE_C;CortexM3;;;;UART_IntClock" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\UART_IntClock.h" value="HEADER;;;;;UART_IntClock" />
   <file name="E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\codegentemp\cm3gcc.ld" value="LINKER_SCRIPT;;;b98f980c-3bd1-4fc7-a887-c56a20a46fdd;;cy_boot" />

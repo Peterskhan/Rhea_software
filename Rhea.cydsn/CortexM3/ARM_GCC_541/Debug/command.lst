@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 1
 
 
    1              		.syntax unified
@@ -25,16 +25,141 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 1
   22              		.size	serial_data_ready, 1
   23              	serial_data_ready:
   24 0000 00       		.space	1
-  25              		.comm	serialBuffer,256,4
-  26              		.section	.text.InitializeSerialCommandLine,"ax",%progbits
-  27              		.align	2
-  28              		.global	InitializeSerialCommandLine
-  29              		.thumb
-  30              		.thumb_func
-  31              		.type	InitializeSerialCommandLine, %function
-  32              	InitializeSerialCommandLine:
-  33              	.LFB63:
-  34              		.file 1 "application\\command\\command.c"
+  25              		.comm	serialBuffer,257,4
+  26              		.comm	bufferSize,1,1
+  27              		.section	.rodata
+  28              		.align	2
+  29              	.LC0:
+  30 0000 68656C70 		.ascii	"help\000"
+  30      00
+  31 0005 000000   		.align	2
+  32              	.LC1:
+  33 0008 76657273 		.ascii	"version\000"
+  33      696F6E00 
+  34              		.align	2
+  35              		.type	rhea_long_options, %object
+  36              		.size	rhea_long_options, 48
+  37              	rhea_long_options:
+  38 0010 00000000 		.word	.LC0
+  39 0014 00000000 		.word	0
+  40 0018 00000000 		.word	0
+  41 001c 68000000 		.word	104
+  42 0020 08000000 		.word	.LC1
+  43 0024 00000000 		.word	0
+  44 0028 00000000 		.word	0
+  45 002c 76000000 		.word	118
+  46 0030 00000000 		.word	0
+  47 0034 00000000 		.word	0
+  48 0038 00000000 		.word	0
+  49 003c 00000000 		.word	0
+  50              		.align	2
+  51              	.LC2:
+  52 0040 74656D70 		.ascii	"temperature\000"
+  52      65726174 
+  52      75726500 
+  53              		.align	2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 2
+
+
+  54              	.LC3:
+  55 004c 70726573 		.ascii	"pressure\000"
+  55      73757265 
+  55      00
+  56 0055 000000   		.align	2
+  57              	.LC4:
+  58 0058 6D6F6973 		.ascii	"moisture\000"
+  58      74757265 
+  58      00
+  59 0061 000000   		.align	2
+  60              	.LC5:
+  61 0064 68756D69 		.ascii	"humidity\000"
+  61      64697479 
+  61      00
+  62 006d 000000   		.align	2
+  63              	.LC6:
+  64 0070 66696C74 		.ascii	"filter\000"
+  64      657200
+  65 0077 00       		.align	2
+  66              	.LC7:
+  67 0078 6F766572 		.ascii	"oversampling\000"
+  67      73616D70 
+  67      6C696E67 
+  67      00
+  68 0085 000000   		.align	2
+  69              	.LC8:
+  70 0088 70657269 		.ascii	"period\000"
+  70      6F6400
+  71 008f 00       		.align	2
+  72              	.LC9:
+  73 0090 64697370 		.ascii	"display\000"
+  73      6C617900 
+  74              		.align	2
+  75              	.LC10:
+  76 0098 7072696E 		.ascii	"print\000"
+  76      7400
+  77 009e 0000     		.align	2
+  78              		.type	measure_long_options, %object
+  79              		.size	measure_long_options, 176
+  80              	measure_long_options:
+  81 00a0 40000000 		.word	.LC2
+  82 00a4 00000000 		.word	0
+  83 00a8 00000000 		.word	0
+  84 00ac 74000000 		.word	116
+  85 00b0 4C000000 		.word	.LC3
+  86 00b4 00000000 		.word	0
+  87 00b8 00000000 		.word	0
+  88 00bc 70000000 		.word	112
+  89 00c0 58000000 		.word	.LC4
+  90 00c4 00000000 		.word	0
+  91 00c8 00000000 		.word	0
+  92 00cc 6D000000 		.word	109
+  93 00d0 64000000 		.word	.LC5
+  94 00d4 00000000 		.word	0
+  95 00d8 00000000 		.word	0
+  96 00dc 6D000000 		.word	109
+  97 00e0 70000000 		.word	.LC6
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 3
+
+
+  98 00e4 01000000 		.word	1
+  99 00e8 00000000 		.word	0
+ 100 00ec 66000000 		.word	102
+ 101 00f0 78000000 		.word	.LC7
+ 102 00f4 01000000 		.word	1
+ 103 00f8 00000000 		.word	0
+ 104 00fc 6F000000 		.word	111
+ 105 0100 88000000 		.word	.LC8
+ 106 0104 01000000 		.word	1
+ 107 0108 00000000 		.word	0
+ 108 010c 54000000 		.word	84
+ 109 0110 90000000 		.word	.LC9
+ 110 0114 00000000 		.word	0
+ 111 0118 00000000 		.word	0
+ 112 011c 64000000 		.word	100
+ 113 0120 98000000 		.word	.LC10
+ 114 0124 00000000 		.word	0
+ 115 0128 00000000 		.word	0
+ 116 012c 64000000 		.word	100
+ 117 0130 00000000 		.word	.LC0
+ 118 0134 00000000 		.word	0
+ 119 0138 00000000 		.word	0
+ 120 013c 68000000 		.word	104
+ 121 0140 00000000 		.word	0
+ 122 0144 00000000 		.word	0
+ 123 0148 00000000 		.word	0
+ 124 014c 00000000 		.word	0
+ 125              		.align	2
+ 126              	.LC11:
+ 127 0150 2000     		.ascii	" \000"
+ 128              		.section	.text.toArgumentArray,"ax",%progbits
+ 129              		.align	2
+ 130              		.global	toArgumentArray
+ 131              		.thumb
+ 132              		.thumb_func
+ 133              		.type	toArgumentArray, %function
+ 134              	toArgumentArray:
+ 135              	.LFB64:
+ 136              		.file 1 "application\\command\\command.c"
    1:application\command/command.c **** /*********************************************************************************
    2:application\command/command.c ****  * Copyright (c) 2020 Peter Gyulai
    3:application\command/command.c ****  *
@@ -53,14 +178,14 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 1
   16:application\command/command.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
   17:application\command/command.c ****  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
   18:application\command/command.c ****  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 4
+
+
   19:application\command/command.c ****  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
   20:application\command/command.c ****  * OR OTHER DEALINGS IN THE SOFTWARE.
   21:application\command/command.c **** **********************************************************************************/
   22:application\command/command.c **** 
   23:application\command/command.c **** /**
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 2
-
-
   24:application\command/command.c ****  * @file    command.c
   25:application\command/command.c ****  * @author  Peter Gyulai
   26:application\command/command.c ****  * @version 1.0.0
@@ -70,1096 +195,3151 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 1
   30:application\command/command.c ****  * This file contains the implementation for the serial command line parser.
   31:application\command/command.c ****  */
   32:application\command/command.c **** 
-  33:application\command/command.c **** // Project includes
-  34:application\command/command.c **** #include "../../rhea/uart/uart.h"
-  35:application\command/command.c **** #include "command.h"
-  36:application\command/command.c **** 
-  37:application\command/command.c **** 
-  38:application\command/command.c **** // Defines the size of the receive buffer
-  39:application\command/command.c **** #define SERIAL_RX_BUFFER_SIZE (256)
-  40:application\command/command.c **** 
-  41:application\command/command.c **** // External serial status indicator flag 
-  42:application\command/command.c **** volatile uint8_t serial_data_ready = 0;
-  43:application\command/command.c **** 
-  44:application\command/command.c **** // Serial RX buffer
-  45:application\command/command.c **** uint8_t serialBuffer[SERIAL_RX_BUFFER_SIZE];
-  46:application\command/command.c ****     
-  47:application\command/command.c **** void InitializeSerialCommandLine(void) {
-  35              		.loc 1 47 0
-  36              		.cfi_startproc
-  37              		@ args = 0, pretend = 0, frame = 0
-  38              		@ frame_needed = 1, uses_anonymous_args = 0
-  39 0000 80B5     		push	{r7, lr}
-  40              		.cfi_def_cfa_offset 8
-  41              		.cfi_offset 7, -8
-  42              		.cfi_offset 14, -4
-  43 0002 00AF     		add	r7, sp, #0
-  44              		.cfi_def_cfa_register 7
-  48:application\command/command.c ****     
-  49:application\command/command.c ****     // Initializing and enabling the serial interrupt
-  50:application\command/command.c ****     UART_RX_INTR_StartEx(SERIAL_DATA_ARRIVED);
-  45              		.loc 1 50 0
-  46 0004 0248     		ldr	r0, .L2
-  47 0006 FFF7FEFF 		bl	UART_RX_INTR_StartEx
-  51:application\command/command.c **** }
-  48              		.loc 1 51 0
-  49 000a 00BF     		nop
-  50 000c 80BD     		pop	{r7, pc}
-  51              	.L3:
-  52 000e 00BF     		.align	2
-  53              	.L2:
-  54 0010 00000000 		.word	SERIAL_DATA_ARRIVED
-  55              		.cfi_endproc
-  56              	.LFE63:
-  57              		.size	InitializeSerialCommandLine, .-InitializeSerialCommandLine
-  58              		.section	.text.processCommand,"ax",%progbits
-  59              		.align	2
-  60              		.global	processCommand
-  61              		.thumb
-  62              		.thumb_func
-  63              		.type	processCommand, %function
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 3
-
-
-  64              	processCommand:
-  65              	.LFB64:
+  33:application\command/command.c **** // Standard includes
+  34:application\command/command.c **** #include <string.h>
+  35:application\command/command.c **** #include <stdio.h>
+  36:application\command/command.c **** #include <stdlib.h>
+  37:application\command/command.c **** #include <ctype.h>
+  38:application\command/command.c **** #include "getopt.h"
+  39:application\command/command.c **** 
+  40:application\command/command.c **** // Project includes
+  41:application\command/command.c **** #include "../../rhea/uart/uart.h"
+  42:application\command/command.c **** #include "../../rhea/sensor/sensor.h"
+  43:application\command/command.c **** #include "../../rhea/drivers/BME280/BME280.h"
+  44:application\command/command.c **** #include "command.h"
+  45:application\command/command.c **** 
+  46:application\command/command.c **** 
+  47:application\command/command.c **** // Defines the size of the receive buffer
+  48:application\command/command.c **** #define SERIAL_RX_BUFFER_SIZE (256)
+  49:application\command/command.c **** 
+  50:application\command/command.c **** // External serial status indicator flag 
+  51:application\command/command.c **** volatile uint8_t serial_data_ready = 0;
   52:application\command/command.c **** 
-  53:application\command/command.c **** void processCommand(const char *buffer, uint64_t length) {
-  66              		.loc 1 53 0
-  67              		.cfi_startproc
-  68              		@ args = 0, pretend = 0, frame = 16
-  69              		@ frame_needed = 1, uses_anonymous_args = 0
-  70              		@ link register save eliminated.
-  71 0000 80B4     		push	{r7}
-  72              		.cfi_def_cfa_offset 4
-  73              		.cfi_offset 7, -4
-  74 0002 85B0     		sub	sp, sp, #20
-  75              		.cfi_def_cfa_offset 24
-  76 0004 00AF     		add	r7, sp, #0
-  77              		.cfi_def_cfa_register 7
-  78 0006 F860     		str	r0, [r7, #12]
-  79 0008 C7E90023 		strd	r2, [r7]
-  54:application\command/command.c ****     
-  55:application\command/command.c **** }
-  80              		.loc 1 55 0
-  81 000c 00BF     		nop
-  82 000e 1437     		adds	r7, r7, #20
-  83              		.cfi_def_cfa_offset 4
-  84 0010 BD46     		mov	sp, r7
-  85              		.cfi_def_cfa_register 13
-  86              		@ sp needed
-  87 0012 80BC     		pop	{r7}
-  88              		.cfi_restore 7
-  89              		.cfi_def_cfa_offset 0
-  90 0014 7047     		bx	lr
-  91              		.cfi_endproc
-  92              	.LFE64:
-  93              		.size	processCommand, .-processCommand
-  94 0016 00BF     		.section	.text.ProcessCommandLine,"ax",%progbits
-  95              		.align	2
-  96              		.global	ProcessCommandLine
-  97              		.thumb
-  98              		.thumb_func
-  99              		.type	ProcessCommandLine, %function
- 100              	ProcessCommandLine:
- 101              	.LFB65:
-  56:application\command/command.c **** 
-  57:application\command/command.c **** void ProcessCommandLine(void) {
- 102              		.loc 1 57 0
- 103              		.cfi_startproc
- 104              		@ args = 0, pretend = 0, frame = 24
- 105              		@ frame_needed = 1, uses_anonymous_args = 0
- 106 0000 90B5     		push	{r4, r7, lr}
- 107              		.cfi_def_cfa_offset 12
- 108              		.cfi_offset 4, -12
- 109              		.cfi_offset 7, -8
- 110              		.cfi_offset 14, -4
- 111 0002 87B0     		sub	sp, sp, #28
- 112              		.cfi_def_cfa_offset 40
- 113 0004 00AF     		add	r7, sp, #0
- 114              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 4
+  53:application\command/command.c **** // Serial RX buffer
+  54:application\command/command.c **** volatile uint8_t serialBuffer[SERIAL_RX_BUFFER_SIZE + 1];
+  55:application\command/command.c **** 
+  56:application\command/command.c **** // Serial write index
+  57:application\command/command.c **** volatile uint8_t bufferSize;
+  58:application\command/command.c **** 
+  59:application\command/command.c **** static const struct option rhea_long_options[] = {
+  60:application\command/command.c **** 	{"help", no_argument, NULL, 'h'},
+  61:application\command/command.c **** 	{"version", no_argument, NULL, 'v'},
+  62:application\command/command.c **** 	{0,0,0,0}
+  63:application\command/command.c **** };
+  64:application\command/command.c **** 
+  65:application\command/command.c **** static const struct option measure_long_options[] = {
+  66:application\command/command.c **** 	{"temperature", no_argument, NULL, 't'},
+  67:application\command/command.c **** 	{"pressure", no_argument, NULL, 'p'},
+  68:application\command/command.c **** 	{"moisture", no_argument, NULL, 'm'},
+  69:application\command/command.c **** 	{"humidity", no_argument, NULL, 'm'},
+  70:application\command/command.c **** 	{"filter", required_argument, NULL, 'f'},
+  71:application\command/command.c **** 	{"oversampling", required_argument, NULL, 'o'},
+  72:application\command/command.c **** 	{"period", required_argument, NULL, 'T'},
+  73:application\command/command.c **** 	{"display", no_argument, NULL, 'd'},
+  74:application\command/command.c **** 	{"print", no_argument, NULL, 'd'},
+  75:application\command/command.c **** 	{"help", no_argument, NULL, 'h'},
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 5
 
 
-  58:application\command/command.c ****     
-  59:application\command/command.c ****     // Checking serial status flag
-  60:application\command/command.c ****     if(!serial_data_ready) return;
- 115              		.loc 1 60 0
- 116 0006 294B     		ldr	r3, .L13
- 117 0008 1B78     		ldrb	r3, [r3]
- 118 000a DBB2     		uxtb	r3, r3
- 119 000c 002B     		cmp	r3, #0
- 120 000e 49D0     		beq	.L12
-  61:application\command/command.c ****     
-  62:application\command/command.c ****     // Clearing serial status flag
-  63:application\command/command.c ****     serial_data_ready = 0;
- 121              		.loc 1 63 0
- 122 0010 264B     		ldr	r3, .L13
- 123 0012 0022     		movs	r2, #0
- 124 0014 1A70     		strb	r2, [r3]
-  64:application\command/command.c ****     
-  65:application\command/command.c ****     // Reading the number of bytes available
-  66:application\command/command.c ****     uint64_t bytesAvailable = rhea_uart_BytesAvailable();
- 125              		.loc 1 66 0
- 126 0016 FFF7FEFF 		bl	rhea_uart_BytesAvailable
- 127 001a C7E90201 		strd	r0, [r7, #8]
- 128              	.LBB2:
-  67:application\command/command.c ****     
-  68:application\command/command.c ****     // Serial RX buffer current write index
-  69:application\command/command.c ****     static uint64_t currentIndex = 0;
-  70:application\command/command.c ****     
-  71:application\command/command.c ****     // Serial RX buffer current read index
-  72:application\command/command.c ****     static uint64_t currentReadIndex = 0;
-  73:application\command/command.c ****     
-  74:application\command/command.c ****     // Reading bytes
-  75:application\command/command.c ****     for(uint64_t i = 0; i < bytesAvailable; i++) {
- 129              		.loc 1 75 0
- 130 001e 4FF00003 		mov	r3, #0
- 131 0022 4FF00004 		mov	r4, #0
- 132 0026 C7E90434 		strd	r3, [r7, #16]
- 133 002a 32E0     		b	.L8
- 134              	.L11:
- 135              	.LBB3:
-  76:application\command/command.c ****         
-  77:application\command/command.c ****         // Reading next character
-  78:application\command/command.c ****         uint8_t nextChar = rhea_uart_ReadByte();
- 136              		.loc 1 78 0
- 137 002c FFF7FEFF 		bl	rhea_uart_ReadByte
- 138 0030 0346     		mov	r3, r0
- 139 0032 FB71     		strb	r3, [r7, #7]
-  79:application\command/command.c ****         
-  80:application\command/command.c ****         // Checking command termination
-  81:application\command/command.c ****         if(nextChar == '\n') {
- 140              		.loc 1 81 0
- 141 0034 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 142 0036 0A2B     		cmp	r3, #10
- 143 0038 0ED1     		bne	.L9
-  82:application\command/command.c ****             
-  83:application\command/command.c ****             // Processing command
-  84:application\command/command.c ****             processCommand(serialBuffer, currentIndex);
- 144              		.loc 1 84 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 5
+  76:application\command/command.c **** 	{0,0,0,0}
+  77:application\command/command.c **** };
+  78:application\command/command.c **** 
+  79:application\command/command.c **** /*
+  80:application\command/command.c **** static const struct option alarm_long_options[] = {
+  81:application\command/command.c **** 	{"set", required_argument, NULL, 's'},
+  82:application\command/command.c **** 	{"setalarm", required_argument, NULL, 's'},
+  83:application\command/command.c **** 	{"get", no_argument, NULL, 'g'},
+  84:application\command/command.c **** 	{"getalarm", no_argument, NULL, 'g'},
+  85:application\command/command.c **** 	{"delete", required_argument, NULL, 'd'},
+  86:application\command/command.c **** 	{"reset", no_argument, NULL, 'r'},
+  87:application\command/command.c **** 	{"persist", no_argument, NULL, 'p'},
+  88:application\command/command.c **** 	{"persistent", no_argument, NULL, 'p'},
+  89:application\command/command.c **** 	{"help", no_argument, NULL, 'h'},
+  90:application\command/command.c **** 	{0,0,0,0}
+  91:application\command/command.c **** };
+  92:application\command/command.c **** 
+  93:application\command/command.c **** static const struct option datetime_long_options[] = {
+  94:application\command/command.c **** 	{"date", no_argument, NULL, 'd'},
+  95:application\command/command.c **** 	{"time", no_argument, NULL, 't'},
+  96:application\command/command.c **** 	{"set", required_argument, NULL, 's'},
+  97:application\command/command.c **** 	{"get", no_argument, NULL, 'g'},
+  98:application\command/command.c **** 	{"help", no_argument, NULL, 'h'},
+  99:application\command/command.c **** 	{0,0,0,0}
+ 100:application\command/command.c **** };
+ 101:application\command/command.c **** 
+ 102:application\command/command.c **** static const struct option power_long_options[] = {
+ 103:application\command/command.c **** 	{"fail", no_argument, NULL, 'f'},
+ 104:application\command/command.c **** 	{"turnon", no_argument, NULL, 't' },
+ 105:application\command/command.c **** 	{"uptime", no_argument, NULL, 'u' },
+ 106:application\command/command.c **** 	{"help", no_argument, NULL, 'h' },
+ 107:application\command/command.c **** 	{0,0,0,0}
+ 108:application\command/command.c **** };
+ 109:application\command/command.c **** */
+ 110:application\command/command.c **** 
+ 111:application\command/command.c **** void command_rhea(int argc, const char **argv);
+ 112:application\command/command.c **** void command_measure(int argc, const char **argv);
+ 113:application\command/command.c **** 
+ 114:application\command/command.c **** void toArgumentArray(char* str, int* argc, const char ** argv) {
+ 137              		.loc 1 114 0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 24
+ 140              		@ frame_needed = 1, uses_anonymous_args = 0
+ 141 0000 80B5     		push	{r7, lr}
+ 142              		.cfi_def_cfa_offset 8
+ 143              		.cfi_offset 7, -8
+ 144              		.cfi_offset 14, -4
+ 145 0002 86B0     		sub	sp, sp, #24
+ 146              		.cfi_def_cfa_offset 32
+ 147 0004 00AF     		add	r7, sp, #0
+ 148              		.cfi_def_cfa_register 7
+ 149 0006 F860     		str	r0, [r7, #12]
+ 150 0008 B960     		str	r1, [r7, #8]
+ 151 000a 7A60     		str	r2, [r7, #4]
+ 115:application\command/command.c **** 	char* token = strtok(str, " ");
+ 152              		.loc 1 115 0
+ 153 000c 0F49     		ldr	r1, .L4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 6
 
 
- 145 003a 1D4B     		ldr	r3, .L13+4
- 146 003c 18CB     		ldmia	r3, {r3-r4}
- 147 003e 1A46     		mov	r2, r3
- 148 0040 2346     		mov	r3, r4
- 149 0042 1C48     		ldr	r0, .L13+8
- 150 0044 FFF7FEFF 		bl	processCommand
-  85:application\command/command.c ****             
-  86:application\command/command.c ****             // Resetting buffer index
-  87:application\command/command.c ****             currentIndex = 0;
- 151              		.loc 1 87 0
- 152 0048 194A     		ldr	r2, .L13+4
- 153 004a 4FF00003 		mov	r3, #0
- 154 004e 4FF00004 		mov	r4, #0
- 155 0052 C2E90034 		strd	r3, [r2]
- 156 0056 15E0     		b	.L10
- 157              	.L9:
-  88:application\command/command.c ****         } 
-  89:application\command/command.c ****         else {
-  90:application\command/command.c ****             
-  91:application\command/command.c ****             // Storing next character
-  92:application\command/command.c ****             serialBuffer[currentIndex = (currentIndex + 1) % SERIAL_RX_BUFFER_SIZE] = nextChar;
- 158              		.loc 1 92 0
- 159 0058 154B     		ldr	r3, .L13+4
- 160 005a 18CB     		ldmia	r3, {r3-r4}
- 161 005c 0133     		adds	r3, r3, #1
- 162 005e 44F10004 		adc	r4, r4, #0
- 163 0062 4FF0FF01 		mov	r1, #255
- 164 0066 4FF00002 		mov	r2, #0
- 165 006a 03EA0103 		and	r3, r3, r1
- 166 006e 04EA0204 		and	r4, r4, r2
- 167 0072 0F4A     		ldr	r2, .L13+4
- 168 0074 C2E90034 		strd	r3, [r2]
- 169 0078 0D4B     		ldr	r3, .L13+4
- 170 007a 18CB     		ldmia	r3, {r3-r4}
- 171 007c 0D4A     		ldr	r2, .L13+8
- 172 007e 1344     		add	r3, r3, r2
- 173 0080 FA79     		ldrb	r2, [r7, #7]
- 174 0082 1A70     		strb	r2, [r3]
- 175              	.L10:
- 176              	.LBE3:
-  75:application\command/command.c ****         
- 177              		.loc 1 75 0 discriminator 2
- 178 0084 D7E90434 		ldrd	r3, [r7, #16]
- 179 0088 0133     		adds	r3, r3, #1
- 180 008a 44F10004 		adc	r4, r4, #0
- 181 008e C7E90434 		strd	r3, [r7, #16]
- 182              	.L8:
-  75:application\command/command.c ****         
- 183              		.loc 1 75 0 is_stmt 0 discriminator 1
- 184 0092 D7E90412 		ldrd	r1, [r7, #16]
- 185 0096 D7E90234 		ldrd	r3, [r7, #8]
- 186 009a A242     		cmp	r2, r4
- 187 009c 08BF     		it	eq
- 188 009e 9942     		cmpeq	r1, r3
- 189 00a0 C4D3     		bcc	.L11
- 190 00a2 00E0     		b	.L5
- 191              	.L12:
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 6
+ 154 000e F868     		ldr	r0, [r7, #12]
+ 155 0010 FFF7FEFF 		bl	strtok
+ 156 0014 7861     		str	r0, [r7, #20]
+ 116:application\command/command.c **** 	int i = 0;
+ 157              		.loc 1 116 0
+ 158 0016 0023     		movs	r3, #0
+ 159 0018 3B61     		str	r3, [r7, #16]
+ 117:application\command/command.c **** 	while (token != NULL) {
+ 160              		.loc 1 117 0
+ 161 001a 0CE0     		b	.L2
+ 162              	.L3:
+ 118:application\command/command.c **** 		argv[i++] = token;
+ 163              		.loc 1 118 0
+ 164 001c 3B69     		ldr	r3, [r7, #16]
+ 165 001e 5A1C     		adds	r2, r3, #1
+ 166 0020 3A61     		str	r2, [r7, #16]
+ 167 0022 9B00     		lsls	r3, r3, #2
+ 168 0024 7A68     		ldr	r2, [r7, #4]
+ 169 0026 1344     		add	r3, r3, r2
+ 170 0028 7A69     		ldr	r2, [r7, #20]
+ 171 002a 1A60     		str	r2, [r3]
+ 119:application\command/command.c **** 		token = strtok(NULL, " ");
+ 172              		.loc 1 119 0
+ 173 002c 0749     		ldr	r1, .L4
+ 174 002e 0020     		movs	r0, #0
+ 175 0030 FFF7FEFF 		bl	strtok
+ 176 0034 7861     		str	r0, [r7, #20]
+ 177              	.L2:
+ 117:application\command/command.c **** 	while (token != NULL) {
+ 178              		.loc 1 117 0
+ 179 0036 7B69     		ldr	r3, [r7, #20]
+ 180 0038 002B     		cmp	r3, #0
+ 181 003a EFD1     		bne	.L3
+ 120:application\command/command.c **** 	}
+ 121:application\command/command.c **** 
+ 122:application\command/command.c **** 	*argc = i;
+ 182              		.loc 1 122 0
+ 183 003c BB68     		ldr	r3, [r7, #8]
+ 184 003e 3A69     		ldr	r2, [r7, #16]
+ 185 0040 1A60     		str	r2, [r3]
+ 123:application\command/command.c **** }
+ 186              		.loc 1 123 0
+ 187 0042 00BF     		nop
+ 188 0044 1837     		adds	r7, r7, #24
+ 189              		.cfi_def_cfa_offset 8
+ 190 0046 BD46     		mov	sp, r7
+ 191              		.cfi_def_cfa_register 13
+ 192              		@ sp needed
+ 193 0048 80BD     		pop	{r7, pc}
+ 194              	.L5:
+ 195 004a 00BF     		.align	2
+ 196              	.L4:
+ 197 004c 50010000 		.word	.LC11
+ 198              		.cfi_endproc
+ 199              	.LFE64:
+ 200              		.size	toArgumentArray, .-toArgumentArray
+ 201              		.section	.text.InitializeSerialCommandLine,"ax",%progbits
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 7
 
 
- 192              	.LBE2:
-  60:application\command/command.c ****     
- 193              		.loc 1 60 0 is_stmt 1
- 194 00a4 00BF     		nop
- 195              	.L5:
-  93:application\command/command.c ****         }
-  94:application\command/command.c ****     }
-  95:application\command/command.c **** }
- 196              		.loc 1 95 0
- 197 00a6 1C37     		adds	r7, r7, #28
- 198              		.cfi_def_cfa_offset 12
- 199 00a8 BD46     		mov	sp, r7
- 200              		.cfi_def_cfa_register 13
- 201              		@ sp needed
- 202 00aa 90BD     		pop	{r4, r7, pc}
- 203              	.L14:
- 204              		.align	2
- 205              	.L13:
- 206 00ac 00000000 		.word	serial_data_ready
- 207 00b0 08000000 		.word	currentIndex.6032
- 208 00b4 00000000 		.word	serialBuffer
- 209              		.cfi_endproc
- 210              	.LFE65:
- 211              		.size	ProcessCommandLine, .-ProcessCommandLine
- 212              		.section	.text.SERIAL_DATA_ARRIVED,"ax",%progbits
- 213              		.align	2
- 214              		.global	SERIAL_DATA_ARRIVED
- 215              		.thumb
- 216              		.thumb_func
- 217              		.type	SERIAL_DATA_ARRIVED, %function
- 218              	SERIAL_DATA_ARRIVED:
- 219              	.LFB66:
-  96:application\command/command.c **** 
-  97:application\command/command.c **** CY_ISR_PROTO(SERIAL_DATA_ARRIVED) {
- 220              		.loc 1 97 0
- 221              		.cfi_startproc
- 222              		@ args = 0, pretend = 0, frame = 0
- 223              		@ frame_needed = 1, uses_anonymous_args = 0
- 224              		@ link register save eliminated.
- 225 0000 80B4     		push	{r7}
- 226              		.cfi_def_cfa_offset 4
- 227              		.cfi_offset 7, -4
- 228 0002 00AF     		add	r7, sp, #0
- 229              		.cfi_def_cfa_register 7
-  98:application\command/command.c ****     serial_data_ready = 1;   
- 230              		.loc 1 98 0
- 231 0004 034B     		ldr	r3, .L16
- 232 0006 0122     		movs	r2, #1
- 233 0008 1A70     		strb	r2, [r3]
-  99:application\command/command.c **** }
- 234              		.loc 1 99 0
- 235 000a 00BF     		nop
- 236 000c BD46     		mov	sp, r7
- 237              		.cfi_def_cfa_register 13
- 238              		@ sp needed
- 239 000e 80BC     		pop	{r7}
- 240              		.cfi_restore 7
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 7
+ 202              		.align	2
+ 203              		.global	InitializeSerialCommandLine
+ 204              		.thumb
+ 205              		.thumb_func
+ 206              		.type	InitializeSerialCommandLine, %function
+ 207              	InitializeSerialCommandLine:
+ 208              	.LFB65:
+ 124:application\command/command.c ****     
+ 125:application\command/command.c **** void InitializeSerialCommandLine(void) {
+ 209              		.loc 1 125 0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 1, uses_anonymous_args = 0
+ 213 0000 80B5     		push	{r7, lr}
+ 214              		.cfi_def_cfa_offset 8
+ 215              		.cfi_offset 7, -8
+ 216              		.cfi_offset 14, -4
+ 217 0002 00AF     		add	r7, sp, #0
+ 218              		.cfi_def_cfa_register 7
+ 126:application\command/command.c ****     
+ 127:application\command/command.c ****     // Initializing buffer size
+ 128:application\command/command.c ****     bufferSize = 0;
+ 219              		.loc 1 128 0
+ 220 0004 074B     		ldr	r3, .L7
+ 221 0006 0022     		movs	r2, #0
+ 222 0008 1A70     		strb	r2, [r3]
+ 129:application\command/command.c ****     
+ 130:application\command/command.c ****     // Terminating buffer for overflow safety
+ 131:application\command/command.c ****     serialBuffer[SERIAL_RX_BUFFER_SIZE] = '\0';
+ 223              		.loc 1 131 0
+ 224 000a 074B     		ldr	r3, .L7+4
+ 225 000c 0022     		movs	r2, #0
+ 226 000e 83F80021 		strb	r2, [r3, #256]
+ 132:application\command/command.c ****     serialBuffer[0] = '\0';
+ 227              		.loc 1 132 0
+ 228 0012 054B     		ldr	r3, .L7+4
+ 229 0014 0022     		movs	r2, #0
+ 230 0016 1A70     		strb	r2, [r3]
+ 133:application\command/command.c ****     
+ 134:application\command/command.c ****     // Initializing and enabling the serial interrupt
+ 135:application\command/command.c ****     UART_RX_INTR_StartEx(SERIAL_DATA_ARRIVED);
+ 231              		.loc 1 135 0
+ 232 0018 0448     		ldr	r0, .L7+8
+ 233 001a FFF7FEFF 		bl	UART_RX_INTR_StartEx
+ 136:application\command/command.c **** }
+ 234              		.loc 1 136 0
+ 235 001e 00BF     		nop
+ 236 0020 80BD     		pop	{r7, pc}
+ 237              	.L8:
+ 238 0022 00BF     		.align	2
+ 239              	.L7:
+ 240 0024 00000000 		.word	bufferSize
+ 241 0028 00000000 		.word	serialBuffer
+ 242 002c 00000000 		.word	SERIAL_DATA_ARRIVED
+ 243              		.cfi_endproc
+ 244              	.LFE65:
+ 245              		.size	InitializeSerialCommandLine, .-InitializeSerialCommandLine
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 8
 
 
- 241              		.cfi_def_cfa_offset 0
- 242 0010 7047     		bx	lr
- 243              	.L17:
- 244 0012 00BF     		.align	2
- 245              	.L16:
- 246 0014 00000000 		.word	serial_data_ready
- 247              		.cfi_endproc
- 248              	.LFE66:
- 249              		.size	SERIAL_DATA_ARRIVED, .-SERIAL_DATA_ARRIVED
- 250              		.bss
- 251 0001 00000000 		.align	3
- 251      000000
- 252              	currentIndex.6032:
- 253 0008 00000000 		.space	8
- 253      00000000 
- 254              		.align	3
- 255              	currentReadIndex.6033:
- 256 0010 00000000 		.space	8
- 256      00000000 
- 257              		.text
- 258              	.Letext0:
- 259              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
- 260              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
- 261              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
- 262              		.section	.debug_info,"",%progbits
- 263              	.Ldebug_info0:
- 264 0000 E8010000 		.4byte	0x1e8
- 265 0004 0400     		.2byte	0x4
- 266 0006 00000000 		.4byte	.Ldebug_abbrev0
- 267 000a 04       		.byte	0x4
- 268 000b 01       		.uleb128 0x1
- 269 000c 0A000000 		.4byte	.LASF33
- 270 0010 0C       		.byte	0xc
- 271 0011 DA000000 		.4byte	.LASF34
- 272 0015 F8000000 		.4byte	.LASF35
- 273 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 274 001d 00000000 		.4byte	0
- 275 0021 00000000 		.4byte	.Ldebug_line0
- 276 0025 02       		.uleb128 0x2
- 277 0026 01       		.byte	0x1
- 278 0027 06       		.byte	0x6
- 279 0028 38020000 		.4byte	.LASF0
- 280 002c 03       		.uleb128 0x3
- 281 002d 00000000 		.4byte	.LASF4
- 282 0031 02       		.byte	0x2
- 283 0032 1D       		.byte	0x1d
- 284 0033 37000000 		.4byte	0x37
- 285 0037 02       		.uleb128 0x2
- 286 0038 01       		.byte	0x1
- 287 0039 08       		.byte	0x8
- 288 003a 3A010000 		.4byte	.LASF1
- 289 003e 02       		.uleb128 0x2
- 290 003f 02       		.byte	0x2
- 291 0040 05       		.byte	0x5
- 292 0041 07020000 		.4byte	.LASF2
- 293 0045 02       		.uleb128 0x2
- 294 0046 02       		.byte	0x2
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 8
+ 246              		.section	.rodata
+ 247 0152 0000     		.align	2
+ 248              	.LC12:
+ 249 0154 257300   		.ascii	"%s\000"
+ 250 0157 00       		.align	2
+ 251              	.LC13:
+ 252 0158 0A0D00   		.ascii	"\012\015\000"
+ 253 015b 00       		.align	2
+ 254              	.LC14:
+ 255 015c 72686561 		.ascii	"rhea\000"
+ 255      00
+ 256 0161 000000   		.align	2
+ 257              	.LC15:
+ 258 0164 6D656173 		.ascii	"measure\000"
+ 258      75726500 
+ 259              		.align	2
+ 260              	.LC16:
+ 261 016c 556E7265 		.ascii	"Unrecognized command: \"\000"
+ 261      636F676E 
+ 261      697A6564 
+ 261      20636F6D 
+ 261      6D616E64 
+ 262              		.align	2
+ 263              	.LC17:
+ 264 0184 2200     		.ascii	"\"\000"
+ 265 0186 0000     		.align	2
+ 266              	.LC18:
+ 267 0188 0A0D5268 		.ascii	"\012\015Rhea testboard: >> \000"
+ 267      65612074 
+ 267      65737462 
+ 267      6F617264 
+ 267      3A203E3E 
+ 268              		.section	.text.ProcessCommandLine,"ax",%progbits
+ 269              		.align	2
+ 270              		.global	ProcessCommandLine
+ 271              		.thumb
+ 272              		.thumb_func
+ 273              		.type	ProcessCommandLine, %function
+ 274              	ProcessCommandLine:
+ 275              	.LFB66:
+ 137:application\command/command.c **** 
+ 138:application\command/command.c **** void ProcessCommandLine(void) {
+ 276              		.loc 1 138 0
+ 277              		.cfi_startproc
+ 278              		@ args = 0, pretend = 0, frame = 304
+ 279              		@ frame_needed = 1, uses_anonymous_args = 0
+ 280 0000 80B5     		push	{r7, lr}
+ 281              		.cfi_def_cfa_offset 8
+ 282              		.cfi_offset 7, -8
+ 283              		.cfi_offset 14, -4
+ 284 0002 CCB0     		sub	sp, sp, #304
+ 285              		.cfi_def_cfa_offset 312
+ 286 0004 00AF     		add	r7, sp, #0
+ 287              		.cfi_def_cfa_register 7
+ 139:application\command/command.c ****     
+ 140:application\command/command.c ****     // Checking serial status flag
+ 141:application\command/command.c ****     if(!serial_data_ready) return;
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 9
 
 
- 295 0047 07       		.byte	0x7
- 296 0048 76010000 		.4byte	.LASF3
- 297 004c 03       		.uleb128 0x3
- 298 004d AA000000 		.4byte	.LASF5
- 299 0051 02       		.byte	0x2
- 300 0052 3F       		.byte	0x3f
- 301 0053 57000000 		.4byte	0x57
- 302 0057 02       		.uleb128 0x2
- 303 0058 04       		.byte	0x4
- 304 0059 05       		.byte	0x5
- 305 005a 18020000 		.4byte	.LASF6
- 306 005e 02       		.uleb128 0x2
- 307 005f 04       		.byte	0x4
- 308 0060 07       		.byte	0x7
- 309 0061 64010000 		.4byte	.LASF7
- 310 0065 02       		.uleb128 0x2
- 311 0066 08       		.byte	0x8
- 312 0067 05       		.byte	0x5
- 313 0068 E7010000 		.4byte	.LASF8
- 314 006c 03       		.uleb128 0x3
- 315 006d 21020000 		.4byte	.LASF9
- 316 0071 02       		.byte	0x2
- 317 0072 5B       		.byte	0x5b
- 318 0073 77000000 		.4byte	0x77
- 319 0077 02       		.uleb128 0x2
- 320 0078 08       		.byte	0x8
- 321 0079 07       		.byte	0x7
- 322 007a AA010000 		.4byte	.LASF10
- 323 007e 04       		.uleb128 0x4
- 324 007f 04       		.byte	0x4
- 325 0080 05       		.byte	0x5
- 326 0081 696E7400 		.ascii	"int\000"
- 327 0085 02       		.uleb128 0x2
- 328 0086 04       		.byte	0x4
- 329 0087 07       		.byte	0x7
- 330 0088 9D010000 		.4byte	.LASF11
- 331 008c 03       		.uleb128 0x3
- 332 008d C1010000 		.4byte	.LASF12
- 333 0091 03       		.byte	0x3
- 334 0092 18       		.byte	0x18
- 335 0093 2C000000 		.4byte	0x2c
- 336 0097 03       		.uleb128 0x3
- 337 0098 D6010000 		.4byte	.LASF13
- 338 009c 03       		.byte	0x3
- 339 009d 2C       		.byte	0x2c
- 340 009e 4C000000 		.4byte	0x4c
- 341 00a2 03       		.uleb128 0x3
- 342 00a3 D1000000 		.4byte	.LASF14
- 343 00a7 03       		.byte	0x3
- 344 00a8 3C       		.byte	0x3c
- 345 00a9 6C000000 		.4byte	0x6c
- 346 00ad 02       		.uleb128 0x2
- 347 00ae 04       		.byte	0x4
- 348 00af 04       		.byte	0x4
- 349 00b0 34010000 		.4byte	.LASF15
- 350 00b4 02       		.uleb128 0x2
- 351 00b5 08       		.byte	0x8
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 9
+ 288              		.loc 1 141 0
+ 289 0006 304B     		ldr	r3, .L16
+ 290 0008 1B78     		ldrb	r3, [r3]
+ 291 000a DBB2     		uxtb	r3, r3
+ 292 000c 002B     		cmp	r3, #0
+ 293 000e 56D0     		beq	.L15
+ 142:application\command/command.c ****     
+ 143:application\command/command.c ****     // Clearing serial status flag
+ 144:application\command/command.c ****     serial_data_ready = 0;
+ 294              		.loc 1 144 0
+ 295 0010 2D4B     		ldr	r3, .L16
+ 296 0012 0022     		movs	r2, #0
+ 297 0014 1A70     		strb	r2, [r3]
+ 145:application\command/command.c **** 
+ 146:application\command/command.c ****     // Reading command
+ 147:application\command/command.c ****     char command[SERIAL_RX_BUFFER_SIZE] = {0};
+ 298              		.loc 1 147 0
+ 299 0016 07F13003 		add	r3, r7, #48
+ 300 001a 1846     		mov	r0, r3
+ 301 001c 4FF48073 		mov	r3, #256
+ 302 0020 1A46     		mov	r2, r3
+ 303 0022 0021     		movs	r1, #0
+ 304 0024 FFF7FEFF 		bl	memset
+ 148:application\command/command.c ****     sscanf((const char *) serialBuffer, "%s", command); 
+ 305              		.loc 1 148 0
+ 306 0028 07F13003 		add	r3, r7, #48
+ 307 002c 1A46     		mov	r2, r3
+ 308 002e 2749     		ldr	r1, .L16+4
+ 309 0030 2748     		ldr	r0, .L16+8
+ 310 0032 FFF7FEFF 		bl	sscanf
+ 149:application\command/command.c ****     
+ 150:application\command/command.c ****     // Command parsing helpers    
+ 151:application\command/command.c ****     int argc;
+ 152:application\command/command.c **** 	const char* argv[10];
+ 153:application\command/command.c **** 
+ 154:application\command/command.c ****     // Creating argc-argv format
+ 155:application\command/command.c **** 	toArgumentArray((char*) serialBuffer, &argc, argv);
+ 311              		.loc 1 155 0
+ 312 0036 3A1D     		adds	r2, r7, #4
+ 313 0038 07F12C03 		add	r3, r7, #44
+ 314 003c 1946     		mov	r1, r3
+ 315 003e 2448     		ldr	r0, .L16+8
+ 316 0040 FFF7FEFF 		bl	toArgumentArray
+ 156:application\command/command.c ****     
+ 157:application\command/command.c ****     // Jumping to next line
+ 158:application\command/command.c ****     rhea_uart_WriteString("\n\r");
+ 317              		.loc 1 158 0
+ 318 0044 2348     		ldr	r0, .L16+12
+ 319 0046 FFF7FEFF 		bl	rhea_uart_WriteString
+ 159:application\command/command.c ****     
+ 160:application\command/command.c ****     rhea_uart_WriteBuffer(serialBuffer, 10);
+ 320              		.loc 1 160 0
+ 321 004a 4FF00A02 		mov	r2, #10
+ 322 004e 4FF00003 		mov	r3, #0
+ 323 0052 1F48     		ldr	r0, .L16+8
+ 324 0054 FFF7FEFF 		bl	rhea_uart_WriteBuffer
+ 161:application\command/command.c ****     
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 10
 
 
- 352 00b6 04       		.byte	0x4
- 353 00b7 96010000 		.4byte	.LASF16
- 354 00bb 02       		.uleb128 0x2
- 355 00bc 01       		.byte	0x1
- 356 00bd 08       		.byte	0x8
- 357 00be 02020000 		.4byte	.LASF17
- 358 00c2 02       		.uleb128 0x2
- 359 00c3 08       		.byte	0x8
- 360 00c4 04       		.byte	0x4
- 361 00c5 2C020000 		.4byte	.LASF18
- 362 00c9 02       		.uleb128 0x2
- 363 00ca 04       		.byte	0x4
- 364 00cb 07       		.byte	0x7
- 365 00cc DE010000 		.4byte	.LASF19
- 366 00d0 05       		.uleb128 0x5
- 367 00d1 04       		.byte	0x4
- 368 00d2 D6000000 		.4byte	0xd6
- 369 00d6 06       		.uleb128 0x6
- 370 00d7 BB000000 		.4byte	0xbb
- 371 00db 07       		.uleb128 0x7
- 372 00dc 8C000000 		.4byte	0x8c
- 373 00e0 08       		.uleb128 0x8
- 374 00e1 48010000 		.4byte	.LASF28
- 375 00e5 01       		.byte	0x1
- 376 00e6 2F       		.byte	0x2f
- 377 00e7 00000000 		.4byte	.LFB63
- 378 00eb 14000000 		.4byte	.LFE63-.LFB63
- 379 00ef 01       		.uleb128 0x1
- 380 00f0 9C       		.byte	0x9c
- 381 00f1 09       		.uleb128 0x9
- 382 00f2 6F020000 		.4byte	.LASF22
- 383 00f6 01       		.byte	0x1
- 384 00f7 35       		.byte	0x35
- 385 00f8 00000000 		.4byte	.LFB64
- 386 00fc 16000000 		.4byte	.LFE64-.LFB64
- 387 0100 01       		.uleb128 0x1
- 388 0101 9C       		.byte	0x9c
- 389 0102 23010000 		.4byte	0x123
- 390 0106 0A       		.uleb128 0xa
- 391 0107 11020000 		.4byte	.LASF20
- 392 010b 01       		.byte	0x1
- 393 010c 35       		.byte	0x35
- 394 010d D0000000 		.4byte	0xd0
- 395 0111 02       		.uleb128 0x2
- 396 0112 91       		.byte	0x91
- 397 0113 74       		.sleb128 -12
- 398 0114 0A       		.uleb128 0xa
- 399 0115 55020000 		.4byte	.LASF21
- 400 0119 01       		.byte	0x1
- 401 011a 35       		.byte	0x35
- 402 011b A2000000 		.4byte	0xa2
- 403 011f 02       		.uleb128 0x2
- 404 0120 91       		.byte	0x91
- 405 0121 68       		.sleb128 -24
- 406 0122 00       		.byte	0
- 407 0123 0B       		.uleb128 0xb
- 408 0124 5C020000 		.4byte	.LASF23
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 10
+ 162:application\command/command.c ****     // Interpreting command
+ 163:application\command/command.c ****     if(strcmp(command, "rhea") == 0) 
+ 325              		.loc 1 163 0
+ 326 0058 07F13003 		add	r3, r7, #48
+ 327 005c 1E49     		ldr	r1, .L16+16
+ 328 005e 1846     		mov	r0, r3
+ 329 0060 FFF7FEFF 		bl	strcmp
+ 330 0064 0346     		mov	r3, r0
+ 331 0066 002B     		cmp	r3, #0
+ 332 0068 08D1     		bne	.L12
+ 164:application\command/command.c ****     {
+ 165:application\command/command.c ****         command_rhea(argc, argv);
+ 333              		.loc 1 165 0
+ 334 006a 07F12C03 		add	r3, r7, #44
+ 335 006e 1B68     		ldr	r3, [r3]
+ 336 0070 3A1D     		adds	r2, r7, #4
+ 337 0072 1146     		mov	r1, r2
+ 338 0074 1846     		mov	r0, r3
+ 339 0076 FFF7FEFF 		bl	command_rhea
+ 340 007a 1CE0     		b	.L13
+ 341              	.L12:
+ 166:application\command/command.c ****     } 
+ 167:application\command/command.c ****     else if(strcmp(command, "measure") == 0) 
+ 342              		.loc 1 167 0
+ 343 007c 07F13003 		add	r3, r7, #48
+ 344 0080 1649     		ldr	r1, .L16+20
+ 345 0082 1846     		mov	r0, r3
+ 346 0084 FFF7FEFF 		bl	strcmp
+ 347 0088 0346     		mov	r3, r0
+ 348 008a 002B     		cmp	r3, #0
+ 349 008c 08D1     		bne	.L14
+ 168:application\command/command.c ****     {
+ 169:application\command/command.c ****         command_measure(argc, argv);
+ 350              		.loc 1 169 0
+ 351 008e 07F12C03 		add	r3, r7, #44
+ 352 0092 1B68     		ldr	r3, [r3]
+ 353 0094 3A1D     		adds	r2, r7, #4
+ 354 0096 1146     		mov	r1, r2
+ 355 0098 1846     		mov	r0, r3
+ 356 009a FFF7FEFF 		bl	command_measure
+ 357 009e 0AE0     		b	.L13
+ 358              	.L14:
+ 170:application\command/command.c ****     } 
+ 171:application\command/command.c ****     else 
+ 172:application\command/command.c ****     {
+ 173:application\command/command.c ****         rhea_uart_WriteString("Unrecognized command: \"");
+ 359              		.loc 1 173 0
+ 360 00a0 0F48     		ldr	r0, .L16+24
+ 361 00a2 FFF7FEFF 		bl	rhea_uart_WriteString
+ 174:application\command/command.c ****         rhea_uart_WriteString(command);
+ 362              		.loc 1 174 0
+ 363 00a6 07F13003 		add	r3, r7, #48
+ 364 00aa 1846     		mov	r0, r3
+ 365 00ac FFF7FEFF 		bl	rhea_uart_WriteString
+ 175:application\command/command.c ****         rhea_uart_WriteString("\"");
+ 366              		.loc 1 175 0
+ 367 00b0 0C48     		ldr	r0, .L16+28
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 11
 
 
- 409 0128 01       		.byte	0x1
- 410 0129 39       		.byte	0x39
- 411 012a 00000000 		.4byte	.LFB65
- 412 012e B8000000 		.4byte	.LFE65-.LFB65
- 413 0132 01       		.uleb128 0x1
- 414 0133 9C       		.byte	0x9c
- 415 0134 97010000 		.4byte	0x197
- 416 0138 0C       		.uleb128 0xc
- 417 0139 25010000 		.4byte	.LASF24
- 418 013d 01       		.byte	0x1
- 419 013e 42       		.byte	0x42
- 420 013f A2000000 		.4byte	0xa2
- 421 0143 02       		.uleb128 0x2
- 422 0144 91       		.byte	0x91
- 423 0145 60       		.sleb128 -32
- 424 0146 0C       		.uleb128 0xc
- 425 0147 C9010000 		.4byte	.LASF25
- 426 014b 01       		.byte	0x1
- 427 014c 45       		.byte	0x45
- 428 014d A2000000 		.4byte	0xa2
- 429 0151 05       		.uleb128 0x5
- 430 0152 03       		.byte	0x3
- 431 0153 08000000 		.4byte	currentIndex.6032
- 432 0157 0C       		.uleb128 0xc
- 433 0158 44020000 		.4byte	.LASF26
- 434 015c 01       		.byte	0x1
- 435 015d 48       		.byte	0x48
- 436 015e A2000000 		.4byte	0xa2
- 437 0162 05       		.uleb128 0x5
- 438 0163 03       		.byte	0x3
- 439 0164 10000000 		.4byte	currentReadIndex.6033
- 440 0168 0D       		.uleb128 0xd
- 441 0169 1E000000 		.4byte	.LBB2
- 442 016d 86000000 		.4byte	.LBE2-.LBB2
- 443 0171 0E       		.uleb128 0xe
- 444 0172 6900     		.ascii	"i\000"
- 445 0174 01       		.byte	0x1
- 446 0175 4B       		.byte	0x4b
- 447 0176 A2000000 		.4byte	0xa2
- 448 017a 02       		.uleb128 0x2
- 449 017b 91       		.byte	0x91
- 450 017c 68       		.sleb128 -24
- 451 017d 0D       		.uleb128 0xd
- 452 017e 2C000000 		.4byte	.LBB3
- 453 0182 58000000 		.4byte	.LBE3-.LBB3
- 454 0186 0C       		.uleb128 0xc
- 455 0187 B4000000 		.4byte	.LASF27
- 456 018b 01       		.byte	0x1
- 457 018c 4E       		.byte	0x4e
- 458 018d 8C000000 		.4byte	0x8c
- 459 0191 02       		.uleb128 0x2
- 460 0192 91       		.byte	0x91
- 461 0193 5F       		.sleb128 -33
- 462 0194 00       		.byte	0
- 463 0195 00       		.byte	0
- 464 0196 00       		.byte	0
- 465 0197 0F       		.uleb128 0xf
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 11
+ 368 00b2 FFF7FEFF 		bl	rhea_uart_WriteString
+ 369              	.L13:
+ 176:application\command/command.c ****     }
+ 177:application\command/command.c ****     
+ 178:application\command/command.c ****     rhea_uart_WriteString("\n\rRhea testboard: >> ");
+ 370              		.loc 1 178 0
+ 371 00b6 0C48     		ldr	r0, .L16+32
+ 372 00b8 FFF7FEFF 		bl	rhea_uart_WriteString
+ 373 00bc 00E0     		b	.L9
+ 374              	.L15:
+ 141:application\command/command.c ****     
+ 375              		.loc 1 141 0
+ 376 00be 00BF     		nop
+ 377              	.L9:
+ 179:application\command/command.c **** }
+ 378              		.loc 1 179 0
+ 379 00c0 07F59877 		add	r7, r7, #304
+ 380              		.cfi_def_cfa_offset 8
+ 381 00c4 BD46     		mov	sp, r7
+ 382              		.cfi_def_cfa_register 13
+ 383              		@ sp needed
+ 384 00c6 80BD     		pop	{r7, pc}
+ 385              	.L17:
+ 386              		.align	2
+ 387              	.L16:
+ 388 00c8 00000000 		.word	serial_data_ready
+ 389 00cc 54010000 		.word	.LC12
+ 390 00d0 00000000 		.word	serialBuffer
+ 391 00d4 58010000 		.word	.LC13
+ 392 00d8 5C010000 		.word	.LC14
+ 393 00dc 64010000 		.word	.LC15
+ 394 00e0 6C010000 		.word	.LC16
+ 395 00e4 84010000 		.word	.LC17
+ 396 00e8 88010000 		.word	.LC18
+ 397              		.cfi_endproc
+ 398              	.LFE66:
+ 399              		.size	ProcessCommandLine, .-ProcessCommandLine
+ 400              		.section	.text.SERIAL_DATA_ARRIVED,"ax",%progbits
+ 401              		.align	2
+ 402              		.global	SERIAL_DATA_ARRIVED
+ 403              		.thumb
+ 404              		.thumb_func
+ 405              		.type	SERIAL_DATA_ARRIVED, %function
+ 406              	SERIAL_DATA_ARRIVED:
+ 407              	.LFB67:
+ 180:application\command/command.c **** 
+ 181:application\command/command.c **** CY_ISR(SERIAL_DATA_ARRIVED) {
+ 408              		.loc 1 181 0
+ 409              		.cfi_startproc
+ 410              		@ args = 0, pretend = 0, frame = 8
+ 411              		@ frame_needed = 1, uses_anonymous_args = 0
+ 412 0000 80B5     		push	{r7, lr}
+ 413              		.cfi_def_cfa_offset 8
+ 414              		.cfi_offset 7, -8
+ 415              		.cfi_offset 14, -4
+ 416 0002 82B0     		sub	sp, sp, #8
+ 417              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 12
 
 
- 466 0198 BD000000 		.4byte	.LASF29
- 467 019c 01       		.byte	0x1
- 468 019d 61       		.byte	0x61
- 469 019e 00000000 		.4byte	.LFB66
- 470 01a2 18000000 		.4byte	.LFE66-.LFB66
- 471 01a6 01       		.uleb128 0x1
- 472 01a7 9C       		.byte	0x9c
- 473 01a8 10       		.uleb128 0x10
- 474 01a9 89010000 		.4byte	.LASF30
- 475 01ad 04       		.byte	0x4
- 476 01ae 1207     		.2byte	0x712
- 477 01b0 B4010000 		.4byte	0x1b4
- 478 01b4 07       		.uleb128 0x7
- 479 01b5 97000000 		.4byte	0x97
- 480 01b9 11       		.uleb128 0x11
- 481 01ba 98000000 		.4byte	.LASF31
- 482 01be 01       		.byte	0x1
- 483 01bf 2A       		.byte	0x2a
- 484 01c0 DB000000 		.4byte	0xdb
- 485 01c4 05       		.uleb128 0x5
- 486 01c5 03       		.byte	0x3
- 487 01c6 00000000 		.4byte	serial_data_ready
- 488 01ca 12       		.uleb128 0x12
- 489 01cb 8C000000 		.4byte	0x8c
- 490 01cf DA010000 		.4byte	0x1da
- 491 01d3 13       		.uleb128 0x13
- 492 01d4 C9000000 		.4byte	0xc9
- 493 01d8 FF       		.byte	0xff
- 494 01d9 00       		.byte	0
- 495 01da 11       		.uleb128 0x11
- 496 01db F5010000 		.4byte	.LASF32
- 497 01df 01       		.byte	0x1
- 498 01e0 2D       		.byte	0x2d
- 499 01e1 CA010000 		.4byte	0x1ca
- 500 01e5 05       		.uleb128 0x5
- 501 01e6 03       		.byte	0x3
- 502 01e7 00000000 		.4byte	serialBuffer
- 503 01eb 00       		.byte	0
- 504              		.section	.debug_abbrev,"",%progbits
- 505              	.Ldebug_abbrev0:
- 506 0000 01       		.uleb128 0x1
- 507 0001 11       		.uleb128 0x11
- 508 0002 01       		.byte	0x1
- 509 0003 25       		.uleb128 0x25
- 510 0004 0E       		.uleb128 0xe
- 511 0005 13       		.uleb128 0x13
- 512 0006 0B       		.uleb128 0xb
- 513 0007 03       		.uleb128 0x3
- 514 0008 0E       		.uleb128 0xe
- 515 0009 1B       		.uleb128 0x1b
- 516 000a 0E       		.uleb128 0xe
- 517 000b 55       		.uleb128 0x55
- 518 000c 17       		.uleb128 0x17
- 519 000d 11       		.uleb128 0x11
- 520 000e 01       		.uleb128 0x1
- 521 000f 10       		.uleb128 0x10
- 522 0010 17       		.uleb128 0x17
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 12
+ 418 0004 00AF     		add	r7, sp, #0
+ 419              		.cfi_def_cfa_register 7
+ 182:application\command/command.c **** 
+ 183:application\command/command.c ****     uint8_t status = CyEnterCriticalSection();
+ 420              		.loc 1 183 0
+ 421 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ 422 000a 0346     		mov	r3, r0
+ 423 000c FB71     		strb	r3, [r7, #7]
+ 184:application\command/command.c ****     
+ 185:application\command/command.c ****     unsigned char c = rhea_uart_ReadChar();
+ 424              		.loc 1 185 0
+ 425 000e FFF7FEFF 		bl	rhea_uart_ReadChar
+ 426 0012 0346     		mov	r3, r0
+ 427 0014 BB71     		strb	r3, [r7, #6]
+ 186:application\command/command.c ****     
+ 187:application\command/command.c ****     // Reading character received
+ 188:application\command/command.c ****     serialBuffer[bufferSize++] = c;
+ 428              		.loc 1 188 0
+ 429 0016 154B     		ldr	r3, .L21
+ 430 0018 1B78     		ldrb	r3, [r3]
+ 431 001a DBB2     		uxtb	r3, r3
+ 432 001c 5A1C     		adds	r2, r3, #1
+ 433 001e D1B2     		uxtb	r1, r2
+ 434 0020 124A     		ldr	r2, .L21
+ 435 0022 1170     		strb	r1, [r2]
+ 436 0024 1946     		mov	r1, r3
+ 437 0026 124A     		ldr	r2, .L21+4
+ 438 0028 BB79     		ldrb	r3, [r7, #6]
+ 439 002a 5354     		strb	r3, [r2, r1]
+ 189:application\command/command.c ****     
+ 190:application\command/command.c ****     // Echoing back to terminal
+ 191:application\command/command.c ****     rhea_uart_WriteChar(c);
+ 440              		.loc 1 191 0
+ 441 002c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 442 002e 1846     		mov	r0, r3
+ 443 0030 FFF7FEFF 		bl	rhea_uart_WriteChar
+ 192:application\command/command.c ****     
+ 193:application\command/command.c ****     // Checking character received
+ 194:application\command/command.c ****     if(c == '\n' ||  c == '\r')
+ 444              		.loc 1 194 0
+ 445 0034 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 446 0036 0A2B     		cmp	r3, #10
+ 447 0038 02D0     		beq	.L19
+ 448              		.loc 1 194 0 is_stmt 0 discriminator 1
+ 449 003a BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 450 003c 0D2B     		cmp	r3, #13
+ 451 003e 0CD1     		bne	.L20
+ 452              	.L19:
+ 195:application\command/command.c ****     {
+ 196:application\command/command.c ****         // Setting command received flag
+ 197:application\command/command.c ****         serial_data_ready = 1;
+ 453              		.loc 1 197 0 is_stmt 1
+ 454 0040 0C4B     		ldr	r3, .L21+8
+ 455 0042 0122     		movs	r2, #1
+ 456 0044 1A70     		strb	r2, [r3]
+ 198:application\command/command.c ****         
+ 199:application\command/command.c ****         // Adding string terminator to end of buffer
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 13
 
 
- 523 0011 00       		.byte	0
- 524 0012 00       		.byte	0
- 525 0013 02       		.uleb128 0x2
- 526 0014 24       		.uleb128 0x24
- 527 0015 00       		.byte	0
- 528 0016 0B       		.uleb128 0xb
- 529 0017 0B       		.uleb128 0xb
- 530 0018 3E       		.uleb128 0x3e
- 531 0019 0B       		.uleb128 0xb
- 532 001a 03       		.uleb128 0x3
- 533 001b 0E       		.uleb128 0xe
- 534 001c 00       		.byte	0
- 535 001d 00       		.byte	0
- 536 001e 03       		.uleb128 0x3
- 537 001f 16       		.uleb128 0x16
- 538 0020 00       		.byte	0
- 539 0021 03       		.uleb128 0x3
- 540 0022 0E       		.uleb128 0xe
- 541 0023 3A       		.uleb128 0x3a
- 542 0024 0B       		.uleb128 0xb
- 543 0025 3B       		.uleb128 0x3b
- 544 0026 0B       		.uleb128 0xb
- 545 0027 49       		.uleb128 0x49
- 546 0028 13       		.uleb128 0x13
- 547 0029 00       		.byte	0
- 548 002a 00       		.byte	0
- 549 002b 04       		.uleb128 0x4
- 550 002c 24       		.uleb128 0x24
- 551 002d 00       		.byte	0
- 552 002e 0B       		.uleb128 0xb
- 553 002f 0B       		.uleb128 0xb
- 554 0030 3E       		.uleb128 0x3e
- 555 0031 0B       		.uleb128 0xb
- 556 0032 03       		.uleb128 0x3
- 557 0033 08       		.uleb128 0x8
- 558 0034 00       		.byte	0
- 559 0035 00       		.byte	0
- 560 0036 05       		.uleb128 0x5
- 561 0037 0F       		.uleb128 0xf
- 562 0038 00       		.byte	0
- 563 0039 0B       		.uleb128 0xb
- 564 003a 0B       		.uleb128 0xb
- 565 003b 49       		.uleb128 0x49
- 566 003c 13       		.uleb128 0x13
- 567 003d 00       		.byte	0
- 568 003e 00       		.byte	0
- 569 003f 06       		.uleb128 0x6
- 570 0040 26       		.uleb128 0x26
- 571 0041 00       		.byte	0
- 572 0042 49       		.uleb128 0x49
- 573 0043 13       		.uleb128 0x13
- 574 0044 00       		.byte	0
- 575 0045 00       		.byte	0
- 576 0046 07       		.uleb128 0x7
- 577 0047 35       		.uleb128 0x35
- 578 0048 00       		.byte	0
- 579 0049 49       		.uleb128 0x49
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 13
+ 200:application\command/command.c ****         serialBuffer[bufferSize - 1] = '\0';
+ 457              		.loc 1 200 0
+ 458 0046 094B     		ldr	r3, .L21
+ 459 0048 1B78     		ldrb	r3, [r3]
+ 460 004a DBB2     		uxtb	r3, r3
+ 461 004c 013B     		subs	r3, r3, #1
+ 462 004e 084A     		ldr	r2, .L21+4
+ 463 0050 0021     		movs	r1, #0
+ 464 0052 D154     		strb	r1, [r2, r3]
+ 201:application\command/command.c ****         
+ 202:application\command/command.c ****         // Resetting buffer index
+ 203:application\command/command.c ****         bufferSize = 0;
+ 465              		.loc 1 203 0
+ 466 0054 054B     		ldr	r3, .L21
+ 467 0056 0022     		movs	r2, #0
+ 468 0058 1A70     		strb	r2, [r3]
+ 469              	.L20:
+ 204:application\command/command.c ****     }
+ 205:application\command/command.c ****     
+ 206:application\command/command.c ****     CyExitCriticalSection(status);
+ 470              		.loc 1 206 0
+ 471 005a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 472 005c 1846     		mov	r0, r3
+ 473 005e FFF7FEFF 		bl	CyExitCriticalSection
+ 207:application\command/command.c **** }
+ 474              		.loc 1 207 0
+ 475 0062 00BF     		nop
+ 476 0064 0837     		adds	r7, r7, #8
+ 477              		.cfi_def_cfa_offset 8
+ 478 0066 BD46     		mov	sp, r7
+ 479              		.cfi_def_cfa_register 13
+ 480              		@ sp needed
+ 481 0068 80BD     		pop	{r7, pc}
+ 482              	.L22:
+ 483 006a 00BF     		.align	2
+ 484              	.L21:
+ 485 006c 00000000 		.word	bufferSize
+ 486 0070 00000000 		.word	serialBuffer
+ 487 0074 00000000 		.word	serial_data_ready
+ 488              		.cfi_endproc
+ 489              	.LFE67:
+ 490              		.size	SERIAL_DATA_ARRIVED, .-SERIAL_DATA_ARRIVED
+ 491              		.section	.rodata
+ 492 019e 0000     		.align	2
+ 493              	.LC19:
+ 494 01a0 20202020 		.ascii	"                                                   "
+ 494      20202020 
+ 494      20202020 
+ 494      20202020 
+ 494      20202020 
+ 495 01d3 20202020 		.ascii	"            \012\015Command: rhea                  "
+ 495      20202020 
+ 495      20202020 
+ 495      0A0D436F 
+ 495      6D6D616E 
+ 496 0200 20202020 		.ascii	"                                \012\015-----------"
+ 496      20202020 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 14
 
 
- 580 004a 13       		.uleb128 0x13
- 581 004b 00       		.byte	0
- 582 004c 00       		.byte	0
- 583 004d 08       		.uleb128 0x8
- 584 004e 2E       		.uleb128 0x2e
- 585 004f 00       		.byte	0
- 586 0050 3F       		.uleb128 0x3f
- 587 0051 19       		.uleb128 0x19
- 588 0052 03       		.uleb128 0x3
- 589 0053 0E       		.uleb128 0xe
- 590 0054 3A       		.uleb128 0x3a
- 591 0055 0B       		.uleb128 0xb
- 592 0056 3B       		.uleb128 0x3b
- 593 0057 0B       		.uleb128 0xb
- 594 0058 27       		.uleb128 0x27
- 595 0059 19       		.uleb128 0x19
- 596 005a 11       		.uleb128 0x11
- 597 005b 01       		.uleb128 0x1
- 598 005c 12       		.uleb128 0x12
- 599 005d 06       		.uleb128 0x6
- 600 005e 40       		.uleb128 0x40
- 601 005f 18       		.uleb128 0x18
- 602 0060 9642     		.uleb128 0x2116
- 603 0062 19       		.uleb128 0x19
- 604 0063 00       		.byte	0
- 605 0064 00       		.byte	0
- 606 0065 09       		.uleb128 0x9
- 607 0066 2E       		.uleb128 0x2e
- 608 0067 01       		.byte	0x1
- 609 0068 3F       		.uleb128 0x3f
- 610 0069 19       		.uleb128 0x19
- 611 006a 03       		.uleb128 0x3
- 612 006b 0E       		.uleb128 0xe
- 613 006c 3A       		.uleb128 0x3a
- 614 006d 0B       		.uleb128 0xb
- 615 006e 3B       		.uleb128 0x3b
- 616 006f 0B       		.uleb128 0xb
- 617 0070 27       		.uleb128 0x27
- 618 0071 19       		.uleb128 0x19
- 619 0072 11       		.uleb128 0x11
- 620 0073 01       		.uleb128 0x1
- 621 0074 12       		.uleb128 0x12
- 622 0075 06       		.uleb128 0x6
- 623 0076 40       		.uleb128 0x40
- 624 0077 18       		.uleb128 0x18
- 625 0078 9742     		.uleb128 0x2117
- 626 007a 19       		.uleb128 0x19
- 627 007b 01       		.uleb128 0x1
- 628 007c 13       		.uleb128 0x13
- 629 007d 00       		.byte	0
- 630 007e 00       		.byte	0
- 631 007f 0A       		.uleb128 0xa
- 632 0080 05       		.uleb128 0x5
- 633 0081 00       		.byte	0
- 634 0082 03       		.uleb128 0x3
- 635 0083 0E       		.uleb128 0xe
- 636 0084 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 14
+ 496      20202020 
+ 496      20202020 
+ 496      20202020 
+ 497 022d 2D2D2020 		.ascii	"--                                                 "
+ 497      20202020 
+ 497      20202020 
+ 497      20202020 
+ 497      20202020 
+ 498 0260 200A0D20 		.ascii	" \012\015                                          "
+ 498      20202020 
+ 498      20202020 
+ 498      20202020 
+ 498      20202020 
+ 499 028d 20202020 		.ascii	"                     \012\015-h, --help            "
+ 499      20202020 
+ 499      20202020 
+ 499      20202020 
+ 499      20202020 
+ 500 02ba 20202020 		.ascii	"                                         \012\015Pr"
+ 500      20202020 
+ 500      20202020 
+ 500      20202020 
+ 500      20202020 
+ 501 02e7 696E7473 		.ascii	"ints the available commands.                       "
+ 501      20746865 
+ 501      20617661 
+ 501      696C6162 
+ 501      6C652063 
+ 502 031a 20202020 		.ascii	"          \012\015                                 "
+ 502      20202020 
+ 502      20200A0D 
+ 502      20202020 
+ 502      20202020 
+ 503 0347 20202020 		.ascii	"                              \012\015-v, --version"
+ 503      20202020 
+ 503      20202020 
+ 503      20202020 
+ 503      20202020 
+ 504 0374 20202020 		.ascii	"                                                  \012"
+ 504      20202020 
+ 504      20202020 
+ 504      20202020 
+ 504      20202020 
+ 505 03a7 0D507269 		.ascii	"\015Prints the Rhea firmware version.              "
+ 505      6E747320 
+ 505      74686520 
+ 505      52686561 
+ 505      20666972 
+ 506 03d7 20202020 		.ascii	"                \012\015                           "
+ 506      20202020 
+ 506      20202020 
+ 506      20202020 
+ 506      0A0D2020 
+ 507 0404 20202020 		.ascii	"                                    \012\015       "
+ 507      20202020 
+ 507      20202020 
+ 507      20202020 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 15
 
 
- 637 0085 0B       		.uleb128 0xb
- 638 0086 3B       		.uleb128 0x3b
- 639 0087 0B       		.uleb128 0xb
- 640 0088 49       		.uleb128 0x49
- 641 0089 13       		.uleb128 0x13
- 642 008a 02       		.uleb128 0x2
- 643 008b 18       		.uleb128 0x18
- 644 008c 00       		.byte	0
- 645 008d 00       		.byte	0
- 646 008e 0B       		.uleb128 0xb
- 647 008f 2E       		.uleb128 0x2e
- 648 0090 01       		.byte	0x1
- 649 0091 3F       		.uleb128 0x3f
- 650 0092 19       		.uleb128 0x19
- 651 0093 03       		.uleb128 0x3
- 652 0094 0E       		.uleb128 0xe
- 653 0095 3A       		.uleb128 0x3a
- 654 0096 0B       		.uleb128 0xb
- 655 0097 3B       		.uleb128 0x3b
- 656 0098 0B       		.uleb128 0xb
- 657 0099 27       		.uleb128 0x27
- 658 009a 19       		.uleb128 0x19
- 659 009b 11       		.uleb128 0x11
- 660 009c 01       		.uleb128 0x1
- 661 009d 12       		.uleb128 0x12
- 662 009e 06       		.uleb128 0x6
- 663 009f 40       		.uleb128 0x40
- 664 00a0 18       		.uleb128 0x18
- 665 00a1 9642     		.uleb128 0x2116
- 666 00a3 19       		.uleb128 0x19
- 667 00a4 01       		.uleb128 0x1
- 668 00a5 13       		.uleb128 0x13
- 669 00a6 00       		.byte	0
- 670 00a7 00       		.byte	0
- 671 00a8 0C       		.uleb128 0xc
- 672 00a9 34       		.uleb128 0x34
- 673 00aa 00       		.byte	0
- 674 00ab 03       		.uleb128 0x3
- 675 00ac 0E       		.uleb128 0xe
- 676 00ad 3A       		.uleb128 0x3a
- 677 00ae 0B       		.uleb128 0xb
- 678 00af 3B       		.uleb128 0x3b
- 679 00b0 0B       		.uleb128 0xb
- 680 00b1 49       		.uleb128 0x49
- 681 00b2 13       		.uleb128 0x13
- 682 00b3 02       		.uleb128 0x2
- 683 00b4 18       		.uleb128 0x18
- 684 00b5 00       		.byte	0
- 685 00b6 00       		.byte	0
- 686 00b7 0D       		.uleb128 0xd
- 687 00b8 0B       		.uleb128 0xb
- 688 00b9 01       		.byte	0x1
- 689 00ba 11       		.uleb128 0x11
- 690 00bb 01       		.uleb128 0x1
- 691 00bc 12       		.uleb128 0x12
- 692 00bd 06       		.uleb128 0x6
- 693 00be 00       		.byte	0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 15
+ 507      20202020 
+ 508 0431 20202020 		.ascii	"                                                   "
+ 508      20202020 
+ 508      20202020 
+ 508      20202020 
+ 508      20202020 
+ 509 0464 20202020 		.ascii	"     \012\015Command: measure                      "
+ 509      200A0D43 
+ 509      6F6D6D61 
+ 509      6E643A20 
+ 509      6D656173 
+ 510 0491 20202020 		.ascii	"                         \012\015----------------  "
+ 510      20202020 
+ 510      20202020 
+ 510      20202020 
+ 510      20202020 
+ 511 04be 20202020 		.ascii	"                                             \012\015"
+ 511      20202020 
+ 511      20202020 
+ 511      20202020 
+ 511      20202020 
+ 512 04ed 20202020 		.ascii	"                                                   "
+ 512      20202020 
+ 512      20202020 
+ 512      20202020 
+ 512      20202020 
+ 513 0520 20202020 		.ascii	"            \012\015-t, --temperature              "
+ 513      20202020 
+ 513      20202020 
+ 513      0A0D2D74 
+ 513      2C202D2D 
+ 514 054d 20202020 		.ascii	"                                \012\015Selects the"
+ 514      20202020 
+ 514      20202020 
+ 514      20202020 
+ 514      20202020 
+ 515 057a 2074656D 		.ascii	" temperature measurement for subsequent commands.  "
+ 515      70657261 
+ 515      74757265 
+ 515      206D6561 
+ 515      73757265 
+ 516 05ad 200A0D20 		.ascii	" \012\015                                          "
+ 516      20202020 
+ 516      20202020 
+ 516      20202020 
+ 516      20202020 
+ 517 05da 20202020 		.ascii	"                     \012\015-p, --pressure        "
+ 517      20202020 
+ 517      20202020 
+ 517      20202020 
+ 517      20202020 
+ 518 0607 20202020 		.ascii	"                                         \012\015Se"
+ 518      20202020 
+ 518      20202020 
+ 518      20202020 
+ 518      20202020 
+ 519 0634 6C656374 		.ascii	"lects the pressure measurement for subsequent comma"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 16
 
 
- 694 00bf 00       		.byte	0
- 695 00c0 0E       		.uleb128 0xe
- 696 00c1 34       		.uleb128 0x34
- 697 00c2 00       		.byte	0
- 698 00c3 03       		.uleb128 0x3
- 699 00c4 08       		.uleb128 0x8
- 700 00c5 3A       		.uleb128 0x3a
- 701 00c6 0B       		.uleb128 0xb
- 702 00c7 3B       		.uleb128 0x3b
- 703 00c8 0B       		.uleb128 0xb
- 704 00c9 49       		.uleb128 0x49
- 705 00ca 13       		.uleb128 0x13
- 706 00cb 02       		.uleb128 0x2
- 707 00cc 18       		.uleb128 0x18
- 708 00cd 00       		.byte	0
- 709 00ce 00       		.byte	0
- 710 00cf 0F       		.uleb128 0xf
- 711 00d0 2E       		.uleb128 0x2e
- 712 00d1 00       		.byte	0
- 713 00d2 3F       		.uleb128 0x3f
- 714 00d3 19       		.uleb128 0x19
- 715 00d4 03       		.uleb128 0x3
- 716 00d5 0E       		.uleb128 0xe
- 717 00d6 3A       		.uleb128 0x3a
- 718 00d7 0B       		.uleb128 0xb
- 719 00d8 3B       		.uleb128 0x3b
- 720 00d9 0B       		.uleb128 0xb
- 721 00da 27       		.uleb128 0x27
- 722 00db 19       		.uleb128 0x19
- 723 00dc 11       		.uleb128 0x11
- 724 00dd 01       		.uleb128 0x1
- 725 00de 12       		.uleb128 0x12
- 726 00df 06       		.uleb128 0x6
- 727 00e0 40       		.uleb128 0x40
- 728 00e1 18       		.uleb128 0x18
- 729 00e2 9742     		.uleb128 0x2117
- 730 00e4 19       		.uleb128 0x19
- 731 00e5 00       		.byte	0
- 732 00e6 00       		.byte	0
- 733 00e7 10       		.uleb128 0x10
- 734 00e8 34       		.uleb128 0x34
- 735 00e9 00       		.byte	0
- 736 00ea 03       		.uleb128 0x3
- 737 00eb 0E       		.uleb128 0xe
- 738 00ec 3A       		.uleb128 0x3a
- 739 00ed 0B       		.uleb128 0xb
- 740 00ee 3B       		.uleb128 0x3b
- 741 00ef 05       		.uleb128 0x5
- 742 00f0 49       		.uleb128 0x49
- 743 00f1 13       		.uleb128 0x13
- 744 00f2 3F       		.uleb128 0x3f
- 745 00f3 19       		.uleb128 0x19
- 746 00f4 3C       		.uleb128 0x3c
- 747 00f5 19       		.uleb128 0x19
- 748 00f6 00       		.byte	0
- 749 00f7 00       		.byte	0
- 750 00f8 11       		.uleb128 0x11
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 16
+ 519      73207468 
+ 519      65207072 
+ 519      65737375 
+ 519      7265206D 
+ 520 0667 6E64732E 		.ascii	"nds.      \012\015                                 "
+ 520      20202020 
+ 520      20200A0D 
+ 520      20202020 
+ 520      20202020 
+ 521 0694 20202020 		.ascii	"                              \012\015-m, --moistur"
+ 521      20202020 
+ 521      20202020 
+ 521      20202020 
+ 521      20202020 
+ 522 06c1 652C202D 		.ascii	"e, --humidity                                     \012"
+ 522      2D68756D 
+ 522      69646974 
+ 522      79202020 
+ 522      20202020 
+ 523 06f4 0D53656C 		.ascii	"\015Selects the humidity measurement for subsequent"
+ 523      65637473 
+ 523      20746865 
+ 523      2068756D 
+ 523      69646974 
+ 524 0724 20636F6D 		.ascii	" commands.      \012\015                           "
+ 524      6D616E64 
+ 524      732E2020 
+ 524      20202020 
+ 524      0A0D2020 
+ 525 0751 20202020 		.ascii	"                                    \012\015-f, --f"
+ 525      20202020 
+ 525      20202020 
+ 525      20202020 
+ 525      20202020 
+ 526 077e 696C7465 		.ascii	"ilter (OFF|2|4|8|16)                               "
+ 526      7220284F 
+ 526      46467C32 
+ 526      7C347C38 
+ 526      7C313629 
+ 527 07b1 20202020 		.ascii	"     \012\015Sets the global IIR filter coefficient"
+ 527      200A0D53 
+ 527      65747320 
+ 527      74686520 
+ 527      676C6F62 
+ 528 07de 20616C6C 		.ascii	" all measurements.       \012\015                  "
+ 528      206D6561 
+ 528      73757265 
+ 528      6D656E74 
+ 528      732E2020 
+ 529 080b 20202020 		.ascii	"                                             \012\015"
+ 529      20202020 
+ 529      20202020 
+ 529      20202020 
+ 529      20202020 
+ 530 083a 2D6F2C20 		.ascii	"-o, --oversampling (1|2|4|8|16)                    "
+ 530      2D2D6F76 
+ 530      65727361 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 17
 
 
- 751 00f9 34       		.uleb128 0x34
- 752 00fa 00       		.byte	0
- 753 00fb 03       		.uleb128 0x3
- 754 00fc 0E       		.uleb128 0xe
- 755 00fd 3A       		.uleb128 0x3a
- 756 00fe 0B       		.uleb128 0xb
- 757 00ff 3B       		.uleb128 0x3b
- 758 0100 0B       		.uleb128 0xb
- 759 0101 49       		.uleb128 0x49
- 760 0102 13       		.uleb128 0x13
- 761 0103 3F       		.uleb128 0x3f
- 762 0104 19       		.uleb128 0x19
- 763 0105 02       		.uleb128 0x2
- 764 0106 18       		.uleb128 0x18
- 765 0107 00       		.byte	0
- 766 0108 00       		.byte	0
- 767 0109 12       		.uleb128 0x12
- 768 010a 01       		.uleb128 0x1
- 769 010b 01       		.byte	0x1
- 770 010c 49       		.uleb128 0x49
- 771 010d 13       		.uleb128 0x13
- 772 010e 01       		.uleb128 0x1
- 773 010f 13       		.uleb128 0x13
- 774 0110 00       		.byte	0
- 775 0111 00       		.byte	0
- 776 0112 13       		.uleb128 0x13
- 777 0113 21       		.uleb128 0x21
- 778 0114 00       		.byte	0
- 779 0115 49       		.uleb128 0x49
- 780 0116 13       		.uleb128 0x13
- 781 0117 2F       		.uleb128 0x2f
- 782 0118 0B       		.uleb128 0xb
- 783 0119 00       		.byte	0
- 784 011a 00       		.byte	0
- 785 011b 00       		.byte	0
- 786              		.section	.debug_aranges,"",%progbits
- 787 0000 34000000 		.4byte	0x34
- 788 0004 0200     		.2byte	0x2
- 789 0006 00000000 		.4byte	.Ldebug_info0
- 790 000a 04       		.byte	0x4
- 791 000b 00       		.byte	0
- 792 000c 0000     		.2byte	0
- 793 000e 0000     		.2byte	0
- 794 0010 00000000 		.4byte	.LFB63
- 795 0014 14000000 		.4byte	.LFE63-.LFB63
- 796 0018 00000000 		.4byte	.LFB64
- 797 001c 16000000 		.4byte	.LFE64-.LFB64
- 798 0020 00000000 		.4byte	.LFB65
- 799 0024 B8000000 		.4byte	.LFE65-.LFB65
- 800 0028 00000000 		.4byte	.LFB66
- 801 002c 18000000 		.4byte	.LFE66-.LFB66
- 802 0030 00000000 		.4byte	0
- 803 0034 00000000 		.4byte	0
- 804              		.section	.debug_ranges,"",%progbits
- 805              	.Ldebug_ranges0:
- 806 0000 00000000 		.4byte	.LFB63
- 807 0004 14000000 		.4byte	.LFE63
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 17
+ 530      6D706C69 
+ 530      6E672028 
+ 531 086d 20202020 		.ascii	"            \012\015Sets the oversampling mode for "
+ 531      20202020 
+ 531      20202020 
+ 531      0A0D5365 
+ 531      74732074 
+ 532 089a 74686520 		.ascii	"the selected measurements.      \012\015           "
+ 532      73656C65 
+ 532      63746564 
+ 532      206D6561 
+ 532      73757265 
+ 533 08c7 20202020 		.ascii	"                                                   "
+ 533      20202020 
+ 533      20202020 
+ 533      20202020 
+ 533      20202020 
+ 534 08fa 200A0D2D 		.ascii	" \012\015-T, --period <millisecs>                  "
+ 534      542C202D 
+ 534      2D706572 
+ 534      696F6420 
+ 534      3C6D696C 
+ 535 0927 20202020 		.ascii	"                     \012\015Sets the measurement p"
+ 535      20202020 
+ 535      20202020 
+ 535      20202020 
+ 535      20202020 
+ 536 0954 6572696F 		.ascii	"eriod for the selected measu"
+ 536      6420666F 
+ 536      72207468 
+ 536      65207365 
+ 536      6C656374 
+ 537 0970 72656D65 		.ascii	"rements.     \012\015                              "
+ 537      6E74732E 
+ 537      20202020 
+ 537      200A0D20 
+ 537      20202020 
+ 538 099d 20202020 		.ascii	"                                 \012\015-d, --disp"
+ 538      20202020 
+ 538      20202020 
+ 538      20202020 
+ 538      20202020 
+ 539 09ca 6C61792C 		.ascii	"lay, --print                                       "
+ 539      202D2D70 
+ 539      72696E74 
+ 539      20202020 
+ 539      20202020 
+ 540 09fd 20200A0D 		.ascii	"  \012\015Prints the selected measurements.        "
+ 540      5072696E 
+ 540      74732074 
+ 540      68652073 
+ 540      656C6563 
+ 541 0a2a 20202020 		.ascii	"                      \012\015                     "
+ 541      20202020 
+ 541      20202020 
+ 541      20202020 
+ 541      20202020 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 18
 
 
- 808 0008 00000000 		.4byte	.LFB64
- 809 000c 16000000 		.4byte	.LFE64
- 810 0010 00000000 		.4byte	.LFB65
- 811 0014 B8000000 		.4byte	.LFE65
- 812 0018 00000000 		.4byte	.LFB66
- 813 001c 18000000 		.4byte	.LFE66
- 814 0020 00000000 		.4byte	0
- 815 0024 00000000 		.4byte	0
- 816              		.section	.debug_line,"",%progbits
- 817              	.Ldebug_line0:
- 818 0000 96010000 		.section	.debug_str,"MS",%progbits,1
- 818      02002E01 
- 818      00000201 
- 818      FB0E0D00 
- 818      01010101 
- 819              	.LASF4:
- 820 0000 5F5F7569 		.ascii	"__uint8_t\000"
- 820      6E74385F 
- 820      7400
- 821              	.LASF33:
- 822 000a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 822      43313120 
- 822      352E342E 
- 822      31203230 
- 822      31363036 
- 823 003d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 823      20726576 
- 823      6973696F 
- 823      6E203233 
- 823      37373135 
- 824 0070 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 824      66756E63 
- 824      74696F6E 
- 824      2D736563 
- 824      74696F6E 
- 825              	.LASF31:
- 826 0098 73657269 		.ascii	"serial_data_ready\000"
- 826      616C5F64 
- 826      6174615F 
- 826      72656164 
- 826      7900
- 827              	.LASF5:
- 828 00aa 5F5F696E 		.ascii	"__int32_t\000"
- 828      7433325F 
- 828      7400
- 829              	.LASF27:
- 830 00b4 6E657874 		.ascii	"nextChar\000"
- 830      43686172 
- 830      00
- 831              	.LASF29:
- 832 00bd 53455249 		.ascii	"SERIAL_DATA_ARRIVED\000"
- 832      414C5F44 
- 832      4154415F 
- 832      41525249 
- 832      56454400 
- 833              	.LASF14:
- 834 00d1 75696E74 		.ascii	"uint64_t\000"
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 18
+ 542 0a57 20202020 		.ascii	"                                          \012\015-"
+ 542      20202020 
+ 542      20202020 
+ 542      20202020 
+ 542      20202020 
+ 543 0a84 682C202D 		.ascii	"h, --help                                          "
+ 543      2D68656C 
+ 543      70202020 
+ 543      20202020 
+ 543      20202020 
+ 544 0ab7 20202020 		.ascii	"           \012\015Prints this help.               "
+ 544      20202020 
+ 544      2020200A 
+ 544      0D507269 
+ 544      6E747320 
+ 545 0ae4 20202020 		.ascii	"                               \012\015\000"
+ 545      20202020 
+ 545      20202020 
+ 545      20202020 
+ 545      20202020 
+ 546              		.section	.text.rhea_print_help,"ax",%progbits
+ 547              		.align	2
+ 548              		.global	rhea_print_help
+ 549              		.thumb
+ 550              		.thumb_func
+ 551              		.type	rhea_print_help, %function
+ 552              	rhea_print_help:
+ 553              	.LFB68:
+ 208:application\command/command.c **** 
+ 209:application\command/command.c **** ////////////////////////////////////////////////////////////
+ 210:application\command/command.c **** // 
+ 211:application\command/command.c **** // Command handlers
+ 212:application\command/command.c **** //
+ 213:application\command/command.c **** ////////////////////////////////////////////////////////////
+ 214:application\command/command.c **** 
+ 215:application\command/command.c **** 
+ 216:application\command/command.c **** void rhea_print_help() {
+ 554              		.loc 1 216 0
+ 555              		.cfi_startproc
+ 556              		@ args = 0, pretend = 0, frame = 0
+ 557              		@ frame_needed = 1, uses_anonymous_args = 0
+ 558 0000 80B5     		push	{r7, lr}
+ 559              		.cfi_def_cfa_offset 8
+ 560              		.cfi_offset 7, -8
+ 561              		.cfi_offset 14, -4
+ 562 0002 00AF     		add	r7, sp, #0
+ 563              		.cfi_def_cfa_register 7
+ 217:application\command/command.c ****     rhea_uart_WriteString(
+ 564              		.loc 1 217 0
+ 565 0004 0248     		ldr	r0, .L24
+ 566 0006 FFF7FEFF 		bl	rhea_uart_WriteString
+ 218:application\command/command.c ****         "                                                               \n\r"
+ 219:application\command/command.c ****         "Command: rhea                                                  \n\r"
+ 220:application\command/command.c ****         "-------------                                                  \n\r"
+ 221:application\command/command.c ****         "                                                               \n\r"
+ 222:application\command/command.c ****         "-h, --help                                                     \n\r"    
+ 223:application\command/command.c ****         "Prints the available commands.                                 \n\r"
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 19
 
 
- 834      36345F74 
- 834      00
- 835              	.LASF34:
- 836 00da 6170706C 		.ascii	"application\\command\\command.c\000"
- 836      69636174 
- 836      696F6E5C 
- 836      636F6D6D 
- 836      616E645C 
- 837              	.LASF35:
- 838 00f8 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
- 838      79707265 
- 838      73735C50 
- 838      726F6A65 
- 838      6374735C 
- 839              	.LASF24:
- 840 0125 62797465 		.ascii	"bytesAvailable\000"
- 840      73417661 
- 840      696C6162 
- 840      6C6500
- 841              	.LASF15:
- 842 0134 666C6F61 		.ascii	"float\000"
- 842      7400
- 843              	.LASF1:
- 844 013a 756E7369 		.ascii	"unsigned char\000"
- 844      676E6564 
- 844      20636861 
- 844      7200
- 845              	.LASF28:
- 846 0148 496E6974 		.ascii	"InitializeSerialCommandLine\000"
- 846      69616C69 
- 846      7A655365 
- 846      7269616C 
- 846      436F6D6D 
- 847              	.LASF7:
- 848 0164 6C6F6E67 		.ascii	"long unsigned int\000"
- 848      20756E73 
- 848      69676E65 
- 848      6420696E 
- 848      7400
- 849              	.LASF3:
- 850 0176 73686F72 		.ascii	"short unsigned int\000"
- 850      7420756E 
- 850      7369676E 
- 850      65642069 
- 850      6E7400
- 851              	.LASF30:
- 852 0189 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 852      52784275 
- 852      66666572 
- 852      00
- 853              	.LASF16:
- 854 0196 646F7562 		.ascii	"double\000"
- 854      6C6500
- 855              	.LASF11:
- 856 019d 756E7369 		.ascii	"unsigned int\000"
- 856      676E6564 
- 856      20696E74 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 19
+ 224:application\command/command.c ****         "                                                               \n\r"
+ 225:application\command/command.c ****         "-v, --version                                                  \n\r"
+ 226:application\command/command.c ****         "Prints the Rhea firmware version.                              \n\r"
+ 227:application\command/command.c ****         "                                                               \n\r"
+ 228:application\command/command.c ****         "                                                               \n\r"
+ 229:application\command/command.c ****         "Command: measure                                               \n\r"
+ 230:application\command/command.c ****         "----------------                                               \n\r"
+ 231:application\command/command.c ****         "                                                               \n\r"
+ 232:application\command/command.c ****         "-t, --temperature                                              \n\r"
+ 233:application\command/command.c ****         "Selects the temperature measurement for subsequent commands.   \n\r"
+ 234:application\command/command.c ****         "                                                               \n\r"
+ 235:application\command/command.c ****         "-p, --pressure                                                 \n\r"
+ 236:application\command/command.c ****         "Selects the pressure measurement for subsequent commands.      \n\r"
+ 237:application\command/command.c ****         "                                                               \n\r"  
+ 238:application\command/command.c ****         "-m, --moisture, --humidity                                     \n\r"
+ 239:application\command/command.c ****         "Selects the humidity measurement for subsequent commands.      \n\r"
+ 240:application\command/command.c ****         "                                                               \n\r"
+ 241:application\command/command.c ****         "-f, --filter (OFF|2|4|8|16)                                    \n\r"
+ 242:application\command/command.c ****         "Sets the global IIR filter coefficient all measurements.       \n\r"
+ 243:application\command/command.c ****         "                                                               \n\r"
+ 244:application\command/command.c ****         "-o, --oversampling (1|2|4|8|16)                                \n\r"
+ 245:application\command/command.c ****         "Sets the oversampling mode for the selected measurements.      \n\r"
+ 246:application\command/command.c ****         "                                                               \n\r"
+ 247:application\command/command.c ****         "-T, --period <millisecs>                                       \n\r"
+ 248:application\command/command.c ****         "Sets the measurement period for the selected measurements.     \n\r"
+ 249:application\command/command.c ****         "                                                               \n\r"
+ 250:application\command/command.c ****         "-d, --display, --print                                         \n\r"
+ 251:application\command/command.c ****         "Prints the selected measurements.                              \n\r"
+ 252:application\command/command.c ****         "                                                               \n\r"
+ 253:application\command/command.c ****         "-h, --help                                                     \n\r"
+ 254:application\command/command.c ****         "Prints this help.                                              \n\r"
+ 255:application\command/command.c ****     );
+ 256:application\command/command.c **** }
+ 567              		.loc 1 256 0
+ 568 000a 00BF     		nop
+ 569 000c 80BD     		pop	{r7, pc}
+ 570              	.L25:
+ 571 000e 00BF     		.align	2
+ 572              	.L24:
+ 573 0010 A0010000 		.word	.LC19
+ 574              		.cfi_endproc
+ 575              	.LFE68:
+ 576              		.size	rhea_print_help, .-rhea_print_help
+ 577              		.section	.rodata
+ 578 0b06 0000     		.align	2
+ 579              	.LC20:
+ 580 0b08 312E302E 		.ascii	"1.0.0\012\015\000"
+ 580      300A0D00 
+ 581              		.section	.text.rhea_print_version,"ax",%progbits
+ 582              		.align	2
+ 583              		.global	rhea_print_version
+ 584              		.thumb
+ 585              		.thumb_func
+ 586              		.type	rhea_print_version, %function
+ 587              	rhea_print_version:
+ 588              	.LFB69:
+ 257:application\command/command.c **** 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 20
 
 
- 856      00
- 857              	.LASF10:
- 858 01aa 6C6F6E67 		.ascii	"long long unsigned int\000"
- 858      206C6F6E 
- 858      6720756E 
- 858      7369676E 
- 858      65642069 
- 859              	.LASF12:
- 860 01c1 75696E74 		.ascii	"uint8_t\000"
- 860      385F7400 
- 861              	.LASF25:
- 862 01c9 63757272 		.ascii	"currentIndex\000"
- 862      656E7449 
- 862      6E646578 
- 862      00
- 863              	.LASF13:
- 864 01d6 696E7433 		.ascii	"int32_t\000"
- 864      325F7400 
- 865              	.LASF19:
- 866 01de 73697A65 		.ascii	"sizetype\000"
- 866      74797065 
- 866      00
- 867              	.LASF8:
- 868 01e7 6C6F6E67 		.ascii	"long long int\000"
- 868      206C6F6E 
- 868      6720696E 
- 868      7400
- 869              	.LASF32:
- 870 01f5 73657269 		.ascii	"serialBuffer\000"
- 870      616C4275 
- 870      66666572 
- 870      00
- 871              	.LASF17:
- 872 0202 63686172 		.ascii	"char\000"
- 872      00
- 873              	.LASF2:
- 874 0207 73686F72 		.ascii	"short int\000"
- 874      7420696E 
- 874      7400
- 875              	.LASF20:
- 876 0211 62756666 		.ascii	"buffer\000"
- 876      657200
- 877              	.LASF6:
- 878 0218 6C6F6E67 		.ascii	"long int\000"
- 878      20696E74 
- 878      00
- 879              	.LASF9:
- 880 0221 5F5F7569 		.ascii	"__uint64_t\000"
- 880      6E743634 
- 880      5F7400
- 881              	.LASF18:
- 882 022c 6C6F6E67 		.ascii	"long double\000"
- 882      20646F75 
- 882      626C6500 
- 883              	.LASF0:
- 884 0238 7369676E 		.ascii	"signed char\000"
- 884      65642063 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccvgi7Xa.s 			page 20
+ 258:application\command/command.c **** void rhea_print_version() {
+ 589              		.loc 1 258 0
+ 590              		.cfi_startproc
+ 591              		@ args = 0, pretend = 0, frame = 0
+ 592              		@ frame_needed = 1, uses_anonymous_args = 0
+ 593 0000 80B5     		push	{r7, lr}
+ 594              		.cfi_def_cfa_offset 8
+ 595              		.cfi_offset 7, -8
+ 596              		.cfi_offset 14, -4
+ 597 0002 00AF     		add	r7, sp, #0
+ 598              		.cfi_def_cfa_register 7
+ 259:application\command/command.c ****     rhea_uart_WriteString("1.0.0\n\r");
+ 599              		.loc 1 259 0
+ 600 0004 0248     		ldr	r0, .L27
+ 601 0006 FFF7FEFF 		bl	rhea_uart_WriteString
+ 260:application\command/command.c **** }
+ 602              		.loc 1 260 0
+ 603 000a 00BF     		nop
+ 604 000c 80BD     		pop	{r7, pc}
+ 605              	.L28:
+ 606 000e 00BF     		.align	2
+ 607              	.L27:
+ 608 0010 080B0000 		.word	.LC20
+ 609              		.cfi_endproc
+ 610              	.LFE69:
+ 611              		.size	rhea_print_version, .-rhea_print_version
+ 612              		.section	.rodata
+ 613              		.align	2
+ 614              	.LC21:
+ 615 0b10 4572726F 		.ascii	"Error: Unrecognized argument.\012\015\000"
+ 615      723A2055 
+ 615      6E726563 
+ 615      6F676E69 
+ 615      7A656420 
+ 616              		.section	.text.rhea_print_error,"ax",%progbits
+ 617              		.align	2
+ 618              		.global	rhea_print_error
+ 619              		.thumb
+ 620              		.thumb_func
+ 621              		.type	rhea_print_error, %function
+ 622              	rhea_print_error:
+ 623              	.LFB70:
+ 261:application\command/command.c **** 
+ 262:application\command/command.c **** void rhea_print_error() {
+ 624              		.loc 1 262 0
+ 625              		.cfi_startproc
+ 626              		@ args = 0, pretend = 0, frame = 0
+ 627              		@ frame_needed = 1, uses_anonymous_args = 0
+ 628 0000 80B5     		push	{r7, lr}
+ 629              		.cfi_def_cfa_offset 8
+ 630              		.cfi_offset 7, -8
+ 631              		.cfi_offset 14, -4
+ 632 0002 00AF     		add	r7, sp, #0
+ 633              		.cfi_def_cfa_register 7
+ 263:application\command/command.c ****     rhea_uart_WriteString("Error: Unrecognized argument.\n\r");
+ 634              		.loc 1 263 0
+ 635 0004 0248     		ldr	r0, .L30
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 21
 
 
- 884      68617200 
- 885              	.LASF26:
- 886 0244 63757272 		.ascii	"currentReadIndex\000"
- 886      656E7452 
- 886      65616449 
- 886      6E646578 
- 886      00
- 887              	.LASF21:
- 888 0255 6C656E67 		.ascii	"length\000"
- 888      746800
- 889              	.LASF23:
- 890 025c 50726F63 		.ascii	"ProcessCommandLine\000"
- 890      65737343 
- 890      6F6D6D61 
- 890      6E644C69 
- 890      6E6500
- 891              	.LASF22:
- 892 026f 70726F63 		.ascii	"processCommand\000"
- 892      65737343 
- 892      6F6D6D61 
- 892      6E6400
- 893              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 636 0006 FFF7FEFF 		bl	rhea_uart_WriteString
+ 264:application\command/command.c **** }
+ 637              		.loc 1 264 0
+ 638 000a 00BF     		nop
+ 639 000c 80BD     		pop	{r7, pc}
+ 640              	.L31:
+ 641 000e 00BF     		.align	2
+ 642              	.L30:
+ 643 0010 100B0000 		.word	.LC21
+ 644              		.cfi_endproc
+ 645              	.LFE70:
+ 646              		.size	rhea_print_error, .-rhea_print_error
+ 647              		.section	.rodata
+ 648              		.align	2
+ 649              	.LC22:
+ 650 0b30 687600   		.ascii	"hv\000"
+ 651              		.section	.text.command_rhea,"ax",%progbits
+ 652              		.align	2
+ 653              		.global	command_rhea
+ 654              		.thumb
+ 655              		.thumb_func
+ 656              		.type	command_rhea, %function
+ 657              	command_rhea:
+ 658              	.LFB71:
+ 265:application\command/command.c **** 
+ 266:application\command/command.c **** void command_rhea(int argc, const char **argv) {
+ 659              		.loc 1 266 0
+ 660              		.cfi_startproc
+ 661              		@ args = 0, pretend = 0, frame = 16
+ 662              		@ frame_needed = 1, uses_anonymous_args = 0
+ 663 0000 80B5     		push	{r7, lr}
+ 664              		.cfi_def_cfa_offset 8
+ 665              		.cfi_offset 7, -8
+ 666              		.cfi_offset 14, -4
+ 667 0002 86B0     		sub	sp, sp, #24
+ 668              		.cfi_def_cfa_offset 32
+ 669 0004 02AF     		add	r7, sp, #8
+ 670              		.cfi_def_cfa 7, 24
+ 671 0006 7860     		str	r0, [r7, #4]
+ 672 0008 3960     		str	r1, [r7]
+ 267:application\command/command.c **** 	int opt = 0;
+ 673              		.loc 1 267 0
+ 674 000a 0023     		movs	r3, #0
+ 675 000c FB60     		str	r3, [r7, #12]
+ 268:application\command/command.c **** 	int longopt = 0;
+ 676              		.loc 1 268 0
+ 677 000e 0023     		movs	r3, #0
+ 678 0010 BB60     		str	r3, [r7, #8]
+ 269:application\command/command.c **** 	optind = 1;
+ 679              		.loc 1 269 0
+ 680 0012 124B     		ldr	r3, .L40
+ 681 0014 0122     		movs	r2, #1
+ 682 0016 1A60     		str	r2, [r3]
+ 270:application\command/command.c **** 
+ 271:application\command/command.c **** 	while ((opt = getopt_long(argc, (char*const*)argv, "hv", rhea_long_options, &longopt)) != -1) {
+ 683              		.loc 1 271 0
+ 684 0018 0EE0     		b	.L33
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 22
+
+
+ 685              	.L38:
+ 272:application\command/command.c **** 		switch (opt) {
+ 686              		.loc 1 272 0
+ 687 001a FB68     		ldr	r3, [r7, #12]
+ 688 001c 682B     		cmp	r3, #104
+ 689 001e 02D0     		beq	.L35
+ 690 0020 762B     		cmp	r3, #118
+ 691 0022 03D0     		beq	.L36
+ 692 0024 05E0     		b	.L39
+ 693              	.L35:
+ 273:application\command/command.c **** 		case 'h': rhea_print_help();
+ 694              		.loc 1 273 0
+ 695 0026 FFF7FEFF 		bl	rhea_print_help
+ 274:application\command/command.c **** 		   break;
+ 696              		.loc 1 274 0
+ 697 002a 05E0     		b	.L33
+ 698              	.L36:
+ 275:application\command/command.c **** 		case 'v': rhea_print_version();
+ 699              		.loc 1 275 0
+ 700 002c FFF7FEFF 		bl	rhea_print_version
+ 276:application\command/command.c **** 		   break;
+ 701              		.loc 1 276 0
+ 702 0030 02E0     		b	.L33
+ 703              	.L39:
+ 277:application\command/command.c **** 		default: rhea_print_error(); return;
+ 704              		.loc 1 277 0
+ 705 0032 FFF7FEFF 		bl	rhea_print_error
+ 706 0036 0DE0     		b	.L32
+ 707              	.L33:
+ 271:application\command/command.c **** 		switch (opt) {
+ 708              		.loc 1 271 0
+ 709 0038 07F10803 		add	r3, r7, #8
+ 710 003c 0093     		str	r3, [sp]
+ 711 003e 084B     		ldr	r3, .L40+4
+ 712 0040 084A     		ldr	r2, .L40+8
+ 713 0042 3968     		ldr	r1, [r7]
+ 714 0044 7868     		ldr	r0, [r7, #4]
+ 715 0046 FFF7FEFF 		bl	getopt_long
+ 716 004a F860     		str	r0, [r7, #12]
+ 717 004c FB68     		ldr	r3, [r7, #12]
+ 718 004e B3F1FF3F 		cmp	r3, #-1
+ 719 0052 E2D1     		bne	.L38
+ 720              	.L32:
+ 278:application\command/command.c **** 		};
+ 279:application\command/command.c **** 	}
+ 280:application\command/command.c **** }
+ 721              		.loc 1 280 0
+ 722 0054 1037     		adds	r7, r7, #16
+ 723              		.cfi_def_cfa_offset 8
+ 724 0056 BD46     		mov	sp, r7
+ 725              		.cfi_def_cfa_register 13
+ 726              		@ sp needed
+ 727 0058 80BD     		pop	{r7, pc}
+ 728              	.L41:
+ 729 005a 00BF     		.align	2
+ 730              	.L40:
+ 731 005c 00000000 		.word	optind
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 23
+
+
+ 732 0060 10000000 		.word	rhea_long_options
+ 733 0064 300B0000 		.word	.LC22
+ 734              		.cfi_endproc
+ 735              	.LFE71:
+ 736              		.size	command_rhea, .-command_rhea
+ 737              		.section	.rodata
+ 738 0b33 00       		.align	2
+ 739              	.LC23:
+ 740 0b34 4F464600 		.ascii	"OFF\000"
+ 741              		.align	2
+ 742              	.LC24:
+ 743 0b38 424D4532 		.ascii	"BME280\000"
+ 743      383000
+ 744 0b3f 00       		.align	2
+ 745              	.LC25:
+ 746 0b40 3100     		.ascii	"1\000"
+ 747 0b42 0000     		.align	2
+ 748              	.LC26:
+ 749 0b44 3200     		.ascii	"2\000"
+ 750 0b46 0000     		.align	2
+ 751              	.LC27:
+ 752 0b48 3400     		.ascii	"4\000"
+ 753 0b4a 0000     		.align	2
+ 754              	.LC28:
+ 755 0b4c 3800     		.ascii	"8\000"
+ 756 0b4e 0000     		.align	2
+ 757              	.LC29:
+ 758 0b50 313600   		.ascii	"16\000"
+ 759 0b53 00       		.align	2
+ 760              	.LC30:
+ 761 0b54 57726F6E 		.ascii	"Wrong oversampling value.\012\015\000"
+ 761      67206F76 
+ 761      65727361 
+ 761      6D706C69 
+ 761      6E672076 
+ 762              		.align	2
+ 763              	.LC31:
+ 764 0b70 74706D66 		.ascii	"tpmf:o:T:dh\000"
+ 764      3A6F3A54 
+ 764      3A646800 
+ 765              		.global	__aeabi_d2uiz
+ 766              		.align	2
+ 767              	.LC32:
+ 768 0b7c 54656D70 		.ascii	"Temperature: %u Celsius\012\015\000"
+ 768      65726174 
+ 768      7572653A 
+ 768      20257520 
+ 768      43656C73 
+ 769 0b96 0000     		.align	2
+ 770              	.LC33:
+ 771 0b98 50726573 		.ascii	"Pressure: %u Pa\012\015\000"
+ 771      73757265 
+ 771      3A202575 
+ 771      2050610A 
+ 771      0D00
+ 772 0baa 0000     		.align	2
+ 773              	.LC34:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 24
+
+
+ 774 0bac 48756D69 		.ascii	"Humidity: %u %%\012\015\000"
+ 774      64697479 
+ 774      3A202575 
+ 774      2025250A 
+ 774      0D00
+ 775              		.section	.text.command_measure,"ax",%progbits
+ 776              		.align	2
+ 777              		.global	command_measure
+ 778              		.thumb
+ 779              		.thumb_func
+ 780              		.type	command_measure, %function
+ 781              	command_measure:
+ 782              	.LFB72:
+ 281:application\command/command.c **** 
+ 282:application\command/command.c **** void command_measure(int argc, const char **argv) {
+ 783              		.loc 1 282 0
+ 784              		.cfi_startproc
+ 785              		@ args = 0, pretend = 0, frame = 104
+ 786              		@ frame_needed = 1, uses_anonymous_args = 0
+ 787 0000 90B5     		push	{r4, r7, lr}
+ 788              		.cfi_def_cfa_offset 12
+ 789              		.cfi_offset 4, -12
+ 790              		.cfi_offset 7, -8
+ 791              		.cfi_offset 14, -4
+ 792 0002 9DB0     		sub	sp, sp, #116
+ 793              		.cfi_def_cfa_offset 128
+ 794 0004 02AF     		add	r7, sp, #8
+ 795              		.cfi_def_cfa 7, 120
+ 796 0006 7860     		str	r0, [r7, #4]
+ 797 0008 3960     		str	r1, [r7]
+ 283:application\command/command.c **** 	
+ 284:application\command/command.c **** 	// Getopt parameters
+ 285:application\command/command.c **** 	int longopt = 0;
+ 798              		.loc 1 285 0
+ 799 000a 0023     		movs	r3, #0
+ 800 000c FB63     		str	r3, [r7, #60]
+ 286:application\command/command.c **** 	int opt = 0;
+ 801              		.loc 1 286 0
+ 802 000e 0023     		movs	r3, #0
+ 803 0010 7B65     		str	r3, [r7, #84]
+ 287:application\command/command.c **** 	optind = 1;
+ 804              		.loc 1 287 0
+ 805 0012 B44B     		ldr	r3, .L69
+ 806 0014 0122     		movs	r2, #1
+ 807 0016 1A60     		str	r2, [r3]
+ 288:application\command/command.c **** 
+ 289:application\command/command.c **** 	// Flags and option arguments
+ 290:application\command/command.c **** 	int t = 0, p = 0, m = 0, d = 0, ovrs = 0, T = 0;
+ 808              		.loc 1 290 0
+ 809 0018 0023     		movs	r3, #0
+ 810 001a 7B66     		str	r3, [r7, #100]
+ 811 001c 0023     		movs	r3, #0
+ 812 001e 3B66     		str	r3, [r7, #96]
+ 813 0020 0023     		movs	r3, #0
+ 814 0022 FB65     		str	r3, [r7, #92]
+ 815 0024 0023     		movs	r3, #0
+ 816 0026 BB65     		str	r3, [r7, #88]
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 25
+
+
+ 817 0028 0023     		movs	r3, #0
+ 818 002a 3B65     		str	r3, [r7, #80]
+ 819 002c 0023     		movs	r3, #0
+ 820 002e FB64     		str	r3, [r7, #76]
+ 291:application\command/command.c **** 
+ 292:application\command/command.c **** 	// Parsing options
+ 293:application\command/command.c **** 	while ((opt = getopt_long(argc, (char*const*)argv, "tpmf:o:T:dh", measure_long_options, &longopt))
+ 821              		.loc 1 293 0
+ 822 0030 DBE0     		b	.L43
+ 823              	.L64:
+ 294:application\command/command.c **** 		switch (opt) {
+ 824              		.loc 1 294 0
+ 825 0032 7B6D     		ldr	r3, [r7, #84]
+ 826 0034 543B     		subs	r3, r3, #84
+ 827 0036 202B     		cmp	r3, #32
+ 828 0038 00F2D480 		bhi	.L44
+ 829 003c 01A2     		adr	r2, .L46
+ 830 003e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 831 0042 00BF     		.p2align 2
+ 832              	.L46:
+ 833 0044 7F010000 		.word	.L45+1
+ 834 0048 E5010000 		.word	.L44+1
+ 835 004c E5010000 		.word	.L44+1
+ 836 0050 E5010000 		.word	.L44+1
+ 837 0054 E5010000 		.word	.L44+1
+ 838 0058 E5010000 		.word	.L44+1
+ 839 005c E5010000 		.word	.L44+1
+ 840 0060 E5010000 		.word	.L44+1
+ 841 0064 E5010000 		.word	.L44+1
+ 842 0068 E5010000 		.word	.L44+1
+ 843 006c E5010000 		.word	.L44+1
+ 844 0070 E5010000 		.word	.L44+1
+ 845 0074 E5010000 		.word	.L44+1
+ 846 0078 E5010000 		.word	.L44+1
+ 847 007c E5010000 		.word	.L44+1
+ 848 0080 E5010000 		.word	.L44+1
+ 849 0084 D9010000 		.word	.L47+1
+ 850 0088 E5010000 		.word	.L44+1
+ 851 008c DB000000 		.word	.L48+1
+ 852 0090 E5010000 		.word	.L44+1
+ 853 0094 DF010000 		.word	.L49+1
+ 854 0098 E5010000 		.word	.L44+1
+ 855 009c E5010000 		.word	.L44+1
+ 856 00a0 E5010000 		.word	.L44+1
+ 857 00a4 E5010000 		.word	.L44+1
+ 858 00a8 D5000000 		.word	.L50+1
+ 859 00ac E5010000 		.word	.L44+1
+ 860 00b0 FF000000 		.word	.L51+1
+ 861 00b4 CF000000 		.word	.L52+1
+ 862 00b8 E5010000 		.word	.L44+1
+ 863 00bc E5010000 		.word	.L44+1
+ 864 00c0 E5010000 		.word	.L44+1
+ 865 00c4 C9000000 		.word	.L53+1
+ 866              		.p2align 1
+ 867              	.L53:
+ 295:application\command/command.c **** 
+ 296:application\command/command.c **** 		// Setting measurement flags
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 26
+
+
+ 297:application\command/command.c **** 		case 't': t = 1; break;
+ 868              		.loc 1 297 0
+ 869 00c8 0123     		movs	r3, #1
+ 870 00ca 7B66     		str	r3, [r7, #100]
+ 871 00cc 8DE0     		b	.L43
+ 872              	.L52:
+ 298:application\command/command.c **** 		case 'p': p = 1; break;
+ 873              		.loc 1 298 0
+ 874 00ce 0123     		movs	r3, #1
+ 875 00d0 3B66     		str	r3, [r7, #96]
+ 876 00d2 8AE0     		b	.L43
+ 877              	.L50:
+ 299:application\command/command.c **** 		case 'm': m = 1; break;
+ 878              		.loc 1 299 0
+ 879 00d4 0123     		movs	r3, #1
+ 880 00d6 FB65     		str	r3, [r7, #92]
+ 881 00d8 87E0     		b	.L43
+ 882              	.L48:
+ 300:application\command/command.c **** 
+ 301:application\command/command.c **** 		case 'f': 
+ 302:application\command/command.c **** 			// Setting IIR filter mode
+ 303:application\command/command.c **** 			if (strcmp(optarg, "OFF") == 0) rhea_sensor_SetAttribute("BME280", "filter", BME280_FILTER_OFF);
+ 883              		.loc 1 303 0
+ 884 00da 834B     		ldr	r3, .L69+4
+ 885 00dc 1B68     		ldr	r3, [r3]
+ 886 00de 8349     		ldr	r1, .L69+8
+ 887 00e0 1846     		mov	r0, r3
+ 888 00e2 FFF7FEFF 		bl	strcmp
+ 889 00e6 0346     		mov	r3, r0
+ 890 00e8 002B     		cmp	r3, #0
+ 891 00ea 7ED1     		bne	.L43
+ 892              		.loc 1 303 0 is_stmt 0 discriminator 1
+ 893 00ec 4FF00002 		mov	r2, #0
+ 894 00f0 4FF00003 		mov	r3, #0
+ 895 00f4 7E49     		ldr	r1, .L69+12
+ 896 00f6 7F48     		ldr	r0, .L69+16
+ 897 00f8 FFF7FEFF 		bl	rhea_sensor_SetAttribute
+ 898 00fc 75E0     		b	.L43
+ 899              	.L51:
+ 304:application\command/command.c **** 			if (strcmp(optarg, "2") == 0)   rhea_sensor_SetAttribute("BME280", "filter", BME280_FILTER_COEFF
+ 305:application\command/command.c **** 			if (strcmp(optarg, "4") == 0)   rhea_sensor_SetAttribute("BME280", "filter", BME280_FILTER_COEFF
+ 306:application\command/command.c **** 			if (strcmp(optarg, "8") == 0)   rhea_sensor_SetAttribute("BME280", "filter", BME280_FILTER_COEFF
+ 307:application\command/command.c **** 			if (strcmp(optarg, "16") == 0)  rhea_sensor_SetAttribute("BME280", "filter", BME280_FILTER_COEFF
+ 308:application\command/command.c **** 			rhea_uart_WriteString("Wrong IIR filter value.\n\r"); break;
+ 309:application\command/command.c **** 
+ 310:application\command/command.c **** 		case 'o': 
+ 311:application\command/command.c **** 			// Getting oversampling rate
+ 312:application\command/command.c **** 			if      (strcmp(optarg, "1") == 0)  ovrs = 1;
+ 900              		.loc 1 312 0 is_stmt 1
+ 901 00fe 7A4B     		ldr	r3, .L69+4
+ 902 0100 1B68     		ldr	r3, [r3]
+ 903 0102 7D49     		ldr	r1, .L69+20
+ 904 0104 1846     		mov	r0, r3
+ 905 0106 FFF7FEFF 		bl	strcmp
+ 906 010a 0346     		mov	r3, r0
+ 907 010c 002B     		cmp	r3, #0
+ 908 010e 02D1     		bne	.L55
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 27
+
+
+ 909              		.loc 1 312 0 is_stmt 0 discriminator 1
+ 910 0110 0123     		movs	r3, #1
+ 911 0112 3B65     		str	r3, [r7, #80]
+ 912 0114 69E0     		b	.L43
+ 913              	.L55:
+ 313:application\command/command.c **** 			else if (strcmp(optarg, "2") == 0)  ovrs = 2;
+ 914              		.loc 1 313 0 is_stmt 1
+ 915 0116 744B     		ldr	r3, .L69+4
+ 916 0118 1B68     		ldr	r3, [r3]
+ 917 011a 7849     		ldr	r1, .L69+24
+ 918 011c 1846     		mov	r0, r3
+ 919 011e FFF7FEFF 		bl	strcmp
+ 920 0122 0346     		mov	r3, r0
+ 921 0124 002B     		cmp	r3, #0
+ 922 0126 02D1     		bne	.L57
+ 923              		.loc 1 313 0 is_stmt 0 discriminator 1
+ 924 0128 0223     		movs	r3, #2
+ 925 012a 3B65     		str	r3, [r7, #80]
+ 926 012c 5DE0     		b	.L43
+ 927              	.L57:
+ 314:application\command/command.c **** 			else if (strcmp(optarg, "4") == 0)  ovrs = 4;
+ 928              		.loc 1 314 0 is_stmt 1
+ 929 012e 6E4B     		ldr	r3, .L69+4
+ 930 0130 1B68     		ldr	r3, [r3]
+ 931 0132 7349     		ldr	r1, .L69+28
+ 932 0134 1846     		mov	r0, r3
+ 933 0136 FFF7FEFF 		bl	strcmp
+ 934 013a 0346     		mov	r3, r0
+ 935 013c 002B     		cmp	r3, #0
+ 936 013e 02D1     		bne	.L58
+ 937              		.loc 1 314 0 is_stmt 0 discriminator 1
+ 938 0140 0423     		movs	r3, #4
+ 939 0142 3B65     		str	r3, [r7, #80]
+ 940 0144 51E0     		b	.L43
+ 941              	.L58:
+ 315:application\command/command.c **** 			else if (strcmp(optarg, "8") == 0)  ovrs = 8;
+ 942              		.loc 1 315 0 is_stmt 1
+ 943 0146 684B     		ldr	r3, .L69+4
+ 944 0148 1B68     		ldr	r3, [r3]
+ 945 014a 6E49     		ldr	r1, .L69+32
+ 946 014c 1846     		mov	r0, r3
+ 947 014e FFF7FEFF 		bl	strcmp
+ 948 0152 0346     		mov	r3, r0
+ 949 0154 002B     		cmp	r3, #0
+ 950 0156 02D1     		bne	.L59
+ 951              		.loc 1 315 0 is_stmt 0 discriminator 1
+ 952 0158 0823     		movs	r3, #8
+ 953 015a 3B65     		str	r3, [r7, #80]
+ 954 015c 45E0     		b	.L43
+ 955              	.L59:
+ 316:application\command/command.c **** 			else if (strcmp(optarg, "16") == 0) ovrs = 16;
+ 956              		.loc 1 316 0 is_stmt 1
+ 957 015e 624B     		ldr	r3, .L69+4
+ 958 0160 1B68     		ldr	r3, [r3]
+ 959 0162 6949     		ldr	r1, .L69+36
+ 960 0164 1846     		mov	r0, r3
+ 961 0166 FFF7FEFF 		bl	strcmp
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 28
+
+
+ 962 016a 0346     		mov	r3, r0
+ 963 016c 002B     		cmp	r3, #0
+ 964 016e 02D1     		bne	.L60
+ 965              		.loc 1 316 0 is_stmt 0 discriminator 1
+ 966 0170 1023     		movs	r3, #16
+ 967 0172 3B65     		str	r3, [r7, #80]
+ 968 0174 39E0     		b	.L43
+ 969              	.L60:
+ 317:application\command/command.c **** 			else rhea_uart_WriteString("Wrong oversampling value.\n\r"); break;
+ 970              		.loc 1 317 0 is_stmt 1
+ 971 0176 6548     		ldr	r0, .L69+40
+ 972 0178 FFF7FEFF 		bl	rhea_uart_WriteString
+ 973 017c 35E0     		b	.L43
+ 974              	.L45:
+ 318:application\command/command.c **** 
+ 319:application\command/command.c **** 			// Applying temperature oversampling
+ 320:application\command/command.c **** 			if (t) {
+ 321:application\command/command.c **** 				switch (ovrs) {
+ 322:application\command/command.c **** 				case 1:  rhea_sensor_SetAttribute("BME280", "temperatureOVRS", BME280_TEMPERATURE_OVERSAMPLING_
+ 323:application\command/command.c **** 				case 2:  rhea_sensor_SetAttribute("BME280", "temperatureOVRS", BME280_TEMPERATURE_OVERSAMPLING_
+ 324:application\command/command.c **** 				case 4:  rhea_sensor_SetAttribute("BME280", "temperatureOVRS", BME280_TEMPERATURE_OVERSAMPLING_
+ 325:application\command/command.c **** 				case 8:  rhea_sensor_SetAttribute("BME280", "temperatureOVRS", BME280_TEMPERATURE_OVERSAMPLING_
+ 326:application\command/command.c **** 				case 16: rhea_sensor_SetAttribute("BME280", "temperatureOVRS", BME280_TEMPERATURE_OVERSAMPLING_
+ 327:application\command/command.c **** 				};
+ 328:application\command/command.c **** 			}
+ 329:application\command/command.c **** 
+ 330:application\command/command.c **** 			// Applying pressure oversampling
+ 331:application\command/command.c **** 			if (p) {
+ 332:application\command/command.c **** 				switch (ovrs) {
+ 333:application\command/command.c **** 				case 1:  rhea_sensor_SetAttribute("BME280", "pressureOVRS", BME280_PRESSURE_OVERSAMPLING_1X); b
+ 334:application\command/command.c **** 				case 2:  rhea_sensor_SetAttribute("BME280", "pressureOVRS", BME280_PRESSURE_OVERSAMPLING_2X); b
+ 335:application\command/command.c **** 				case 4:  rhea_sensor_SetAttribute("BME280", "pressureOVRS", BME280_PRESSURE_OVERSAMPLING_4X); b
+ 336:application\command/command.c **** 				case 8:  rhea_sensor_SetAttribute("BME280", "pressureOVRS", BME280_PRESSURE_OVERSAMPLING_8X); b
+ 337:application\command/command.c **** 				case 16: rhea_sensor_SetAttribute("BME280", "pressureOVRS", BME280_PRESSURE_OVERSAMPLING_16X); 
+ 338:application\command/command.c **** 				};
+ 339:application\command/command.c **** 			}
+ 340:application\command/command.c **** 
+ 341:application\command/command.c **** 			// Applying humidity oversampling
+ 342:application\command/command.c **** 			if (m) {
+ 343:application\command/command.c **** 				switch (ovrs) {
+ 344:application\command/command.c **** 				case 1:  rhea_sensor_SetAttribute("BME280", "humidityOVRS", BME280_HUMIDITY_OVERSAMPLING_1X); b
+ 345:application\command/command.c **** 				case 2:  rhea_sensor_SetAttribute("BME280", "humidityOVRS", BME280_HUMIDITY_OVERSAMPLING_2X); b
+ 346:application\command/command.c **** 				case 4:  rhea_sensor_SetAttribute("BME280", "humidityOVRS", BME280_HUMIDITY_OVERSAMPLING_4X); b
+ 347:application\command/command.c **** 				case 8:  rhea_sensor_SetAttribute("BME280", "humidityOVRS", BME280_HUMIDITY_OVERSAMPLING_8X); b
+ 348:application\command/command.c **** 				case 16: rhea_sensor_SetAttribute("BME280", "humidityOVRS", BME280_HUMIDITY_OVERSAMPLING_16X); 
+ 349:application\command/command.c **** 				};
+ 350:application\command/command.c **** 			} break;
+ 351:application\command/command.c **** 
+ 352:application\command/command.c **** 		case 'T': 
+ 353:application\command/command.c **** 			T = strtol(optarg, NULL, 10);
+ 975              		.loc 1 353 0
+ 976 017e 5A4B     		ldr	r3, .L69+4
+ 977 0180 1B68     		ldr	r3, [r3]
+ 978 0182 0A22     		movs	r2, #10
+ 979 0184 0021     		movs	r1, #0
+ 980 0186 1846     		mov	r0, r3
+ 981 0188 FFF7FEFF 		bl	strtol
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 29
+
+
+ 982 018c F864     		str	r0, [r7, #76]
+ 354:application\command/command.c **** 			if (t) rhea_sensor_SetMeasurementPeriod("BME280", "temperature", T);
+ 983              		.loc 1 354 0
+ 984 018e 7B6E     		ldr	r3, [r7, #100]
+ 985 0190 002B     		cmp	r3, #0
+ 986 0192 08D0     		beq	.L61
+ 987              		.loc 1 354 0 is_stmt 0 discriminator 1
+ 988 0194 FB6C     		ldr	r3, [r7, #76]
+ 989 0196 4FEAE374 		asr	r4, r3, #31
+ 990 019a 1A46     		mov	r2, r3
+ 991 019c 2346     		mov	r3, r4
+ 992 019e 5C49     		ldr	r1, .L69+44
+ 993 01a0 5448     		ldr	r0, .L69+16
+ 994 01a2 FFF7FEFF 		bl	rhea_sensor_SetMeasurementPeriod
+ 995              	.L61:
+ 355:application\command/command.c **** 			if (p) rhea_sensor_SetMeasurementPeriod("BME280", "pressure", T);
+ 996              		.loc 1 355 0 is_stmt 1
+ 997 01a6 3B6E     		ldr	r3, [r7, #96]
+ 998 01a8 002B     		cmp	r3, #0
+ 999 01aa 08D0     		beq	.L62
+ 1000              		.loc 1 355 0 is_stmt 0 discriminator 1
+ 1001 01ac FB6C     		ldr	r3, [r7, #76]
+ 1002 01ae 4FEAE374 		asr	r4, r3, #31
+ 1003 01b2 1A46     		mov	r2, r3
+ 1004 01b4 2346     		mov	r3, r4
+ 1005 01b6 5749     		ldr	r1, .L69+48
+ 1006 01b8 4E48     		ldr	r0, .L69+16
+ 1007 01ba FFF7FEFF 		bl	rhea_sensor_SetMeasurementPeriod
+ 1008              	.L62:
+ 356:application\command/command.c **** 			if (m) rhea_sensor_SetMeasurementPeriod("BME280", "humidity", T);
+ 1009              		.loc 1 356 0 is_stmt 1
+ 1010 01be FB6D     		ldr	r3, [r7, #92]
+ 1011 01c0 002B     		cmp	r3, #0
+ 1012 01c2 12D0     		beq	.L43
+ 1013              		.loc 1 356 0 is_stmt 0 discriminator 1
+ 1014 01c4 FB6C     		ldr	r3, [r7, #76]
+ 1015 01c6 4FEAE374 		asr	r4, r3, #31
+ 1016 01ca 1A46     		mov	r2, r3
+ 1017 01cc 2346     		mov	r3, r4
+ 1018 01ce 5249     		ldr	r1, .L69+52
+ 1019 01d0 4848     		ldr	r0, .L69+16
+ 1020 01d2 FFF7FEFF 		bl	rhea_sensor_SetMeasurementPeriod
+ 357:application\command/command.c **** 			break;
+ 1021              		.loc 1 357 0 is_stmt 1 discriminator 1
+ 1022 01d6 08E0     		b	.L43
+ 1023              	.L47:
+ 358:application\command/command.c **** 
+ 359:application\command/command.c **** 		case 'd': d = 1;
+ 1024              		.loc 1 359 0
+ 1025 01d8 0123     		movs	r3, #1
+ 1026 01da BB65     		str	r3, [r7, #88]
+ 360:application\command/command.c **** 			break;
+ 1027              		.loc 1 360 0
+ 1028 01dc 05E0     		b	.L43
+ 1029              	.L49:
+ 361:application\command/command.c **** 
+ 362:application\command/command.c **** 		case 'h': 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 30
+
+
+ 363:application\command/command.c **** 			rhea_print_help();
+ 1030              		.loc 1 363 0
+ 1031 01de FFF7FEFF 		bl	rhea_print_help
+ 364:application\command/command.c **** 			break;
+ 1032              		.loc 1 364 0
+ 1033 01e2 02E0     		b	.L43
+ 1034              	.L44:
+ 365:application\command/command.c **** 
+ 366:application\command/command.c **** 		default: 
+ 367:application\command/command.c **** 			rhea_print_error();
+ 1035              		.loc 1 367 0
+ 1036 01e4 FFF7FEFF 		bl	rhea_print_error
+ 368:application\command/command.c **** 			break;
+ 1037              		.loc 1 368 0
+ 1038 01e8 00BF     		nop
+ 1039              	.L43:
+ 293:application\command/command.c **** 		switch (opt) {
+ 1040              		.loc 1 293 0
+ 1041 01ea 07F13C03 		add	r3, r7, #60
+ 1042 01ee 0093     		str	r3, [sp]
+ 1043 01f0 4A4B     		ldr	r3, .L69+56
+ 1044 01f2 4B4A     		ldr	r2, .L69+60
+ 1045 01f4 3968     		ldr	r1, [r7]
+ 1046 01f6 7868     		ldr	r0, [r7, #4]
+ 1047 01f8 FFF7FEFF 		bl	getopt_long
+ 1048 01fc 7865     		str	r0, [r7, #84]
+ 1049 01fe 7B6D     		ldr	r3, [r7, #84]
+ 1050 0200 B3F1FF3F 		cmp	r3, #-1
+ 1051 0204 7FF415AF 		bne	.L64
+ 369:application\command/command.c **** 		};
+ 370:application\command/command.c **** 	}
+ 371:application\command/command.c ****     
+ 372:application\command/command.c ****     if(d) {
+ 1052              		.loc 1 372 0
+ 1053 0208 BB6D     		ldr	r3, [r7, #88]
+ 1054 020a 002B     		cmp	r3, #0
+ 1055 020c 65D0     		beq	.L68
+ 373:application\command/command.c ****         if (t) {
+ 1056              		.loc 1 373 0
+ 1057 020e 7B6E     		ldr	r3, [r7, #100]
+ 1058 0210 002B     		cmp	r3, #0
+ 1059 0212 1ED0     		beq	.L66
+ 1060              	.LBB2:
+ 374:application\command/command.c ****             unsigned temperature = rhea_sensor_GetMeasurement("BME280", "temperature");
+ 1061              		.loc 1 374 0
+ 1062 0214 3E49     		ldr	r1, .L69+44
+ 1063 0216 3748     		ldr	r0, .L69+16
+ 1064 0218 FFF7FEFF 		bl	rhea_sensor_GetMeasurement
+ 1065 021c 0346     		mov	r3, r0
+ 1066 021e 0C46     		mov	r4, r1
+ 1067 0220 1846     		mov	r0, r3
+ 1068 0222 2146     		mov	r1, r4
+ 1069 0224 FFF7FEFF 		bl	__aeabi_d2uiz
+ 1070 0228 0346     		mov	r3, r0
+ 1071 022a BB64     		str	r3, [r7, #72]
+ 375:application\command/command.c ****             char temp[50] = {0};
+ 1072              		.loc 1 375 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 31
+
+
+ 1073 022c 07F10803 		add	r3, r7, #8
+ 1074 0230 3222     		movs	r2, #50
+ 1075 0232 0021     		movs	r1, #0
+ 1076 0234 1846     		mov	r0, r3
+ 1077 0236 FFF7FEFF 		bl	memset
+ 376:application\command/command.c ****             sprintf(temp, "Temperature: %u Celsius\n\r", temperature);
+ 1078              		.loc 1 376 0
+ 1079 023a 07F10803 		add	r3, r7, #8
+ 1080 023e BA6C     		ldr	r2, [r7, #72]
+ 1081 0240 3849     		ldr	r1, .L69+64
+ 1082 0242 1846     		mov	r0, r3
+ 1083 0244 FFF7FEFF 		bl	sprintf
+ 377:application\command/command.c ****             rhea_uart_WriteString(temp);
+ 1084              		.loc 1 377 0
+ 1085 0248 07F10803 		add	r3, r7, #8
+ 1086 024c 1846     		mov	r0, r3
+ 1087 024e FFF7FEFF 		bl	rhea_uart_WriteString
+ 1088              	.L66:
+ 1089              	.LBE2:
+ 378:application\command/command.c ****         }
+ 379:application\command/command.c ****     	if (p) {
+ 1090              		.loc 1 379 0
+ 1091 0252 3B6E     		ldr	r3, [r7, #96]
+ 1092 0254 002B     		cmp	r3, #0
+ 1093 0256 1ED0     		beq	.L67
+ 1094              	.LBB3:
+ 380:application\command/command.c ****             unsigned pressure = rhea_sensor_GetMeasurement("BME280", "pressure");
+ 1095              		.loc 1 380 0
+ 1096 0258 2E49     		ldr	r1, .L69+48
+ 1097 025a 2648     		ldr	r0, .L69+16
+ 1098 025c FFF7FEFF 		bl	rhea_sensor_GetMeasurement
+ 1099 0260 0346     		mov	r3, r0
+ 1100 0262 0C46     		mov	r4, r1
+ 1101 0264 1846     		mov	r0, r3
+ 1102 0266 2146     		mov	r1, r4
+ 1103 0268 FFF7FEFF 		bl	__aeabi_d2uiz
+ 1104 026c 0346     		mov	r3, r0
+ 1105 026e 7B64     		str	r3, [r7, #68]
+ 381:application\command/command.c ****             char temp[50] = {0};
+ 1106              		.loc 1 381 0
+ 1107 0270 07F10803 		add	r3, r7, #8
+ 1108 0274 3222     		movs	r2, #50
+ 1109 0276 0021     		movs	r1, #0
+ 1110 0278 1846     		mov	r0, r3
+ 1111 027a FFF7FEFF 		bl	memset
+ 382:application\command/command.c ****             sprintf(temp, "Pressure: %u Pa\n\r", pressure);
+ 1112              		.loc 1 382 0
+ 1113 027e 07F10803 		add	r3, r7, #8
+ 1114 0282 7A6C     		ldr	r2, [r7, #68]
+ 1115 0284 2849     		ldr	r1, .L69+68
+ 1116 0286 1846     		mov	r0, r3
+ 1117 0288 FFF7FEFF 		bl	sprintf
+ 383:application\command/command.c ****             rhea_uart_WriteString(temp);
+ 1118              		.loc 1 383 0
+ 1119 028c 07F10803 		add	r3, r7, #8
+ 1120 0290 1846     		mov	r0, r3
+ 1121 0292 FFF7FEFF 		bl	rhea_uart_WriteString
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 32
+
+
+ 1122              	.L67:
+ 1123              	.LBE3:
+ 384:application\command/command.c ****         }
+ 385:application\command/command.c ****     	if (m) {
+ 1124              		.loc 1 385 0
+ 1125 0296 FB6D     		ldr	r3, [r7, #92]
+ 1126 0298 002B     		cmp	r3, #0
+ 1127 029a 1ED0     		beq	.L68
+ 1128              	.LBB4:
+ 386:application\command/command.c ****             unsigned humidity = rhea_sensor_GetMeasurement("BME280", "humidity");
+ 1129              		.loc 1 386 0
+ 1130 029c 1E49     		ldr	r1, .L69+52
+ 1131 029e 1548     		ldr	r0, .L69+16
+ 1132 02a0 FFF7FEFF 		bl	rhea_sensor_GetMeasurement
+ 1133 02a4 0346     		mov	r3, r0
+ 1134 02a6 0C46     		mov	r4, r1
+ 1135 02a8 1846     		mov	r0, r3
+ 1136 02aa 2146     		mov	r1, r4
+ 1137 02ac FFF7FEFF 		bl	__aeabi_d2uiz
+ 1138 02b0 0346     		mov	r3, r0
+ 1139 02b2 3B64     		str	r3, [r7, #64]
+ 387:application\command/command.c ****             char temp[50] = {0};
+ 1140              		.loc 1 387 0
+ 1141 02b4 07F10803 		add	r3, r7, #8
+ 1142 02b8 3222     		movs	r2, #50
+ 1143 02ba 0021     		movs	r1, #0
+ 1144 02bc 1846     		mov	r0, r3
+ 1145 02be FFF7FEFF 		bl	memset
+ 388:application\command/command.c ****             sprintf(temp, "Humidity: %u %%\n\r", humidity);
+ 1146              		.loc 1 388 0
+ 1147 02c2 07F10803 		add	r3, r7, #8
+ 1148 02c6 3A6C     		ldr	r2, [r7, #64]
+ 1149 02c8 1849     		ldr	r1, .L69+72
+ 1150 02ca 1846     		mov	r0, r3
+ 1151 02cc FFF7FEFF 		bl	sprintf
+ 389:application\command/command.c ****             rhea_uart_WriteString(temp);
+ 1152              		.loc 1 389 0
+ 1153 02d0 07F10803 		add	r3, r7, #8
+ 1154 02d4 1846     		mov	r0, r3
+ 1155 02d6 FFF7FEFF 		bl	rhea_uart_WriteString
+ 1156              	.L68:
+ 1157              	.LBE4:
+ 390:application\command/command.c ****         }
+ 391:application\command/command.c ****     }
+ 392:application\command/command.c **** }
+ 1158              		.loc 1 392 0
+ 1159 02da 00BF     		nop
+ 1160 02dc 6C37     		adds	r7, r7, #108
+ 1161              		.cfi_def_cfa_offset 12
+ 1162 02de BD46     		mov	sp, r7
+ 1163              		.cfi_def_cfa_register 13
+ 1164              		@ sp needed
+ 1165 02e0 90BD     		pop	{r4, r7, pc}
+ 1166              	.L70:
+ 1167 02e2 00BF     		.align	2
+ 1168              	.L69:
+ 1169 02e4 00000000 		.word	optind
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 33
+
+
+ 1170 02e8 00000000 		.word	optarg
+ 1171 02ec 340B0000 		.word	.LC23
+ 1172 02f0 70000000 		.word	.LC6
+ 1173 02f4 380B0000 		.word	.LC24
+ 1174 02f8 400B0000 		.word	.LC25
+ 1175 02fc 440B0000 		.word	.LC26
+ 1176 0300 480B0000 		.word	.LC27
+ 1177 0304 4C0B0000 		.word	.LC28
+ 1178 0308 500B0000 		.word	.LC29
+ 1179 030c 540B0000 		.word	.LC30
+ 1180 0310 40000000 		.word	.LC2
+ 1181 0314 4C000000 		.word	.LC3
+ 1182 0318 64000000 		.word	.LC5
+ 1183 031c A0000000 		.word	measure_long_options
+ 1184 0320 700B0000 		.word	.LC31
+ 1185 0324 7C0B0000 		.word	.LC32
+ 1186 0328 980B0000 		.word	.LC33
+ 1187 032c AC0B0000 		.word	.LC34
+ 1188              		.cfi_endproc
+ 1189              	.LFE72:
+ 1190              		.size	command_measure, .-command_measure
+ 1191              		.text
+ 1192              	.Letext0:
+ 1193              		.file 2 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 1194              		.file 3 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 1195              		.file 4 "e:\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\inc
+ 1196              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 1197              		.section	.debug_info,"",%progbits
+ 1198              	.Ldebug_info0:
+ 1199 0000 95040000 		.4byte	0x495
+ 1200 0004 0400     		.2byte	0x4
+ 1201 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1202 000a 04       		.byte	0x4
+ 1203 000b 01       		.uleb128 0x1
+ 1204 000c 65000000 		.4byte	.LASF48
+ 1205 0010 0C       		.byte	0xc
+ 1206 0011 FA020000 		.4byte	.LASF49
+ 1207 0015 7B010000 		.4byte	.LASF50
+ 1208 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1209 001d 00000000 		.4byte	0
+ 1210 0021 00000000 		.4byte	.Ldebug_line0
+ 1211 0025 02       		.uleb128 0x2
+ 1212 0026 04       		.byte	0x4
+ 1213 0027 05       		.byte	0x5
+ 1214 0028 696E7400 		.ascii	"int\000"
+ 1215 002c 03       		.uleb128 0x3
+ 1216 002d 04       		.byte	0x4
+ 1217 002e 07       		.byte	0x7
+ 1218 002f 40020000 		.4byte	.LASF0
+ 1219 0033 03       		.uleb128 0x3
+ 1220 0034 08       		.byte	0x8
+ 1221 0035 05       		.byte	0x5
+ 1222 0036 65010000 		.4byte	.LASF1
+ 1223 003a 03       		.uleb128 0x3
+ 1224 003b 08       		.byte	0x8
+ 1225 003c 04       		.byte	0x4
+ 1226 003d 00010000 		.4byte	.LASF2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 34
+
+
+ 1227 0041 03       		.uleb128 0x3
+ 1228 0042 01       		.byte	0x1
+ 1229 0043 06       		.byte	0x6
+ 1230 0044 0D020000 		.4byte	.LASF3
+ 1231 0048 04       		.uleb128 0x4
+ 1232 0049 B1010000 		.4byte	.LASF7
+ 1233 004d 02       		.byte	0x2
+ 1234 004e 1D       		.byte	0x1d
+ 1235 004f 53000000 		.4byte	0x53
+ 1236 0053 03       		.uleb128 0x3
+ 1237 0054 01       		.byte	0x1
+ 1238 0055 08       		.byte	0x8
+ 1239 0056 BB010000 		.4byte	.LASF4
+ 1240 005a 03       		.uleb128 0x3
+ 1241 005b 02       		.byte	0x2
+ 1242 005c 05       		.byte	0x5
+ 1243 005d 47000000 		.4byte	.LASF5
+ 1244 0061 03       		.uleb128 0x3
+ 1245 0062 02       		.byte	0x2
+ 1246 0063 07       		.byte	0x7
+ 1247 0064 5F020000 		.4byte	.LASF6
+ 1248 0068 04       		.uleb128 0x4
+ 1249 0069 D5020000 		.4byte	.LASF8
+ 1250 006d 02       		.byte	0x2
+ 1251 006e 3F       		.byte	0x3f
+ 1252 006f 73000000 		.4byte	0x73
+ 1253 0073 03       		.uleb128 0x3
+ 1254 0074 04       		.byte	0x4
+ 1255 0075 05       		.byte	0x5
+ 1256 0076 A8010000 		.4byte	.LASF9
+ 1257 007a 03       		.uleb128 0x3
+ 1258 007b 04       		.byte	0x4
+ 1259 007c 07       		.byte	0x7
+ 1260 007d 9E020000 		.4byte	.LASF10
+ 1261 0081 03       		.uleb128 0x3
+ 1262 0082 08       		.byte	0x8
+ 1263 0083 07       		.byte	0x7
+ 1264 0084 29020000 		.4byte	.LASF11
+ 1265 0088 03       		.uleb128 0x3
+ 1266 0089 04       		.byte	0x4
+ 1267 008a 07       		.byte	0x7
+ 1268 008b DF020000 		.4byte	.LASF12
+ 1269 008f 05       		.uleb128 0x5
+ 1270 0090 04       		.byte	0x4
+ 1271 0091 95000000 		.4byte	0x95
+ 1272 0095 03       		.uleb128 0x3
+ 1273 0096 01       		.byte	0x1
+ 1274 0097 08       		.byte	0x8
+ 1275 0098 79020000 		.4byte	.LASF13
+ 1276 009c 05       		.uleb128 0x5
+ 1277 009d 04       		.byte	0x4
+ 1278 009e A2000000 		.4byte	0xa2
+ 1279 00a2 06       		.uleb128 0x6
+ 1280 00a3 95000000 		.4byte	0x95
+ 1281 00a7 04       		.uleb128 0x4
+ 1282 00a8 37010000 		.4byte	.LASF14
+ 1283 00ac 03       		.byte	0x3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 35
+
+
+ 1284 00ad 18       		.byte	0x18
+ 1285 00ae 48000000 		.4byte	0x48
+ 1286 00b2 04       		.uleb128 0x4
+ 1287 00b3 7E020000 		.4byte	.LASF15
+ 1288 00b7 03       		.byte	0x3
+ 1289 00b8 2C       		.byte	0x2c
+ 1290 00b9 68000000 		.4byte	0x68
+ 1291 00bd 07       		.uleb128 0x7
+ 1292 00be 5E010000 		.4byte	.LASF51
+ 1293 00c2 10       		.byte	0x10
+ 1294 00c3 04       		.byte	0x4
+ 1295 00c4 69       		.byte	0x69
+ 1296 00c5 FA000000 		.4byte	0xfa
+ 1297 00c9 08       		.uleb128 0x8
+ 1298 00ca EB010000 		.4byte	.LASF16
+ 1299 00ce 04       		.byte	0x4
+ 1300 00cf 6B       		.byte	0x6b
+ 1301 00d0 9C000000 		.4byte	0x9c
+ 1302 00d4 00       		.byte	0
+ 1303 00d5 08       		.uleb128 0x8
+ 1304 00d6 73010000 		.4byte	.LASF17
+ 1305 00da 04       		.byte	0x4
+ 1306 00db 6C       		.byte	0x6c
+ 1307 00dc 25000000 		.4byte	0x25
+ 1308 00e0 04       		.byte	0x4
+ 1309 00e1 08       		.uleb128 0x8
+ 1310 00e2 E8020000 		.4byte	.LASF18
+ 1311 00e6 04       		.byte	0x4
+ 1312 00e7 6D       		.byte	0x6d
+ 1313 00e8 FA000000 		.4byte	0xfa
+ 1314 00ec 08       		.byte	0x8
+ 1315 00ed 09       		.uleb128 0x9
+ 1316 00ee 76616C00 		.ascii	"val\000"
+ 1317 00f2 04       		.byte	0x4
+ 1318 00f3 73       		.byte	0x73
+ 1319 00f4 25000000 		.4byte	0x25
+ 1320 00f8 0C       		.byte	0xc
+ 1321 00f9 00       		.byte	0
+ 1322 00fa 05       		.uleb128 0x5
+ 1323 00fb 04       		.byte	0x4
+ 1324 00fc 25000000 		.4byte	0x25
+ 1325 0100 03       		.uleb128 0x3
+ 1326 0101 08       		.byte	0x8
+ 1327 0102 04       		.byte	0x4
+ 1328 0103 B0020000 		.4byte	.LASF19
+ 1329 0107 03       		.uleb128 0x3
+ 1330 0108 04       		.byte	0x4
+ 1331 0109 04       		.byte	0x4
+ 1332 010a 58010000 		.4byte	.LASF20
+ 1333 010e 0A       		.uleb128 0xa
+ 1334 010f A7000000 		.4byte	0xa7
+ 1335 0113 0B       		.uleb128 0xb
+ 1336 0114 19020000 		.4byte	.LASF24
+ 1337 0118 01       		.byte	0x1
+ 1338 0119 72       		.byte	0x72
+ 1339 011a 00000000 		.4byte	.LFB64
+ 1340 011e 50000000 		.4byte	.LFE64-.LFB64
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 36
+
+
+ 1341 0122 01       		.uleb128 0x1
+ 1342 0123 9C       		.byte	0x9c
+ 1343 0124 6D010000 		.4byte	0x16d
+ 1344 0128 0C       		.uleb128 0xc
+ 1345 0129 73747200 		.ascii	"str\000"
+ 1346 012d 01       		.byte	0x1
+ 1347 012e 72       		.byte	0x72
+ 1348 012f 8F000000 		.4byte	0x8f
+ 1349 0133 02       		.uleb128 0x2
+ 1350 0134 91       		.byte	0x91
+ 1351 0135 6C       		.sleb128 -20
+ 1352 0136 0D       		.uleb128 0xd
+ 1353 0137 01020000 		.4byte	.LASF21
+ 1354 013b 01       		.byte	0x1
+ 1355 013c 72       		.byte	0x72
+ 1356 013d FA000000 		.4byte	0xfa
+ 1357 0141 02       		.uleb128 0x2
+ 1358 0142 91       		.byte	0x91
+ 1359 0143 68       		.sleb128 -24
+ 1360 0144 0D       		.uleb128 0xd
+ 1361 0145 5A020000 		.4byte	.LASF22
+ 1362 0149 01       		.byte	0x1
+ 1363 014a 72       		.byte	0x72
+ 1364 014b 6D010000 		.4byte	0x16d
+ 1365 014f 02       		.uleb128 0x2
+ 1366 0150 91       		.byte	0x91
+ 1367 0151 64       		.sleb128 -28
+ 1368 0152 0E       		.uleb128 0xe
+ 1369 0153 C9010000 		.4byte	.LASF23
+ 1370 0157 01       		.byte	0x1
+ 1371 0158 73       		.byte	0x73
+ 1372 0159 8F000000 		.4byte	0x8f
+ 1373 015d 02       		.uleb128 0x2
+ 1374 015e 91       		.byte	0x91
+ 1375 015f 74       		.sleb128 -12
+ 1376 0160 0F       		.uleb128 0xf
+ 1377 0161 6900     		.ascii	"i\000"
+ 1378 0163 01       		.byte	0x1
+ 1379 0164 74       		.byte	0x74
+ 1380 0165 25000000 		.4byte	0x25
+ 1381 0169 02       		.uleb128 0x2
+ 1382 016a 91       		.byte	0x91
+ 1383 016b 70       		.sleb128 -16
+ 1384 016c 00       		.byte	0
+ 1385 016d 05       		.uleb128 0x5
+ 1386 016e 04       		.byte	0x4
+ 1387 016f 9C000000 		.4byte	0x9c
+ 1388 0173 10       		.uleb128 0x10
+ 1389 0174 CF010000 		.4byte	.LASF52
+ 1390 0178 01       		.byte	0x1
+ 1391 0179 7D       		.byte	0x7d
+ 1392 017a 00000000 		.4byte	.LFB65
+ 1393 017e 30000000 		.4byte	.LFE65-.LFB65
+ 1394 0182 01       		.uleb128 0x1
+ 1395 0183 9C       		.byte	0x9c
+ 1396 0184 0B       		.uleb128 0xb
+ 1397 0185 8B020000 		.4byte	.LASF25
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 37
+
+
+ 1398 0189 01       		.byte	0x1
+ 1399 018a 8A       		.byte	0x8a
+ 1400 018b 00000000 		.4byte	.LFB66
+ 1401 018f EC000000 		.4byte	.LFE66-.LFB66
+ 1402 0193 01       		.uleb128 0x1
+ 1403 0194 9C       		.byte	0x9c
+ 1404 0195 C7010000 		.4byte	0x1c7
+ 1405 0199 0E       		.uleb128 0xe
+ 1406 019a 18030000 		.4byte	.LASF26
+ 1407 019e 01       		.byte	0x1
+ 1408 019f 93       		.byte	0x93
+ 1409 01a0 C7010000 		.4byte	0x1c7
+ 1410 01a4 03       		.uleb128 0x3
+ 1411 01a5 91       		.byte	0x91
+ 1412 01a6 F87D     		.sleb128 -264
+ 1413 01a8 0E       		.uleb128 0xe
+ 1414 01a9 01020000 		.4byte	.LASF21
+ 1415 01ad 01       		.byte	0x1
+ 1416 01ae 97       		.byte	0x97
+ 1417 01af 25000000 		.4byte	0x25
+ 1418 01b3 03       		.uleb128 0x3
+ 1419 01b4 91       		.byte	0x91
+ 1420 01b5 F47D     		.sleb128 -268
+ 1421 01b7 0E       		.uleb128 0xe
+ 1422 01b8 5A020000 		.4byte	.LASF22
+ 1423 01bc 01       		.byte	0x1
+ 1424 01bd 98       		.byte	0x98
+ 1425 01be D7010000 		.4byte	0x1d7
+ 1426 01c2 03       		.uleb128 0x3
+ 1427 01c3 91       		.byte	0x91
+ 1428 01c4 CC7D     		.sleb128 -308
+ 1429 01c6 00       		.byte	0
+ 1430 01c7 11       		.uleb128 0x11
+ 1431 01c8 95000000 		.4byte	0x95
+ 1432 01cc D7010000 		.4byte	0x1d7
+ 1433 01d0 12       		.uleb128 0x12
+ 1434 01d1 88000000 		.4byte	0x88
+ 1435 01d5 FF       		.byte	0xff
+ 1436 01d6 00       		.byte	0
+ 1437 01d7 11       		.uleb128 0x11
+ 1438 01d8 9C000000 		.4byte	0x9c
+ 1439 01dc E7010000 		.4byte	0x1e7
+ 1440 01e0 12       		.uleb128 0x12
+ 1441 01e1 88000000 		.4byte	0x88
+ 1442 01e5 09       		.byte	0x9
+ 1443 01e6 00       		.byte	0
+ 1444 01e7 0B       		.uleb128 0xb
+ 1445 01e8 1C000000 		.4byte	.LASF27
+ 1446 01ec 01       		.byte	0x1
+ 1447 01ed B5       		.byte	0xb5
+ 1448 01ee 00000000 		.4byte	.LFB67
+ 1449 01f2 78000000 		.4byte	.LFE67-.LFB67
+ 1450 01f6 01       		.uleb128 0x1
+ 1451 01f7 9C       		.byte	0x9c
+ 1452 01f8 17020000 		.4byte	0x217
+ 1453 01fc 0E       		.uleb128 0xe
+ 1454 01fd 72020000 		.4byte	.LASF28
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 38
+
+
+ 1455 0201 01       		.byte	0x1
+ 1456 0202 B7       		.byte	0xb7
+ 1457 0203 A7000000 		.4byte	0xa7
+ 1458 0207 02       		.uleb128 0x2
+ 1459 0208 91       		.byte	0x91
+ 1460 0209 77       		.sleb128 -9
+ 1461 020a 0F       		.uleb128 0xf
+ 1462 020b 6300     		.ascii	"c\000"
+ 1463 020d 01       		.byte	0x1
+ 1464 020e B9       		.byte	0xb9
+ 1465 020f 53000000 		.4byte	0x53
+ 1466 0213 02       		.uleb128 0x2
+ 1467 0214 91       		.byte	0x91
+ 1468 0215 76       		.sleb128 -10
+ 1469 0216 00       		.byte	0
+ 1470 0217 13       		.uleb128 0x13
+ 1471 0218 15010000 		.4byte	.LASF29
+ 1472 021c 01       		.byte	0x1
+ 1473 021d D8       		.byte	0xd8
+ 1474 021e 00000000 		.4byte	.LFB68
+ 1475 0222 14000000 		.4byte	.LFE68-.LFB68
+ 1476 0226 01       		.uleb128 0x1
+ 1477 0227 9C       		.byte	0x9c
+ 1478 0228 14       		.uleb128 0x14
+ 1479 0229 B7020000 		.4byte	.LASF30
+ 1480 022d 01       		.byte	0x1
+ 1481 022e 0201     		.2byte	0x102
+ 1482 0230 00000000 		.4byte	.LFB69
+ 1483 0234 14000000 		.4byte	.LFE69-.LFB69
+ 1484 0238 01       		.uleb128 0x1
+ 1485 0239 9C       		.byte	0x9c
+ 1486 023a 14       		.uleb128 0x14
+ 1487 023b F0010000 		.4byte	.LASF31
+ 1488 023f 01       		.byte	0x1
+ 1489 0240 0601     		.2byte	0x106
+ 1490 0242 00000000 		.4byte	.LFB70
+ 1491 0246 14000000 		.4byte	.LFE70-.LFB70
+ 1492 024a 01       		.uleb128 0x1
+ 1493 024b 9C       		.byte	0x9c
+ 1494 024c 15       		.uleb128 0x15
+ 1495 024d F3000000 		.4byte	.LASF32
+ 1496 0251 01       		.byte	0x1
+ 1497 0252 0A01     		.2byte	0x10a
+ 1498 0254 00000000 		.4byte	.LFB71
+ 1499 0258 68000000 		.4byte	.LFE71-.LFB71
+ 1500 025c 01       		.uleb128 0x1
+ 1501 025d 9C       		.byte	0x9c
+ 1502 025e 9F020000 		.4byte	0x29f
+ 1503 0262 16       		.uleb128 0x16
+ 1504 0263 01020000 		.4byte	.LASF21
+ 1505 0267 01       		.byte	0x1
+ 1506 0268 0A01     		.2byte	0x10a
+ 1507 026a 25000000 		.4byte	0x25
+ 1508 026e 02       		.uleb128 0x2
+ 1509 026f 91       		.byte	0x91
+ 1510 0270 6C       		.sleb128 -20
+ 1511 0271 16       		.uleb128 0x16
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 39
+
+
+ 1512 0272 5A020000 		.4byte	.LASF22
+ 1513 0276 01       		.byte	0x1
+ 1514 0277 0A01     		.2byte	0x10a
+ 1515 0279 6D010000 		.4byte	0x16d
+ 1516 027d 02       		.uleb128 0x2
+ 1517 027e 91       		.byte	0x91
+ 1518 027f 68       		.sleb128 -24
+ 1519 0280 17       		.uleb128 0x17
+ 1520 0281 6F707400 		.ascii	"opt\000"
+ 1521 0285 01       		.byte	0x1
+ 1522 0286 0B01     		.2byte	0x10b
+ 1523 0288 25000000 		.4byte	0x25
+ 1524 028c 02       		.uleb128 0x2
+ 1525 028d 91       		.byte	0x91
+ 1526 028e 74       		.sleb128 -12
+ 1527 028f 18       		.uleb128 0x18
+ 1528 0290 5D000000 		.4byte	.LASF33
+ 1529 0294 01       		.byte	0x1
+ 1530 0295 0C01     		.2byte	0x10c
+ 1531 0297 25000000 		.4byte	0x25
+ 1532 029b 02       		.uleb128 0x2
+ 1533 029c 91       		.byte	0x91
+ 1534 029d 70       		.sleb128 -16
+ 1535 029e 00       		.byte	0
+ 1536 029f 15       		.uleb128 0x15
+ 1537 02a0 48010000 		.4byte	.LASF34
+ 1538 02a4 01       		.byte	0x1
+ 1539 02a5 1A01     		.2byte	0x11a
+ 1540 02a7 00000000 		.4byte	.LFB72
+ 1541 02ab 30030000 		.4byte	.LFE72-.LFB72
+ 1542 02af 01       		.uleb128 0x1
+ 1543 02b0 9C       		.byte	0x9c
+ 1544 02b1 C7030000 		.4byte	0x3c7
+ 1545 02b5 16       		.uleb128 0x16
+ 1546 02b6 01020000 		.4byte	.LASF21
+ 1547 02ba 01       		.byte	0x1
+ 1548 02bb 1A01     		.2byte	0x11a
+ 1549 02bd 25000000 		.4byte	0x25
+ 1550 02c1 03       		.uleb128 0x3
+ 1551 02c2 91       		.byte	0x91
+ 1552 02c3 8C7F     		.sleb128 -116
+ 1553 02c5 16       		.uleb128 0x16
+ 1554 02c6 5A020000 		.4byte	.LASF22
+ 1555 02ca 01       		.byte	0x1
+ 1556 02cb 1A01     		.2byte	0x11a
+ 1557 02cd 6D010000 		.4byte	0x16d
+ 1558 02d1 03       		.uleb128 0x3
+ 1559 02d2 91       		.byte	0x91
+ 1560 02d3 887F     		.sleb128 -120
+ 1561 02d5 18       		.uleb128 0x18
+ 1562 02d6 5D000000 		.4byte	.LASF33
+ 1563 02da 01       		.byte	0x1
+ 1564 02db 1D01     		.2byte	0x11d
+ 1565 02dd 25000000 		.4byte	0x25
+ 1566 02e1 02       		.uleb128 0x2
+ 1567 02e2 91       		.byte	0x91
+ 1568 02e3 44       		.sleb128 -60
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 40
+
+
+ 1569 02e4 17       		.uleb128 0x17
+ 1570 02e5 6F707400 		.ascii	"opt\000"
+ 1571 02e9 01       		.byte	0x1
+ 1572 02ea 1E01     		.2byte	0x11e
+ 1573 02ec 25000000 		.4byte	0x25
+ 1574 02f0 02       		.uleb128 0x2
+ 1575 02f1 91       		.byte	0x91
+ 1576 02f2 5C       		.sleb128 -36
+ 1577 02f3 17       		.uleb128 0x17
+ 1578 02f4 7400     		.ascii	"t\000"
+ 1579 02f6 01       		.byte	0x1
+ 1580 02f7 2201     		.2byte	0x122
+ 1581 02f9 25000000 		.4byte	0x25
+ 1582 02fd 02       		.uleb128 0x2
+ 1583 02fe 91       		.byte	0x91
+ 1584 02ff 6C       		.sleb128 -20
+ 1585 0300 17       		.uleb128 0x17
+ 1586 0301 7000     		.ascii	"p\000"
+ 1587 0303 01       		.byte	0x1
+ 1588 0304 2201     		.2byte	0x122
+ 1589 0306 25000000 		.4byte	0x25
+ 1590 030a 02       		.uleb128 0x2
+ 1591 030b 91       		.byte	0x91
+ 1592 030c 68       		.sleb128 -24
+ 1593 030d 17       		.uleb128 0x17
+ 1594 030e 6D00     		.ascii	"m\000"
+ 1595 0310 01       		.byte	0x1
+ 1596 0311 2201     		.2byte	0x122
+ 1597 0313 25000000 		.4byte	0x25
+ 1598 0317 02       		.uleb128 0x2
+ 1599 0318 91       		.byte	0x91
+ 1600 0319 64       		.sleb128 -28
+ 1601 031a 17       		.uleb128 0x17
+ 1602 031b 6400     		.ascii	"d\000"
+ 1603 031d 01       		.byte	0x1
+ 1604 031e 2201     		.2byte	0x122
+ 1605 0320 25000000 		.4byte	0x25
+ 1606 0324 02       		.uleb128 0x2
+ 1607 0325 91       		.byte	0x91
+ 1608 0326 60       		.sleb128 -32
+ 1609 0327 18       		.uleb128 0x18
+ 1610 0328 86020000 		.4byte	.LASF35
+ 1611 032c 01       		.byte	0x1
+ 1612 032d 2201     		.2byte	0x122
+ 1613 032f 25000000 		.4byte	0x25
+ 1614 0333 02       		.uleb128 0x2
+ 1615 0334 91       		.byte	0x91
+ 1616 0335 58       		.sleb128 -40
+ 1617 0336 17       		.uleb128 0x17
+ 1618 0337 5400     		.ascii	"T\000"
+ 1619 0339 01       		.byte	0x1
+ 1620 033a 2201     		.2byte	0x122
+ 1621 033c 25000000 		.4byte	0x25
+ 1622 0340 02       		.uleb128 0x2
+ 1623 0341 91       		.byte	0x91
+ 1624 0342 54       		.sleb128 -44
+ 1625 0343 19       		.uleb128 0x19
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 41
+
+
+ 1626 0344 14020000 		.4byte	.LBB2
+ 1627 0348 3E000000 		.4byte	.LBE2-.LBB2
+ 1628 034c 70030000 		.4byte	0x370
+ 1629 0350 18       		.uleb128 0x18
+ 1630 0351 51000000 		.4byte	.LASF36
+ 1631 0355 01       		.byte	0x1
+ 1632 0356 7601     		.2byte	0x176
+ 1633 0358 2C000000 		.4byte	0x2c
+ 1634 035c 02       		.uleb128 0x2
+ 1635 035d 91       		.byte	0x91
+ 1636 035e 50       		.sleb128 -48
+ 1637 035f 18       		.uleb128 0x18
+ 1638 0360 42000000 		.4byte	.LASF37
+ 1639 0364 01       		.byte	0x1
+ 1640 0365 7701     		.2byte	0x177
+ 1641 0367 C7030000 		.4byte	0x3c7
+ 1642 036b 03       		.uleb128 0x3
+ 1643 036c 91       		.byte	0x91
+ 1644 036d 907F     		.sleb128 -112
+ 1645 036f 00       		.byte	0
+ 1646 0370 19       		.uleb128 0x19
+ 1647 0371 58020000 		.4byte	.LBB3
+ 1648 0375 3E000000 		.4byte	.LBE3-.LBB3
+ 1649 0379 9D030000 		.4byte	0x39d
+ 1650 037d 18       		.uleb128 0x18
+ 1651 037e 3F010000 		.4byte	.LASF38
+ 1652 0382 01       		.byte	0x1
+ 1653 0383 7C01     		.2byte	0x17c
+ 1654 0385 2C000000 		.4byte	0x2c
+ 1655 0389 02       		.uleb128 0x2
+ 1656 038a 91       		.byte	0x91
+ 1657 038b 4C       		.sleb128 -52
+ 1658 038c 18       		.uleb128 0x18
+ 1659 038d 42000000 		.4byte	.LASF37
+ 1660 0391 01       		.byte	0x1
+ 1661 0392 7D01     		.2byte	0x17d
+ 1662 0394 C7030000 		.4byte	0x3c7
+ 1663 0398 03       		.uleb128 0x3
+ 1664 0399 91       		.byte	0x91
+ 1665 039a 907F     		.sleb128 -112
+ 1666 039c 00       		.byte	0
+ 1667 039d 1A       		.uleb128 0x1a
+ 1668 039e 9C020000 		.4byte	.LBB4
+ 1669 03a2 3E000000 		.4byte	.LBE4-.LBB4
+ 1670 03a6 18       		.uleb128 0x18
+ 1671 03a7 0C010000 		.4byte	.LASF39
+ 1672 03ab 01       		.byte	0x1
+ 1673 03ac 8201     		.2byte	0x182
+ 1674 03ae 2C000000 		.4byte	0x2c
+ 1675 03b2 02       		.uleb128 0x2
+ 1676 03b3 91       		.byte	0x91
+ 1677 03b4 48       		.sleb128 -56
+ 1678 03b5 18       		.uleb128 0x18
+ 1679 03b6 42000000 		.4byte	.LASF37
+ 1680 03ba 01       		.byte	0x1
+ 1681 03bb 8301     		.2byte	0x183
+ 1682 03bd C7030000 		.4byte	0x3c7
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 42
+
+
+ 1683 03c1 03       		.uleb128 0x3
+ 1684 03c2 91       		.byte	0x91
+ 1685 03c3 907F     		.sleb128 -112
+ 1686 03c5 00       		.byte	0
+ 1687 03c6 00       		.byte	0
+ 1688 03c7 11       		.uleb128 0x11
+ 1689 03c8 95000000 		.4byte	0x95
+ 1690 03cc D7030000 		.4byte	0x3d7
+ 1691 03d0 12       		.uleb128 0x12
+ 1692 03d1 88000000 		.4byte	0x88
+ 1693 03d5 31       		.byte	0x31
+ 1694 03d6 00       		.byte	0
+ 1695 03d7 11       		.uleb128 0x11
+ 1696 03d8 E7030000 		.4byte	0x3e7
+ 1697 03dc E7030000 		.4byte	0x3e7
+ 1698 03e0 12       		.uleb128 0x12
+ 1699 03e1 88000000 		.4byte	0x88
+ 1700 03e5 02       		.byte	0x2
+ 1701 03e6 00       		.byte	0
+ 1702 03e7 06       		.uleb128 0x6
+ 1703 03e8 BD000000 		.4byte	0xbd
+ 1704 03ec 0E       		.uleb128 0xe
+ 1705 03ed 25010000 		.4byte	.LASF40
+ 1706 03f1 01       		.byte	0x1
+ 1707 03f2 3B       		.byte	0x3b
+ 1708 03f3 FD030000 		.4byte	0x3fd
+ 1709 03f7 05       		.uleb128 0x5
+ 1710 03f8 03       		.byte	0x3
+ 1711 03f9 10000000 		.4byte	rhea_long_options
+ 1712 03fd 06       		.uleb128 0x6
+ 1713 03fe D7030000 		.4byte	0x3d7
+ 1714 0402 11       		.uleb128 0x11
+ 1715 0403 E7030000 		.4byte	0x3e7
+ 1716 0407 12040000 		.4byte	0x412
+ 1717 040b 12       		.uleb128 0x12
+ 1718 040c 88000000 		.4byte	0x88
+ 1719 0410 0A       		.byte	0xa
+ 1720 0411 00       		.byte	0
+ 1721 0412 0E       		.uleb128 0xe
+ 1722 0413 07000000 		.4byte	.LASF41
+ 1723 0417 01       		.byte	0x1
+ 1724 0418 41       		.byte	0x41
+ 1725 0419 23040000 		.4byte	0x423
+ 1726 041d 05       		.uleb128 0x5
+ 1727 041e 03       		.byte	0x3
+ 1728 041f A0000000 		.4byte	measure_long_options
+ 1729 0423 06       		.uleb128 0x6
+ 1730 0424 02040000 		.4byte	0x402
+ 1731 0428 1B       		.uleb128 0x1b
+ 1732 0429 06020000 		.4byte	.LASF42
+ 1733 042d 04       		.byte	0x4
+ 1734 042e 96       		.byte	0x96
+ 1735 042f 8F000000 		.4byte	0x8f
+ 1736 0433 1B       		.uleb128 0x1b
+ 1737 0434 00000000 		.4byte	.LASF43
+ 1738 0438 04       		.byte	0x4
+ 1739 0439 97       		.byte	0x97
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 43
+
+
+ 1740 043a 25000000 		.4byte	0x25
+ 1741 043e 1C       		.uleb128 0x1c
+ 1742 043f ED020000 		.4byte	.LASF44
+ 1743 0443 05       		.byte	0x5
+ 1744 0444 1207     		.2byte	0x712
+ 1745 0446 4A040000 		.4byte	0x44a
+ 1746 044a 0A       		.uleb128 0xa
+ 1747 044b B2000000 		.4byte	0xb2
+ 1748 044f 1D       		.uleb128 0x1d
+ 1749 0450 30000000 		.4byte	.LASF45
+ 1750 0454 01       		.byte	0x1
+ 1751 0455 33       		.byte	0x33
+ 1752 0456 0E010000 		.4byte	0x10e
+ 1753 045a 05       		.uleb128 0x5
+ 1754 045b 03       		.byte	0x3
+ 1755 045c 00000000 		.4byte	serial_data_ready
+ 1756 0460 11       		.uleb128 0x11
+ 1757 0461 0E010000 		.4byte	0x10e
+ 1758 0465 71040000 		.4byte	0x471
+ 1759 0469 1E       		.uleb128 0x1e
+ 1760 046a 88000000 		.4byte	0x88
+ 1761 046e 0001     		.2byte	0x100
+ 1762 0470 00       		.byte	0
+ 1763 0471 1D       		.uleb128 0x1d
+ 1764 0472 4D020000 		.4byte	.LASF46
+ 1765 0476 01       		.byte	0x1
+ 1766 0477 36       		.byte	0x36
+ 1767 0478 82040000 		.4byte	0x482
+ 1768 047c 05       		.uleb128 0x5
+ 1769 047d 03       		.byte	0x3
+ 1770 047e 00000000 		.4byte	serialBuffer
+ 1771 0482 0A       		.uleb128 0xa
+ 1772 0483 60040000 		.4byte	0x460
+ 1773 0487 1D       		.uleb128 0x1d
+ 1774 0488 CA020000 		.4byte	.LASF47
+ 1775 048c 01       		.byte	0x1
+ 1776 048d 39       		.byte	0x39
+ 1777 048e 0E010000 		.4byte	0x10e
+ 1778 0492 05       		.uleb128 0x5
+ 1779 0493 03       		.byte	0x3
+ 1780 0494 00000000 		.4byte	bufferSize
+ 1781 0498 00       		.byte	0
+ 1782              		.section	.debug_abbrev,"",%progbits
+ 1783              	.Ldebug_abbrev0:
+ 1784 0000 01       		.uleb128 0x1
+ 1785 0001 11       		.uleb128 0x11
+ 1786 0002 01       		.byte	0x1
+ 1787 0003 25       		.uleb128 0x25
+ 1788 0004 0E       		.uleb128 0xe
+ 1789 0005 13       		.uleb128 0x13
+ 1790 0006 0B       		.uleb128 0xb
+ 1791 0007 03       		.uleb128 0x3
+ 1792 0008 0E       		.uleb128 0xe
+ 1793 0009 1B       		.uleb128 0x1b
+ 1794 000a 0E       		.uleb128 0xe
+ 1795 000b 55       		.uleb128 0x55
+ 1796 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 44
+
+
+ 1797 000d 11       		.uleb128 0x11
+ 1798 000e 01       		.uleb128 0x1
+ 1799 000f 10       		.uleb128 0x10
+ 1800 0010 17       		.uleb128 0x17
+ 1801 0011 00       		.byte	0
+ 1802 0012 00       		.byte	0
+ 1803 0013 02       		.uleb128 0x2
+ 1804 0014 24       		.uleb128 0x24
+ 1805 0015 00       		.byte	0
+ 1806 0016 0B       		.uleb128 0xb
+ 1807 0017 0B       		.uleb128 0xb
+ 1808 0018 3E       		.uleb128 0x3e
+ 1809 0019 0B       		.uleb128 0xb
+ 1810 001a 03       		.uleb128 0x3
+ 1811 001b 08       		.uleb128 0x8
+ 1812 001c 00       		.byte	0
+ 1813 001d 00       		.byte	0
+ 1814 001e 03       		.uleb128 0x3
+ 1815 001f 24       		.uleb128 0x24
+ 1816 0020 00       		.byte	0
+ 1817 0021 0B       		.uleb128 0xb
+ 1818 0022 0B       		.uleb128 0xb
+ 1819 0023 3E       		.uleb128 0x3e
+ 1820 0024 0B       		.uleb128 0xb
+ 1821 0025 03       		.uleb128 0x3
+ 1822 0026 0E       		.uleb128 0xe
+ 1823 0027 00       		.byte	0
+ 1824 0028 00       		.byte	0
+ 1825 0029 04       		.uleb128 0x4
+ 1826 002a 16       		.uleb128 0x16
+ 1827 002b 00       		.byte	0
+ 1828 002c 03       		.uleb128 0x3
+ 1829 002d 0E       		.uleb128 0xe
+ 1830 002e 3A       		.uleb128 0x3a
+ 1831 002f 0B       		.uleb128 0xb
+ 1832 0030 3B       		.uleb128 0x3b
+ 1833 0031 0B       		.uleb128 0xb
+ 1834 0032 49       		.uleb128 0x49
+ 1835 0033 13       		.uleb128 0x13
+ 1836 0034 00       		.byte	0
+ 1837 0035 00       		.byte	0
+ 1838 0036 05       		.uleb128 0x5
+ 1839 0037 0F       		.uleb128 0xf
+ 1840 0038 00       		.byte	0
+ 1841 0039 0B       		.uleb128 0xb
+ 1842 003a 0B       		.uleb128 0xb
+ 1843 003b 49       		.uleb128 0x49
+ 1844 003c 13       		.uleb128 0x13
+ 1845 003d 00       		.byte	0
+ 1846 003e 00       		.byte	0
+ 1847 003f 06       		.uleb128 0x6
+ 1848 0040 26       		.uleb128 0x26
+ 1849 0041 00       		.byte	0
+ 1850 0042 49       		.uleb128 0x49
+ 1851 0043 13       		.uleb128 0x13
+ 1852 0044 00       		.byte	0
+ 1853 0045 00       		.byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 45
+
+
+ 1854 0046 07       		.uleb128 0x7
+ 1855 0047 13       		.uleb128 0x13
+ 1856 0048 01       		.byte	0x1
+ 1857 0049 03       		.uleb128 0x3
+ 1858 004a 0E       		.uleb128 0xe
+ 1859 004b 0B       		.uleb128 0xb
+ 1860 004c 0B       		.uleb128 0xb
+ 1861 004d 3A       		.uleb128 0x3a
+ 1862 004e 0B       		.uleb128 0xb
+ 1863 004f 3B       		.uleb128 0x3b
+ 1864 0050 0B       		.uleb128 0xb
+ 1865 0051 01       		.uleb128 0x1
+ 1866 0052 13       		.uleb128 0x13
+ 1867 0053 00       		.byte	0
+ 1868 0054 00       		.byte	0
+ 1869 0055 08       		.uleb128 0x8
+ 1870 0056 0D       		.uleb128 0xd
+ 1871 0057 00       		.byte	0
+ 1872 0058 03       		.uleb128 0x3
+ 1873 0059 0E       		.uleb128 0xe
+ 1874 005a 3A       		.uleb128 0x3a
+ 1875 005b 0B       		.uleb128 0xb
+ 1876 005c 3B       		.uleb128 0x3b
+ 1877 005d 0B       		.uleb128 0xb
+ 1878 005e 49       		.uleb128 0x49
+ 1879 005f 13       		.uleb128 0x13
+ 1880 0060 38       		.uleb128 0x38
+ 1881 0061 0B       		.uleb128 0xb
+ 1882 0062 00       		.byte	0
+ 1883 0063 00       		.byte	0
+ 1884 0064 09       		.uleb128 0x9
+ 1885 0065 0D       		.uleb128 0xd
+ 1886 0066 00       		.byte	0
+ 1887 0067 03       		.uleb128 0x3
+ 1888 0068 08       		.uleb128 0x8
+ 1889 0069 3A       		.uleb128 0x3a
+ 1890 006a 0B       		.uleb128 0xb
+ 1891 006b 3B       		.uleb128 0x3b
+ 1892 006c 0B       		.uleb128 0xb
+ 1893 006d 49       		.uleb128 0x49
+ 1894 006e 13       		.uleb128 0x13
+ 1895 006f 38       		.uleb128 0x38
+ 1896 0070 0B       		.uleb128 0xb
+ 1897 0071 00       		.byte	0
+ 1898 0072 00       		.byte	0
+ 1899 0073 0A       		.uleb128 0xa
+ 1900 0074 35       		.uleb128 0x35
+ 1901 0075 00       		.byte	0
+ 1902 0076 49       		.uleb128 0x49
+ 1903 0077 13       		.uleb128 0x13
+ 1904 0078 00       		.byte	0
+ 1905 0079 00       		.byte	0
+ 1906 007a 0B       		.uleb128 0xb
+ 1907 007b 2E       		.uleb128 0x2e
+ 1908 007c 01       		.byte	0x1
+ 1909 007d 3F       		.uleb128 0x3f
+ 1910 007e 19       		.uleb128 0x19
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 46
+
+
+ 1911 007f 03       		.uleb128 0x3
+ 1912 0080 0E       		.uleb128 0xe
+ 1913 0081 3A       		.uleb128 0x3a
+ 1914 0082 0B       		.uleb128 0xb
+ 1915 0083 3B       		.uleb128 0x3b
+ 1916 0084 0B       		.uleb128 0xb
+ 1917 0085 27       		.uleb128 0x27
+ 1918 0086 19       		.uleb128 0x19
+ 1919 0087 11       		.uleb128 0x11
+ 1920 0088 01       		.uleb128 0x1
+ 1921 0089 12       		.uleb128 0x12
+ 1922 008a 06       		.uleb128 0x6
+ 1923 008b 40       		.uleb128 0x40
+ 1924 008c 18       		.uleb128 0x18
+ 1925 008d 9642     		.uleb128 0x2116
+ 1926 008f 19       		.uleb128 0x19
+ 1927 0090 01       		.uleb128 0x1
+ 1928 0091 13       		.uleb128 0x13
+ 1929 0092 00       		.byte	0
+ 1930 0093 00       		.byte	0
+ 1931 0094 0C       		.uleb128 0xc
+ 1932 0095 05       		.uleb128 0x5
+ 1933 0096 00       		.byte	0
+ 1934 0097 03       		.uleb128 0x3
+ 1935 0098 08       		.uleb128 0x8
+ 1936 0099 3A       		.uleb128 0x3a
+ 1937 009a 0B       		.uleb128 0xb
+ 1938 009b 3B       		.uleb128 0x3b
+ 1939 009c 0B       		.uleb128 0xb
+ 1940 009d 49       		.uleb128 0x49
+ 1941 009e 13       		.uleb128 0x13
+ 1942 009f 02       		.uleb128 0x2
+ 1943 00a0 18       		.uleb128 0x18
+ 1944 00a1 00       		.byte	0
+ 1945 00a2 00       		.byte	0
+ 1946 00a3 0D       		.uleb128 0xd
+ 1947 00a4 05       		.uleb128 0x5
+ 1948 00a5 00       		.byte	0
+ 1949 00a6 03       		.uleb128 0x3
+ 1950 00a7 0E       		.uleb128 0xe
+ 1951 00a8 3A       		.uleb128 0x3a
+ 1952 00a9 0B       		.uleb128 0xb
+ 1953 00aa 3B       		.uleb128 0x3b
+ 1954 00ab 0B       		.uleb128 0xb
+ 1955 00ac 49       		.uleb128 0x49
+ 1956 00ad 13       		.uleb128 0x13
+ 1957 00ae 02       		.uleb128 0x2
+ 1958 00af 18       		.uleb128 0x18
+ 1959 00b0 00       		.byte	0
+ 1960 00b1 00       		.byte	0
+ 1961 00b2 0E       		.uleb128 0xe
+ 1962 00b3 34       		.uleb128 0x34
+ 1963 00b4 00       		.byte	0
+ 1964 00b5 03       		.uleb128 0x3
+ 1965 00b6 0E       		.uleb128 0xe
+ 1966 00b7 3A       		.uleb128 0x3a
+ 1967 00b8 0B       		.uleb128 0xb
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 47
+
+
+ 1968 00b9 3B       		.uleb128 0x3b
+ 1969 00ba 0B       		.uleb128 0xb
+ 1970 00bb 49       		.uleb128 0x49
+ 1971 00bc 13       		.uleb128 0x13
+ 1972 00bd 02       		.uleb128 0x2
+ 1973 00be 18       		.uleb128 0x18
+ 1974 00bf 00       		.byte	0
+ 1975 00c0 00       		.byte	0
+ 1976 00c1 0F       		.uleb128 0xf
+ 1977 00c2 34       		.uleb128 0x34
+ 1978 00c3 00       		.byte	0
+ 1979 00c4 03       		.uleb128 0x3
+ 1980 00c5 08       		.uleb128 0x8
+ 1981 00c6 3A       		.uleb128 0x3a
+ 1982 00c7 0B       		.uleb128 0xb
+ 1983 00c8 3B       		.uleb128 0x3b
+ 1984 00c9 0B       		.uleb128 0xb
+ 1985 00ca 49       		.uleb128 0x49
+ 1986 00cb 13       		.uleb128 0x13
+ 1987 00cc 02       		.uleb128 0x2
+ 1988 00cd 18       		.uleb128 0x18
+ 1989 00ce 00       		.byte	0
+ 1990 00cf 00       		.byte	0
+ 1991 00d0 10       		.uleb128 0x10
+ 1992 00d1 2E       		.uleb128 0x2e
+ 1993 00d2 00       		.byte	0
+ 1994 00d3 3F       		.uleb128 0x3f
+ 1995 00d4 19       		.uleb128 0x19
+ 1996 00d5 03       		.uleb128 0x3
+ 1997 00d6 0E       		.uleb128 0xe
+ 1998 00d7 3A       		.uleb128 0x3a
+ 1999 00d8 0B       		.uleb128 0xb
+ 2000 00d9 3B       		.uleb128 0x3b
+ 2001 00da 0B       		.uleb128 0xb
+ 2002 00db 27       		.uleb128 0x27
+ 2003 00dc 19       		.uleb128 0x19
+ 2004 00dd 11       		.uleb128 0x11
+ 2005 00de 01       		.uleb128 0x1
+ 2006 00df 12       		.uleb128 0x12
+ 2007 00e0 06       		.uleb128 0x6
+ 2008 00e1 40       		.uleb128 0x40
+ 2009 00e2 18       		.uleb128 0x18
+ 2010 00e3 9642     		.uleb128 0x2116
+ 2011 00e5 19       		.uleb128 0x19
+ 2012 00e6 00       		.byte	0
+ 2013 00e7 00       		.byte	0
+ 2014 00e8 11       		.uleb128 0x11
+ 2015 00e9 01       		.uleb128 0x1
+ 2016 00ea 01       		.byte	0x1
+ 2017 00eb 49       		.uleb128 0x49
+ 2018 00ec 13       		.uleb128 0x13
+ 2019 00ed 01       		.uleb128 0x1
+ 2020 00ee 13       		.uleb128 0x13
+ 2021 00ef 00       		.byte	0
+ 2022 00f0 00       		.byte	0
+ 2023 00f1 12       		.uleb128 0x12
+ 2024 00f2 21       		.uleb128 0x21
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 48
+
+
+ 2025 00f3 00       		.byte	0
+ 2026 00f4 49       		.uleb128 0x49
+ 2027 00f5 13       		.uleb128 0x13
+ 2028 00f6 2F       		.uleb128 0x2f
+ 2029 00f7 0B       		.uleb128 0xb
+ 2030 00f8 00       		.byte	0
+ 2031 00f9 00       		.byte	0
+ 2032 00fa 13       		.uleb128 0x13
+ 2033 00fb 2E       		.uleb128 0x2e
+ 2034 00fc 00       		.byte	0
+ 2035 00fd 3F       		.uleb128 0x3f
+ 2036 00fe 19       		.uleb128 0x19
+ 2037 00ff 03       		.uleb128 0x3
+ 2038 0100 0E       		.uleb128 0xe
+ 2039 0101 3A       		.uleb128 0x3a
+ 2040 0102 0B       		.uleb128 0xb
+ 2041 0103 3B       		.uleb128 0x3b
+ 2042 0104 0B       		.uleb128 0xb
+ 2043 0105 11       		.uleb128 0x11
+ 2044 0106 01       		.uleb128 0x1
+ 2045 0107 12       		.uleb128 0x12
+ 2046 0108 06       		.uleb128 0x6
+ 2047 0109 40       		.uleb128 0x40
+ 2048 010a 18       		.uleb128 0x18
+ 2049 010b 9642     		.uleb128 0x2116
+ 2050 010d 19       		.uleb128 0x19
+ 2051 010e 00       		.byte	0
+ 2052 010f 00       		.byte	0
+ 2053 0110 14       		.uleb128 0x14
+ 2054 0111 2E       		.uleb128 0x2e
+ 2055 0112 00       		.byte	0
+ 2056 0113 3F       		.uleb128 0x3f
+ 2057 0114 19       		.uleb128 0x19
+ 2058 0115 03       		.uleb128 0x3
+ 2059 0116 0E       		.uleb128 0xe
+ 2060 0117 3A       		.uleb128 0x3a
+ 2061 0118 0B       		.uleb128 0xb
+ 2062 0119 3B       		.uleb128 0x3b
+ 2063 011a 05       		.uleb128 0x5
+ 2064 011b 11       		.uleb128 0x11
+ 2065 011c 01       		.uleb128 0x1
+ 2066 011d 12       		.uleb128 0x12
+ 2067 011e 06       		.uleb128 0x6
+ 2068 011f 40       		.uleb128 0x40
+ 2069 0120 18       		.uleb128 0x18
+ 2070 0121 9642     		.uleb128 0x2116
+ 2071 0123 19       		.uleb128 0x19
+ 2072 0124 00       		.byte	0
+ 2073 0125 00       		.byte	0
+ 2074 0126 15       		.uleb128 0x15
+ 2075 0127 2E       		.uleb128 0x2e
+ 2076 0128 01       		.byte	0x1
+ 2077 0129 3F       		.uleb128 0x3f
+ 2078 012a 19       		.uleb128 0x19
+ 2079 012b 03       		.uleb128 0x3
+ 2080 012c 0E       		.uleb128 0xe
+ 2081 012d 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 49
+
+
+ 2082 012e 0B       		.uleb128 0xb
+ 2083 012f 3B       		.uleb128 0x3b
+ 2084 0130 05       		.uleb128 0x5
+ 2085 0131 27       		.uleb128 0x27
+ 2086 0132 19       		.uleb128 0x19
+ 2087 0133 11       		.uleb128 0x11
+ 2088 0134 01       		.uleb128 0x1
+ 2089 0135 12       		.uleb128 0x12
+ 2090 0136 06       		.uleb128 0x6
+ 2091 0137 40       		.uleb128 0x40
+ 2092 0138 18       		.uleb128 0x18
+ 2093 0139 9642     		.uleb128 0x2116
+ 2094 013b 19       		.uleb128 0x19
+ 2095 013c 01       		.uleb128 0x1
+ 2096 013d 13       		.uleb128 0x13
+ 2097 013e 00       		.byte	0
+ 2098 013f 00       		.byte	0
+ 2099 0140 16       		.uleb128 0x16
+ 2100 0141 05       		.uleb128 0x5
+ 2101 0142 00       		.byte	0
+ 2102 0143 03       		.uleb128 0x3
+ 2103 0144 0E       		.uleb128 0xe
+ 2104 0145 3A       		.uleb128 0x3a
+ 2105 0146 0B       		.uleb128 0xb
+ 2106 0147 3B       		.uleb128 0x3b
+ 2107 0148 05       		.uleb128 0x5
+ 2108 0149 49       		.uleb128 0x49
+ 2109 014a 13       		.uleb128 0x13
+ 2110 014b 02       		.uleb128 0x2
+ 2111 014c 18       		.uleb128 0x18
+ 2112 014d 00       		.byte	0
+ 2113 014e 00       		.byte	0
+ 2114 014f 17       		.uleb128 0x17
+ 2115 0150 34       		.uleb128 0x34
+ 2116 0151 00       		.byte	0
+ 2117 0152 03       		.uleb128 0x3
+ 2118 0153 08       		.uleb128 0x8
+ 2119 0154 3A       		.uleb128 0x3a
+ 2120 0155 0B       		.uleb128 0xb
+ 2121 0156 3B       		.uleb128 0x3b
+ 2122 0157 05       		.uleb128 0x5
+ 2123 0158 49       		.uleb128 0x49
+ 2124 0159 13       		.uleb128 0x13
+ 2125 015a 02       		.uleb128 0x2
+ 2126 015b 18       		.uleb128 0x18
+ 2127 015c 00       		.byte	0
+ 2128 015d 00       		.byte	0
+ 2129 015e 18       		.uleb128 0x18
+ 2130 015f 34       		.uleb128 0x34
+ 2131 0160 00       		.byte	0
+ 2132 0161 03       		.uleb128 0x3
+ 2133 0162 0E       		.uleb128 0xe
+ 2134 0163 3A       		.uleb128 0x3a
+ 2135 0164 0B       		.uleb128 0xb
+ 2136 0165 3B       		.uleb128 0x3b
+ 2137 0166 05       		.uleb128 0x5
+ 2138 0167 49       		.uleb128 0x49
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 50
+
+
+ 2139 0168 13       		.uleb128 0x13
+ 2140 0169 02       		.uleb128 0x2
+ 2141 016a 18       		.uleb128 0x18
+ 2142 016b 00       		.byte	0
+ 2143 016c 00       		.byte	0
+ 2144 016d 19       		.uleb128 0x19
+ 2145 016e 0B       		.uleb128 0xb
+ 2146 016f 01       		.byte	0x1
+ 2147 0170 11       		.uleb128 0x11
+ 2148 0171 01       		.uleb128 0x1
+ 2149 0172 12       		.uleb128 0x12
+ 2150 0173 06       		.uleb128 0x6
+ 2151 0174 01       		.uleb128 0x1
+ 2152 0175 13       		.uleb128 0x13
+ 2153 0176 00       		.byte	0
+ 2154 0177 00       		.byte	0
+ 2155 0178 1A       		.uleb128 0x1a
+ 2156 0179 0B       		.uleb128 0xb
+ 2157 017a 01       		.byte	0x1
+ 2158 017b 11       		.uleb128 0x11
+ 2159 017c 01       		.uleb128 0x1
+ 2160 017d 12       		.uleb128 0x12
+ 2161 017e 06       		.uleb128 0x6
+ 2162 017f 00       		.byte	0
+ 2163 0180 00       		.byte	0
+ 2164 0181 1B       		.uleb128 0x1b
+ 2165 0182 34       		.uleb128 0x34
+ 2166 0183 00       		.byte	0
+ 2167 0184 03       		.uleb128 0x3
+ 2168 0185 0E       		.uleb128 0xe
+ 2169 0186 3A       		.uleb128 0x3a
+ 2170 0187 0B       		.uleb128 0xb
+ 2171 0188 3B       		.uleb128 0x3b
+ 2172 0189 0B       		.uleb128 0xb
+ 2173 018a 49       		.uleb128 0x49
+ 2174 018b 13       		.uleb128 0x13
+ 2175 018c 3F       		.uleb128 0x3f
+ 2176 018d 19       		.uleb128 0x19
+ 2177 018e 3C       		.uleb128 0x3c
+ 2178 018f 19       		.uleb128 0x19
+ 2179 0190 00       		.byte	0
+ 2180 0191 00       		.byte	0
+ 2181 0192 1C       		.uleb128 0x1c
+ 2182 0193 34       		.uleb128 0x34
+ 2183 0194 00       		.byte	0
+ 2184 0195 03       		.uleb128 0x3
+ 2185 0196 0E       		.uleb128 0xe
+ 2186 0197 3A       		.uleb128 0x3a
+ 2187 0198 0B       		.uleb128 0xb
+ 2188 0199 3B       		.uleb128 0x3b
+ 2189 019a 05       		.uleb128 0x5
+ 2190 019b 49       		.uleb128 0x49
+ 2191 019c 13       		.uleb128 0x13
+ 2192 019d 3F       		.uleb128 0x3f
+ 2193 019e 19       		.uleb128 0x19
+ 2194 019f 3C       		.uleb128 0x3c
+ 2195 01a0 19       		.uleb128 0x19
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 51
+
+
+ 2196 01a1 00       		.byte	0
+ 2197 01a2 00       		.byte	0
+ 2198 01a3 1D       		.uleb128 0x1d
+ 2199 01a4 34       		.uleb128 0x34
+ 2200 01a5 00       		.byte	0
+ 2201 01a6 03       		.uleb128 0x3
+ 2202 01a7 0E       		.uleb128 0xe
+ 2203 01a8 3A       		.uleb128 0x3a
+ 2204 01a9 0B       		.uleb128 0xb
+ 2205 01aa 3B       		.uleb128 0x3b
+ 2206 01ab 0B       		.uleb128 0xb
+ 2207 01ac 49       		.uleb128 0x49
+ 2208 01ad 13       		.uleb128 0x13
+ 2209 01ae 3F       		.uleb128 0x3f
+ 2210 01af 19       		.uleb128 0x19
+ 2211 01b0 02       		.uleb128 0x2
+ 2212 01b1 18       		.uleb128 0x18
+ 2213 01b2 00       		.byte	0
+ 2214 01b3 00       		.byte	0
+ 2215 01b4 1E       		.uleb128 0x1e
+ 2216 01b5 21       		.uleb128 0x21
+ 2217 01b6 00       		.byte	0
+ 2218 01b7 49       		.uleb128 0x49
+ 2219 01b8 13       		.uleb128 0x13
+ 2220 01b9 2F       		.uleb128 0x2f
+ 2221 01ba 05       		.uleb128 0x5
+ 2222 01bb 00       		.byte	0
+ 2223 01bc 00       		.byte	0
+ 2224 01bd 00       		.byte	0
+ 2225              		.section	.debug_aranges,"",%progbits
+ 2226 0000 5C000000 		.4byte	0x5c
+ 2227 0004 0200     		.2byte	0x2
+ 2228 0006 00000000 		.4byte	.Ldebug_info0
+ 2229 000a 04       		.byte	0x4
+ 2230 000b 00       		.byte	0
+ 2231 000c 0000     		.2byte	0
+ 2232 000e 0000     		.2byte	0
+ 2233 0010 00000000 		.4byte	.LFB64
+ 2234 0014 50000000 		.4byte	.LFE64-.LFB64
+ 2235 0018 00000000 		.4byte	.LFB65
+ 2236 001c 30000000 		.4byte	.LFE65-.LFB65
+ 2237 0020 00000000 		.4byte	.LFB66
+ 2238 0024 EC000000 		.4byte	.LFE66-.LFB66
+ 2239 0028 00000000 		.4byte	.LFB67
+ 2240 002c 78000000 		.4byte	.LFE67-.LFB67
+ 2241 0030 00000000 		.4byte	.LFB68
+ 2242 0034 14000000 		.4byte	.LFE68-.LFB68
+ 2243 0038 00000000 		.4byte	.LFB69
+ 2244 003c 14000000 		.4byte	.LFE69-.LFB69
+ 2245 0040 00000000 		.4byte	.LFB70
+ 2246 0044 14000000 		.4byte	.LFE70-.LFB70
+ 2247 0048 00000000 		.4byte	.LFB71
+ 2248 004c 68000000 		.4byte	.LFE71-.LFB71
+ 2249 0050 00000000 		.4byte	.LFB72
+ 2250 0054 30030000 		.4byte	.LFE72-.LFB72
+ 2251 0058 00000000 		.4byte	0
+ 2252 005c 00000000 		.4byte	0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 52
+
+
+ 2253              		.section	.debug_ranges,"",%progbits
+ 2254              	.Ldebug_ranges0:
+ 2255 0000 00000000 		.4byte	.LFB64
+ 2256 0004 50000000 		.4byte	.LFE64
+ 2257 0008 00000000 		.4byte	.LFB65
+ 2258 000c 30000000 		.4byte	.LFE65
+ 2259 0010 00000000 		.4byte	.LFB66
+ 2260 0014 EC000000 		.4byte	.LFE66
+ 2261 0018 00000000 		.4byte	.LFB67
+ 2262 001c 78000000 		.4byte	.LFE67
+ 2263 0020 00000000 		.4byte	.LFB68
+ 2264 0024 14000000 		.4byte	.LFE68
+ 2265 0028 00000000 		.4byte	.LFB69
+ 2266 002c 14000000 		.4byte	.LFE69
+ 2267 0030 00000000 		.4byte	.LFB70
+ 2268 0034 14000000 		.4byte	.LFE70
+ 2269 0038 00000000 		.4byte	.LFB71
+ 2270 003c 68000000 		.4byte	.LFE71
+ 2271 0040 00000000 		.4byte	.LFB72
+ 2272 0044 30030000 		.4byte	.LFE72
+ 2273 0048 00000000 		.4byte	0
+ 2274 004c 00000000 		.4byte	0
+ 2275              		.section	.debug_line,"",%progbits
+ 2276              	.Ldebug_line0:
+ 2277 0000 EB020000 		.section	.debug_str,"MS",%progbits,1
+ 2277      02008E01 
+ 2277      00000201 
+ 2277      FB0E0D00 
+ 2277      01010101 
+ 2278              	.LASF43:
+ 2279 0000 6F707469 		.ascii	"optind\000"
+ 2279      6E6400
+ 2280              	.LASF41:
+ 2281 0007 6D656173 		.ascii	"measure_long_options\000"
+ 2281      7572655F 
+ 2281      6C6F6E67 
+ 2281      5F6F7074 
+ 2281      696F6E73 
+ 2282              	.LASF27:
+ 2283 001c 53455249 		.ascii	"SERIAL_DATA_ARRIVED\000"
+ 2283      414C5F44 
+ 2283      4154415F 
+ 2283      41525249 
+ 2283      56454400 
+ 2284              	.LASF45:
+ 2285 0030 73657269 		.ascii	"serial_data_ready\000"
+ 2285      616C5F64 
+ 2285      6174615F 
+ 2285      72656164 
+ 2285      7900
+ 2286              	.LASF37:
+ 2287 0042 74656D70 		.ascii	"temp\000"
+ 2287      00
+ 2288              	.LASF5:
+ 2289 0047 73686F72 		.ascii	"short int\000"
+ 2289      7420696E 
+ 2289      7400
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 53
+
+
+ 2290              	.LASF36:
+ 2291 0051 74656D70 		.ascii	"temperature\000"
+ 2291      65726174 
+ 2291      75726500 
+ 2292              	.LASF33:
+ 2293 005d 6C6F6E67 		.ascii	"longopt\000"
+ 2293      6F707400 
+ 2294              	.LASF48:
+ 2295 0065 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2295      43313120 
+ 2295      352E342E 
+ 2295      31203230 
+ 2295      31363036 
+ 2296 0098 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2296      20726576 
+ 2296      6973696F 
+ 2296      6E203233 
+ 2296      37373135 
+ 2297 00cb 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2297      66756E63 
+ 2297      74696F6E 
+ 2297      2D736563 
+ 2297      74696F6E 
+ 2298              	.LASF32:
+ 2299 00f3 636F6D6D 		.ascii	"command_rhea\000"
+ 2299      616E645F 
+ 2299      72686561 
+ 2299      00
+ 2300              	.LASF2:
+ 2301 0100 6C6F6E67 		.ascii	"long double\000"
+ 2301      20646F75 
+ 2301      626C6500 
+ 2302              	.LASF39:
+ 2303 010c 68756D69 		.ascii	"humidity\000"
+ 2303      64697479 
+ 2303      00
+ 2304              	.LASF29:
+ 2305 0115 72686561 		.ascii	"rhea_print_help\000"
+ 2305      5F707269 
+ 2305      6E745F68 
+ 2305      656C7000 
+ 2306              	.LASF40:
+ 2307 0125 72686561 		.ascii	"rhea_long_options\000"
+ 2307      5F6C6F6E 
+ 2307      675F6F70 
+ 2307      74696F6E 
+ 2307      7300
+ 2308              	.LASF14:
+ 2309 0137 75696E74 		.ascii	"uint8_t\000"
+ 2309      385F7400 
+ 2310              	.LASF38:
+ 2311 013f 70726573 		.ascii	"pressure\000"
+ 2311      73757265 
+ 2311      00
+ 2312              	.LASF34:
+ 2313 0148 636F6D6D 		.ascii	"command_measure\000"
+ 2313      616E645F 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 54
+
+
+ 2313      6D656173 
+ 2313      75726500 
+ 2314              	.LASF20:
+ 2315 0158 666C6F61 		.ascii	"float\000"
+ 2315      7400
+ 2316              	.LASF51:
+ 2317 015e 6F707469 		.ascii	"option\000"
+ 2317      6F6E00
+ 2318              	.LASF1:
+ 2319 0165 6C6F6E67 		.ascii	"long long int\000"
+ 2319      206C6F6E 
+ 2319      6720696E 
+ 2319      7400
+ 2320              	.LASF17:
+ 2321 0173 6861735F 		.ascii	"has_arg\000"
+ 2321      61726700 
+ 2322              	.LASF50:
+ 2323 017b 453A5C43 		.ascii	"E:\\Cypress\\Projects\\RheaWorkspace\\Rhea.cydsn\000"
+ 2323      79707265 
+ 2323      73735C50 
+ 2323      726F6A65 
+ 2323      6374735C 
+ 2324              	.LASF9:
+ 2325 01a8 6C6F6E67 		.ascii	"long int\000"
+ 2325      20696E74 
+ 2325      00
+ 2326              	.LASF7:
+ 2327 01b1 5F5F7569 		.ascii	"__uint8_t\000"
+ 2327      6E74385F 
+ 2327      7400
+ 2328              	.LASF4:
+ 2329 01bb 756E7369 		.ascii	"unsigned char\000"
+ 2329      676E6564 
+ 2329      20636861 
+ 2329      7200
+ 2330              	.LASF23:
+ 2331 01c9 746F6B65 		.ascii	"token\000"
+ 2331      6E00
+ 2332              	.LASF52:
+ 2333 01cf 496E6974 		.ascii	"InitializeSerialCommandLine\000"
+ 2333      69616C69 
+ 2333      7A655365 
+ 2333      7269616C 
+ 2333      436F6D6D 
+ 2334              	.LASF16:
+ 2335 01eb 6E616D65 		.ascii	"name\000"
+ 2335      00
+ 2336              	.LASF31:
+ 2337 01f0 72686561 		.ascii	"rhea_print_error\000"
+ 2337      5F707269 
+ 2337      6E745F65 
+ 2337      72726F72 
+ 2337      00
+ 2338              	.LASF21:
+ 2339 0201 61726763 		.ascii	"argc\000"
+ 2339      00
+ 2340              	.LASF42:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 55
+
+
+ 2341 0206 6F707461 		.ascii	"optarg\000"
+ 2341      726700
+ 2342              	.LASF3:
+ 2343 020d 7369676E 		.ascii	"signed char\000"
+ 2343      65642063 
+ 2343      68617200 
+ 2344              	.LASF24:
+ 2345 0219 746F4172 		.ascii	"toArgumentArray\000"
+ 2345      67756D65 
+ 2345      6E744172 
+ 2345      72617900 
+ 2346              	.LASF11:
+ 2347 0229 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2347      206C6F6E 
+ 2347      6720756E 
+ 2347      7369676E 
+ 2347      65642069 
+ 2348              	.LASF0:
+ 2349 0240 756E7369 		.ascii	"unsigned int\000"
+ 2349      676E6564 
+ 2349      20696E74 
+ 2349      00
+ 2350              	.LASF46:
+ 2351 024d 73657269 		.ascii	"serialBuffer\000"
+ 2351      616C4275 
+ 2351      66666572 
+ 2351      00
+ 2352              	.LASF22:
+ 2353 025a 61726776 		.ascii	"argv\000"
+ 2353      00
+ 2354              	.LASF6:
+ 2355 025f 73686F72 		.ascii	"short unsigned int\000"
+ 2355      7420756E 
+ 2355      7369676E 
+ 2355      65642069 
+ 2355      6E7400
+ 2356              	.LASF28:
+ 2357 0272 73746174 		.ascii	"status\000"
+ 2357      757300
+ 2358              	.LASF13:
+ 2359 0279 63686172 		.ascii	"char\000"
+ 2359      00
+ 2360              	.LASF15:
+ 2361 027e 696E7433 		.ascii	"int32_t\000"
+ 2361      325F7400 
+ 2362              	.LASF35:
+ 2363 0286 6F767273 		.ascii	"ovrs\000"
+ 2363      00
+ 2364              	.LASF25:
+ 2365 028b 50726F63 		.ascii	"ProcessCommandLine\000"
+ 2365      65737343 
+ 2365      6F6D6D61 
+ 2365      6E644C69 
+ 2365      6E6500
+ 2366              	.LASF10:
+ 2367 029e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2367      20756E73 
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\ccnKx4AO.s 			page 56
+
+
+ 2367      69676E65 
+ 2367      6420696E 
+ 2367      7400
+ 2368              	.LASF19:
+ 2369 02b0 646F7562 		.ascii	"double\000"
+ 2369      6C6500
+ 2370              	.LASF30:
+ 2371 02b7 72686561 		.ascii	"rhea_print_version\000"
+ 2371      5F707269 
+ 2371      6E745F76 
+ 2371      65727369 
+ 2371      6F6E00
+ 2372              	.LASF47:
+ 2373 02ca 62756666 		.ascii	"bufferSize\000"
+ 2373      65725369 
+ 2373      7A6500
+ 2374              	.LASF8:
+ 2375 02d5 5F5F696E 		.ascii	"__int32_t\000"
+ 2375      7433325F 
+ 2375      7400
+ 2376              	.LASF12:
+ 2377 02df 73697A65 		.ascii	"sizetype\000"
+ 2377      74797065 
+ 2377      00
+ 2378              	.LASF18:
+ 2379 02e8 666C6167 		.ascii	"flag\000"
+ 2379      00
+ 2380              	.LASF44:
+ 2381 02ed 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2381      52784275 
+ 2381      66666572 
+ 2381      00
+ 2382              	.LASF49:
+ 2383 02fa 6170706C 		.ascii	"application\\command\\command.c\000"
+ 2383      69636174 
+ 2383      696F6E5C 
+ 2383      636F6D6D 
+ 2383      616E645C 
+ 2384              	.LASF26:
+ 2385 0318 636F6D6D 		.ascii	"command\000"
+ 2385      616E6400 
+ 2386              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

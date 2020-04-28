@@ -66,9 +66,11 @@ int main(void)
 
     // Initializing application
     InitializeInputButtonInterrupts();
-    //InitializeSerialCommandLine();
+    InitializeSerialCommandLine();
     InitializeMainMenu();
         
+   
+    
     // Executing application logic
     for(;;)
     {     
@@ -82,7 +84,7 @@ int main(void)
         //rhea_gfx_Refresh();
         
         // Handling UART command line 
-        //ProcessCommandLine();
+        ProcessCommandLine();
         
         // Handling RTC alarms
         // rhea_rtc_HandleAlarms();

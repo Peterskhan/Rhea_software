@@ -1,4 +1,4 @@
---------------- Build Started: 04/27/2020 19:23:58 Project: Rhea, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 04/28/2020 18:33:59 Project: Rhea, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/gfx.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c rhea\gfx\gfx.c -o .\CortexM3\ARM_GCC_541\Debug\gfx.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/gfx_impl.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c rhea\gfx\gfx_impl.c -o .\CortexM3\ARM_GCC_541\Debug\gfx_impl.o
@@ -7,6 +7,15 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/BME280_INTF.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c rhea\sensor\interfaces\BME280\BME280_INTF.c -o .\CortexM3\ARM_GCC_541\Debug\BME280_INTF.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/sensor.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c rhea\sensor\sensor.c -o .\CortexM3\ARM_GCC_541\Debug\sensor.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/sensor_impl.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c rhea\sensor\sensor_impl.c -o .\CortexM3\ARM_GCC_541\Debug\sensor_impl.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/command.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c application\command\command.c -o .\CortexM3\ARM_GCC_541\Debug\command.o
+application\command\command.c: In function 'ProcessCommandLine':
+application\command\command.c:160:27: warning: passing argument 1 of 'rhea_uart_WriteBuffer' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+     rhea_uart_WriteBuffer(serialBuffer, 10);
+                           ^
+In file included from application\command\command.c:41:0:
+application\command\../../rhea/uart/uart.h:96:6: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'volatile uint8_t * {aka volatile unsigned char *}'
+ void rhea_uart_WriteBuffer(const uint8_t *buffer, uint64_t size);
+      ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/input.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c application\input\input.c -o .\CortexM3\ARM_GCC_541\Debug\input.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/menu.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c application\menu\menu.c -o .\CortexM3\ARM_GCC_541\Debug\menu.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -O0 -c application\main.c -o .\CortexM3\ARM_GCC_541\Debug\main.o
@@ -18,6 +27,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S E:\Cypress\Projects\RheaWorkspace\Rhea.cydsn\CortexM3\ARM_GCC_541\Debug\Rhea.elf
-Flash used: 27570 of 262144 bytes (10,5%).
-SRAM used: 7629 of 65536 bytes (11,6%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 04/27/2020 19:24:02 ---------------
+Flash used: 39504 of 262144 bytes (15,1%).
+SRAM used: 7925 of 65536 bytes (12,1%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 04/28/2020 18:34:04 ---------------

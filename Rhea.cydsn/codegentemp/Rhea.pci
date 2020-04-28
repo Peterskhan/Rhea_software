@@ -1,5 +1,5 @@
 # Rhea
-# 2020-04-27 15:07:25Z
+# 2020-04-28 14:17:29Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -12,6 +12,6 @@ set_io "I2C_SCL(0)" iocell 12 0
 set_io "UART_TX(0)" iocell 12 7
 set_io "RTC_INTR_PIN(0)" iocell 12 2
 set_io "UART_RX(0)" iocell 12 6
-set_io "BTN_LEFT(0)" iocell 1 6
+set_io "BTN_LEFT(0)" iocell 1 5
 set_io "BTN_RIGHT(0)" iocell 1 7
-set_io "BTN_ENTER(0)" iocell 1 5
+set_io "BTN_ENTER(0)" iocell 1 6

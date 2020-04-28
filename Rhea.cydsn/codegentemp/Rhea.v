@@ -1,6 +1,6 @@
 // ======================================================================
 // Rhea.v generated from TopDesign.cysch
-// 04/27/2020 at 17:07
+// 04/28/2020 at 16:17
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -340,7 +340,7 @@ endmodule
 `include "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\B_UART_v2_50\B_UART_v2_50.v"
 `endif
 
-// UART_v2_50(Address1=0, Address2=0, BaudRate=115200, BreakBitsRX=13, BreakBitsTX=13, BreakDetect=false, CRCoutputsEn=false, Enable_RX=0, Enable_RXIntInterrupt=0, Enable_TX=0, Enable_TXIntInterrupt=0, EnableHWAddress=0, EnIntRXInterrupt=false, EnIntTXInterrupt=false, FlowControl=0, HalfDuplexEn=true, HwTXEnSignal=false, InternalClock=true, InternalClockToleranceMinus=3.93736842105263, InternalClockTolerancePlus=3.93736842105263, InternalClockUsed=1, InterruptOnAddDetect=0, InterruptOnAddressMatch=0, InterruptOnBreak=0, InterruptOnByteRcvd=0, InterruptOnOverrunError=0, InterruptOnParityError=0, InterruptOnStopError=0, InterruptOnTXComplete=false, InterruptOnTXFifoEmpty=false, InterruptOnTXFifoFull=false, InterruptOnTXFifoNotFull=false, IntOnAddressDetect=false, IntOnAddressMatch=false, IntOnBreak=false, IntOnByteRcvd=false, IntOnOverrunError=false, IntOnParityError=false, IntOnStopError=false, NumDataBits=8, NumStopBits=1, OverSamplingRate=8, ParityType=0, ParityTypeSw=false, RequiredClock=921600, RXAddressMode=0, RXBufferSize=4, RxBuffRegSizeReplacementString=uint8, RXEnable=false, TXBitClkGenDP=true, TXBufferSize=4, TxBuffRegSizeReplacementString=uint8, TXEnable=false, Use23Polling=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=UART_v2_50, CY_CONFIG_TITLE=UART, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART, CY_INSTANCE_SHORT_NAME=UART, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=50, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=UART, )
+// UART_v2_50(Address1=0, Address2=0, BaudRate=9600, BreakBitsRX=13, BreakBitsTX=13, BreakDetect=false, CRCoutputsEn=false, Enable_RX=1, Enable_RXIntInterrupt=0, Enable_TX=1, Enable_TXIntInterrupt=0, EnableHWAddress=0, EnIntRXInterrupt=false, EnIntTXInterrupt=false, FlowControl=0, HalfDuplexEn=false, HwTXEnSignal=false, InternalClock=true, InternalClockToleranceMinus=3.93736842105263, InternalClockTolerancePlus=3.93736842105263, InternalClockUsed=1, InterruptOnAddDetect=0, InterruptOnAddressMatch=0, InterruptOnBreak=0, InterruptOnByteRcvd=1, InterruptOnOverrunError=0, InterruptOnParityError=0, InterruptOnStopError=0, InterruptOnTXComplete=false, InterruptOnTXFifoEmpty=false, InterruptOnTXFifoFull=false, InterruptOnTXFifoNotFull=false, IntOnAddressDetect=false, IntOnAddressMatch=false, IntOnBreak=false, IntOnByteRcvd=true, IntOnOverrunError=false, IntOnParityError=false, IntOnStopError=false, NumDataBits=8, NumStopBits=1, OverSamplingRate=8, ParityType=0, ParityTypeSw=false, RequiredClock=76800, RXAddressMode=0, RXBufferSize=4, RxBuffRegSizeReplacementString=uint8, RXEnable=true, TXBitClkGenDP=true, TXBufferSize=4, TxBuffRegSizeReplacementString=uint8, TXEnable=true, Use23Polling=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=UART_v2_50, CY_CONFIG_TITLE=UART, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=UART, CY_INSTANCE_SHORT_NAME=UART, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=50, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=UART, )
 module UART_v2_50_1 (
     cts_n,
     tx,
@@ -374,13 +374,13 @@ module UART_v2_50_1 (
     parameter EnIntRXInterrupt = 0;
     parameter EnIntTXInterrupt = 0;
     parameter FlowControl = 0;
-    parameter HalfDuplexEn = 1;
+    parameter HalfDuplexEn = 0;
     parameter HwTXEnSignal = 0;
     parameter NumDataBits = 8;
     parameter NumStopBits = 1;
     parameter ParityType = 0;
-    parameter RXEnable = 0;
-    parameter TXEnable = 0;
+    parameter RXEnable = 1;
+    parameter TXEnable = 1;
 
           wire  Net_289;
           wire  Net_61;
@@ -391,7 +391,7 @@ module UART_v2_50_1 (
 		#(.id("b0162966-0060-4af5-82d1-fcb491ad7619/be0a0e37-ad17-42ca-b5a1-1a654d736358"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("1085069444.44444"),
+		  .period("13020833333.3333"),
 		  .is_direct(0),
 		  .is_digital(1))
 		IntClock
@@ -422,7 +422,7 @@ module UART_v2_50_1 (
     defparam BUART.BreakDetect = 0;
     defparam BUART.CRCoutputsEn = 0;
     defparam BUART.FlowControl = 0;
-    defparam BUART.HalfDuplexEn = 1;
+    defparam BUART.HalfDuplexEn = 0;
     defparam BUART.HwTXEnSignal = 0;
     defparam BUART.NumDataBits = 8;
     defparam BUART.NumStopBits = 1;
@@ -430,28 +430,15 @@ module UART_v2_50_1 (
     defparam BUART.ParityType = 0;
     defparam BUART.ParityTypeSw = 0;
     defparam BUART.RXAddressMode = 0;
-    defparam BUART.RXEnable = 0;
-    defparam BUART.RXStatusIntEnable = 0;
+    defparam BUART.RXEnable = 1;
+    defparam BUART.RXStatusIntEnable = 1;
     defparam BUART.TXBitClkGenDP = 1;
-    defparam BUART.TXEnable = 0;
+    defparam BUART.TXEnable = 1;
     defparam BUART.Use23Polling = 1;
 
 
 
 endmodule
-
-// Component: Debouncer_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
-`include "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
-`else
-`define CY_BLK_DIR "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
-`include "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
-`endif
 
 // Component: cy_constant_v1_0
 `ifdef CY_BLK_DIR
@@ -531,17 +518,27 @@ module Timer_v2_80_2 (
 
 endmodule
 
+// Component: Debouncer_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`else
+`define CY_BLK_DIR "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "E:\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`endif
+
 // top
 module top ;
 
-          wire  Net_80;
-          wire  Net_79;
-          wire  Net_78;
-          wire  Net_74;
-          wire  Net_73;
-          wire  Net_72;
-          wire  Net_70;
-          wire  Net_76;
+          wire  Net_100;
+          wire [2:0] Net_97;
+          wire [2:0] Net_96;
+          wire [2:0] Net_95;
+          wire  Net_89;
           wire  Net_50;
           wire  Net_49;
           wire  Net_48;
@@ -550,15 +547,11 @@ module top ;
           wire  Net_45;
           wire  Net_44;
           wire  Net_52;
-          wire  Net_51;
-          wire  Net_68;
-          wire  Net_67;
-          wire  Net_66;
-          wire  Net_64;
           wire  Net_35;
           wire  Net_34;
           wire  Net_33;
           wire  Net_32;
+          wire  Net_31;
           wire  Net_30;
           wire  Net_29;
           wire  Net_28;
@@ -578,12 +571,9 @@ module top ;
           wire  Net_14;
           wire  Net_13;
           wire  Net_12;
-          wire  Net_65;
-          wire  Net_81;
-          wire  Net_75;
-          wire  Net_69;
+          wire [2:0] Net_81;
+          wire [2:0] Net_107;
           wire  Net_10;
-          wire  Net_31;
           wire  Net_36;
 
 	wire [0:0] tmpOE__I2C_SDA_net;
@@ -766,13 +756,13 @@ module top ;
     defparam UART.EnIntRXInterrupt = 0;
     defparam UART.EnIntTXInterrupt = 0;
     defparam UART.FlowControl = 0;
-    defparam UART.HalfDuplexEn = 1;
+    defparam UART.HalfDuplexEn = 0;
     defparam UART.HwTXEnSignal = 0;
     defparam UART.NumDataBits = 8;
     defparam UART.NumStopBits = 1;
     defparam UART.ParityType = 0;
-    defparam UART.RXEnable = 0;
-    defparam UART.TXEnable = 0;
+    defparam UART.RXEnable = 1;
+    defparam UART.TXEnable = 1;
 
 	wire [0:0] tmpOE__UART_TX_net;
 	wire [0:0] tmpFB_0__UART_TX_net;
@@ -1004,50 +994,28 @@ module top ;
 
 	assign tmpOE__UART_RX_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-    Debouncer_v1_0 Debouncer_1 (
-        .d(Net_64),
-        .clock(Net_65),
-        .q(Net_66),
-        .neg(Net_67),
-        .either(Net_68),
-        .pos(Net_69));
-    defparam Debouncer_1.EitherEdgeDetect = 0;
-    defparam Debouncer_1.NegEdgeDetect = 0;
-    defparam Debouncer_1.PosEdgeDetect = 1;
-    defparam Debouncer_1.SignalWidth = 1;
-
-
-	cy_clock_v1_0
-		#(.id("831d7dfe-684c-419c-a953-e2f67ee7e38b"),
-		  .source_clock_id(""),
-		  .divisor(0),
-		  .period("16666666666666.7"),
-		  .is_direct(0),
-		  .is_digital(1))
-		DEBOUNCE_CLK
-		 (.clock_out(Net_65));
-
-
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		BTN_RIGHT_INTR
-		 (.int_signal(Net_69));
+		 (.int_signal(Net_81[1]));
 
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		BTN_LEFT_INTR
-		 (.int_signal(Net_75));
+		 (.int_signal(Net_81[2]));
 
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		BTN_ENTER_INTR
-		 (.int_signal(Net_81));
+		 (.int_signal(Net_81[0]));
 
+
+    assign Net_28 = 1'h0;
 
 
 	cy_isr_v1_0
@@ -1055,8 +1023,6 @@ module top ;
 		UART_RX_INTR
 		 (.int_signal(Net_31));
 
-
-    assign Net_28 = 1'h0;
 
 
 	cy_clock_v1_0
@@ -1158,7 +1124,7 @@ module top ;
 		BTN_LEFT
 		 (.oe(tmpOE__BTN_LEFT_net),
 		  .y({1'b0}),
-		  .fb({Net_76}),
+		  .fb({Net_107[2]}),
 		  .io({tmpIO_0__BTN_LEFT_net[0:0]}),
 		  .siovref(tmpSIOVREF__BTN_LEFT_net),
 		  .interrupt({tmpINTERRUPT_0__BTN_LEFT_net[0:0]}),
@@ -1232,7 +1198,7 @@ module top ;
 		BTN_RIGHT
 		 (.oe(tmpOE__BTN_RIGHT_net),
 		  .y({1'b0}),
-		  .fb({Net_70}),
+		  .fb({Net_107[1]}),
 		  .io({tmpIO_0__BTN_RIGHT_net[0:0]}),
 		  .siovref(tmpSIOVREF__BTN_RIGHT_net),
 		  .interrupt({tmpINTERRUPT_0__BTN_RIGHT_net[0:0]}),
@@ -1306,7 +1272,7 @@ module top ;
 		BTN_ENTER
 		 (.oe(tmpOE__BTN_ENTER_net),
 		  .y({1'b0}),
-		  .fb({Net_64}),
+		  .fb({Net_107[0]}),
 		  .io({tmpIO_0__BTN_ENTER_net[0:0]}),
 		  .siovref(tmpSIOVREF__BTN_ENTER_net),
 		  .interrupt({tmpINTERRUPT_0__BTN_ENTER_net[0:0]}),
@@ -1319,29 +1285,29 @@ module top ;
 
 	assign tmpOE__BTN_ENTER_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-    Debouncer_v1_0 Debouncer_2 (
-        .d(Net_70),
-        .clock(Net_65),
-        .q(Net_72),
-        .neg(Net_73),
-        .either(Net_74),
-        .pos(Net_75));
-    defparam Debouncer_2.EitherEdgeDetect = 0;
-    defparam Debouncer_2.NegEdgeDetect = 0;
-    defparam Debouncer_2.PosEdgeDetect = 1;
-    defparam Debouncer_2.SignalWidth = 1;
+    Debouncer_v1_0 BTN_DEBOUNCER (
+        .d(Net_107[2:0]),
+        .clock(Net_89),
+        .q(Net_95[2:0]),
+        .neg(Net_96[2:0]),
+        .either(Net_97[2:0]),
+        .pos(Net_81[2:0]));
+    defparam BTN_DEBOUNCER.EitherEdgeDetect = 0;
+    defparam BTN_DEBOUNCER.NegEdgeDetect = 0;
+    defparam BTN_DEBOUNCER.PosEdgeDetect = 1;
+    defparam BTN_DEBOUNCER.SignalWidth = 3;
 
-    Debouncer_v1_0 Debouncer_3 (
-        .d(Net_76),
-        .clock(Net_65),
-        .q(Net_78),
-        .neg(Net_79),
-        .either(Net_80),
-        .pos(Net_81));
-    defparam Debouncer_3.EitherEdgeDetect = 0;
-    defparam Debouncer_3.NegEdgeDetect = 0;
-    defparam Debouncer_3.PosEdgeDetect = 1;
-    defparam Debouncer_3.SignalWidth = 1;
+
+	cy_clock_v1_0
+		#(.id("b6ab2979-45d0-4307-95b3-5346267c5c48"),
+		  .source_clock_id(""),
+		  .divisor(0),
+		  .period("16666666666666.7"),
+		  .is_direct(0),
+		  .is_digital(1))
+		DEBOUNCE_CLK
+		 (.clock_out(Net_89));
+
 
 
 
