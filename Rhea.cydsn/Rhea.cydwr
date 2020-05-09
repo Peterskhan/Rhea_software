@@ -250,6 +250,15 @@
   </Group>
   <Data key="DataVersionKey" value="2" />
   <Group key="DWRInstGuidMapping">
+    <Group key="Interrupt">
+      <Data key="6f2d57bd-b6d0-4115-93da-ded3485bf4ed/74b069b5-d5c5-469b-a48a-44b8a12146cd" value="I2C_I2C_IRQ" />
+      <Data key="73eaaa4b-0036-44e4-976d-463ac01c96a6" value="BTN_ENTER_INTR" />
+      <Data key="87b5a90c-882b-4cf8-97ab-f131188ac137" value="RTC_INTR" />
+      <Data key="660f9c7e-95f6-45b9-9d2d-f3916caa1cf9" value="UART_RX_INTR" />
+      <Data key="81828d36-db92-4e53-8d1d-d744cbd2ced0" value="BTN_LEFT_INTR" />
+      <Data key="b1844076-5087-4662-b704-cf44c5b7fda4" value="SENSOR_1MS" />
+      <Data key="c05eb9c4-1547-41e5-98ad-d0040f8537e5" value="BTN_RIGHT_INTR" />
+    </Group>
     <Group key="Pin">
       <Data key="02f2cf2c-2c7a-49df-9246-7a3435c21be3" value="I2C_SCL" />
       <Data key="4f2ad36f-bb57-48b8-9df6-2bab6ea29267" value="ENTER_TEST" />
@@ -3348,6 +3357,15 @@
       </Group>
     </Group>
   </Group>
+  <Group key="Interrupt">
+    <Group key="660f9c7e-95f6-45b9-9d2d-f3916caa1cf9">
+      <Group key="CortexM3">
+        <Data key="Assigned" value="True" />
+        <Data key="Priority" value="1" />
+        <Data key="Vector" value="-1" />
+      </Group>
+    </Group>
+  </Group>
   <Group key="Pin2">
     <Group key="02f2cf2c-2c7a-49df-9246-7a3435c21be3">
       <Group key="0">
@@ -3428,7 +3446,7 @@
     <Data key="CYDEV_DEBUGGING_DPS" value="SWD_SWV" />
     <Data key="CYDEV_DEBUGGING_XRES" value="False" />
     <Data key="CYDEV_ECC_ENABLE" value="False" />
-    <Data key="CYDEV_HEAP_SIZE" value="0x80" />
+    <Data key="CYDEV_HEAP_SIZE" value="0x0200" />
     <Data key="CYDEV_INSTRUCT_CACHE_ENABLED" value="True" />
     <Data key="CYDEV_PROTECTION_ENABLE" value="False" />
     <Data key="CYDEV_STACK_SIZE" value="0x0800" />

@@ -238,7 +238,7 @@ BME280_RegisterStruct* BME280_GetLocalRegisters(void);
  * 
  * @return The temperature in degrees Celsius.
  */
-int8_t BME280_GetTemperatureCelsius(uint8_t readNow);
+double BME280_GetTemperatureCelsius(uint8_t readNow);
 
 /**
  * @brief Returns the temperature in degrees Fahrenheit.

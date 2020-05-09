@@ -258,13 +258,14 @@ void showTemperatureMain(void) {
     char buffer[32] = {0};
     
     // Populating buffer
-    sprintf(buffer, "Temperature:\n%u ", (unsigned) rhea_sensor_GetMeasurement("BME280", "temperature"));
+    sprintf(buffer, "Temperature:\n\n%.1f ", rhea_sensor_GetMeasurement("BME280", "temperature"));
     
     // Printing to display
     rhea_gfx_Clear();
     rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
     rhea_gfx_PrintSymbol(95); // Codefont_8x8_Celsius symbol
+    rhea_gfx_DrawSymbol(108, 6, 101); // Codefont_8x8 Temperature gauge symbol
     rhea_gfx_Refresh();
 }
 
@@ -295,13 +296,14 @@ void showTemperaturePeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "temperature");
     
     // Populating buffer
-    if(period == 0) sprintf(buffer, "T_period: DISABLED");
-    else            sprintf(buffer, "T_period: %u ms", (unsigned) period);
+    if(period == 0) sprintf(buffer, "T_period: \n\nDISABLED");
+    else            sprintf(buffer, "T_period: \n\n%u ms", (unsigned) period);
 
     // Printing to display
     rhea_gfx_Clear();
     rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_DrawSymbol(108, 6, 101); // Codefont_8x8 Temperature gauge symbol
     rhea_gfx_Refresh();
 }
 
@@ -330,13 +332,14 @@ void showPressureMain(void) {
     char buffer[32] = {0};
     
     // Populating buffer
-    sprintf(buffer, "Pressure:\n%u ", (unsigned) rhea_sensor_GetMeasurement("BME280", "pressure"));
+    sprintf(buffer, "Pressure:\n\n%u ", (unsigned) rhea_sensor_GetMeasurement("BME280", "pressure"));
     
     // Printing to display
     rhea_gfx_Clear();
     rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
-    rhea_gfx_PrintSymbol(98); // Codefont_8x8_Pascal symbol
+    rhea_gfx_PrintSymbol(99); // Codefont_8x8_Pascal symbol
+    rhea_gfx_DrawSymbol(108, 6, 100); // Codefont_8x8 Pressure gauge symbol
     rhea_gfx_Refresh();
 }
 
@@ -367,13 +370,14 @@ void showPressurePeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "pressure");
     
     // Populating buffer
-    if(period == 0) sprintf(buffer, "P_period: DISABLED");
-    else            sprintf(buffer, "P_period: %u ms", (unsigned) period);
+    if(period == 0) sprintf(buffer, "P_period: \n\nDISABLED");
+    else            sprintf(buffer, "P_period: \n\n%u ms", (unsigned) period);
     
     // Printing to display
     rhea_gfx_Clear();
     rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_DrawSymbol(108, 6, 100); // Codefont_8x8 Pressure gauge symbol
     rhea_gfx_Refresh();
 }
 
@@ -402,12 +406,13 @@ void showHumidityMain(void) {
     char buffer[32] = {0};
     
     // Populating buffer
-    sprintf(buffer, "Humidity:\n%u %%", (unsigned) rhea_sensor_GetMeasurement("BME280", "humidity"));
+    sprintf(buffer, "Humidity:\n\n%u %%", (unsigned) rhea_sensor_GetMeasurement("BME280", "humidity"));
     
     // Printing to display
     rhea_gfx_Clear();
     rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_DrawSymbol(108, 6, 97); // Codefont_8x8 Humidity gauge symbol
     rhea_gfx_Refresh();
 }
 
@@ -438,13 +443,14 @@ void showHumidityPeriod(void) {
     uint64_t period = rhea_sensor_GetMeasurementPeriod("BME280", "humidity");
     
     // Populating buffer
-    if(period == 0) sprintf(buffer, "H_period: DISABLED");
-    else            sprintf(buffer, "H_period: %u ms", (unsigned) period);
+    if(period == 0) sprintf(buffer, "H_period: \n\nDISABLED");
+    else            sprintf(buffer, "H_period: \n\n%u ms", (unsigned) period);
     
     // Printing to display
     rhea_gfx_Clear();
     rhea_gfx_SetCursor(0,0);
     rhea_gfx_Print(buffer);
+    rhea_gfx_DrawSymbol(108, 6, 97); // Codefont_8x8 Humidity gauge symbol
     rhea_gfx_Refresh();
 }
 

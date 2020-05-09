@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
   14:rhea\drivers\BME280/BME280.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
   15:rhea\drivers\BME280/BME280.c ****  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
   16:rhea\drivers\BME280/BME280.c ****  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 2
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 2
 
 
   17:rhea\drivers\BME280/BME280.c ****  * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
   56              		.loc 1 49 0
   57 0018 00BF     		nop
   58 001a 1037     		adds	r7, r7, #16
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 3
 
 
   59              		.cfi_def_cfa_offset 8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  108 001c 0021     		movs	r1, #0
  109 001e 1046     		mov	r0, r2
  110 0020 9847     		blx	r3
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 4
 
 
   55:rhea\drivers\BME280/BME280.c ****     
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
   66:rhea\drivers\BME280/BME280.c ****         buffer[i] = BME280_I2CController.MasterReadByte(i < byteCount - 1 ? 1 : 0);   
  152              		.loc 1 66 0 discriminator 3
  153 0066 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 5
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 5
 
 
  154 0068 0133     		adds	r3, r3, #1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  200 0004 00AF     		add	r7, sp, #0
  201              		.cfi_def_cfa_register 7
  202 0006 3A60     		str	r2, [r7]
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 6
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 6
 
 
  203 0008 1A46     		mov	r2, r3
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  244              	.L10:
   80:rhea\drivers\BME280/BME280.c ****         
  245              		.loc 1 80 0 is_stmt 0 discriminator 1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 7
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 7
 
 
  246 004c FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  290              		.loc 1 96 0
  291 0006 0023     		movs	r3, #0
  292 0008 87F82730 		strb	r3, [r7, #39]
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 8
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 8
 
 
   97:rhea\drivers\BME280/BME280.c ****     BME280_I2CReader(BME280_I2C_ADDR, BME280_ID, &ID, 1);
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  334 005c 1AB2     		sxth	r2, r3
  335 005e 7B7C     		ldrb	r3, [r7, #17]	@ zero_extendqisi2
  336 0060 1B02     		lsls	r3, r3, #8
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 9
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 9
 
 
  337 0062 1BB2     		sxth	r3, r3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  384 00b6 BB7E     		ldrb	r3, [r7, #26]	@ zero_extendqisi2
  385 00b8 1AB2     		sxth	r2, r3
  386 00ba FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 10
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 10
 
 
  387 00bc 1B02     		lsls	r3, r3, #8
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  434 0118 97F82520 		ldrb	r2, [r7, #37]	@ zero_extendqisi2
  435 011c 194B     		ldr	r3, .L15
  436 011e 83F82420 		strb	r2, [r3, #36]
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 11
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 11
 
 
  124:rhea\drivers\BME280/BME280.c ****     BME280_RegistersLocal.dig_H2 = (int16_t)  calibDataHigh[0]         | (int16_t) calibDataHigh[1]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  482              		.loc 1 132 0
  483 017c 00BF     		nop
  484 017e 2837     		adds	r7, r7, #40
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 12
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 12
 
 
  485              		.cfi_def_cfa_offset 8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  532              		@ sp needed
  533 001c 80BD     		pop	{r7, pc}
  534              		.cfi_endproc
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 13
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 13
 
 
  535              	.LFE4:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  580              		.global	BME280_WriteRegisters
  581              		.thumb
  582              		.thumb_func
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 14
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 14
 
 
  583              		.type	BME280_WriteRegisters, %function
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  629              		.cfi_def_cfa_register 7
  157:rhea\drivers\BME280/BME280.c ****     return &BME280_RegistersLocal;   
  630              		.loc 1 157 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 15
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 15
 
 
  631 0004 024B     		ldr	r3, .L26
@@ -877,7 +877,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  663              	BME280_GetTemperatureCelsius:
  664              	.LFB8:
  159:rhea\drivers\BME280/BME280.c **** 
- 160:rhea\drivers\BME280/BME280.c **** int8_t BME280_GetTemperatureCelsius(uint8_t readNow) {
+ 160:rhea\drivers\BME280/BME280.c **** double BME280_GetTemperatureCelsius(uint8_t readNow) {
  665              		.loc 1 160 0
  666              		.cfi_startproc
  667              		@ args = 0, pretend = 0, frame = 56
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  162:rhea\drivers\BME280/BME280.c ****     // Loading measurements registers from the device
  163:rhea\drivers\BME280/BME280.c ****     if(readNow) BME280_ReadRegisters();
  681              		.loc 1 163 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 16
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 16
 
 
  682 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
@@ -911,14 +911,14 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  165:rhea\drivers\BME280/BME280.c ****     // Preparing measurement register data
  166:rhea\drivers\BME280/BME280.c ****     uint32_t regData = BME280_RegistersLocal.TEMP_XLSB >> 4 | 
  688              		.loc 1 166 0 is_stmt 1
- 689 0014 664B     		ldr	r3, .L38
+ 689 0014 644B     		ldr	r3, .L38
  690 0016 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
  691 0018 1B09     		lsrs	r3, r3, #4
  692 001a DBB2     		uxtb	r3, r3
  693 001c 1A46     		mov	r2, r3
  167:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.TEMP_LSB  << 4 | 
  694              		.loc 1 167 0
- 695 001e 644B     		ldr	r3, .L38
+ 695 001e 624B     		ldr	r3, .L38
  696 0020 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
  697 0022 1B01     		lsls	r3, r3, #4
  166:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.TEMP_LSB  << 4 | 
@@ -926,7 +926,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  699 0024 1A43     		orrs	r2, r2, r3
  168:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.TEMP_MSB  << 12;
  700              		.loc 1 168 0
- 701 0026 624B     		ldr	r3, .L38
+ 701 0026 604B     		ldr	r3, .L38
  702 0028 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
  703 002a 1B03     		lsls	r3, r3, #12
  167:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.TEMP_LSB  << 4 | 
@@ -945,12 +945,12 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  176:rhea\drivers\BME280/BME280.c ****     double temperature_min = -40;
  708              		.loc 1 176 0
  709 0030 4FF00003 		mov	r3, #0
- 710 0034 5F4C     		ldr	r4, .L38+4
+ 710 0034 5D4C     		ldr	r4, .L38+4
  711 0036 C7E90834 		strd	r3, [r7, #32]
  177:rhea\drivers\BME280/BME280.c ****     double temperature_max = 85;
  712              		.loc 1 177 0
  713 003a 4FF00003 		mov	r3, #0
- 714 003e 5E4C     		ldr	r4, .L38+8
+ 714 003e 5C4C     		ldr	r4, .L38+8
  715 0040 C7E90634 		strd	r3, [r7, #24]
  178:rhea\drivers\BME280/BME280.c **** 
  179:rhea\drivers\BME280/BME280.c ****     var1 = ((double)regData) / 16384.0 - ((double)BME280_RegistersLocal.dig_T1) / 1024.0;
@@ -958,21 +958,21 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  717 0044 F86A     		ldr	r0, [r7, #44]
  718 0046 FFF7FEFF 		bl	__aeabi_ui2d
  719 004a 4FF00002 		mov	r2, #0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 17
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 17
 
 
- 720 004e 5B4B     		ldr	r3, .L38+12
+ 720 004e 594B     		ldr	r3, .L38+12
  721 0050 FFF7FEFF 		bl	__aeabi_ddiv
  722 0054 0346     		mov	r3, r0
  723 0056 0C46     		mov	r4, r1
  724 0058 2546     		mov	r5, r4
  725 005a 1C46     		mov	r4, r3
- 726 005c 544B     		ldr	r3, .L38
+ 726 005c 524B     		ldr	r3, .L38
  727 005e 9B89     		ldrh	r3, [r3, #12]
  728 0060 1846     		mov	r0, r3
  729 0062 FFF7FEFF 		bl	__aeabi_ui2d
  730 0066 4FF00002 		mov	r2, #0
- 731 006a 554B     		ldr	r3, .L38+16
+ 731 006a 534B     		ldr	r3, .L38+16
  732 006c FFF7FEFF 		bl	__aeabi_ddiv
  733 0070 0246     		mov	r2, r0
  734 0072 0B46     		mov	r3, r1
@@ -984,7 +984,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  740 0080 C7E90434 		strd	r3, [r7, #16]
  180:rhea\drivers\BME280/BME280.c ****     var1 = var1 * ((double)BME280_RegistersLocal.dig_T2);
  741              		.loc 1 180 0
- 742 0084 4A4B     		ldr	r3, .L38
+ 742 0084 484B     		ldr	r3, .L38
  743 0086 B3F90E30 		ldrsh	r3, [r3, #14]
  744 008a 1846     		mov	r0, r3
  745 008c FFF7FEFF 		bl	__aeabi_i2d
@@ -1008,17 +1008,17 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  762 00bc 0C46     		mov	r4, r1
  763 00be 2546     		mov	r5, r4
  764 00c0 1C46     		mov	r4, r3
- 765 00c2 3B4B     		ldr	r3, .L38
+ 765 00c2 394B     		ldr	r3, .L38
  766 00c4 9B89     		ldrh	r3, [r3, #12]
  767 00c6 1846     		mov	r0, r3
  768 00c8 FFF7FEFF 		bl	__aeabi_ui2d
  769 00cc 4FF00002 		mov	r2, #0
- 770 00d0 3C4B     		ldr	r3, .L38+20
+ 770 00d0 3A4B     		ldr	r3, .L38+20
  771 00d2 FFF7FEFF 		bl	__aeabi_ddiv
  772 00d6 0246     		mov	r2, r0
  773 00d8 0B46     		mov	r3, r1
  774 00da 2046     		mov	r0, r4
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 18
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 18
 
 
  775 00dc 2946     		mov	r1, r5
@@ -1035,7 +1035,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  785 00f8 0C46     		mov	r4, r1
  786 00fa 2546     		mov	r5, r4
  787 00fc 1C46     		mov	r4, r3
- 788 00fe 2C4B     		ldr	r3, .L38
+ 788 00fe 2A4B     		ldr	r3, .L38
  789 0100 B3F91030 		ldrsh	r3, [r3, #16]
  790 0104 1846     		mov	r0, r3
  791 0106 FFF7FEFF 		bl	__aeabi_i2d
@@ -1058,7 +1058,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  807 0130 2146     		mov	r1, r4
  808 0132 FFF7FEFF 		bl	__aeabi_d2iz
  809 0136 0246     		mov	r2, r0
- 810 0138 1D4B     		ldr	r3, .L38
+ 810 0138 1B4B     		ldr	r3, .L38
  811 013a C3F82D20 		str	r2, [r3, #45]	@ unaligned
  184:rhea\drivers\BME280/BME280.c ****     temperature = (var1 + var2) / 5120.0;
  812              		.loc 1 184 0
@@ -1070,7 +1070,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  818 014e 1846     		mov	r0, r3
  819 0150 2146     		mov	r1, r4
  820 0152 4FF00002 		mov	r2, #0
- 821 0156 1C4B     		ldr	r3, .L38+24
+ 821 0156 1A4B     		ldr	r3, .L38+24
  822 0158 FFF7FEFF 		bl	__aeabi_ddiv
  823 015c 0346     		mov	r3, r0
  824 015e 0C46     		mov	r4, r1
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  185:rhea\drivers\BME280/BME280.c **** 
  186:rhea\drivers\BME280/BME280.c ****     if      (temperature < temperature_min) temperature = temperature_min;
  826              		.loc 1 186 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 19
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 19
 
 
  827 0164 D7E90823 		ldrd	r2, [r7, #32]
@@ -1107,173 +1107,171 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  188:rhea\drivers\BME280/BME280.c **** 
  189:rhea\drivers\BME280/BME280.c ****     return temperature;
  849              		.loc 1 189 0 is_stmt 1
- 850 019a D7E90C01 		ldrd	r0, [r7, #48]
- 851 019e FFF7FEFF 		bl	__aeabi_d2iz
- 852 01a2 0346     		mov	r3, r0
- 853 01a4 5BB2     		sxtb	r3, r3
+ 850 019a D7E90C34 		ldrd	r3, [r7, #48]
  190:rhea\drivers\BME280/BME280.c **** }
- 854              		.loc 1 190 0
- 855 01a6 1846     		mov	r0, r3
- 856 01a8 3837     		adds	r7, r7, #56
- 857              		.cfi_def_cfa_offset 16
- 858 01aa BD46     		mov	sp, r7
- 859              		.cfi_def_cfa_register 13
- 860              		@ sp needed
- 861 01ac B0BD     		pop	{r4, r5, r7, pc}
- 862              	.L39:
- 863 01ae 00BF     		.align	2
- 864              	.L38:
- 865 01b0 10000000 		.word	BME280_RegistersLocal
- 866 01b4 000044C0 		.word	-1069285376
- 867 01b8 00405540 		.word	1079328768
- 868 01bc 0000D040 		.word	1087373312
- 869 01c0 00009040 		.word	1083179008
- 870 01c4 0000C040 		.word	1086324736
- 871 01c8 0000B440 		.word	1085538304
- 872              		.cfi_endproc
- 873              	.LFE8:
- 874              		.size	BME280_GetTemperatureCelsius, .-BME280_GetTemperatureCelsius
- 875              		.global	__aeabi_i2f
- 876              		.global	__aeabi_fmul
- 877              		.global	__aeabi_fadd
- 878              		.global	__aeabi_f2iz
- 879              		.section	.text.BME280_GetTemperatureFahrenheit,"ax",%progbits
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 20
+ 851              		.loc 1 190 0
+ 852 019e 1846     		mov	r0, r3
+ 853 01a0 2146     		mov	r1, r4
+ 854 01a2 3837     		adds	r7, r7, #56
+ 855              		.cfi_def_cfa_offset 16
+ 856 01a4 BD46     		mov	sp, r7
+ 857              		.cfi_def_cfa_register 13
+ 858              		@ sp needed
+ 859 01a6 B0BD     		pop	{r4, r5, r7, pc}
+ 860              	.L39:
+ 861              		.align	2
+ 862              	.L38:
+ 863 01a8 10000000 		.word	BME280_RegistersLocal
+ 864 01ac 000044C0 		.word	-1069285376
+ 865 01b0 00405540 		.word	1079328768
+ 866 01b4 0000D040 		.word	1087373312
+ 867 01b8 00009040 		.word	1083179008
+ 868 01bc 0000C040 		.word	1086324736
+ 869 01c0 0000B440 		.word	1085538304
+ 870              		.cfi_endproc
+ 871              	.LFE8:
+ 872              		.size	BME280_GetTemperatureCelsius, .-BME280_GetTemperatureCelsius
+ 873              		.section	.text.BME280_GetTemperatureFahrenheit,"ax",%progbits
+ 874              		.align	2
+ 875              		.global	BME280_GetTemperatureFahrenheit
+ 876              		.thumb
+ 877              		.thumb_func
+ 878              		.type	BME280_GetTemperatureFahrenheit, %function
+ 879              	BME280_GetTemperatureFahrenheit:
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 20
 
 
- 880              		.align	2
- 881              		.global	BME280_GetTemperatureFahrenheit
- 882              		.thumb
- 883              		.thumb_func
- 884              		.type	BME280_GetTemperatureFahrenheit, %function
- 885              	BME280_GetTemperatureFahrenheit:
- 886              	.LFB9:
+ 880              	.LFB9:
  191:rhea\drivers\BME280/BME280.c **** 
  192:rhea\drivers\BME280/BME280.c **** int8_t BME280_GetTemperatureFahrenheit(uint8_t readNow) {
- 887              		.loc 1 192 0
- 888              		.cfi_startproc
- 889              		@ args = 0, pretend = 0, frame = 8
- 890              		@ frame_needed = 1, uses_anonymous_args = 0
- 891 0000 80B5     		push	{r7, lr}
- 892              		.cfi_def_cfa_offset 8
- 893              		.cfi_offset 7, -8
- 894              		.cfi_offset 14, -4
- 895 0002 82B0     		sub	sp, sp, #8
- 896              		.cfi_def_cfa_offset 16
- 897 0004 00AF     		add	r7, sp, #0
- 898              		.cfi_def_cfa_register 7
- 899 0006 0346     		mov	r3, r0
- 900 0008 FB71     		strb	r3, [r7, #7]
+ 881              		.loc 1 192 0
+ 882              		.cfi_startproc
+ 883              		@ args = 0, pretend = 0, frame = 8
+ 884              		@ frame_needed = 1, uses_anonymous_args = 0
+ 885 0000 90B5     		push	{r4, r7, lr}
+ 886              		.cfi_def_cfa_offset 12
+ 887              		.cfi_offset 4, -12
+ 888              		.cfi_offset 7, -8
+ 889              		.cfi_offset 14, -4
+ 890 0002 83B0     		sub	sp, sp, #12
+ 891              		.cfi_def_cfa_offset 24
+ 892 0004 00AF     		add	r7, sp, #0
+ 893              		.cfi_def_cfa_register 7
+ 894 0006 0346     		mov	r3, r0
+ 895 0008 FB71     		strb	r3, [r7, #7]
  193:rhea\drivers\BME280/BME280.c **** 
  194:rhea\drivers\BME280/BME280.c ****     // Converting results in degrees Celsius to degrees Fahrenheit
  195:rhea\drivers\BME280/BME280.c ****     return 1.8f * BME280_GetTemperatureCelsius(readNow) + 32;
- 901              		.loc 1 195 0
- 902 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 903 000c 1846     		mov	r0, r3
- 904 000e FFF7FEFF 		bl	BME280_GetTemperatureCelsius
- 905 0012 0346     		mov	r3, r0
- 906 0014 1846     		mov	r0, r3
- 907 0016 FFF7FEFF 		bl	__aeabi_i2f
- 908 001a 0346     		mov	r3, r0
- 909 001c 0949     		ldr	r1, .L42
- 910 001e 1846     		mov	r0, r3
- 911 0020 FFF7FEFF 		bl	__aeabi_fmul
- 912 0024 0346     		mov	r3, r0
- 913 0026 4FF08441 		mov	r1, #1107296256
- 914 002a 1846     		mov	r0, r3
- 915 002c FFF7FEFF 		bl	__aeabi_fadd
- 916 0030 0346     		mov	r3, r0
- 917 0032 1846     		mov	r0, r3
- 918 0034 FFF7FEFF 		bl	__aeabi_f2iz
- 919 0038 0346     		mov	r3, r0
- 920 003a 5BB2     		sxtb	r3, r3
+ 896              		.loc 1 195 0
+ 897 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 898 000c 1846     		mov	r0, r3
+ 899 000e FFF7FEFF 		bl	BME280_GetTemperatureCelsius
+ 900 0012 0DA3     		adr	r3, .L42
+ 901 0014 D3E90023 		ldrd	r2, [r3]
+ 902 0018 FFF7FEFF 		bl	__aeabi_dmul
+ 903 001c 0346     		mov	r3, r0
+ 904 001e 0C46     		mov	r4, r1
+ 905 0020 1846     		mov	r0, r3
+ 906 0022 2146     		mov	r1, r4
+ 907 0024 4FF00002 		mov	r2, #0
+ 908 0028 094B     		ldr	r3, .L42+8
+ 909 002a FFF7FEFF 		bl	__aeabi_dadd
+ 910 002e 0346     		mov	r3, r0
+ 911 0030 0C46     		mov	r4, r1
+ 912 0032 1846     		mov	r0, r3
+ 913 0034 2146     		mov	r1, r4
+ 914 0036 FFF7FEFF 		bl	__aeabi_d2iz
+ 915 003a 0346     		mov	r3, r0
+ 916 003c 5BB2     		sxtb	r3, r3
  196:rhea\drivers\BME280/BME280.c **** }
- 921              		.loc 1 196 0
- 922 003c 1846     		mov	r0, r3
- 923 003e 0837     		adds	r7, r7, #8
- 924              		.cfi_def_cfa_offset 8
- 925 0040 BD46     		mov	sp, r7
- 926              		.cfi_def_cfa_register 13
- 927              		@ sp needed
- 928 0042 80BD     		pop	{r7, pc}
- 929              	.L43:
- 930              		.align	2
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 21
+ 917              		.loc 1 196 0
+ 918 003e 1846     		mov	r0, r3
+ 919 0040 0C37     		adds	r7, r7, #12
+ 920              		.cfi_def_cfa_offset 12
+ 921 0042 BD46     		mov	sp, r7
+ 922              		.cfi_def_cfa_register 13
+ 923              		@ sp needed
+ 924 0044 90BD     		pop	{r4, r7, pc}
+ 925              	.L43:
+ 926 0046 00BF     		.align	3
+ 927              	.L42:
+ 928 0048 000000C0 		.word	-1073741824
+ 929 004c CCCCFC3F 		.word	1073532108
+ 930 0050 00004040 		.word	1077936128
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 21
 
 
- 931              	.L42:
- 932 0044 6666E63F 		.word	1072064102
- 933              		.cfi_endproc
- 934              	.LFE9:
- 935              		.size	BME280_GetTemperatureFahrenheit, .-BME280_GetTemperatureFahrenheit
- 936              		.global	__aeabi_d2uiz
- 937              		.section	.text.BME280_GetPressure,"ax",%progbits
- 938              		.align	2
- 939              		.global	BME280_GetPressure
- 940              		.thumb
- 941              		.thumb_func
- 942              		.type	BME280_GetPressure, %function
- 943              	BME280_GetPressure:
- 944              	.LFB10:
+ 931              		.cfi_endproc
+ 932              	.LFE9:
+ 933              		.size	BME280_GetTemperatureFahrenheit, .-BME280_GetTemperatureFahrenheit
+ 934              		.global	__aeabi_d2uiz
+ 935              		.section	.text.BME280_GetPressure,"ax",%progbits
+ 936              		.align	2
+ 937              		.global	BME280_GetPressure
+ 938              		.thumb
+ 939              		.thumb_func
+ 940              		.type	BME280_GetPressure, %function
+ 941              	BME280_GetPressure:
+ 942              	.LFB10:
  197:rhea\drivers\BME280/BME280.c **** 
  198:rhea\drivers\BME280/BME280.c **** uint32_t BME280_GetPressure(uint8_t readNow) {
- 945              		.loc 1 198 0
- 946              		.cfi_startproc
- 947              		@ args = 0, pretend = 0, frame = 64
- 948              		@ frame_needed = 1, uses_anonymous_args = 0
- 949 0000 B0B5     		push	{r4, r5, r7, lr}
- 950              		.cfi_def_cfa_offset 16
- 951              		.cfi_offset 4, -16
- 952              		.cfi_offset 5, -12
- 953              		.cfi_offset 7, -8
- 954              		.cfi_offset 14, -4
- 955 0002 90B0     		sub	sp, sp, #64
- 956              		.cfi_def_cfa_offset 80
- 957 0004 00AF     		add	r7, sp, #0
- 958              		.cfi_def_cfa_register 7
- 959 0006 0346     		mov	r3, r0
- 960 0008 FB71     		strb	r3, [r7, #7]
+ 943              		.loc 1 198 0
+ 944              		.cfi_startproc
+ 945              		@ args = 0, pretend = 0, frame = 64
+ 946              		@ frame_needed = 1, uses_anonymous_args = 0
+ 947 0000 B0B5     		push	{r4, r5, r7, lr}
+ 948              		.cfi_def_cfa_offset 16
+ 949              		.cfi_offset 4, -16
+ 950              		.cfi_offset 5, -12
+ 951              		.cfi_offset 7, -8
+ 952              		.cfi_offset 14, -4
+ 953 0002 90B0     		sub	sp, sp, #64
+ 954              		.cfi_def_cfa_offset 80
+ 955 0004 00AF     		add	r7, sp, #0
+ 956              		.cfi_def_cfa_register 7
+ 957 0006 0346     		mov	r3, r0
+ 958 0008 FB71     		strb	r3, [r7, #7]
  199:rhea\drivers\BME280/BME280.c ****     
  200:rhea\drivers\BME280/BME280.c ****     // Loading measurements registers from the device
  201:rhea\drivers\BME280/BME280.c ****     if(readNow) BME280_ReadRegisters();
- 961              		.loc 1 201 0
- 962 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 963 000c 002B     		cmp	r3, #0
- 964 000e 01D0     		beq	.L45
- 965              		.loc 1 201 0 is_stmt 0 discriminator 1
- 966 0010 FFF7FEFF 		bl	BME280_ReadRegisters
- 967              	.L45:
+ 959              		.loc 1 201 0
+ 960 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 961 000c 002B     		cmp	r3, #0
+ 962 000e 01D0     		beq	.L45
+ 963              		.loc 1 201 0 is_stmt 0 discriminator 1
+ 964 0010 FFF7FEFF 		bl	BME280_ReadRegisters
+ 965              	.L45:
  202:rhea\drivers\BME280/BME280.c **** 
  203:rhea\drivers\BME280/BME280.c ****     // Preparing measurement register data
  204:rhea\drivers\BME280/BME280.c ****     uint32_t regData = BME280_RegistersLocal.PRESS_XLSB >> 4 | 
- 968              		.loc 1 204 0 is_stmt 1
- 969 0014 CA4B     		ldr	r3, .L54+24
- 970 0016 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 971 0018 1B09     		lsrs	r3, r3, #4
- 972 001a DBB2     		uxtb	r3, r3
- 973 001c 1A46     		mov	r2, r3
+ 966              		.loc 1 204 0 is_stmt 1
+ 967 0014 CA4B     		ldr	r3, .L54+24
+ 968 0016 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 969 0018 1B09     		lsrs	r3, r3, #4
+ 970 001a DBB2     		uxtb	r3, r3
+ 971 001c 1A46     		mov	r2, r3
  205:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.PRESS_LSB  << 4 | 
- 974              		.loc 1 205 0
- 975 001e C84B     		ldr	r3, .L54+24
- 976 0020 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 977 0022 1B01     		lsls	r3, r3, #4
+ 972              		.loc 1 205 0
+ 973 001e C84B     		ldr	r3, .L54+24
+ 974 0020 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 975 0022 1B01     		lsls	r3, r3, #4
  204:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.PRESS_LSB  << 4 | 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 22
+ 976              		.loc 1 204 0
+ 977 0024 1A43     		orrs	r2, r2, r3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 22
 
 
- 978              		.loc 1 204 0
- 979 0024 1A43     		orrs	r2, r2, r3
  206:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.PRESS_MSB  << 12;
- 980              		.loc 1 206 0
- 981 0026 C64B     		ldr	r3, .L54+24
- 982 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 983 002a 1B03     		lsls	r3, r3, #12
+ 978              		.loc 1 206 0
+ 979 0026 C64B     		ldr	r3, .L54+24
+ 980 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 981 002a 1B03     		lsls	r3, r3, #12
  205:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.PRESS_LSB  << 4 | 
- 984              		.loc 1 205 0
- 985 002c 1343     		orrs	r3, r3, r2
+ 982              		.loc 1 205 0
+ 983 002c 1343     		orrs	r3, r3, r2
  204:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.PRESS_LSB  << 4 | 
- 986              		.loc 1 204 0
- 987 002e 7B63     		str	r3, [r7, #52]
+ 984              		.loc 1 204 0
+ 985 002e 7B63     		str	r3, [r7, #52]
  207:rhea\drivers\BME280/BME280.c **** 
  208:rhea\drivers\BME280/BME280.c ****     // Compensation algorithm from Bosch Sensortech
  209:rhea\drivers\BME280/BME280.c ****     // https://github.com/BoschSensortec/BME280_driver
@@ -1283,466 +1281,466 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  213:rhea\drivers\BME280/BME280.c ****     double var3;
  214:rhea\drivers\BME280/BME280.c ****     double pressure;
  215:rhea\drivers\BME280/BME280.c ****     double pressure_min = 30000.0;
- 988              		.loc 1 215 0
- 989 0030 BDA4     		adr	r4, .L54
- 990 0032 D4E90034 		ldrd	r3, [r4]
- 991 0036 C7E90A34 		strd	r3, [r7, #40]
+ 986              		.loc 1 215 0
+ 987 0030 BDA4     		adr	r4, .L54
+ 988 0032 D4E90034 		ldrd	r3, [r4]
+ 989 0036 C7E90A34 		strd	r3, [r7, #40]
  216:rhea\drivers\BME280/BME280.c ****     double pressure_max = 110000.0;
- 992              		.loc 1 216 0
- 993 003a BDA4     		adr	r4, .L54+8
- 994 003c D4E90034 		ldrd	r3, [r4]
- 995 0040 C7E90834 		strd	r3, [r7, #32]
+ 990              		.loc 1 216 0
+ 991 003a BDA4     		adr	r4, .L54+8
+ 992 003c D4E90034 		ldrd	r3, [r4]
+ 993 0040 C7E90834 		strd	r3, [r7, #32]
  217:rhea\drivers\BME280/BME280.c **** 
  218:rhea\drivers\BME280/BME280.c ****     var1 = ((double)BME280_RegistersLocal.t_fine / 2.0) - 64000.0;
- 996              		.loc 1 218 0
- 997 0044 BE4B     		ldr	r3, .L54+24
- 998 0046 D3F82D30 		ldr	r3, [r3, #45]	@ unaligned
- 999 004a 1846     		mov	r0, r3
- 1000 004c FFF7FEFF 		bl	__aeabi_i2d
- 1001 0050 4FF00002 		mov	r2, #0
- 1002 0054 4FF08043 		mov	r3, #1073741824
- 1003 0058 FFF7FEFF 		bl	__aeabi_ddiv
- 1004 005c 0346     		mov	r3, r0
- 1005 005e 0C46     		mov	r4, r1
- 1006 0060 1846     		mov	r0, r3
- 1007 0062 2146     		mov	r1, r4
- 1008 0064 4FF00002 		mov	r2, #0
- 1009 0068 B64B     		ldr	r3, .L54+28
- 1010 006a FFF7FEFF 		bl	__aeabi_dsub
- 1011 006e 0346     		mov	r3, r0
- 1012 0070 0C46     		mov	r4, r1
- 1013 0072 C7E90634 		strd	r3, [r7, #24]
+ 994              		.loc 1 218 0
+ 995 0044 BE4B     		ldr	r3, .L54+24
+ 996 0046 D3F82D30 		ldr	r3, [r3, #45]	@ unaligned
+ 997 004a 1846     		mov	r0, r3
+ 998 004c FFF7FEFF 		bl	__aeabi_i2d
+ 999 0050 4FF00002 		mov	r2, #0
+ 1000 0054 4FF08043 		mov	r3, #1073741824
+ 1001 0058 FFF7FEFF 		bl	__aeabi_ddiv
+ 1002 005c 0346     		mov	r3, r0
+ 1003 005e 0C46     		mov	r4, r1
+ 1004 0060 1846     		mov	r0, r3
+ 1005 0062 2146     		mov	r1, r4
+ 1006 0064 4FF00002 		mov	r2, #0
+ 1007 0068 B64B     		ldr	r3, .L54+28
+ 1008 006a FFF7FEFF 		bl	__aeabi_dsub
+ 1009 006e 0346     		mov	r3, r0
+ 1010 0070 0C46     		mov	r4, r1
+ 1011 0072 C7E90634 		strd	r3, [r7, #24]
  219:rhea\drivers\BME280/BME280.c ****     var2 = var1 * var1 * ((double)BME280_RegistersLocal.dig_P6) / 32768.0;
- 1014              		.loc 1 219 0
- 1015 0076 D7E90623 		ldrd	r2, [r7, #24]
- 1016 007a D7E90601 		ldrd	r0, [r7, #24]
- 1017 007e FFF7FEFF 		bl	__aeabi_dmul
- 1018 0082 0346     		mov	r3, r0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 23
+ 1012              		.loc 1 219 0
+ 1013 0076 D7E90623 		ldrd	r2, [r7, #24]
+ 1014 007a D7E90601 		ldrd	r0, [r7, #24]
+ 1015 007e FFF7FEFF 		bl	__aeabi_dmul
+ 1016 0082 0346     		mov	r3, r0
+ 1017 0084 0C46     		mov	r4, r1
+ 1018 0086 2546     		mov	r5, r4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 23
 
 
- 1019 0084 0C46     		mov	r4, r1
- 1020 0086 2546     		mov	r5, r4
- 1021 0088 1C46     		mov	r4, r3
- 1022 008a AD4B     		ldr	r3, .L54+24
- 1023 008c B3F91C30 		ldrsh	r3, [r3, #28]
- 1024 0090 1846     		mov	r0, r3
- 1025 0092 FFF7FEFF 		bl	__aeabi_i2d
- 1026 0096 0246     		mov	r2, r0
- 1027 0098 0B46     		mov	r3, r1
- 1028 009a 2046     		mov	r0, r4
- 1029 009c 2946     		mov	r1, r5
- 1030 009e FFF7FEFF 		bl	__aeabi_dmul
- 1031 00a2 0346     		mov	r3, r0
- 1032 00a4 0C46     		mov	r4, r1
- 1033 00a6 1846     		mov	r0, r3
- 1034 00a8 2146     		mov	r1, r4
- 1035 00aa 4FF00002 		mov	r2, #0
- 1036 00ae A64B     		ldr	r3, .L54+32
- 1037 00b0 FFF7FEFF 		bl	__aeabi_ddiv
- 1038 00b4 0346     		mov	r3, r0
- 1039 00b6 0C46     		mov	r4, r1
- 1040 00b8 C7E90434 		strd	r3, [r7, #16]
+ 1019 0088 1C46     		mov	r4, r3
+ 1020 008a AD4B     		ldr	r3, .L54+24
+ 1021 008c B3F91C30 		ldrsh	r3, [r3, #28]
+ 1022 0090 1846     		mov	r0, r3
+ 1023 0092 FFF7FEFF 		bl	__aeabi_i2d
+ 1024 0096 0246     		mov	r2, r0
+ 1025 0098 0B46     		mov	r3, r1
+ 1026 009a 2046     		mov	r0, r4
+ 1027 009c 2946     		mov	r1, r5
+ 1028 009e FFF7FEFF 		bl	__aeabi_dmul
+ 1029 00a2 0346     		mov	r3, r0
+ 1030 00a4 0C46     		mov	r4, r1
+ 1031 00a6 1846     		mov	r0, r3
+ 1032 00a8 2146     		mov	r1, r4
+ 1033 00aa 4FF00002 		mov	r2, #0
+ 1034 00ae A64B     		ldr	r3, .L54+32
+ 1035 00b0 FFF7FEFF 		bl	__aeabi_ddiv
+ 1036 00b4 0346     		mov	r3, r0
+ 1037 00b6 0C46     		mov	r4, r1
+ 1038 00b8 C7E90434 		strd	r3, [r7, #16]
  220:rhea\drivers\BME280/BME280.c ****     var2 = var2 + var1 * ((double)BME280_RegistersLocal.dig_P5) * 2.0;
- 1041              		.loc 1 220 0
- 1042 00bc A04B     		ldr	r3, .L54+24
- 1043 00be B3F91A30 		ldrsh	r3, [r3, #26]
- 1044 00c2 1846     		mov	r0, r3
- 1045 00c4 FFF7FEFF 		bl	__aeabi_i2d
- 1046 00c8 D7E90623 		ldrd	r2, [r7, #24]
- 1047 00cc FFF7FEFF 		bl	__aeabi_dmul
- 1048 00d0 0346     		mov	r3, r0
- 1049 00d2 0C46     		mov	r4, r1
- 1050 00d4 1846     		mov	r0, r3
- 1051 00d6 2146     		mov	r1, r4
- 1052 00d8 0246     		mov	r2, r0
- 1053 00da 0B46     		mov	r3, r1
- 1054 00dc FFF7FEFF 		bl	__aeabi_dadd
- 1055 00e0 0346     		mov	r3, r0
- 1056 00e2 0C46     		mov	r4, r1
- 1057 00e4 1A46     		mov	r2, r3
- 1058 00e6 2346     		mov	r3, r4
- 1059 00e8 D7E90401 		ldrd	r0, [r7, #16]
- 1060 00ec FFF7FEFF 		bl	__aeabi_dadd
- 1061 00f0 0346     		mov	r3, r0
- 1062 00f2 0C46     		mov	r4, r1
- 1063 00f4 C7E90434 		strd	r3, [r7, #16]
+ 1039              		.loc 1 220 0
+ 1040 00bc A04B     		ldr	r3, .L54+24
+ 1041 00be B3F91A30 		ldrsh	r3, [r3, #26]
+ 1042 00c2 1846     		mov	r0, r3
+ 1043 00c4 FFF7FEFF 		bl	__aeabi_i2d
+ 1044 00c8 D7E90623 		ldrd	r2, [r7, #24]
+ 1045 00cc FFF7FEFF 		bl	__aeabi_dmul
+ 1046 00d0 0346     		mov	r3, r0
+ 1047 00d2 0C46     		mov	r4, r1
+ 1048 00d4 1846     		mov	r0, r3
+ 1049 00d6 2146     		mov	r1, r4
+ 1050 00d8 0246     		mov	r2, r0
+ 1051 00da 0B46     		mov	r3, r1
+ 1052 00dc FFF7FEFF 		bl	__aeabi_dadd
+ 1053 00e0 0346     		mov	r3, r0
+ 1054 00e2 0C46     		mov	r4, r1
+ 1055 00e4 1A46     		mov	r2, r3
+ 1056 00e6 2346     		mov	r3, r4
+ 1057 00e8 D7E90401 		ldrd	r0, [r7, #16]
+ 1058 00ec FFF7FEFF 		bl	__aeabi_dadd
+ 1059 00f0 0346     		mov	r3, r0
+ 1060 00f2 0C46     		mov	r4, r1
+ 1061 00f4 C7E90434 		strd	r3, [r7, #16]
  221:rhea\drivers\BME280/BME280.c ****     var2 = (var2 / 4.0) + (((double)BME280_RegistersLocal.dig_P4) * 65536.0);
- 1064              		.loc 1 221 0
- 1065 00f8 4FF00002 		mov	r2, #0
- 1066 00fc 934B     		ldr	r3, .L54+36
- 1067 00fe D7E90401 		ldrd	r0, [r7, #16]
- 1068 0102 FFF7FEFF 		bl	__aeabi_ddiv
- 1069 0106 0346     		mov	r3, r0
- 1070 0108 0C46     		mov	r4, r1
- 1071 010a 2546     		mov	r5, r4
- 1072 010c 1C46     		mov	r4, r3
- 1073 010e 8C4B     		ldr	r3, .L54+24
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 24
+ 1062              		.loc 1 221 0
+ 1063 00f8 4FF00002 		mov	r2, #0
+ 1064 00fc 934B     		ldr	r3, .L54+36
+ 1065 00fe D7E90401 		ldrd	r0, [r7, #16]
+ 1066 0102 FFF7FEFF 		bl	__aeabi_ddiv
+ 1067 0106 0346     		mov	r3, r0
+ 1068 0108 0C46     		mov	r4, r1
+ 1069 010a 2546     		mov	r5, r4
+ 1070 010c 1C46     		mov	r4, r3
+ 1071 010e 8C4B     		ldr	r3, .L54+24
+ 1072 0110 B3F91830 		ldrsh	r3, [r3, #24]
+ 1073 0114 1846     		mov	r0, r3
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 24
 
 
- 1074 0110 B3F91830 		ldrsh	r3, [r3, #24]
- 1075 0114 1846     		mov	r0, r3
- 1076 0116 FFF7FEFF 		bl	__aeabi_i2d
- 1077 011a 4FF00002 		mov	r2, #0
- 1078 011e 8C4B     		ldr	r3, .L54+40
- 1079 0120 FFF7FEFF 		bl	__aeabi_dmul
- 1080 0124 0246     		mov	r2, r0
- 1081 0126 0B46     		mov	r3, r1
- 1082 0128 2046     		mov	r0, r4
- 1083 012a 2946     		mov	r1, r5
- 1084 012c FFF7FEFF 		bl	__aeabi_dadd
- 1085 0130 0346     		mov	r3, r0
- 1086 0132 0C46     		mov	r4, r1
- 1087 0134 C7E90434 		strd	r3, [r7, #16]
+ 1074 0116 FFF7FEFF 		bl	__aeabi_i2d
+ 1075 011a 4FF00002 		mov	r2, #0
+ 1076 011e 8C4B     		ldr	r3, .L54+40
+ 1077 0120 FFF7FEFF 		bl	__aeabi_dmul
+ 1078 0124 0246     		mov	r2, r0
+ 1079 0126 0B46     		mov	r3, r1
+ 1080 0128 2046     		mov	r0, r4
+ 1081 012a 2946     		mov	r1, r5
+ 1082 012c FFF7FEFF 		bl	__aeabi_dadd
+ 1083 0130 0346     		mov	r3, r0
+ 1084 0132 0C46     		mov	r4, r1
+ 1085 0134 C7E90434 		strd	r3, [r7, #16]
  222:rhea\drivers\BME280/BME280.c ****     var3 = ((double)BME280_RegistersLocal.dig_P3) * var1 * var1 / 524288.0;
- 1088              		.loc 1 222 0
- 1089 0138 814B     		ldr	r3, .L54+24
- 1090 013a B3F91630 		ldrsh	r3, [r3, #22]
- 1091 013e 1846     		mov	r0, r3
- 1092 0140 FFF7FEFF 		bl	__aeabi_i2d
- 1093 0144 D7E90623 		ldrd	r2, [r7, #24]
- 1094 0148 FFF7FEFF 		bl	__aeabi_dmul
- 1095 014c 0346     		mov	r3, r0
- 1096 014e 0C46     		mov	r4, r1
- 1097 0150 1846     		mov	r0, r3
- 1098 0152 2146     		mov	r1, r4
- 1099 0154 D7E90623 		ldrd	r2, [r7, #24]
- 1100 0158 FFF7FEFF 		bl	__aeabi_dmul
- 1101 015c 0346     		mov	r3, r0
- 1102 015e 0C46     		mov	r4, r1
- 1103 0160 1846     		mov	r0, r3
- 1104 0162 2146     		mov	r1, r4
- 1105 0164 4FF00002 		mov	r2, #0
- 1106 0168 7A4B     		ldr	r3, .L54+44
- 1107 016a FFF7FEFF 		bl	__aeabi_ddiv
- 1108 016e 0346     		mov	r3, r0
- 1109 0170 0C46     		mov	r4, r1
- 1110 0172 C7E90234 		strd	r3, [r7, #8]
+ 1086              		.loc 1 222 0
+ 1087 0138 814B     		ldr	r3, .L54+24
+ 1088 013a B3F91630 		ldrsh	r3, [r3, #22]
+ 1089 013e 1846     		mov	r0, r3
+ 1090 0140 FFF7FEFF 		bl	__aeabi_i2d
+ 1091 0144 D7E90623 		ldrd	r2, [r7, #24]
+ 1092 0148 FFF7FEFF 		bl	__aeabi_dmul
+ 1093 014c 0346     		mov	r3, r0
+ 1094 014e 0C46     		mov	r4, r1
+ 1095 0150 1846     		mov	r0, r3
+ 1096 0152 2146     		mov	r1, r4
+ 1097 0154 D7E90623 		ldrd	r2, [r7, #24]
+ 1098 0158 FFF7FEFF 		bl	__aeabi_dmul
+ 1099 015c 0346     		mov	r3, r0
+ 1100 015e 0C46     		mov	r4, r1
+ 1101 0160 1846     		mov	r0, r3
+ 1102 0162 2146     		mov	r1, r4
+ 1103 0164 4FF00002 		mov	r2, #0
+ 1104 0168 7A4B     		ldr	r3, .L54+44
+ 1105 016a FFF7FEFF 		bl	__aeabi_ddiv
+ 1106 016e 0346     		mov	r3, r0
+ 1107 0170 0C46     		mov	r4, r1
+ 1108 0172 C7E90234 		strd	r3, [r7, #8]
  223:rhea\drivers\BME280/BME280.c ****     var1 = (var3 + ((double)BME280_RegistersLocal.dig_P2) * var1) / 524288.0;
- 1111              		.loc 1 223 0
- 1112 0176 724B     		ldr	r3, .L54+24
- 1113 0178 B3F91430 		ldrsh	r3, [r3, #20]
- 1114 017c 1846     		mov	r0, r3
- 1115 017e FFF7FEFF 		bl	__aeabi_i2d
- 1116 0182 D7E90623 		ldrd	r2, [r7, #24]
- 1117 0186 FFF7FEFF 		bl	__aeabi_dmul
- 1118 018a 0346     		mov	r3, r0
- 1119 018c 0C46     		mov	r4, r1
- 1120 018e 1846     		mov	r0, r3
- 1121 0190 2146     		mov	r1, r4
- 1122 0192 D7E90223 		ldrd	r2, [r7, #8]
- 1123 0196 FFF7FEFF 		bl	__aeabi_dadd
- 1124 019a 0346     		mov	r3, r0
- 1125 019c 0C46     		mov	r4, r1
- 1126 019e 1846     		mov	r0, r3
- 1127 01a0 2146     		mov	r1, r4
- 1128 01a2 4FF00002 		mov	r2, #0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 25
+ 1109              		.loc 1 223 0
+ 1110 0176 724B     		ldr	r3, .L54+24
+ 1111 0178 B3F91430 		ldrsh	r3, [r3, #20]
+ 1112 017c 1846     		mov	r0, r3
+ 1113 017e FFF7FEFF 		bl	__aeabi_i2d
+ 1114 0182 D7E90623 		ldrd	r2, [r7, #24]
+ 1115 0186 FFF7FEFF 		bl	__aeabi_dmul
+ 1116 018a 0346     		mov	r3, r0
+ 1117 018c 0C46     		mov	r4, r1
+ 1118 018e 1846     		mov	r0, r3
+ 1119 0190 2146     		mov	r1, r4
+ 1120 0192 D7E90223 		ldrd	r2, [r7, #8]
+ 1121 0196 FFF7FEFF 		bl	__aeabi_dadd
+ 1122 019a 0346     		mov	r3, r0
+ 1123 019c 0C46     		mov	r4, r1
+ 1124 019e 1846     		mov	r0, r3
+ 1125 01a0 2146     		mov	r1, r4
+ 1126 01a2 4FF00002 		mov	r2, #0
+ 1127 01a6 6B4B     		ldr	r3, .L54+44
+ 1128 01a8 FFF7FEFF 		bl	__aeabi_ddiv
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 25
 
 
- 1129 01a6 6B4B     		ldr	r3, .L54+44
- 1130 01a8 FFF7FEFF 		bl	__aeabi_ddiv
- 1131 01ac 0346     		mov	r3, r0
- 1132 01ae 0C46     		mov	r4, r1
- 1133 01b0 C7E90634 		strd	r3, [r7, #24]
+ 1129 01ac 0346     		mov	r3, r0
+ 1130 01ae 0C46     		mov	r4, r1
+ 1131 01b0 C7E90634 		strd	r3, [r7, #24]
  224:rhea\drivers\BME280/BME280.c ****     var1 = (1.0 + var1 / 32768.0) * ((double)BME280_RegistersLocal.dig_P1);
- 1134              		.loc 1 224 0
- 1135 01b4 4FF00002 		mov	r2, #0
- 1136 01b8 634B     		ldr	r3, .L54+32
- 1137 01ba D7E90601 		ldrd	r0, [r7, #24]
- 1138 01be FFF7FEFF 		bl	__aeabi_ddiv
- 1139 01c2 0346     		mov	r3, r0
- 1140 01c4 0C46     		mov	r4, r1
- 1141 01c6 1846     		mov	r0, r3
- 1142 01c8 2146     		mov	r1, r4
- 1143 01ca 4FF00002 		mov	r2, #0
- 1144 01ce 624B     		ldr	r3, .L54+48
- 1145 01d0 FFF7FEFF 		bl	__aeabi_dadd
- 1146 01d4 0346     		mov	r3, r0
- 1147 01d6 0C46     		mov	r4, r1
- 1148 01d8 2546     		mov	r5, r4
- 1149 01da 1C46     		mov	r4, r3
- 1150 01dc 584B     		ldr	r3, .L54+24
- 1151 01de 5B8A     		ldrh	r3, [r3, #18]
- 1152 01e0 1846     		mov	r0, r3
- 1153 01e2 FFF7FEFF 		bl	__aeabi_ui2d
- 1154 01e6 0246     		mov	r2, r0
- 1155 01e8 0B46     		mov	r3, r1
- 1156 01ea 2046     		mov	r0, r4
- 1157 01ec 2946     		mov	r1, r5
- 1158 01ee FFF7FEFF 		bl	__aeabi_dmul
- 1159 01f2 0346     		mov	r3, r0
- 1160 01f4 0C46     		mov	r4, r1
- 1161 01f6 C7E90634 		strd	r3, [r7, #24]
+ 1132              		.loc 1 224 0
+ 1133 01b4 4FF00002 		mov	r2, #0
+ 1134 01b8 634B     		ldr	r3, .L54+32
+ 1135 01ba D7E90601 		ldrd	r0, [r7, #24]
+ 1136 01be FFF7FEFF 		bl	__aeabi_ddiv
+ 1137 01c2 0346     		mov	r3, r0
+ 1138 01c4 0C46     		mov	r4, r1
+ 1139 01c6 1846     		mov	r0, r3
+ 1140 01c8 2146     		mov	r1, r4
+ 1141 01ca 4FF00002 		mov	r2, #0
+ 1142 01ce 624B     		ldr	r3, .L54+48
+ 1143 01d0 FFF7FEFF 		bl	__aeabi_dadd
+ 1144 01d4 0346     		mov	r3, r0
+ 1145 01d6 0C46     		mov	r4, r1
+ 1146 01d8 2546     		mov	r5, r4
+ 1147 01da 1C46     		mov	r4, r3
+ 1148 01dc 584B     		ldr	r3, .L54+24
+ 1149 01de 5B8A     		ldrh	r3, [r3, #18]
+ 1150 01e0 1846     		mov	r0, r3
+ 1151 01e2 FFF7FEFF 		bl	__aeabi_ui2d
+ 1152 01e6 0246     		mov	r2, r0
+ 1153 01e8 0B46     		mov	r3, r1
+ 1154 01ea 2046     		mov	r0, r4
+ 1155 01ec 2946     		mov	r1, r5
+ 1156 01ee FFF7FEFF 		bl	__aeabi_dmul
+ 1157 01f2 0346     		mov	r3, r0
+ 1158 01f4 0C46     		mov	r4, r1
+ 1159 01f6 C7E90634 		strd	r3, [r7, #24]
  225:rhea\drivers\BME280/BME280.c **** 
  226:rhea\drivers\BME280/BME280.c ****     pressure = 1048576.0 - (double) regData;
- 1162              		.loc 1 226 0
- 1163 01fa 786B     		ldr	r0, [r7, #52]
- 1164 01fc FFF7FEFF 		bl	__aeabi_ui2d
- 1165 0200 0346     		mov	r3, r0
- 1166 0202 0C46     		mov	r4, r1
- 1167 0204 1A46     		mov	r2, r3
- 1168 0206 2346     		mov	r3, r4
- 1169 0208 4FF00000 		mov	r0, #0
- 1170 020c 5349     		ldr	r1, .L54+52
- 1171 020e FFF7FEFF 		bl	__aeabi_dsub
- 1172 0212 0346     		mov	r3, r0
- 1173 0214 0C46     		mov	r4, r1
- 1174 0216 C7E90E34 		strd	r3, [r7, #56]
+ 1160              		.loc 1 226 0
+ 1161 01fa 786B     		ldr	r0, [r7, #52]
+ 1162 01fc FFF7FEFF 		bl	__aeabi_ui2d
+ 1163 0200 0346     		mov	r3, r0
+ 1164 0202 0C46     		mov	r4, r1
+ 1165 0204 1A46     		mov	r2, r3
+ 1166 0206 2346     		mov	r3, r4
+ 1167 0208 4FF00000 		mov	r0, #0
+ 1168 020c 5349     		ldr	r1, .L54+52
+ 1169 020e FFF7FEFF 		bl	__aeabi_dsub
+ 1170 0212 0346     		mov	r3, r0
+ 1171 0214 0C46     		mov	r4, r1
+ 1172 0216 C7E90E34 		strd	r3, [r7, #56]
  227:rhea\drivers\BME280/BME280.c ****     pressure = (pressure - (var2 / 4096.0)) * 6250.0 / var1;
- 1175              		.loc 1 227 0
- 1176 021a 4FF00002 		mov	r2, #0
- 1177 021e 504B     		ldr	r3, .L54+56
- 1178 0220 D7E90401 		ldrd	r0, [r7, #16]
- 1179 0224 FFF7FEFF 		bl	__aeabi_ddiv
- 1180 0228 0346     		mov	r3, r0
- 1181 022a 0C46     		mov	r4, r1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 26
+ 1173              		.loc 1 227 0
+ 1174 021a 4FF00002 		mov	r2, #0
+ 1175 021e 504B     		ldr	r3, .L54+56
+ 1176 0220 D7E90401 		ldrd	r0, [r7, #16]
+ 1177 0224 FFF7FEFF 		bl	__aeabi_ddiv
+ 1178 0228 0346     		mov	r3, r0
+ 1179 022a 0C46     		mov	r4, r1
+ 1180 022c 1A46     		mov	r2, r3
+ 1181 022e 2346     		mov	r3, r4
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 26
 
 
- 1182 022c 1A46     		mov	r2, r3
- 1183 022e 2346     		mov	r3, r4
- 1184 0230 D7E90E01 		ldrd	r0, [r7, #56]
- 1185 0234 FFF7FEFF 		bl	__aeabi_dsub
- 1186 0238 0346     		mov	r3, r0
- 1187 023a 0C46     		mov	r4, r1
- 1188 023c 1846     		mov	r0, r3
- 1189 023e 2146     		mov	r1, r4
- 1190 0240 3DA3     		adr	r3, .L54+16
- 1191 0242 D3E90023 		ldrd	r2, [r3]
- 1192 0246 FFF7FEFF 		bl	__aeabi_dmul
- 1193 024a 0346     		mov	r3, r0
- 1194 024c 0C46     		mov	r4, r1
- 1195 024e 1846     		mov	r0, r3
- 1196 0250 2146     		mov	r1, r4
- 1197 0252 D7E90623 		ldrd	r2, [r7, #24]
- 1198 0256 FFF7FEFF 		bl	__aeabi_ddiv
- 1199 025a 0346     		mov	r3, r0
- 1200 025c 0C46     		mov	r4, r1
- 1201 025e C7E90E34 		strd	r3, [r7, #56]
+ 1182 0230 D7E90E01 		ldrd	r0, [r7, #56]
+ 1183 0234 FFF7FEFF 		bl	__aeabi_dsub
+ 1184 0238 0346     		mov	r3, r0
+ 1185 023a 0C46     		mov	r4, r1
+ 1186 023c 1846     		mov	r0, r3
+ 1187 023e 2146     		mov	r1, r4
+ 1188 0240 3DA3     		adr	r3, .L54+16
+ 1189 0242 D3E90023 		ldrd	r2, [r3]
+ 1190 0246 FFF7FEFF 		bl	__aeabi_dmul
+ 1191 024a 0346     		mov	r3, r0
+ 1192 024c 0C46     		mov	r4, r1
+ 1193 024e 1846     		mov	r0, r3
+ 1194 0250 2146     		mov	r1, r4
+ 1195 0252 D7E90623 		ldrd	r2, [r7, #24]
+ 1196 0256 FFF7FEFF 		bl	__aeabi_ddiv
+ 1197 025a 0346     		mov	r3, r0
+ 1198 025c 0C46     		mov	r4, r1
+ 1199 025e C7E90E34 		strd	r3, [r7, #56]
  228:rhea\drivers\BME280/BME280.c ****     var1 = ((double)BME280_RegistersLocal.dig_P9) * pressure * pressure / 2147483648.0;
- 1202              		.loc 1 228 0
- 1203 0262 374B     		ldr	r3, .L54+24
- 1204 0264 B3F92230 		ldrsh	r3, [r3, #34]
- 1205 0268 1846     		mov	r0, r3
- 1206 026a FFF7FEFF 		bl	__aeabi_i2d
- 1207 026e D7E90E23 		ldrd	r2, [r7, #56]
- 1208 0272 FFF7FEFF 		bl	__aeabi_dmul
- 1209 0276 0346     		mov	r3, r0
- 1210 0278 0C46     		mov	r4, r1
- 1211 027a 1846     		mov	r0, r3
- 1212 027c 2146     		mov	r1, r4
- 1213 027e D7E90E23 		ldrd	r2, [r7, #56]
- 1214 0282 FFF7FEFF 		bl	__aeabi_dmul
- 1215 0286 0346     		mov	r3, r0
- 1216 0288 0C46     		mov	r4, r1
- 1217 028a 1846     		mov	r0, r3
- 1218 028c 2146     		mov	r1, r4
- 1219 028e 4FF00002 		mov	r2, #0
- 1220 0292 344B     		ldr	r3, .L54+60
- 1221 0294 FFF7FEFF 		bl	__aeabi_ddiv
- 1222 0298 0346     		mov	r3, r0
- 1223 029a 0C46     		mov	r4, r1
- 1224 029c C7E90634 		strd	r3, [r7, #24]
+ 1200              		.loc 1 228 0
+ 1201 0262 374B     		ldr	r3, .L54+24
+ 1202 0264 B3F92230 		ldrsh	r3, [r3, #34]
+ 1203 0268 1846     		mov	r0, r3
+ 1204 026a FFF7FEFF 		bl	__aeabi_i2d
+ 1205 026e D7E90E23 		ldrd	r2, [r7, #56]
+ 1206 0272 FFF7FEFF 		bl	__aeabi_dmul
+ 1207 0276 0346     		mov	r3, r0
+ 1208 0278 0C46     		mov	r4, r1
+ 1209 027a 1846     		mov	r0, r3
+ 1210 027c 2146     		mov	r1, r4
+ 1211 027e D7E90E23 		ldrd	r2, [r7, #56]
+ 1212 0282 FFF7FEFF 		bl	__aeabi_dmul
+ 1213 0286 0346     		mov	r3, r0
+ 1214 0288 0C46     		mov	r4, r1
+ 1215 028a 1846     		mov	r0, r3
+ 1216 028c 2146     		mov	r1, r4
+ 1217 028e 4FF00002 		mov	r2, #0
+ 1218 0292 344B     		ldr	r3, .L54+60
+ 1219 0294 FFF7FEFF 		bl	__aeabi_ddiv
+ 1220 0298 0346     		mov	r3, r0
+ 1221 029a 0C46     		mov	r4, r1
+ 1222 029c C7E90634 		strd	r3, [r7, #24]
  229:rhea\drivers\BME280/BME280.c ****     var2 = pressure * ((double)BME280_RegistersLocal.dig_P8) / 32768.0;
- 1225              		.loc 1 229 0
- 1226 02a0 274B     		ldr	r3, .L54+24
- 1227 02a2 B3F92030 		ldrsh	r3, [r3, #32]
- 1228 02a6 1846     		mov	r0, r3
- 1229 02a8 FFF7FEFF 		bl	__aeabi_i2d
- 1230 02ac D7E90E23 		ldrd	r2, [r7, #56]
- 1231 02b0 FFF7FEFF 		bl	__aeabi_dmul
- 1232 02b4 0346     		mov	r3, r0
- 1233 02b6 0C46     		mov	r4, r1
- 1234 02b8 1846     		mov	r0, r3
- 1235 02ba 2146     		mov	r1, r4
- 1236 02bc 4FF00002 		mov	r2, #0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 27
+ 1223              		.loc 1 229 0
+ 1224 02a0 274B     		ldr	r3, .L54+24
+ 1225 02a2 B3F92030 		ldrsh	r3, [r3, #32]
+ 1226 02a6 1846     		mov	r0, r3
+ 1227 02a8 FFF7FEFF 		bl	__aeabi_i2d
+ 1228 02ac D7E90E23 		ldrd	r2, [r7, #56]
+ 1229 02b0 FFF7FEFF 		bl	__aeabi_dmul
+ 1230 02b4 0346     		mov	r3, r0
+ 1231 02b6 0C46     		mov	r4, r1
+ 1232 02b8 1846     		mov	r0, r3
+ 1233 02ba 2146     		mov	r1, r4
+ 1234 02bc 4FF00002 		mov	r2, #0
+ 1235 02c0 214B     		ldr	r3, .L54+32
+ 1236 02c2 FFF7FEFF 		bl	__aeabi_ddiv
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 27
 
 
- 1237 02c0 214B     		ldr	r3, .L54+32
- 1238 02c2 FFF7FEFF 		bl	__aeabi_ddiv
- 1239 02c6 0346     		mov	r3, r0
- 1240 02c8 0C46     		mov	r4, r1
- 1241 02ca C7E90434 		strd	r3, [r7, #16]
+ 1237 02c6 0346     		mov	r3, r0
+ 1238 02c8 0C46     		mov	r4, r1
+ 1239 02ca C7E90434 		strd	r3, [r7, #16]
  230:rhea\drivers\BME280/BME280.c ****     pressure = pressure + (var1 + var2 + ((double)BME280_RegistersLocal.dig_P7)) / 16.0;
- 1242              		.loc 1 230 0
- 1243 02ce D7E90423 		ldrd	r2, [r7, #16]
- 1244 02d2 D7E90601 		ldrd	r0, [r7, #24]
- 1245 02d6 FFF7FEFF 		bl	__aeabi_dadd
- 1246 02da 0346     		mov	r3, r0
- 1247 02dc 0C46     		mov	r4, r1
- 1248 02de 2546     		mov	r5, r4
- 1249 02e0 1C46     		mov	r4, r3
- 1250 02e2 174B     		ldr	r3, .L54+24
- 1251 02e4 B3F91E30 		ldrsh	r3, [r3, #30]
- 1252 02e8 1846     		mov	r0, r3
- 1253 02ea FFF7FEFF 		bl	__aeabi_i2d
- 1254 02ee 0246     		mov	r2, r0
- 1255 02f0 0B46     		mov	r3, r1
- 1256 02f2 2046     		mov	r0, r4
- 1257 02f4 2946     		mov	r1, r5
- 1258 02f6 FFF7FEFF 		bl	__aeabi_dadd
- 1259 02fa 0346     		mov	r3, r0
- 1260 02fc 0C46     		mov	r4, r1
- 1261 02fe 1846     		mov	r0, r3
- 1262 0300 2146     		mov	r1, r4
- 1263 0302 4FF00002 		mov	r2, #0
- 1264 0306 184B     		ldr	r3, .L54+64
- 1265 0308 FFF7FEFF 		bl	__aeabi_ddiv
- 1266 030c 0346     		mov	r3, r0
- 1267 030e 0C46     		mov	r4, r1
- 1268 0310 1A46     		mov	r2, r3
- 1269 0312 2346     		mov	r3, r4
- 1270 0314 D7E90E01 		ldrd	r0, [r7, #56]
- 1271 0318 FFF7FEFF 		bl	__aeabi_dadd
- 1272 031c 0346     		mov	r3, r0
- 1273 031e 0C46     		mov	r4, r1
- 1274 0320 C7E90E34 		strd	r3, [r7, #56]
- 1275 0324 22E0     		b	.L55
- 1276              	.L56:
- 1277 0326 00BF     		.align	3
- 1278              	.L54:
- 1279 0328 00000000 		.word	0
- 1280 032c 004CDD40 		.word	1088244736
- 1281 0330 00000000 		.word	0
- 1282 0334 00DBFA40 		.word	1090181888
- 1283 0338 00000000 		.word	0
- 1284 033c 006AB840 		.word	1085827584
- 1285 0340 10000000 		.word	BME280_RegistersLocal
- 1286 0344 0040EF40 		.word	1089421312
- 1287 0348 0000E040 		.word	1088421888
- 1288 034c 00001040 		.word	1074790400
- 1289 0350 0000F040 		.word	1089470464
- 1290 0354 00002041 		.word	1092616192
- 1291 0358 0000F03F 		.word	1072693248
- 1292 035c 00003041 		.word	1093664768
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 28
+ 1240              		.loc 1 230 0
+ 1241 02ce D7E90423 		ldrd	r2, [r7, #16]
+ 1242 02d2 D7E90601 		ldrd	r0, [r7, #24]
+ 1243 02d6 FFF7FEFF 		bl	__aeabi_dadd
+ 1244 02da 0346     		mov	r3, r0
+ 1245 02dc 0C46     		mov	r4, r1
+ 1246 02de 2546     		mov	r5, r4
+ 1247 02e0 1C46     		mov	r4, r3
+ 1248 02e2 174B     		ldr	r3, .L54+24
+ 1249 02e4 B3F91E30 		ldrsh	r3, [r3, #30]
+ 1250 02e8 1846     		mov	r0, r3
+ 1251 02ea FFF7FEFF 		bl	__aeabi_i2d
+ 1252 02ee 0246     		mov	r2, r0
+ 1253 02f0 0B46     		mov	r3, r1
+ 1254 02f2 2046     		mov	r0, r4
+ 1255 02f4 2946     		mov	r1, r5
+ 1256 02f6 FFF7FEFF 		bl	__aeabi_dadd
+ 1257 02fa 0346     		mov	r3, r0
+ 1258 02fc 0C46     		mov	r4, r1
+ 1259 02fe 1846     		mov	r0, r3
+ 1260 0300 2146     		mov	r1, r4
+ 1261 0302 4FF00002 		mov	r2, #0
+ 1262 0306 184B     		ldr	r3, .L54+64
+ 1263 0308 FFF7FEFF 		bl	__aeabi_ddiv
+ 1264 030c 0346     		mov	r3, r0
+ 1265 030e 0C46     		mov	r4, r1
+ 1266 0310 1A46     		mov	r2, r3
+ 1267 0312 2346     		mov	r3, r4
+ 1268 0314 D7E90E01 		ldrd	r0, [r7, #56]
+ 1269 0318 FFF7FEFF 		bl	__aeabi_dadd
+ 1270 031c 0346     		mov	r3, r0
+ 1271 031e 0C46     		mov	r4, r1
+ 1272 0320 C7E90E34 		strd	r3, [r7, #56]
+ 1273 0324 22E0     		b	.L55
+ 1274              	.L56:
+ 1275 0326 00BF     		.align	3
+ 1276              	.L54:
+ 1277 0328 00000000 		.word	0
+ 1278 032c 004CDD40 		.word	1088244736
+ 1279 0330 00000000 		.word	0
+ 1280 0334 00DBFA40 		.word	1090181888
+ 1281 0338 00000000 		.word	0
+ 1282 033c 006AB840 		.word	1085827584
+ 1283 0340 10000000 		.word	BME280_RegistersLocal
+ 1284 0344 0040EF40 		.word	1089421312
+ 1285 0348 0000E040 		.word	1088421888
+ 1286 034c 00001040 		.word	1074790400
+ 1287 0350 0000F040 		.word	1089470464
+ 1288 0354 00002041 		.word	1092616192
+ 1289 0358 0000F03F 		.word	1072693248
+ 1290 035c 00003041 		.word	1093664768
+ 1291 0360 0000B040 		.word	1085276160
+ 1292 0364 0000E041 		.word	1105199104
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 28
 
 
- 1293 0360 0000B040 		.word	1085276160
- 1294 0364 0000E041 		.word	1105199104
- 1295 0368 00003040 		.word	1076887552
- 1296              	.L55:
+ 1293 0368 00003040 		.word	1076887552
+ 1294              	.L55:
  231:rhea\drivers\BME280/BME280.c **** 
  232:rhea\drivers\BME280/BME280.c ****     if      (pressure < pressure_min) pressure = pressure_min;
- 1297              		.loc 1 232 0
- 1298 036c D7E90A23 		ldrd	r2, [r7, #40]
- 1299 0370 D7E90E01 		ldrd	r0, [r7, #56]
- 1300 0374 FFF7FEFF 		bl	__aeabi_dcmplt
- 1301 0378 0346     		mov	r3, r0
- 1302 037a 002B     		cmp	r3, #0
- 1303 037c 04D0     		beq	.L53
- 1304              		.loc 1 232 0 is_stmt 0 discriminator 1
- 1305 037e D7E90A34 		ldrd	r3, [r7, #40]
- 1306 0382 C7E90E34 		strd	r3, [r7, #56]
- 1307 0386 0CE0     		b	.L48
- 1308              	.L53:
+ 1295              		.loc 1 232 0
+ 1296 036c D7E90A23 		ldrd	r2, [r7, #40]
+ 1297 0370 D7E90E01 		ldrd	r0, [r7, #56]
+ 1298 0374 FFF7FEFF 		bl	__aeabi_dcmplt
+ 1299 0378 0346     		mov	r3, r0
+ 1300 037a 002B     		cmp	r3, #0
+ 1301 037c 04D0     		beq	.L53
+ 1302              		.loc 1 232 0 is_stmt 0 discriminator 1
+ 1303 037e D7E90A34 		ldrd	r3, [r7, #40]
+ 1304 0382 C7E90E34 		strd	r3, [r7, #56]
+ 1305 0386 0CE0     		b	.L48
+ 1306              	.L53:
  233:rhea\drivers\BME280/BME280.c ****     else if (pressure > pressure_max) pressure = pressure_max;
- 1309              		.loc 1 233 0 is_stmt 1
- 1310 0388 D7E90823 		ldrd	r2, [r7, #32]
- 1311 038c D7E90E01 		ldrd	r0, [r7, #56]
- 1312 0390 FFF7FEFF 		bl	__aeabi_dcmpgt
- 1313 0394 0346     		mov	r3, r0
- 1314 0396 002B     		cmp	r3, #0
- 1315 0398 03D0     		beq	.L48
- 1316              		.loc 1 233 0 is_stmt 0 discriminator 1
- 1317 039a D7E90834 		ldrd	r3, [r7, #32]
- 1318 039e C7E90E34 		strd	r3, [r7, #56]
- 1319              	.L48:
+ 1307              		.loc 1 233 0 is_stmt 1
+ 1308 0388 D7E90823 		ldrd	r2, [r7, #32]
+ 1309 038c D7E90E01 		ldrd	r0, [r7, #56]
+ 1310 0390 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 1311 0394 0346     		mov	r3, r0
+ 1312 0396 002B     		cmp	r3, #0
+ 1313 0398 03D0     		beq	.L48
+ 1314              		.loc 1 233 0 is_stmt 0 discriminator 1
+ 1315 039a D7E90834 		ldrd	r3, [r7, #32]
+ 1316 039e C7E90E34 		strd	r3, [r7, #56]
+ 1317              	.L48:
  234:rhea\drivers\BME280/BME280.c **** 
  235:rhea\drivers\BME280/BME280.c ****     return pressure;
- 1320              		.loc 1 235 0 is_stmt 1
- 1321 03a2 D7E90E01 		ldrd	r0, [r7, #56]
- 1322 03a6 FFF7FEFF 		bl	__aeabi_d2uiz
- 1323 03aa 0346     		mov	r3, r0
+ 1318              		.loc 1 235 0 is_stmt 1
+ 1319 03a2 D7E90E01 		ldrd	r0, [r7, #56]
+ 1320 03a6 FFF7FEFF 		bl	__aeabi_d2uiz
+ 1321 03aa 0346     		mov	r3, r0
  236:rhea\drivers\BME280/BME280.c **** }
- 1324              		.loc 1 236 0
- 1325 03ac 1846     		mov	r0, r3
- 1326 03ae 4037     		adds	r7, r7, #64
- 1327              		.cfi_def_cfa_offset 16
- 1328 03b0 BD46     		mov	sp, r7
- 1329              		.cfi_def_cfa_register 13
- 1330              		@ sp needed
- 1331 03b2 B0BD     		pop	{r4, r5, r7, pc}
- 1332              		.cfi_endproc
- 1333              	.LFE10:
- 1334              		.size	BME280_GetPressure, .-BME280_GetPressure
- 1335              		.section	.text.BME280_GetHumidity,"ax",%progbits
- 1336              		.align	2
- 1337              		.global	BME280_GetHumidity
- 1338              		.thumb
- 1339              		.thumb_func
- 1340              		.type	BME280_GetHumidity, %function
- 1341              	BME280_GetHumidity:
- 1342              	.LFB11:
+ 1322              		.loc 1 236 0
+ 1323 03ac 1846     		mov	r0, r3
+ 1324 03ae 4037     		adds	r7, r7, #64
+ 1325              		.cfi_def_cfa_offset 16
+ 1326 03b0 BD46     		mov	sp, r7
+ 1327              		.cfi_def_cfa_register 13
+ 1328              		@ sp needed
+ 1329 03b2 B0BD     		pop	{r4, r5, r7, pc}
+ 1330              		.cfi_endproc
+ 1331              	.LFE10:
+ 1332              		.size	BME280_GetPressure, .-BME280_GetPressure
+ 1333              		.section	.text.BME280_GetHumidity,"ax",%progbits
+ 1334              		.align	2
+ 1335              		.global	BME280_GetHumidity
+ 1336              		.thumb
+ 1337              		.thumb_func
+ 1338              		.type	BME280_GetHumidity, %function
+ 1339              	BME280_GetHumidity:
+ 1340              	.LFB11:
  237:rhea\drivers\BME280/BME280.c **** 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 29
-
-
  238:rhea\drivers\BME280/BME280.c **** uint8_t BME280_GetHumidity(uint8_t readNow) {
- 1343              		.loc 1 238 0
- 1344              		.cfi_startproc
- 1345              		@ args = 0, pretend = 0, frame = 88
- 1346              		@ frame_needed = 1, uses_anonymous_args = 0
- 1347 0000 B0B5     		push	{r4, r5, r7, lr}
- 1348              		.cfi_def_cfa_offset 16
- 1349              		.cfi_offset 4, -16
- 1350              		.cfi_offset 5, -12
- 1351              		.cfi_offset 7, -8
- 1352              		.cfi_offset 14, -4
- 1353 0002 96B0     		sub	sp, sp, #88
- 1354              		.cfi_def_cfa_offset 104
- 1355 0004 00AF     		add	r7, sp, #0
- 1356              		.cfi_def_cfa_register 7
- 1357 0006 0346     		mov	r3, r0
- 1358 0008 FB71     		strb	r3, [r7, #7]
+ 1341              		.loc 1 238 0
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 29
+
+
+ 1342              		.cfi_startproc
+ 1343              		@ args = 0, pretend = 0, frame = 88
+ 1344              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1345 0000 B0B5     		push	{r4, r5, r7, lr}
+ 1346              		.cfi_def_cfa_offset 16
+ 1347              		.cfi_offset 4, -16
+ 1348              		.cfi_offset 5, -12
+ 1349              		.cfi_offset 7, -8
+ 1350              		.cfi_offset 14, -4
+ 1351 0002 96B0     		sub	sp, sp, #88
+ 1352              		.cfi_def_cfa_offset 104
+ 1353 0004 00AF     		add	r7, sp, #0
+ 1354              		.cfi_def_cfa_register 7
+ 1355 0006 0346     		mov	r3, r0
+ 1356 0008 FB71     		strb	r3, [r7, #7]
  239:rhea\drivers\BME280/BME280.c ****     
  240:rhea\drivers\BME280/BME280.c ****     // Loading measurements registers from the device
  241:rhea\drivers\BME280/BME280.c ****     if(readNow) BME280_ReadRegisters();
- 1359              		.loc 1 241 0
- 1360 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
- 1361 000c 002B     		cmp	r3, #0
- 1362 000e 01D0     		beq	.L58
- 1363              		.loc 1 241 0 is_stmt 0 discriminator 1
- 1364 0010 FFF7FEFF 		bl	BME280_ReadRegisters
- 1365              	.L58:
+ 1357              		.loc 1 241 0
+ 1358 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1359 000c 002B     		cmp	r3, #0
+ 1360 000e 01D0     		beq	.L58
+ 1361              		.loc 1 241 0 is_stmt 0 discriminator 1
+ 1362 0010 FFF7FEFF 		bl	BME280_ReadRegisters
+ 1363              	.L58:
  242:rhea\drivers\BME280/BME280.c **** 
  243:rhea\drivers\BME280/BME280.c ****     // Preparing measurement register data
  244:rhea\drivers\BME280/BME280.c ****     uint32_t regData = BME280_RegistersLocal.HUM_LSB | 
- 1366              		.loc 1 244 0 is_stmt 1
- 1367 0014 8B4B     		ldr	r3, .L67
- 1368 0016 DB79     		ldrb	r3, [r3, #7]	@ zero_extendqisi2
- 1369 0018 1A46     		mov	r2, r3
+ 1364              		.loc 1 244 0 is_stmt 1
+ 1365 0014 8B4B     		ldr	r3, .L67
+ 1366 0016 DB79     		ldrb	r3, [r3, #7]	@ zero_extendqisi2
+ 1367 0018 1A46     		mov	r2, r3
  245:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.HUM_MSB << 8;
- 1370              		.loc 1 245 0
- 1371 001a 8A4B     		ldr	r3, .L67
- 1372 001c 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
- 1373 001e 1B02     		lsls	r3, r3, #8
+ 1368              		.loc 1 245 0
+ 1369 001a 8A4B     		ldr	r3, .L67
+ 1370 001c 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 1371 001e 1B02     		lsls	r3, r3, #8
  244:rhea\drivers\BME280/BME280.c ****                        BME280_RegistersLocal.HUM_MSB << 8;
- 1374              		.loc 1 244 0
- 1375 0020 1343     		orrs	r3, r3, r2
- 1376 0022 FB64     		str	r3, [r7, #76]
+ 1372              		.loc 1 244 0
+ 1373 0020 1343     		orrs	r3, r3, r2
+ 1374 0022 FB64     		str	r3, [r7, #76]
  246:rhea\drivers\BME280/BME280.c **** 
  247:rhea\drivers\BME280/BME280.c ****     // Compensation algorithm from Bosch Sensortech
  248:rhea\drivers\BME280/BME280.c ****     // https://github.com/BoschSensortec/BME280_driver
  249:rhea\drivers\BME280/BME280.c **** 
  250:rhea\drivers\BME280/BME280.c ****     double humidity;
  251:rhea\drivers\BME280/BME280.c ****     double humidity_min = 0.0;
- 1377              		.loc 1 251 0
- 1378 0024 4FF00003 		mov	r3, #0
- 1379 0028 4FF00004 		mov	r4, #0
- 1380 002c C7E91034 		strd	r3, [r7, #64]
+ 1375              		.loc 1 251 0
+ 1376 0024 4FF00003 		mov	r3, #0
+ 1377 0028 4FF00004 		mov	r4, #0
+ 1378 002c C7E91034 		strd	r3, [r7, #64]
  252:rhea\drivers\BME280/BME280.c ****     double humidity_max = 100.0;
- 1381              		.loc 1 252 0
- 1382 0030 4FF00003 		mov	r3, #0
- 1383 0034 844C     		ldr	r4, .L67+4
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 30
-
-
- 1384 0036 C7E90E34 		strd	r3, [r7, #56]
+ 1379              		.loc 1 252 0
+ 1380 0030 4FF00003 		mov	r3, #0
+ 1381 0034 844C     		ldr	r4, .L67+4
+ 1382 0036 C7E90E34 		strd	r3, [r7, #56]
  253:rhea\drivers\BME280/BME280.c ****     double var1;
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 30
+
+
  254:rhea\drivers\BME280/BME280.c ****     double var2;
  255:rhea\drivers\BME280/BME280.c ****     double var3;
  256:rhea\drivers\BME280/BME280.c ****     double var4;
@@ -1750,249 +1748,251 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  258:rhea\drivers\BME280/BME280.c ****     double var6;
  259:rhea\drivers\BME280/BME280.c **** 
  260:rhea\drivers\BME280/BME280.c ****     var1 = ((double)BME280_RegistersLocal.t_fine) - 76800.0;
- 1385              		.loc 1 260 0
- 1386 003a 824B     		ldr	r3, .L67
- 1387 003c D3F82D30 		ldr	r3, [r3, #45]	@ unaligned
- 1388 0040 1846     		mov	r0, r3
- 1389 0042 FFF7FEFF 		bl	__aeabi_i2d
- 1390 0046 4FF00002 		mov	r2, #0
- 1391 004a 804B     		ldr	r3, .L67+8
- 1392 004c FFF7FEFF 		bl	__aeabi_dsub
- 1393 0050 0346     		mov	r3, r0
- 1394 0052 0C46     		mov	r4, r1
- 1395 0054 C7E90C34 		strd	r3, [r7, #48]
+ 1383              		.loc 1 260 0
+ 1384 003a 824B     		ldr	r3, .L67
+ 1385 003c D3F82D30 		ldr	r3, [r3, #45]	@ unaligned
+ 1386 0040 1846     		mov	r0, r3
+ 1387 0042 FFF7FEFF 		bl	__aeabi_i2d
+ 1388 0046 4FF00002 		mov	r2, #0
+ 1389 004a 804B     		ldr	r3, .L67+8
+ 1390 004c FFF7FEFF 		bl	__aeabi_dsub
+ 1391 0050 0346     		mov	r3, r0
+ 1392 0052 0C46     		mov	r4, r1
+ 1393 0054 C7E90C34 		strd	r3, [r7, #48]
  261:rhea\drivers\BME280/BME280.c ****     var2 = (((double)BME280_RegistersLocal.dig_H4) * 64.0 + (((double)BME280_RegistersLocal.dig_H5)
- 1396              		.loc 1 261 0
- 1397 0058 7A4B     		ldr	r3, .L67
- 1398 005a B3F92830 		ldrsh	r3, [r3, #40]
- 1399 005e 1846     		mov	r0, r3
- 1400 0060 FFF7FEFF 		bl	__aeabi_i2d
- 1401 0064 4FF00002 		mov	r2, #0
- 1402 0068 794B     		ldr	r3, .L67+12
- 1403 006a FFF7FEFF 		bl	__aeabi_dmul
- 1404 006e 0346     		mov	r3, r0
- 1405 0070 0C46     		mov	r4, r1
- 1406 0072 2546     		mov	r5, r4
- 1407 0074 1C46     		mov	r4, r3
- 1408 0076 734B     		ldr	r3, .L67
- 1409 0078 B3F92A30 		ldrsh	r3, [r3, #42]
- 1410 007c 1846     		mov	r0, r3
- 1411 007e FFF7FEFF 		bl	__aeabi_i2d
- 1412 0082 4FF00002 		mov	r2, #0
- 1413 0086 734B     		ldr	r3, .L67+16
- 1414 0088 FFF7FEFF 		bl	__aeabi_ddiv
- 1415 008c 0246     		mov	r2, r0
- 1416 008e 0B46     		mov	r3, r1
- 1417 0090 1046     		mov	r0, r2
- 1418 0092 1946     		mov	r1, r3
- 1419 0094 D7E90C23 		ldrd	r2, [r7, #48]
- 1420 0098 FFF7FEFF 		bl	__aeabi_dmul
- 1421 009c 0246     		mov	r2, r0
- 1422 009e 0B46     		mov	r3, r1
- 1423 00a0 2046     		mov	r0, r4
- 1424 00a2 2946     		mov	r1, r5
- 1425 00a4 FFF7FEFF 		bl	__aeabi_dadd
- 1426 00a8 0346     		mov	r3, r0
- 1427 00aa 0C46     		mov	r4, r1
- 1428 00ac C7E90A34 		strd	r3, [r7, #40]
+ 1394              		.loc 1 261 0
+ 1395 0058 7A4B     		ldr	r3, .L67
+ 1396 005a B3F92830 		ldrsh	r3, [r3, #40]
+ 1397 005e 1846     		mov	r0, r3
+ 1398 0060 FFF7FEFF 		bl	__aeabi_i2d
+ 1399 0064 4FF00002 		mov	r2, #0
+ 1400 0068 794B     		ldr	r3, .L67+12
+ 1401 006a FFF7FEFF 		bl	__aeabi_dmul
+ 1402 006e 0346     		mov	r3, r0
+ 1403 0070 0C46     		mov	r4, r1
+ 1404 0072 2546     		mov	r5, r4
+ 1405 0074 1C46     		mov	r4, r3
+ 1406 0076 734B     		ldr	r3, .L67
+ 1407 0078 B3F92A30 		ldrsh	r3, [r3, #42]
+ 1408 007c 1846     		mov	r0, r3
+ 1409 007e FFF7FEFF 		bl	__aeabi_i2d
+ 1410 0082 4FF00002 		mov	r2, #0
+ 1411 0086 734B     		ldr	r3, .L67+16
+ 1412 0088 FFF7FEFF 		bl	__aeabi_ddiv
+ 1413 008c 0246     		mov	r2, r0
+ 1414 008e 0B46     		mov	r3, r1
+ 1415 0090 1046     		mov	r0, r2
+ 1416 0092 1946     		mov	r1, r3
+ 1417 0094 D7E90C23 		ldrd	r2, [r7, #48]
+ 1418 0098 FFF7FEFF 		bl	__aeabi_dmul
+ 1419 009c 0246     		mov	r2, r0
+ 1420 009e 0B46     		mov	r3, r1
+ 1421 00a0 2046     		mov	r0, r4
+ 1422 00a2 2946     		mov	r1, r5
+ 1423 00a4 FFF7FEFF 		bl	__aeabi_dadd
+ 1424 00a8 0346     		mov	r3, r0
+ 1425 00aa 0C46     		mov	r4, r1
+ 1426 00ac C7E90A34 		strd	r3, [r7, #40]
  262:rhea\drivers\BME280/BME280.c ****     var3 = regData - var2;
- 1429              		.loc 1 262 0
- 1430 00b0 F86C     		ldr	r0, [r7, #76]
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 31
+ 1427              		.loc 1 262 0
+ 1428 00b0 F86C     		ldr	r0, [r7, #76]
+ 1429 00b2 FFF7FEFF 		bl	__aeabi_ui2d
+ 1430 00b6 D7E90A23 		ldrd	r2, [r7, #40]
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 31
 
 
- 1431 00b2 FFF7FEFF 		bl	__aeabi_ui2d
- 1432 00b6 D7E90A23 		ldrd	r2, [r7, #40]
- 1433 00ba FFF7FEFF 		bl	__aeabi_dsub
- 1434 00be 0346     		mov	r3, r0
- 1435 00c0 0C46     		mov	r4, r1
- 1436 00c2 C7E90834 		strd	r3, [r7, #32]
+ 1431 00ba FFF7FEFF 		bl	__aeabi_dsub
+ 1432 00be 0346     		mov	r3, r0
+ 1433 00c0 0C46     		mov	r4, r1
+ 1434 00c2 C7E90834 		strd	r3, [r7, #32]
  263:rhea\drivers\BME280/BME280.c ****     var4 = ((double)BME280_RegistersLocal.dig_H2) / 65536.0;
- 1437              		.loc 1 263 0
- 1438 00c6 5F4B     		ldr	r3, .L67
- 1439 00c8 B3F92530 		ldrsh	r3, [r3, #37]	@ unaligned
- 1440 00cc 1BB2     		sxth	r3, r3
- 1441 00ce 1846     		mov	r0, r3
- 1442 00d0 FFF7FEFF 		bl	__aeabi_i2d
- 1443 00d4 4FF00002 		mov	r2, #0
- 1444 00d8 5F4B     		ldr	r3, .L67+20
- 1445 00da FFF7FEFF 		bl	__aeabi_ddiv
- 1446 00de 0346     		mov	r3, r0
- 1447 00e0 0C46     		mov	r4, r1
- 1448 00e2 C7E90634 		strd	r3, [r7, #24]
+ 1435              		.loc 1 263 0
+ 1436 00c6 5F4B     		ldr	r3, .L67
+ 1437 00c8 B3F92530 		ldrsh	r3, [r3, #37]	@ unaligned
+ 1438 00cc 1BB2     		sxth	r3, r3
+ 1439 00ce 1846     		mov	r0, r3
+ 1440 00d0 FFF7FEFF 		bl	__aeabi_i2d
+ 1441 00d4 4FF00002 		mov	r2, #0
+ 1442 00d8 5F4B     		ldr	r3, .L67+20
+ 1443 00da FFF7FEFF 		bl	__aeabi_ddiv
+ 1444 00de 0346     		mov	r3, r0
+ 1445 00e0 0C46     		mov	r4, r1
+ 1446 00e2 C7E90634 		strd	r3, [r7, #24]
  264:rhea\drivers\BME280/BME280.c ****     var5 = (1.0 + (((double)BME280_RegistersLocal.dig_H3) / 67108864.0) * var1);
- 1449              		.loc 1 264 0
- 1450 00e6 574B     		ldr	r3, .L67
- 1451 00e8 93F82730 		ldrb	r3, [r3, #39]	@ zero_extendqisi2
- 1452 00ec 1846     		mov	r0, r3
- 1453 00ee FFF7FEFF 		bl	__aeabi_ui2d
- 1454 00f2 4FF00002 		mov	r2, #0
- 1455 00f6 594B     		ldr	r3, .L67+24
- 1456 00f8 FFF7FEFF 		bl	__aeabi_ddiv
- 1457 00fc 0346     		mov	r3, r0
- 1458 00fe 0C46     		mov	r4, r1
- 1459 0100 1846     		mov	r0, r3
- 1460 0102 2146     		mov	r1, r4
- 1461 0104 D7E90C23 		ldrd	r2, [r7, #48]
- 1462 0108 FFF7FEFF 		bl	__aeabi_dmul
- 1463 010c 0346     		mov	r3, r0
- 1464 010e 0C46     		mov	r4, r1
- 1465 0110 1846     		mov	r0, r3
- 1466 0112 2146     		mov	r1, r4
- 1467 0114 4FF00002 		mov	r2, #0
- 1468 0118 514B     		ldr	r3, .L67+28
- 1469 011a FFF7FEFF 		bl	__aeabi_dadd
- 1470 011e 0346     		mov	r3, r0
- 1471 0120 0C46     		mov	r4, r1
- 1472 0122 C7E90434 		strd	r3, [r7, #16]
+ 1447              		.loc 1 264 0
+ 1448 00e6 574B     		ldr	r3, .L67
+ 1449 00e8 93F82730 		ldrb	r3, [r3, #39]	@ zero_extendqisi2
+ 1450 00ec 1846     		mov	r0, r3
+ 1451 00ee FFF7FEFF 		bl	__aeabi_ui2d
+ 1452 00f2 4FF00002 		mov	r2, #0
+ 1453 00f6 594B     		ldr	r3, .L67+24
+ 1454 00f8 FFF7FEFF 		bl	__aeabi_ddiv
+ 1455 00fc 0346     		mov	r3, r0
+ 1456 00fe 0C46     		mov	r4, r1
+ 1457 0100 1846     		mov	r0, r3
+ 1458 0102 2146     		mov	r1, r4
+ 1459 0104 D7E90C23 		ldrd	r2, [r7, #48]
+ 1460 0108 FFF7FEFF 		bl	__aeabi_dmul
+ 1461 010c 0346     		mov	r3, r0
+ 1462 010e 0C46     		mov	r4, r1
+ 1463 0110 1846     		mov	r0, r3
+ 1464 0112 2146     		mov	r1, r4
+ 1465 0114 4FF00002 		mov	r2, #0
+ 1466 0118 514B     		ldr	r3, .L67+28
+ 1467 011a FFF7FEFF 		bl	__aeabi_dadd
+ 1468 011e 0346     		mov	r3, r0
+ 1469 0120 0C46     		mov	r4, r1
+ 1470 0122 C7E90434 		strd	r3, [r7, #16]
  265:rhea\drivers\BME280/BME280.c ****     var6 = 1.0 + (((double)BME280_RegistersLocal.dig_H6) / 67108864.0) * var1 * var5;
- 1473              		.loc 1 265 0
- 1474 0126 474B     		ldr	r3, .L67
- 1475 0128 93F92C30 		ldrsb	r3, [r3, #44]
- 1476 012c 1846     		mov	r0, r3
- 1477 012e FFF7FEFF 		bl	__aeabi_i2d
- 1478 0132 4FF00002 		mov	r2, #0
- 1479 0136 494B     		ldr	r3, .L67+24
- 1480 0138 FFF7FEFF 		bl	__aeabi_ddiv
- 1481 013c 0346     		mov	r3, r0
- 1482 013e 0C46     		mov	r4, r1
- 1483 0140 1846     		mov	r0, r3
- 1484 0142 2146     		mov	r1, r4
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 32
+ 1471              		.loc 1 265 0
+ 1472 0126 474B     		ldr	r3, .L67
+ 1473 0128 93F92C30 		ldrsb	r3, [r3, #44]
+ 1474 012c 1846     		mov	r0, r3
+ 1475 012e FFF7FEFF 		bl	__aeabi_i2d
+ 1476 0132 4FF00002 		mov	r2, #0
+ 1477 0136 494B     		ldr	r3, .L67+24
+ 1478 0138 FFF7FEFF 		bl	__aeabi_ddiv
+ 1479 013c 0346     		mov	r3, r0
+ 1480 013e 0C46     		mov	r4, r1
+ 1481 0140 1846     		mov	r0, r3
+ 1482 0142 2146     		mov	r1, r4
+ 1483 0144 D7E90C23 		ldrd	r2, [r7, #48]
+ 1484 0148 FFF7FEFF 		bl	__aeabi_dmul
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 32
 
 
- 1485 0144 D7E90C23 		ldrd	r2, [r7, #48]
- 1486 0148 FFF7FEFF 		bl	__aeabi_dmul
- 1487 014c 0346     		mov	r3, r0
- 1488 014e 0C46     		mov	r4, r1
- 1489 0150 1846     		mov	r0, r3
- 1490 0152 2146     		mov	r1, r4
- 1491 0154 D7E90423 		ldrd	r2, [r7, #16]
- 1492 0158 FFF7FEFF 		bl	__aeabi_dmul
- 1493 015c 0346     		mov	r3, r0
- 1494 015e 0C46     		mov	r4, r1
- 1495 0160 1846     		mov	r0, r3
- 1496 0162 2146     		mov	r1, r4
- 1497 0164 4FF00002 		mov	r2, #0
- 1498 0168 3D4B     		ldr	r3, .L67+28
- 1499 016a FFF7FEFF 		bl	__aeabi_dadd
- 1500 016e 0346     		mov	r3, r0
- 1501 0170 0C46     		mov	r4, r1
- 1502 0172 C7E90234 		strd	r3, [r7, #8]
+ 1485 014c 0346     		mov	r3, r0
+ 1486 014e 0C46     		mov	r4, r1
+ 1487 0150 1846     		mov	r0, r3
+ 1488 0152 2146     		mov	r1, r4
+ 1489 0154 D7E90423 		ldrd	r2, [r7, #16]
+ 1490 0158 FFF7FEFF 		bl	__aeabi_dmul
+ 1491 015c 0346     		mov	r3, r0
+ 1492 015e 0C46     		mov	r4, r1
+ 1493 0160 1846     		mov	r0, r3
+ 1494 0162 2146     		mov	r1, r4
+ 1495 0164 4FF00002 		mov	r2, #0
+ 1496 0168 3D4B     		ldr	r3, .L67+28
+ 1497 016a FFF7FEFF 		bl	__aeabi_dadd
+ 1498 016e 0346     		mov	r3, r0
+ 1499 0170 0C46     		mov	r4, r1
+ 1500 0172 C7E90234 		strd	r3, [r7, #8]
  266:rhea\drivers\BME280/BME280.c ****     var6 = var3 * var4 * (var5 * var6);
- 1503              		.loc 1 266 0
- 1504 0176 D7E90623 		ldrd	r2, [r7, #24]
- 1505 017a D7E90801 		ldrd	r0, [r7, #32]
- 1506 017e FFF7FEFF 		bl	__aeabi_dmul
- 1507 0182 0346     		mov	r3, r0
- 1508 0184 0C46     		mov	r4, r1
- 1509 0186 2546     		mov	r5, r4
- 1510 0188 1C46     		mov	r4, r3
- 1511 018a D7E90223 		ldrd	r2, [r7, #8]
- 1512 018e D7E90401 		ldrd	r0, [r7, #16]
- 1513 0192 FFF7FEFF 		bl	__aeabi_dmul
- 1514 0196 0246     		mov	r2, r0
- 1515 0198 0B46     		mov	r3, r1
- 1516 019a 2046     		mov	r0, r4
- 1517 019c 2946     		mov	r1, r5
- 1518 019e FFF7FEFF 		bl	__aeabi_dmul
- 1519 01a2 0346     		mov	r3, r0
- 1520 01a4 0C46     		mov	r4, r1
- 1521 01a6 C7E90234 		strd	r3, [r7, #8]
+ 1501              		.loc 1 266 0
+ 1502 0176 D7E90623 		ldrd	r2, [r7, #24]
+ 1503 017a D7E90801 		ldrd	r0, [r7, #32]
+ 1504 017e FFF7FEFF 		bl	__aeabi_dmul
+ 1505 0182 0346     		mov	r3, r0
+ 1506 0184 0C46     		mov	r4, r1
+ 1507 0186 2546     		mov	r5, r4
+ 1508 0188 1C46     		mov	r4, r3
+ 1509 018a D7E90223 		ldrd	r2, [r7, #8]
+ 1510 018e D7E90401 		ldrd	r0, [r7, #16]
+ 1511 0192 FFF7FEFF 		bl	__aeabi_dmul
+ 1512 0196 0246     		mov	r2, r0
+ 1513 0198 0B46     		mov	r3, r1
+ 1514 019a 2046     		mov	r0, r4
+ 1515 019c 2946     		mov	r1, r5
+ 1516 019e FFF7FEFF 		bl	__aeabi_dmul
+ 1517 01a2 0346     		mov	r3, r0
+ 1518 01a4 0C46     		mov	r4, r1
+ 1519 01a6 C7E90234 		strd	r3, [r7, #8]
  267:rhea\drivers\BME280/BME280.c ****     humidity = var6 * (1.0 - ((double)BME280_RegistersLocal.dig_H1) * var6 / 524288.0);
- 1522              		.loc 1 267 0
- 1523 01aa 264B     		ldr	r3, .L67
- 1524 01ac 93F82430 		ldrb	r3, [r3, #36]	@ zero_extendqisi2
- 1525 01b0 1846     		mov	r0, r3
- 1526 01b2 FFF7FEFF 		bl	__aeabi_ui2d
- 1527 01b6 D7E90223 		ldrd	r2, [r7, #8]
- 1528 01ba FFF7FEFF 		bl	__aeabi_dmul
- 1529 01be 0346     		mov	r3, r0
- 1530 01c0 0C46     		mov	r4, r1
- 1531 01c2 1846     		mov	r0, r3
- 1532 01c4 2146     		mov	r1, r4
- 1533 01c6 4FF00002 		mov	r2, #0
- 1534 01ca 264B     		ldr	r3, .L67+32
- 1535 01cc FFF7FEFF 		bl	__aeabi_ddiv
- 1536 01d0 0346     		mov	r3, r0
- 1537 01d2 0C46     		mov	r4, r1
- 1538 01d4 1A46     		mov	r2, r3
- 1539 01d6 2346     		mov	r3, r4
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 33
+ 1520              		.loc 1 267 0
+ 1521 01aa 264B     		ldr	r3, .L67
+ 1522 01ac 93F82430 		ldrb	r3, [r3, #36]	@ zero_extendqisi2
+ 1523 01b0 1846     		mov	r0, r3
+ 1524 01b2 FFF7FEFF 		bl	__aeabi_ui2d
+ 1525 01b6 D7E90223 		ldrd	r2, [r7, #8]
+ 1526 01ba FFF7FEFF 		bl	__aeabi_dmul
+ 1527 01be 0346     		mov	r3, r0
+ 1528 01c0 0C46     		mov	r4, r1
+ 1529 01c2 1846     		mov	r0, r3
+ 1530 01c4 2146     		mov	r1, r4
+ 1531 01c6 4FF00002 		mov	r2, #0
+ 1532 01ca 264B     		ldr	r3, .L67+32
+ 1533 01cc FFF7FEFF 		bl	__aeabi_ddiv
+ 1534 01d0 0346     		mov	r3, r0
+ 1535 01d2 0C46     		mov	r4, r1
+ 1536 01d4 1A46     		mov	r2, r3
+ 1537 01d6 2346     		mov	r3, r4
+ 1538 01d8 4FF00000 		mov	r0, #0
+ 1539 01dc 2049     		ldr	r1, .L67+28
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 33
 
 
- 1540 01d8 4FF00000 		mov	r0, #0
- 1541 01dc 2049     		ldr	r1, .L67+28
- 1542 01de FFF7FEFF 		bl	__aeabi_dsub
- 1543 01e2 0346     		mov	r3, r0
- 1544 01e4 0C46     		mov	r4, r1
- 1545 01e6 1846     		mov	r0, r3
- 1546 01e8 2146     		mov	r1, r4
- 1547 01ea D7E90223 		ldrd	r2, [r7, #8]
- 1548 01ee FFF7FEFF 		bl	__aeabi_dmul
- 1549 01f2 0346     		mov	r3, r0
- 1550 01f4 0C46     		mov	r4, r1
- 1551 01f6 C7E91434 		strd	r3, [r7, #80]
+ 1540 01de FFF7FEFF 		bl	__aeabi_dsub
+ 1541 01e2 0346     		mov	r3, r0
+ 1542 01e4 0C46     		mov	r4, r1
+ 1543 01e6 1846     		mov	r0, r3
+ 1544 01e8 2146     		mov	r1, r4
+ 1545 01ea D7E90223 		ldrd	r2, [r7, #8]
+ 1546 01ee FFF7FEFF 		bl	__aeabi_dmul
+ 1547 01f2 0346     		mov	r3, r0
+ 1548 01f4 0C46     		mov	r4, r1
+ 1549 01f6 C7E91434 		strd	r3, [r7, #80]
  268:rhea\drivers\BME280/BME280.c **** 
  269:rhea\drivers\BME280/BME280.c ****     if      (humidity > humidity_max) humidity = humidity_max;
- 1552              		.loc 1 269 0
- 1553 01fa D7E90E23 		ldrd	r2, [r7, #56]
- 1554 01fe D7E91401 		ldrd	r0, [r7, #80]
- 1555 0202 FFF7FEFF 		bl	__aeabi_dcmpgt
- 1556 0206 0346     		mov	r3, r0
- 1557 0208 002B     		cmp	r3, #0
- 1558 020a 04D0     		beq	.L66
- 1559              		.loc 1 269 0 is_stmt 0 discriminator 1
- 1560 020c D7E90E34 		ldrd	r3, [r7, #56]
- 1561 0210 C7E91434 		strd	r3, [r7, #80]
- 1562 0214 0CE0     		b	.L61
- 1563              	.L66:
+ 1550              		.loc 1 269 0
+ 1551 01fa D7E90E23 		ldrd	r2, [r7, #56]
+ 1552 01fe D7E91401 		ldrd	r0, [r7, #80]
+ 1553 0202 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 1554 0206 0346     		mov	r3, r0
+ 1555 0208 002B     		cmp	r3, #0
+ 1556 020a 04D0     		beq	.L66
+ 1557              		.loc 1 269 0 is_stmt 0 discriminator 1
+ 1558 020c D7E90E34 		ldrd	r3, [r7, #56]
+ 1559 0210 C7E91434 		strd	r3, [r7, #80]
+ 1560 0214 0CE0     		b	.L61
+ 1561              	.L66:
  270:rhea\drivers\BME280/BME280.c ****     else if (humidity < humidity_min) humidity = humidity_min;
- 1564              		.loc 1 270 0 is_stmt 1
- 1565 0216 D7E91023 		ldrd	r2, [r7, #64]
- 1566 021a D7E91401 		ldrd	r0, [r7, #80]
- 1567 021e FFF7FEFF 		bl	__aeabi_dcmplt
- 1568 0222 0346     		mov	r3, r0
- 1569 0224 002B     		cmp	r3, #0
- 1570 0226 03D0     		beq	.L61
- 1571              		.loc 1 270 0 is_stmt 0 discriminator 1
- 1572 0228 D7E91034 		ldrd	r3, [r7, #64]
- 1573 022c C7E91434 		strd	r3, [r7, #80]
- 1574              	.L61:
+ 1562              		.loc 1 270 0 is_stmt 1
+ 1563 0216 D7E91023 		ldrd	r2, [r7, #64]
+ 1564 021a D7E91401 		ldrd	r0, [r7, #80]
+ 1565 021e FFF7FEFF 		bl	__aeabi_dcmplt
+ 1566 0222 0346     		mov	r3, r0
+ 1567 0224 002B     		cmp	r3, #0
+ 1568 0226 03D0     		beq	.L61
+ 1569              		.loc 1 270 0 is_stmt 0 discriminator 1
+ 1570 0228 D7E91034 		ldrd	r3, [r7, #64]
+ 1571 022c C7E91434 		strd	r3, [r7, #80]
+ 1572              	.L61:
  271:rhea\drivers\BME280/BME280.c **** 
  272:rhea\drivers\BME280/BME280.c ****     return humidity;
- 1575              		.loc 1 272 0 is_stmt 1
- 1576 0230 D7E91401 		ldrd	r0, [r7, #80]
- 1577 0234 FFF7FEFF 		bl	__aeabi_d2uiz
- 1578 0238 0346     		mov	r3, r0
- 1579 023a DBB2     		uxtb	r3, r3
+ 1573              		.loc 1 272 0 is_stmt 1
+ 1574 0230 D7E91401 		ldrd	r0, [r7, #80]
+ 1575 0234 FFF7FEFF 		bl	__aeabi_d2uiz
+ 1576 0238 0346     		mov	r3, r0
+ 1577 023a DBB2     		uxtb	r3, r3
  273:rhea\drivers\BME280/BME280.c **** }
- 1580              		.loc 1 273 0
- 1581 023c 1846     		mov	r0, r3
- 1582 023e 5837     		adds	r7, r7, #88
- 1583              		.cfi_def_cfa_offset 16
- 1584 0240 BD46     		mov	sp, r7
- 1585              		.cfi_def_cfa_register 13
- 1586              		@ sp needed
- 1587 0242 B0BD     		pop	{r4, r5, r7, pc}
- 1588              	.L68:
- 1589              		.align	2
- 1590              	.L67:
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 34
+ 1578              		.loc 1 273 0
+ 1579 023c 1846     		mov	r0, r3
+ 1580 023e 5837     		adds	r7, r7, #88
+ 1581              		.cfi_def_cfa_offset 16
+ 1582 0240 BD46     		mov	sp, r7
+ 1583              		.cfi_def_cfa_register 13
+ 1584              		@ sp needed
+ 1585 0242 B0BD     		pop	{r4, r5, r7, pc}
+ 1586              	.L68:
+ 1587              		.align	2
+ 1588              	.L67:
+ 1589 0244 10000000 		.word	BME280_RegistersLocal
+ 1590 0248 00005940 		.word	1079574528
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 34
 
 
- 1591 0244 10000000 		.word	BME280_RegistersLocal
- 1592 0248 00005940 		.word	1079574528
- 1593 024c 00C0F240 		.word	1089650688
- 1594 0250 00005040 		.word	1078984704
- 1595 0254 0000D040 		.word	1087373312
- 1596 0258 0000F040 		.word	1089470464
- 1597 025c 00009041 		.word	1099956224
- 1598 0260 0000F03F 		.word	1072693248
- 1599 0264 00002041 		.word	1092616192
- 1600              		.cfi_endproc
- 1601              	.LFE11:
- 1602              		.size	BME280_GetHumidity, .-BME280_GetHumidity
+ 1591 024c 00C0F240 		.word	1089650688
+ 1592 0250 00005040 		.word	1078984704
+ 1593 0254 0000D040 		.word	1087373312
+ 1594 0258 0000F040 		.word	1089470464
+ 1595 025c 00009041 		.word	1099956224
+ 1596 0260 0000F03F 		.word	1072693248
+ 1597 0264 00002041 		.word	1092616192
+ 1598              		.cfi_endproc
+ 1599              	.LFE11:
+ 1600              		.size	BME280_GetHumidity, .-BME280_GetHumidity
+ 1601              		.global	__aeabi_i2f
+ 1602              		.global	__aeabi_fmul
  1603              		.global	__aeabi_f2d
  1604              		.section	.text.BME280_GetMeasurementDelay,"ax",%progbits
  1605              		.align	2
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  282:rhea\drivers\BME280/BME280.c ****     // Parsing configuration
  283:rhea\drivers\BME280/BME280.c ****     switch(temperature_ovrs) {
  1637              		.loc 1 283 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 35
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 35
 
 
  1638 001e FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  1686              	.L70:
  290:rhea\drivers\BME280/BME280.c ****     };
  291:rhea\drivers\BME280/BME280.c **** 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 36
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 36
 
 
  292:rhea\drivers\BME280/BME280.c ****     switch(pressure_ovrs) {
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  1736 00da 05E0     		b	.L78
  1737              	.L85:
  297:rhea\drivers\BME280/BME280.c ****     case BME280_PRESSURE_OVERSAMPLING_16X: pressure_ovrs = 16; break;
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 37
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 37
 
 
  1738              		.loc 1 297 0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  306:rhea\drivers\BME280/BME280.c ****     case BME280_HUMIDITY_OVERSAMPLING_16X: humidity_ovrs = 16; break;
  1784              		.loc 1 306 0
  1785 0124 1023     		movs	r3, #16
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 38
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 38
 
 
  1786 0126 7B77     		strb	r3, [r7, #29]
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  1834 0182 27A3     		adr	r3, .L101
  1835 0184 D3E90023 		ldrd	r2, [r3]
  1836 0188 FFF7FEFF 		bl	__aeabi_dadd
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 39
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 39
 
 
  1837 018c 0346     		mov	r3, r0
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  1888 01fc 1846     		mov	r0, r3
  1889 01fe 2146     		mov	r1, r4
  1890 0200 D7E90023 		ldrd	r2, [r7]
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 40
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 40
 
 
  1891 0204 FFF7FEFF 		bl	__aeabi_dadd
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  1939 000c DBB2     		uxtb	r3, r3
  322:rhea\drivers\BME280/BME280.c **** }
  1940              		.loc 1 322 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 41
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 41
 
 
  1941 000e 1846     		mov	r0, r3
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  1989 001e 1343     		orrs	r3, r3, r2
  1990 0020 DAB2     		uxtb	r2, r3
  1991 0022 064B     		ldr	r3, .L108
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 42
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 42
 
 
  1992 0024 1A72     		strb	r2, [r3, #8]
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2037 000c DBB2     		uxtb	r3, r3
  338:rhea\drivers\BME280/BME280.c **** }
  2038              		.loc 1 338 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 43
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 43
 
 
  2039 000e 1846     		mov	r0, r3
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2087 001e 1343     		orrs	r3, r3, r2
  2088 0020 DAB2     		uxtb	r2, r3
  2089 0022 064B     		ldr	r3, .L115
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 44
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 44
 
 
  2090 0024 9A72     		strb	r2, [r3, #10]
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2135 000c DBB2     		uxtb	r3, r3
  354:rhea\drivers\BME280/BME280.c **** }
  2136              		.loc 1 354 0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 45
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 45
 
 
  2137 000e 1846     		mov	r0, r3
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2185 001e 1343     		orrs	r3, r3, r2
  2186 0020 DAB2     		uxtb	r2, r3
  2187 0022 064B     		ldr	r3, .L122
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 46
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 46
 
 
  2188 0024 9A72     		strb	r2, [r3, #10]
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2233 000a 7620     		movs	r0, #118
  2234 000c FFF7FEFF 		bl	BME280_I2CReader
  370:rhea\drivers\BME280/BME280.c **** 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 47
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 47
 
 
  371:rhea\drivers\BME280/BME280.c ****     // Returning MEASURING bits of STATUS register
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2278 0014 03F00103 		and	r3, r3, #1
  2279 0018 DBB2     		uxtb	r3, r3
  382:rhea\drivers\BME280/BME280.c **** }
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 48
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 48
 
 
  2280              		.loc 1 382 0
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2328              	.LFE21:
  2329              		.size	BME280_GetMeasurementMode, .-BME280_GetMeasurementMode
  2330              		.section	.text.BME280_SetMeasurementMode,"ax",%progbits
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 49
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 49
 
 
  2331              		.align	2
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2375 0034 0837     		adds	r7, r7, #8
  2376              		.cfi_def_cfa_offset 8
  2377 0036 BD46     		mov	sp, r7
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 50
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 50
 
 
  2378              		.cfi_def_cfa_register 13
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2426              	.LFE23:
  2427              		.size	BME280_GetStandbyTime, .-BME280_GetStandbyTime
  2428              		.section	.text.BME280_SetStandbyTime,"ax",%progbits
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 51
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 51
 
 
  2429              		.align	2
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2473 0034 0837     		adds	r7, r7, #8
  2474              		.cfi_def_cfa_offset 8
  2475 0036 BD46     		mov	sp, r7
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 52
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 52
 
 
  2476              		.cfi_def_cfa_register 13
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2524              	.LFE25:
  2525              		.size	BME280_GetFilterMode, .-BME280_GetFilterMode
  2526              		.section	.text.BME280_SetFilterMode,"ax",%progbits
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 53
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 53
 
 
  2527              		.align	2
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2571 0034 0837     		adds	r7, r7, #8
  2572              		.cfi_def_cfa_offset 8
  2573 0036 BD46     		mov	sp, r7
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 54
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 54
 
 
  2574              		.cfi_def_cfa_register 13
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2619              	.L155:
  2620 0022 00BF     		.align	2
  2621              	.L154:
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 55
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 55
 
 
  2622 0024 10000000 		.word	BME280_RegistersLocal
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2667              	.LFE28:
  2668              		.size	BME280_DisableSPI3Wire, .-BME280_DisableSPI3Wire
  2669              		.section	.text.BME280_IsSPI3WireEnabled,"ax",%progbits
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 56
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 56
 
 
  2670              		.align	2
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2718 000a 04       		.byte	0x4
  2719 000b 01       		.uleb128 0x1
  2720 000c B0000000 		.4byte	.LASF125
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 57
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 57
 
 
  2721 0010 0C       		.byte	0xc
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2775 0085 41       		.byte	0x41
  2776 0086 8A000000 		.4byte	0x8a
  2777 008a 03       		.uleb128 0x3
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 58
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 58
 
 
  2778 008b 04       		.byte	0x4
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2832 00f7 2C010000 		.4byte	0x12c
  2833 00fb 06       		.uleb128 0x6
  2834 00fc A3030000 		.4byte	.LASF21
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 59
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 59
 
 
  2835 0100 04       		.byte	0x4
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2889 016f 02       		.uleb128 0x2
  2890 0170 90000000 		.4byte	.LASF25
  2891 0174 04       		.byte	0x4
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 60
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 60
 
 
  2892 0175 54       		.byte	0x54
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  2946 01e1 B8000000 		.4byte	0xb8
  2947 01e5 07       		.byte	0x7
  2948 01e6 06       		.uleb128 0x6
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 61
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 61
 
 
  2949 01e7 F1040000 		.4byte	.LASF35
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3003 0253 4B050000 		.4byte	.LASF44
  3004 0257 04       		.byte	0x4
  3005 0258 8B       		.byte	0x8b
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 62
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 62
 
 
  3006 0259 C3000000 		.4byte	0xc3
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3060 02c5 B8000000 		.4byte	0xb8
  3061 02c9 27       		.byte	0x27
  3062 02ca 06       		.uleb128 0x6
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 63
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 63
 
 
  3063 02cb 5F040000 		.4byte	.LASF54
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3117 033a 9C       		.byte	0x9c
  3118 033b 8E030000 		.4byte	0x38e
  3119 033f 0D       		.uleb128 0xd
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 64
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 64
 
 
  3120 0340 26030000 		.4byte	.LASF61
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3174 03a4 9C       		.byte	0x9c
  3175 03a5 F8030000 		.4byte	0x3f8
  3176 03a9 0D       		.uleb128 0xd
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 65
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 65
 
 
  3177 03aa 26030000 		.4byte	.LASF61
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3231 040e 88010000 		.4byte	.LFE3-.LFB3
  3232 0412 01       		.uleb128 0x1
  3233 0413 9C       		.byte	0x9c
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 66
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 66
 
 
  3234 0414 42040000 		.4byte	0x442
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3288 047f E9050000 		.4byte	.LASF71
  3289 0483 01       		.byte	0x1
  3290 0484 89       		.byte	0x89
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 67
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 67
 
 
  3291 0485 8D040000 		.4byte	0x48d
@@ -4000,9 +4000,9 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3327 04d0 50010000 		.4byte	.LASF82
  3328 04d4 01       		.byte	0x1
  3329 04d5 A0       		.byte	0xa0
- 3330 04d6 AD000000 		.4byte	0xad
+ 3330 04d6 4C050000 		.4byte	0x54c
  3331 04da 00000000 		.4byte	.LFB8
- 3332 04de CC010000 		.4byte	.LFE8-.LFB8
+ 3332 04de C4010000 		.4byte	.LFE8-.LFB8
  3333 04e2 01       		.uleb128 0x1
  3334 04e3 9C       		.byte	0x9c
  3335 04e4 4C050000 		.4byte	0x54c
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3345 04f8 22000000 		.4byte	.LASF75
  3346 04fc 01       		.byte	0x1
  3347 04fd A6       		.byte	0xa6
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 68
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 68
 
 
  3348 04fe E4000000 		.4byte	0xe4
@@ -4076,9 +4076,9 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3400 0559 C0       		.byte	0xc0
  3401 055a AD000000 		.4byte	0xad
  3402 055e 00000000 		.4byte	.LFB9
- 3403 0562 48000000 		.4byte	.LFE9-.LFB9
+ 3403 0562 54000000 		.4byte	.LFE9-.LFB9
  3404 0566 01       		.uleb128 0x1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 69
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 69
 
 
  3405 0567 9C       		.byte	0x9c
@@ -4090,7 +4090,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3411 0573 B8000000 		.4byte	0xb8
  3412 0577 02       		.uleb128 0x2
  3413 0578 91       		.byte	0x91
- 3414 0579 77       		.sleb128 -9
+ 3414 0579 6F       		.sleb128 -17
  3415 057a 00       		.byte	0
  3416 057b 17       		.uleb128 0x17
  3417 057c C8010000 		.4byte	.LASF84
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3459 05ce 78010000 		.4byte	.LASF85
  3460 05d2 01       		.byte	0x1
  3461 05d3 D5       		.byte	0xd5
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 70
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 70
 
 
  3462 05d4 4C050000 		.4byte	0x54c
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3516 063c 64       		.sleb128 -28
  3517 063d 12       		.uleb128 0x12
  3518 063e C9050000 		.4byte	.LASF90
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 71
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 71
 
 
  3519 0642 01       		.byte	0x1
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3573 06a2 18       		.uleb128 0x18
  3574 06a3 82010000 		.4byte	.LASF94
  3575 06a7 01       		.byte	0x1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 72
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 72
 
 
  3576 06a8 0101     		.2byte	0x101
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3630 0717 91       		.byte	0x91
  3631 0718 60       		.sleb128 -32
  3632 0719 18       		.uleb128 0x18
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 73
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 73
 
 
  3633 071a 7B060000 		.4byte	.LASF101
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3687 078f 01       		.byte	0x1
  3688 0790 5401     		.2byte	0x154
  3689 0792 00000000 		.4byte	.LFB16
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 74
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 74
 
 
  3690 0796 44000000 		.4byte	.LFE16-.LFB16
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3744 080e 00000000 		.4byte	.LFB20
  3745 0812 28000000 		.4byte	.LFE20-.LFB20
  3746 0816 01       		.uleb128 0x1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 75
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 75
 
 
  3747 0817 9C       		.byte	0x9c
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3801 088f 00       		.byte	0
  3802 0890 1A       		.uleb128 0x1a
  3803 0891 F2060000 		.4byte	.LASF118
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 76
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 76
 
 
  3804 0895 01       		.byte	0x1
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3858 090d 6F010000 		.4byte	0x16f
  3859 0911 05       		.uleb128 0x5
  3860 0912 03       		.byte	0x3
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 77
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 77
 
 
  3861 0913 00000000 		.4byte	BME280_I2CController
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3915 002a 00       		.byte	0
  3916 002b 04       		.uleb128 0x4
  3917 002c 24       		.uleb128 0x24
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 78
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 78
 
 
  3918 002d 00       		.byte	0
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  3972 0063 00       		.byte	0
  3973 0064 09       		.uleb128 0x9
  3974 0065 0F       		.uleb128 0xf
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 79
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 79
 
 
  3975 0066 00       		.byte	0
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4029 009d 0E       		.uleb128 0xe
  4030 009e 3A       		.uleb128 0x3a
  4031 009f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 80
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 80
 
 
  4032 00a0 3B       		.uleb128 0x3b
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4086 00d7 18       		.uleb128 0x18
  4087 00d8 00       		.byte	0
  4088 00d9 00       		.byte	0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 81
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 81
 
 
  4089 00da 11       		.uleb128 0x11
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4143 0110 01       		.uleb128 0x1
  4144 0111 12       		.uleb128 0x12
  4145 0112 06       		.uleb128 0x6
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 82
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 82
 
 
  4146 0113 40       		.uleb128 0x40
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4200 014c 01       		.uleb128 0x1
  4201 014d 13       		.uleb128 0x13
  4202 014e 00       		.byte	0
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 83
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 83
 
 
  4203 014f 00       		.byte	0
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4257 0186 27       		.uleb128 0x27
  4258 0187 19       		.uleb128 0x19
  4259 0188 49       		.uleb128 0x49
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 84
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 84
 
 
  4260 0189 13       		.uleb128 0x13
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4314 01c1 3F       		.uleb128 0x3f
  4315 01c2 19       		.uleb128 0x19
  4316 01c3 03       		.uleb128 0x3
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 85
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 85
 
 
  4317 01c4 0E       		.uleb128 0xe
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4371 01fc 13       		.uleb128 0x13
  4372 01fd 11       		.uleb128 0x11
  4373 01fe 01       		.uleb128 0x1
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 86
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 86
 
 
  4374 01ff 12       		.uleb128 0x12
@@ -5135,9 +5135,9 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4405 0048 00000000 		.4byte	.LFB7
  4406 004c 14000000 		.4byte	.LFE7-.LFB7
  4407 0050 00000000 		.4byte	.LFB8
- 4408 0054 CC010000 		.4byte	.LFE8-.LFB8
+ 4408 0054 C4010000 		.4byte	.LFE8-.LFB8
  4409 0058 00000000 		.4byte	.LFB9
- 4410 005c 48000000 		.4byte	.LFE9-.LFB9
+ 4410 005c 54000000 		.4byte	.LFE9-.LFB9
  4411 0060 00000000 		.4byte	.LFB10
  4412 0064 B4030000 		.4byte	.LFE10-.LFB10
  4413 0068 00000000 		.4byte	.LFB11
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4428 00a4 44000000 		.4byte	.LFE18-.LFB18
  4429 00a8 00000000 		.4byte	.LFB19
  4430 00ac 28000000 		.4byte	.LFE19-.LFB19
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 87
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 87
 
 
  4431 00b0 00000000 		.4byte	.LFB20
@@ -5202,9 +5202,9 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4469 0038 00000000 		.4byte	.LFB7
  4470 003c 14000000 		.4byte	.LFE7
  4471 0040 00000000 		.4byte	.LFB8
- 4472 0044 CC010000 		.4byte	.LFE8
+ 4472 0044 C4010000 		.4byte	.LFE8
  4473 0048 00000000 		.4byte	.LFB9
- 4474 004c 48000000 		.4byte	.LFE9
+ 4474 004c 54000000 		.4byte	.LFE9
  4475 0050 00000000 		.4byte	.LFB10
  4476 0054 B4030000 		.4byte	.LFE10
  4477 0058 00000000 		.4byte	.LFB11
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4485 0078 00000000 		.4byte	.LFB15
  4486 007c 1C000000 		.4byte	.LFE15
  4487 0080 00000000 		.4byte	.LFB16
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 88
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 88
 
 
  4488 0084 44000000 		.4byte	.LFE16
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4529 0031 424D4532 		.ascii	"BME280_ReadRegisters\000"
  4529      38305F52 
  4529      65616452 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 89
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 89
 
 
  4529      65676973 
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4549      6174696E 
  4549      6700
  4550              	.LASF82:
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 90
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 90
 
 
  4551 0150 424D4532 		.ascii	"BME280_GetTemperatureCelsius\000"
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4575      38305F47 
  4575      65745374 
  4575      616E6462 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 91
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 91
 
 
  4575      7954696D 
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4600              	.LASF108:
  4601 02a0 424D4532 		.ascii	"BME280_SetTemperatureMode\000"
  4601      38305F53 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 92
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 92
 
 
  4601      65745465 
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4625      6E697400 
  4626              	.LASF96:
  4627 036c 424D4532 		.ascii	"BME280_GetMeasurementDelay\000"
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 93
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 93
 
 
  4627      38305F47 
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4647      00
  4648              	.LASF91:
  4649 0427 68756D69 		.ascii	"humidity_min\000"
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 94
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 94
 
 
  4649      64697479 
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4674              	.LASF0:
  4675 04d5 5F5F696E 		.ascii	"__int8_t\000"
  4675      74385F74 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 95
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 95
 
 
  4675      00
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4705      503600
  4706              	.LASF48:
  4707 0567 6469675F 		.ascii	"dig_P7\000"
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 96
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 96
 
 
  4707      503700
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4735      65725772 
  4735      69746542 
  4735      79746500 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 97
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 97
 
 
  4736              	.LASF4:
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 1
  4758              	.LASF59:
  4759 06b1 424D4532 		.ascii	"BME280_I2CReader\000"
  4759      38305F49 
-ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cc8y56XJ.s 			page 98
+ARM GAS  C:\Users\GYULAI~1\AppData\Local\Temp\cckTcsNa.s 			page 98
 
 
  4759      32435265 

@@ -38,10 +38,31 @@
 // Project includes
 #include "project.h"
 
+  
+// Ring buffer type for receiving bytes on UART
+typedef struct ringbuffer_t {
+    uint8_t data[256];
+    uint8_t head;
+    uint8_t tail;
+} ringbuffer_t;
 
 // External button status indicator flags 
 extern volatile uint8_t serial_data_ready;
-    
+
+/**
+ * @brief Puts one byte into the specified buffer.
+ * @param [in] Pointer to the ringbuffer.
+ * @param [in] The byte to put into the buffer.
+ */
+void ringbufferPutChar(volatile ringbuffer_t *buffer, uint8_t c);
+
+/**
+ * @brief   Gets one byte from the specified buffer.
+ * @param   [in] Pointer to the ringbuffer.
+ * @returns The byte from the ringbuffer.
+ */
+uint8_t ringbufferGetChar(volatile ringbuffer_t *buffer);
+
 /**
  * @brief Initializes the serial port command line utility.
  */

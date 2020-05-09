@@ -44,17 +44,11 @@
 #include "command.h"
 
 
-// Defines the size of the receive buffer
-#define SERIAL_RX_BUFFER_SIZE (256)
+// Serial read buffer
+volatile ringbuffer_t serialBuffer;
 
-// External serial status indicator flag 
+// Data arrived indicator
 volatile uint8_t serial_data_ready = 0;
-
-// Serial RX buffer
-volatile uint8_t serialBuffer[SERIAL_RX_BUFFER_SIZE + 1];
-
-// Serial write index
-volatile uint8_t bufferSize;
 
 static const struct option rhea_long_options[] = {
 	{"help", no_argument, NULL, 'h'},
@@ -111,6 +105,39 @@ static const struct option power_long_options[] = {
 void command_rhea(int argc, const char **argv);
 void command_measure(int argc, const char **argv);
 
+/**
+ * @brief Puts one byte into the specified buffer.
+ * @param [in] Pointer to the ringbuffer.
+ * @param [in] The byte to put into the buffer.
+ */
+void ringbufferPutChar(volatile ringbuffer_t *buffer, uint8_t c) {
+    
+    // Checking read and write pointers
+    if((buffer->head + 1) != buffer->tail) {
+        
+        // Writing into the buffer
+        buffer->data[buffer->head++] = c;
+    }
+}
+
+/**
+ * @brief   Gets one byte from the specified buffer.
+ * @param   [in] Pointer to the ringbuffer.
+ * @returns The byte from the ringbuffer.
+ */
+uint8_t ringbufferGetChar(volatile ringbuffer_t *buffer) {
+    
+    // Checking read and write pointers
+    if(buffer->tail != buffer->head) {
+        
+        // Returning data
+        return buffer->data[buffer->tail++];
+    }
+
+    // Return zero when no data is available
+    return 0;
+}
+
 void toArgumentArray(char* str, int* argc, const char ** argv) {
 	char* token = strtok(str, " ");
 	int i = 0;
@@ -123,41 +150,46 @@ void toArgumentArray(char* str, int* argc, const char ** argv) {
 }
     
 void InitializeSerialCommandLine(void) {
-    
-    // Initializing buffer size
-    bufferSize = 0;
-    
-    // Terminating buffer for overflow safety
-    serialBuffer[SERIAL_RX_BUFFER_SIZE] = '\0';
-    serialBuffer[0] = '\0';
-    
+        
     // Initializing and enabling the serial interrupt
     UART_RX_INTR_StartEx(SERIAL_DATA_ARRIVED);
+        
+    // Initializing receive buffer
+    serialBuffer = (ringbuffer_t) {
+        .head = 0,
+        .tail = 0
+    };
 }
 
 void ProcessCommandLine(void) {
-    
-    // Checking serial status flag
+
+    // Checking ready flag
     if(!serial_data_ready) return;
     
-    // Clearing serial status flag
+    // Clearing ready flag
     serial_data_ready = 0;
-
-    // Reading command
-    char command[SERIAL_RX_BUFFER_SIZE] = {0};
-    sscanf((const char *) serialBuffer, "%s", command); 
     
+    // Helpers for reading command
+    char command[256];
+    uint8_t i = 0;
+    
+    // Reading command
+    while((command[i++] = ringbufferGetChar(&serialBuffer))) {
+        if(command[i - 1] == '\r' || command[i - 1] == '\n') {
+            command[i - 1] = '\0';
+            break;
+        }
+    }
+
     // Command parsing helpers    
     int argc;
 	const char* argv[10];
 
     // Creating argc-argv format
-	toArgumentArray((char*) serialBuffer, &argc, argv);
+	toArgumentArray((char*) command, &argc, argv);
     
     // Jumping to next line
     rhea_uart_WriteString("\n\r");
-    
-    rhea_uart_WriteBuffer(serialBuffer, 10);
     
     // Interpreting command
     if(strcmp(command, "rhea") == 0) 
@@ -182,27 +214,21 @@ CY_ISR(SERIAL_DATA_ARRIVED) {
 
     uint8_t status = CyEnterCriticalSection();
     
-    unsigned char c = rhea_uart_ReadChar();
-    
-    // Reading character received
-    serialBuffer[bufferSize++] = c;
-    
-    // Echoing back to terminal
-    rhea_uart_WriteChar(c);
-    
-    // Checking character received
-    if(c == '\n' ||  c == '\r')
-    {
-        // Setting command received flag
-        serial_data_ready = 1;
+    while(rhea_uart_BytesAvailable()) {
         
-        // Adding string terminator to end of buffer
-        serialBuffer[bufferSize - 1] = '\0';
+        // Reading character from UART
+        unsigned char c = rhea_uart_ReadChar();
+
+        // Storing character to serial buffer
+        ringbufferPutChar(&serialBuffer, c);
         
-        // Resetting buffer index
-        bufferSize = 0;
+        // Echoing character to terminal
+        rhea_uart_WriteChar(c);
+        
+        // Setting ready flag
+        if(c == '\r') serial_data_ready = 1;
     }
-    
+
     CyExitCriticalSection(status);
 }
 
@@ -267,14 +293,13 @@ void command_rhea(int argc, const char **argv) {
 	int opt = 0;
 	int longopt = 0;
 	optind = 1;
-
+  
 	while ((opt = getopt_long(argc, (char*const*)argv, "hv", rhea_long_options, &longopt)) != -1) {
-		switch (opt) {
+		switch (optopt) {
 		case 'h': rhea_print_help();
 		   break;
 		case 'v': rhea_print_version();
 		   break;
-		default: rhea_print_error(); return;
 		};
 	}
 }
@@ -371,9 +396,9 @@ void command_measure(int argc, const char **argv) {
     
     if(d) {
         if (t) {
-            unsigned temperature = rhea_sensor_GetMeasurement("BME280", "temperature");
+            double temperature = rhea_sensor_GetMeasurement("BME280", "temperature");
             char temp[50] = {0};
-            sprintf(temp, "Temperature: %u Celsius\n\r", temperature);
+            sprintf(temp, "Temperature: %.1lf Celsius\n\r", temperature);
             rhea_uart_WriteString(temp);
         }
     	if (p) {

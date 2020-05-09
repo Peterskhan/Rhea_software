@@ -157,7 +157,7 @@ BME280_RegisterStruct* BME280_GetLocalRegisters(void) {
     return &BME280_RegistersLocal;   
 }
 
-int8_t BME280_GetTemperatureCelsius(uint8_t readNow) {
+double BME280_GetTemperatureCelsius(uint8_t readNow) {
 
     // Loading measurements registers from the device
     if(readNow) BME280_ReadRegisters();

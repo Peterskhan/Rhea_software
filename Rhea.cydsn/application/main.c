@@ -69,19 +69,14 @@ int main(void)
     InitializeSerialCommandLine();
     InitializeMainMenu();
         
-   
+    // Showing start-up logo
+    rhea_gfx_DrawSymbol(3,1,103);
+    rhea_gfx_Refresh();
+    CyDelay(2000);
     
     // Executing application logic
     for(;;)
     {     
-        //test_sensor();
-        
-        //rhea_gfx_Clear();
-        //rhea_gfx_SetCursor(0,0);
-        //rhea_gfx_Print("RIGHT:"); rhea_gfx_Print(BTN_RIGHT_Read() ? "ON\n" : "OFF\n");
-        //rhea_gfx_Print("LEFT:"); rhea_gfx_Print(BTN_LEFT_Read() ? "ON\n" : "OFF\n");
-        //rhea_gfx_Print("ENTER:"); rhea_gfx_Print(BTN_ENTER_Read() ? "ON\n" : "OFF\n");
-        //rhea_gfx_Refresh();
         
         // Handling UART command line 
         ProcessCommandLine();

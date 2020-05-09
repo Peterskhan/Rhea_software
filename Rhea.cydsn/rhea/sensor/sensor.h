@@ -125,6 +125,7 @@ void rhea_sensor_Initialize(void);
  * @brief Registers a new measurement to the measurement registry.
  * @param [in] device The name of the sensor device performing the measurement.
  * @param [in] parameter The name of the parameter being measured by the sensor.
+ * @param [in] period The period of the measurement in milliseconds.
  * @param [in] function The function performing the measurement.
  */
 void rhea_sensor_AddMeasurement(const char *device, 
